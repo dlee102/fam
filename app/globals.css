@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 뉴스 사이트 레이아웃 - 중앙 정렬 유지 */
+.layout-center {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.news-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .layout-center,
+  .news-container {
+    padding: 0 3rem;
+  }
+}
+
+/* 기사 본문 문단 스타일 */
+.article-body p {
+  text-align: justify;
+  word-break: keep-all;
+}
+.article-body p:first-of-type {
+  margin-top: 0;
+}
+.article-body p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* 기사 페이지 - 본문 + 퀀트 지표 사이드바 */
+.article-page-layout {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .article-page-layout .quant-indicator-sidebar {
+    width: 100% !important;
+    position: static !important;
+  }
+  .article-page-layout .article-with-sidebar {
+    flex-direction: column !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .article-page-layout {
+    padding: 0 3rem;
+  }
+}
