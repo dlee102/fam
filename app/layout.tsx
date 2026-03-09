@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import NavTabs from "./components/NavTabs";
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
@@ -22,25 +23,37 @@ export default function RootLayout({
       <body className={notoSansKr.className}>
         <div className="layout-center" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
           <header
+            className="header-main"
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "1rem 2rem",
-              backgroundColor: "#fff",
-              borderBottom: "1px solid #e5e5e5",
+              padding: "1.25rem 2rem",
+              backgroundColor: "var(--color-surface)",
+              borderBottom: "1px solid var(--color-border)",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
-            <span
+            <a
+              href="/"
+              className="logo-link"
               style={{
-                fontSize: "1.25rem",
-                fontWeight: 300,
-                color: "#1a1a1a",
-                letterSpacing: "-0.01em",
+                fontSize: "1.35rem",
+                fontWeight: 600,
+                color: "var(--color-text)",
+                letterSpacing: "-0.02em",
+                textDecoration: "none",
               }}
             >
               Qraft AI quant indicator
-            </span>
+            </a>
+          </header>
+          <header
+            className="header-nav"
+            style={{
+              padding: "0.625rem 2rem",
+              backgroundColor: "var(--color-surface)",
+              borderBottom: "1px solid var(--color-border)",
+            }}
+          >
+            <NavTabs />
           </header>
           <div style={{ flex: 1, width: "100%" }}>
             {children}

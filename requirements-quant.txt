@@ -1,0 +1,3 @@
+# Quant score computation (Python)
+pandas>=2.0
+pyarrow>=14.0

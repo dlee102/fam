@@ -1,36 +1,30 @@
 "use client";
 
-const CHART_DATA = [0, 2, -1, 4, 3, 6, 5, 8.5];
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  ReferenceLine,
+} from "recharts";
+
+const CHART_DATA = [
+  { day: "D-3", value: 0 },
+  { day: "D-2", value: 2 },
+  { day: "D-1", value: -1 },
+  { day: "발행일", value: 4 },
+  { day: "D+1", value: 3 },
+  { day: "D+2", value: 6 },
+  { day: "D+3", value: 5 },
+  { day: "D+4", value: 8.5 },
+];
 const ISSUE_DATE = "2025.02.01";
 const RETURN_RATE = 8.5;
 
 export function ReturnChartCard() {
-  const max = Math.max(...CHART_DATA);
-  const min = Math.min(...CHART_DATA);
-  const range = max - min || 1;
-  const width = 260;
-  const height = 60;
-  const padding = { top: 5, right: 5, bottom: 5, left: 5 };
-  const chartWidth = width - padding.left - padding.right;
-  const chartHeight = height - padding.top - padding.bottom;
-  const points = CHART_DATA.map((val, i) => {
-    const x = padding.left + (i / Math.max(1, CHART_DATA.length - 1)) * chartWidth;
-    const y = padding.top + chartHeight - ((val - min) / range) * chartHeight;
-    return { x, y };
-  });
-
-  const midIdx = Math.floor(CHART_DATA.length / 2);
-  const pathDBefore = points
-    .slice(0, midIdx + 1)
-    .map((p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`))
-    .join(" ");
-  const pathDAfter = points
-    .slice(midIdx)
-    .map((p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`))
-    .join(" ");
-
-  const issueLineX = padding.left + chartWidth / 2;
-
   return (
     <div
       style={{
@@ -72,33 +66,37 @@ export function ReturnChartCard() {
           {RETURN_RATE}%
         </span>
       </div>
-      <svg viewBox={`0 0 ${width} ${height}`} style={{ width: "100%", height: "60px", display: "block" }}>
-        <line
-          x1={issueLineX}
-          y1={padding.top}
-          x2={issueLineX}
-          y2={height - padding.bottom}
-          stroke="#dc2626"
-          strokeWidth="1.5"
-          strokeDasharray="4 2"
-        />
-        <path
-          d={pathDBefore}
-          fill="none"
-          stroke="#059669"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d={pathDAfter}
-          fill="none"
-          stroke="#dc2626"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <div style={{ width: "100%", height: 100 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={CHART_DATA} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#6b7280" }} />
+            <YAxis
+              tick={{ fontSize: 10, fill: "#6b7280" }}
+              tickFormatter={(v) => `${v}%`}
+              width={28}
+            />
+            <ReferenceLine
+              x="발행일"
+              stroke="#dc2626"
+              strokeDasharray="4 2"
+              strokeWidth={1.5}
+            />
+            <Tooltip
+              formatter={(value: number | undefined) => [`${value != null ? (value >= 0 ? "+" : "") + value + "%" : "-"}`, "수익률"]}
+              contentStyle={{ fontSize: "0.75rem", borderRadius: "6px", border: "1px solid #e5e7eb" }}
+            />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#059669"
+              strokeWidth={2}
+              dot={{ fill: "#059669", r: 3 }}
+              activeDot={{ r: 5 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

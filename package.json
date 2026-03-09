@@ -3,18 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "clean": "rm -rf .next",
+    "dev": "npm run clean && next dev",
+    "build": "npm run clean && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "extract-tickers": "npx tsx scripts/extract-news-tickers.ts",
+    "fetch-ticker-names": "python3 scripts/fetch_ticker_names.py",
+    "quant-signals": "python3 scripts/quant_signals.py"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
+    "lightweight-charts": "^5.1.0",
     "lodash": "^4.17.23",
     "next": "15.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-gauge-chart": "^0.5.1"
+    "react-gauge-chart": "^0.5.1",
+    "recharts": "^3.7.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.24",

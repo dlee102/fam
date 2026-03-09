@@ -11,19 +11,19 @@ export default async function Home() {
 
   return (
     <main className="news-container" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
-      <header style={{ marginBottom: "2.5rem", borderBottom: "1px solid #e5e5e5", paddingBottom: "1rem" }}>
-        <h1 style={{ fontSize: "1.5rem", fontWeight: 700, letterSpacing: "-0.02em" }}>
+      <header style={{ marginBottom: "2.5rem", borderBottom: "1px solid var(--color-border)", paddingBottom: "1rem" }}>
+        <h1 style={{ fontSize: "1.5rem", fontWeight: 700, letterSpacing: "-0.02em", color: "var(--color-text)" }}>
           FAM 뉴스
         </h1>
       </header>
 
       <section>
-        <h2 style={{ fontSize: "1.125rem", fontWeight: 600, marginBottom: "1rem", color: "#404040" }}>
+        <h2 style={{ fontSize: "1.125rem", fontWeight: 600, marginBottom: "1rem", color: "var(--color-text-muted)" }}>
           팜이데일리 최신 기사
         </h2>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
           {articles.length === 0 ? (
-            <li style={{ padding: "1rem 0", color: "#737373" }}>
+            <li style={{ padding: "1rem 0", color: "var(--color-text-muted)" }}>
               기사를 불러오는 중입니다...
             </li>
           ) : (
@@ -32,7 +32,7 @@ export default async function Home() {
                 key={article.newsId}
                 style={{
                   padding: "0.75rem 0",
-                  borderBottom: i < articles.length - 1 ? "1px solid #f0f0f0" : "none",
+                  borderBottom: i < articles.length - 1 ? "1px solid var(--color-border)" : "none",
                 }}
               >
                 <Link
@@ -42,8 +42,9 @@ export default async function Home() {
                     gap: "1rem",
                     alignItems: "flex-start",
                     textDecoration: "none",
-                    color: "#1a1a1a",
+                    color: "var(--color-text)",
                   }}
+                  className="article-link"
                 >
                   {article.thumbnail && (
                     <img
@@ -53,7 +54,7 @@ export default async function Home() {
                         width: "80px",
                         height: "60px",
                         objectFit: "cover",
-                        borderRadius: "4px",
+                        borderRadius: "var(--radius-sm)",
                         flexShrink: 0,
                       }}
                     />

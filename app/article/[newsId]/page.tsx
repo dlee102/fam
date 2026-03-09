@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { fetchArticleContent } from "@/lib/crawl-article";
+import { getArticleByNewsId } from "@/lib/news-tickers";
+import { getTickerName } from "@/lib/ticker-names";
+import { loadEntryHoldSummary } from "@/lib/entry-hold-stats";
+import { getQuantSignalsByNewsId } from "@/lib/quant-signals";
+import { StockChartToggle } from "./StockChartToggle";
+import { QuantTradingGuide } from "./QuantTradingGuide";
 import { AIScoreGauge } from "./AIScoreGauge";
 import { RiskGauge } from "./RiskGauge";
 import { ReturnChartCard } from "./ReturnChartCard";
@@ -30,7 +36,15 @@ export default async function ArticlePage({
   params: Promise<{ newsId: string }>;
 }) {
   const { newsId } = await params;
-  const article = await fetchArticleContent(newsId);
+  const [articleResult, tickerResult, entryHoldSummary] = await Promise.allSettled([
+    fetchArticleContent(newsId),
+    Promise.resolve(getArticleByNewsId(newsId)),
+    Promise.resolve(loadEntryHoldSummary()),
+  ]);
+  const article = articleResult.status === "fulfilled" ? articleResult.value : null;
+  const tickerEntry = tickerResult.status === "fulfilled" ? tickerResult.value : null;
+  const quantSummary = entryHoldSummary.status === "fulfilled" ? entryHoldSummary.value : null;
+  const tickerSignals = getQuantSignalsByNewsId(newsId);
 
   if (!article) {
     return (
@@ -78,6 +92,33 @@ export default async function ArticlePage({
           <time style={{ fontSize: "0.875rem", color: "#737373", display: "block", marginBottom: "1.5rem" }}>
             {article.date}
           </time>
+        )}
+        {tickerEntry?.tickers?.length && tickerEntry?.published_date && (
+          <StockChartToggle
+            newsId={newsId}
+            tickers={tickerEntry.tickers}
+            publishedDate={tickerEntry.published_date}
+            tickerNames={Object.fromEntries(
+              tickerEntry.tickers
+                .filter((t) => /^\d{6}$/.test(t))
+                .map((t) => [t, getTickerName(t)])
+            )}
+          />
+        )}
+        {quantSummary && (
+          <QuantTradingGuide
+            entryHoldSummary={quantSummary}
+            tickerSignals={Object.keys(tickerSignals).length > 0 ? tickerSignals : undefined}
+            tickerNames={
+              tickerEntry
+                ? Object.fromEntries(
+                    tickerEntry.tickers
+                      .filter((t) => /^\d{6}$/.test(t))
+                      .map((t) => [t, getTickerName(t)])
+                  )
+                : undefined
+            }
+          />
         )}
         <div
           className="article-body"
@@ -181,11 +222,11 @@ export default async function ArticlePage({
 
         <ReturnChartCard />
 
-        <TechnicalScoreCard />
+        <TechnicalScoreCard symbol="KR7000020008" date="20240102" />
 
         <BacktestChartCard />
 
-        <SupplyDemandCard />
+        <SupplyDemandCard symbol="KR7000020008" date="20240102" />
 
         <RippleEffectCard />
 

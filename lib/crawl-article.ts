@@ -18,9 +18,10 @@ export interface ArticleContent {
 export async function fetchArticleContent(
   newsId: string
 ): Promise<ArticleContent | null> {
-  const url = `https://pharm.edaily.co.kr/News/Read?newsId=${newsId}&mediaCodeNo=257`;
+  try {
+    const url = `https://pharm.edaily.co.kr/News/Read?newsId=${newsId}&mediaCodeNo=257`;
 
-  const res = await fetch(url, {
+    const res = await fetch(url, {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
@@ -95,4 +96,7 @@ export async function fetchArticleContent(
       : body.split(/\n\n+/).filter((p) => p.trim()).map((c) => ({ type: "text" as const, content: c }));
 
   return { title, subtitle, date, body, bodyHtml, images, bodyBlocks: resultBlocks };
+  } catch {
+    return null;
+  }
 }

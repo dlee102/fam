@@ -1,0 +1,6 @@
+# Chrome Network 탭에서 복사한 Cookie 헤더를 아래에 붙여넣으세요.
+# 1. pharm.edaily.co.kr 에 로그인
+# 2. F12 → Network → 페이지 새로고침
+# 3. 첫 번째 요청 선택 → Headers → Request Headers → Cookie 값 전체 복사
+# 4. 아래 주석 다음 줄에 붙여넣기 (한 줄)
+# 예: ed_id=xxx; ed_loginid=yyy; userinfo=...

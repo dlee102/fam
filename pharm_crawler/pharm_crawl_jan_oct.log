@@ -1,0 +1,1027 @@
+목록 페이지 수집 중...
+Traceback (most recent call last):
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/pharm_crawler.py", line 609, in <module>
+    main()
+    ~~~~^^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/pharm_crawler.py", line 561, in main
+    run_playwright_with_cookies(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        args.max_articles,
+        ^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        max_scrolls=args.scrolls,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/pharm_crawler.py", line 210, in run_playwright_with_cookies
+    href = a.get_attribute("href")
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/.venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py", line 16973, in get_attribute
+    self._sync(self._impl_obj.get_attribute(name=name, timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/.venv/lib/python3.14/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/.venv/lib/python3.14/site-packages/playwright/_impl/_locator.py", line 444, in get_attribute
+    return await self._frame.get_attribute(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py", line 726, in get_attribute
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "getAttribute", self._timeout, locals_to_params(locals())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.get_attribute: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("a[href*=\"/News/Read?newsId=\"]").nth(795)
+
+aily.co.kr/News/Read?newsId=02010646645314768&mediaCodeNo=257
+  → 본문 7624자 수집
+[23/506] https://pharm.edaily.co.kr/News/Read?newsId=02656806642399832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[24/506] https://pharm.edaily.co.kr/News/Read?newsId=02341926645321984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[25/506] https://pharm.edaily.co.kr/News/Read?newsId=01712166642395896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[26/506] https://pharm.edaily.co.kr/News/Read?newsId=01279206642402784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[27/506] https://pharm.edaily.co.kr/News/Read?newsId=02742086645354456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[28/506] https://pharm.edaily.co.kr/News/Read?newsId=02578086645315424&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[29/506] https://pharm.edaily.co.kr/News/Read?newsId=03093046645317720&mediaCodeNo=257
+  → 본문 7213자 수집
+[30/506] https://pharm.edaily.co.kr/News/Read?newsId=01371046645313784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[31/506] https://pharm.edaily.co.kr/News/Read?newsId=01948326645317064&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[32/506] https://pharm.edaily.co.kr/News/Read?newsId=02814246642401800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[33/506] https://pharm.edaily.co.kr/News/Read?newsId=02338646642394584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[34/506] https://pharm.edaily.co.kr/News/Read?newsId=02555126645322312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[35/506] https://pharm.edaily.co.kr/News/Read?newsId=02066406642398848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[36/506] https://pharm.edaily.co.kr/News/Read?newsId=01151286645319032&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[37/506] https://pharm.edaily.co.kr/News/Read?newsId=01876166645351832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[38/506] https://pharm.edaily.co.kr/News/Read?newsId=02843766645354456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[39/506] https://pharm.edaily.co.kr/News/Read?newsId=02135286645317064&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[40/506] https://pharm.edaily.co.kr/News/Read?newsId=02345206645321984&mediaCodeNo=257
+  → 본문 5054자 수집
+[41/506] https://pharm.edaily.co.kr/News/Read?newsId=02407526642395568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[42/506] https://pharm.edaily.co.kr/News/Read?newsId=01977846645353472&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[43/506] https://pharm.edaily.co.kr/News/Read?newsId=02840486645349864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[44/506] https://pharm.edaily.co.kr/News/Read?newsId=02322246642404096&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[45/506] https://pharm.edaily.co.kr/News/Read?newsId=02666646645354456&mediaCodeNo=257
+  → 본문 7774자 수집
+[46/506] https://pharm.edaily.co.kr/News/Read?newsId=01134886645348552&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[47/506] https://pharm.edaily.co.kr/News/Read?newsId=02581366642401800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[48/506] https://pharm.edaily.co.kr/News/Read?newsId=02558406645346912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[49/506] https://pharm.edaily.co.kr/News/Read?newsId=02709286645347896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[50/506] https://pharm.edaily.co.kr/News/Read?newsId=02797846645353800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[51/506] https://pharm.edaily.co.kr/News/Read?newsId=01167686642403112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[52/506] https://pharm.edaily.co.kr/News/Read?newsId=02368166642368016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[53/506] https://pharm.edaily.co.kr/News/Read?newsId=01977846642369000&mediaCodeNo=257
+  → 본문 7719자 수집
+[54/506] https://pharm.edaily.co.kr/News/Read?newsId=02735526645347240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[55/506] https://pharm.edaily.co.kr/News/Read?newsId=02371446645318048&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[56/506] https://pharm.edaily.co.kr/News/Read?newsId=02578086642367032&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[57/506] https://pharm.edaily.co.kr/News/Read?newsId=02597766642399832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[58/506] https://pharm.edaily.co.kr/News/Read?newsId=01161126645316736&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[59/506] https://pharm.edaily.co.kr/News/Read?newsId=01626886645348224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[60/506] https://pharm.edaily.co.kr/News/Read?newsId=02384566642370312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[61/506] https://pharm.edaily.co.kr/News/Read?newsId=02653526645379712&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[62/506] https://pharm.edaily.co.kr/News/Read?newsId=02584646645322640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[63/506] https://pharm.edaily.co.kr/News/Read?newsId=02046726645314768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[64/506] https://pharm.edaily.co.kr/News/Read?newsId=02515766645346912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[65/506] https://pharm.edaily.co.kr/News/Read?newsId=02017206645319360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[66/506] https://pharm.edaily.co.kr/News/Read?newsId=02594486645353800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[67/506] https://pharm.edaily.co.kr/News/Read?newsId=01915526642398848&mediaCodeNo=257
+  → 본문 7993자 수집
+[68/506] https://pharm.edaily.co.kr/News/Read?newsId=02463286642396880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[69/506] https://pharm.edaily.co.kr/News/Read?newsId=03332486642369656&mediaCodeNo=257
+  → 본문 6608자 수집
+  → 중간 저장 (10개)
+[70/506] https://pharm.edaily.co.kr/News/Read?newsId=02542006642396880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[71/506] https://pharm.edaily.co.kr/News/Read?newsId=02627286645352160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[72/506] https://pharm.edaily.co.kr/News/Read?newsId=02056566645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[73/506] https://pharm.edaily.co.kr/News/Read?newsId=01216886645351176&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[74/506] https://pharm.edaily.co.kr/News/Read?newsId=02000806645317064&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[75/506] https://pharm.edaily.co.kr/News/Read?newsId=01892566642399176&mediaCodeNo=257
+  → 본문 4334자 수집
+[76/506] https://pharm.edaily.co.kr/News/Read?newsId=02378006645317720&mediaCodeNo=257
+  → 본문 8221자 수집
+[77/506] https://pharm.edaily.co.kr/News/Read?newsId=01643286645323296&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[78/506] https://pharm.edaily.co.kr/News/Read?newsId=03220966645320672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[79/506] https://pharm.edaily.co.kr/News/Read?newsId=02633846645347568&mediaCodeNo=257
+  → 본문 6112자 수집
+[80/506] https://pharm.edaily.co.kr/News/Read?newsId=02555126645349208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[81/506] https://pharm.edaily.co.kr/News/Read?newsId=02059846642403440&mediaCodeNo=257
+  → 본문 7266자 수집
+[82/506] https://pharm.edaily.co.kr/News/Read?newsId=01167686645353144&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[83/506] https://pharm.edaily.co.kr/News/Read?newsId=01945046642394256&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[84/506] https://pharm.edaily.co.kr/News/Read?newsId=01715446642395896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[85/506] https://pharm.edaily.co.kr/News/Read?newsId=02135286645319360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[86/506] https://pharm.edaily.co.kr/News/Read?newsId=01200486642368672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[87/506] https://pharm.edaily.co.kr/News/Read?newsId=01977846642396552&mediaCodeNo=257
+  → 본문 7474자 수집
+[88/506] https://pharm.edaily.co.kr/News/Read?newsId=02430486642401472&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[89/506] https://pharm.edaily.co.kr/News/Read?newsId=02791286645353800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[90/506] https://pharm.edaily.co.kr/News/Read?newsId=01561286645321000&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[91/506] https://pharm.edaily.co.kr/News/Read?newsId=01154566645314440&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[92/506] https://pharm.edaily.co.kr/News/Read?newsId=02374726645315752&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[93/506] https://pharm.edaily.co.kr/News/Read?newsId=02801126645347240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[94/506] https://pharm.edaily.co.kr/News/Read?newsId=01220166645379056&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[95/506] https://pharm.edaily.co.kr/News/Read?newsId=02479686645317392&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[96/506] https://pharm.edaily.co.kr/News/Read?newsId=03919606645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[97/506] https://pharm.edaily.co.kr/News/Read?newsId=01148006642398520&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[98/506] https://pharm.edaily.co.kr/News/Read?newsId=02437046645346912&mediaCodeNo=257
+  → 본문 6339자 수집
+[99/506] https://pharm.edaily.co.kr/News/Read?newsId=01872886645351832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[100/506] https://pharm.edaily.co.kr/News/Read?newsId=02476406645320016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[101/506] https://pharm.edaily.co.kr/News/Read?newsId=02597766645353800&mediaCodeNo=257
+  → 본문 9034자 수집
+[102/506] https://pharm.edaily.co.kr/News/Read?newsId=02676486645322968&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[103/506] https://pharm.edaily.co.kr/News/Read?newsId=02404246642399504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[104/506] https://pharm.edaily.co.kr/News/Read?newsId=01197206645379384&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[105/506] https://pharm.edaily.co.kr/News/Read?newsId=02384566645321984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[106/506] https://pharm.edaily.co.kr/News/Read?newsId=02591206642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[107/506] https://pharm.edaily.co.kr/News/Read?newsId=02528886642399832&mediaCodeNo=257
+  → 본문 7088자 수집
+[108/506] https://pharm.edaily.co.kr/News/Read?newsId=02345206645318376&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[109/506] https://pharm.edaily.co.kr/News/Read?newsId=02059846642394912&mediaCodeNo=257
+  → 본문 5592자 수집
+[110/506] https://pharm.edaily.co.kr/News/Read?newsId=01223446645379056&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[111/506] https://pharm.edaily.co.kr/News/Read?newsId=02558406645352160&mediaCodeNo=257
+  → 본문 5692자 수집
+  → 중간 저장 (20개)
+[112/506] https://pharm.edaily.co.kr/News/Read?newsId=02312406642366704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[113/506] https://pharm.edaily.co.kr/News/Read?newsId=01348086642401144&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[114/506] https://pharm.edaily.co.kr/News/Read?newsId=02082806645319360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[115/506] https://pharm.edaily.co.kr/News/Read?newsId=01144726645321328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[116/506] https://pharm.edaily.co.kr/News/Read?newsId=02542006645315424&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[117/506] https://pharm.edaily.co.kr/News/Read?newsId=01961446642402456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[118/506] https://pharm.edaily.co.kr/News/Read?newsId=02040166645319688&mediaCodeNo=257
+  → 본문 6860자 수집
+[119/506] https://pharm.edaily.co.kr/News/Read?newsId=02496086642397536&mediaCodeNo=257
+  → 본문 6523자 수집
+[120/506] https://pharm.edaily.co.kr/News/Read?newsId=02122166645346584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[121/506] https://pharm.edaily.co.kr/News/Read?newsId=03047126645354784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[122/506] https://pharm.edaily.co.kr/News/Read?newsId=03850726645380040&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[123/506] https://pharm.edaily.co.kr/News/Read?newsId=02397686645315096&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[124/506] https://pharm.edaily.co.kr/News/Read?newsId=01931926645352816&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[125/506] https://pharm.edaily.co.kr/News/Read?newsId=02499366642397536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[126/506] https://pharm.edaily.co.kr/News/Read?newsId=02486246645316080&mediaCodeNo=257
+  → 본문 5347자 수집
+[127/506] https://pharm.edaily.co.kr/News/Read?newsId=02056566642403440&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[128/506] https://pharm.edaily.co.kr/News/Read?newsId=02027046642394912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[129/506] https://pharm.edaily.co.kr/News/Read?newsId=02719126642367360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[130/506] https://pharm.edaily.co.kr/News/Read?newsId=02886406645349536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[131/506] https://pharm.edaily.co.kr/News/Read?newsId=01498966642370640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[132/506] https://pharm.edaily.co.kr/News/Read?newsId=02709286645354128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[133/506] https://pharm.edaily.co.kr/News/Read?newsId=01167686645314440&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[134/506] https://pharm.edaily.co.kr/News/Read?newsId=01226726645379056&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[135/506] https://pharm.edaily.co.kr/News/Read?newsId=02482966645322312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[136/506] https://pharm.edaily.co.kr/News/Read?newsId=02348486645318376&mediaCodeNo=257
+  → 본문 8265자 수집
+[137/506] https://pharm.edaily.co.kr/News/Read?newsId=03663766642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[138/506] https://pharm.edaily.co.kr/News/Read?newsId=02624006645349208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[139/506] https://pharm.edaily.co.kr/News/Read?newsId=02482966645316080&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[140/506] https://pharm.edaily.co.kr/News/Read?newsId=04309926645314768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[141/506] https://pharm.edaily.co.kr/News/Read?newsId=01817126645351832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[142/506] https://pharm.edaily.co.kr/News/Read?newsId=01213606642370968&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[143/506] https://pharm.edaily.co.kr/News/Read?newsId=02063126645317064&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[144/506] https://pharm.edaily.co.kr/News/Read?newsId=02433766645321984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[145/506] https://pharm.edaily.co.kr/News/Read?newsId=01941766645353472&mediaCodeNo=257
+  → 본문 5854자 수집
+[146/506] https://pharm.edaily.co.kr/News/Read?newsId=01489126642370640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[147/506] https://pharm.edaily.co.kr/News/Read?newsId=01702326642395896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[148/506] https://pharm.edaily.co.kr/News/Read?newsId=01190646645351504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[149/506] https://pharm.edaily.co.kr/News/Read?newsId=02742086645349864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[150/506] https://pharm.edaily.co.kr/News/Read?newsId=01856486642399176&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[151/506] https://pharm.edaily.co.kr/News/Read?newsId=02479686645346912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[152/506] https://pharm.edaily.co.kr/News/Read?newsId=03719526642401472&mediaCodeNo=257
+  → 본문 7025자 수집
+[153/506] https://pharm.edaily.co.kr/News/Read?newsId=02250086645346584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[154/506] https://pharm.edaily.co.kr/News/Read?newsId=02017206642398848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[155/506] https://pharm.edaily.co.kr/News/Read?newsId=02758486642367360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[156/506] https://pharm.edaily.co.kr/News/Read?newsId=02791286645347568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[157/506] https://pharm.edaily.co.kr/News/Read?newsId=01751526642395896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[158/506] https://pharm.edaily.co.kr/News/Read?newsId=02364886642368016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[159/506] https://pharm.edaily.co.kr/News/Read?newsId=02788006645354128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[160/506] https://pharm.edaily.co.kr/News/Read?newsId=01584246645321000&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[161/506] https://pharm.edaily.co.kr/News/Read?newsId=02535446645347568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[162/506] https://pharm.edaily.co.kr/News/Read?newsId=02581366645347240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[163/506] https://pharm.edaily.co.kr/News/Read?newsId=01744966642395896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[164/506] https://pharm.edaily.co.kr/News/Read?newsId=03138966645379712&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[165/506] https://pharm.edaily.co.kr/News/Read?newsId=01180806645379384&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[166/506] https://pharm.edaily.co.kr/News/Read?newsId=01226726642400816&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[167/506] https://pharm.edaily.co.kr/News/Read?newsId=05635046645379712&mediaCodeNo=257
+  → 본문 2728자 수집
+[168/506] https://pharm.edaily.co.kr/News/Read?newsId=01121766645348552&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[169/506] https://pharm.edaily.co.kr/News/Read?newsId=02394406642395240&mediaCodeNo=257
+  → 본문 6816자 수집
+[170/506] https://pharm.edaily.co.kr/News/Read?newsId=02833926645352488&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[171/506] https://pharm.edaily.co.kr/News/Read?newsId=01633446645348224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[172/506] https://pharm.edaily.co.kr/News/Read?newsId=02469846645315752&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[173/506] https://pharm.edaily.co.kr/News/Read?newsId=02571526645318048&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[174/506] https://pharm.edaily.co.kr/News/Read?newsId=02440326642369328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[175/506] https://pharm.edaily.co.kr/News/Read?newsId=02545286645316080&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[176/506] https://pharm.edaily.co.kr/News/Read?newsId=02364886642367360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[177/506] https://pharm.edaily.co.kr/News/Read?newsId=01210326645350848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[178/506] https://pharm.edaily.co.kr/News/Read?newsId=02397686642395240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[179/506] https://pharm.edaily.co.kr/News/Read?newsId=02571526642367688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[180/506] https://pharm.edaily.co.kr/News/Read?newsId=02555126645352160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[181/506] https://pharm.edaily.co.kr/News/Read?newsId=01433366642401144&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[182/506] https://pharm.edaily.co.kr/News/Read?newsId=01144726642396224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[183/506] https://pharm.edaily.co.kr/News/Read?newsId=02259926642369000&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[184/506] https://pharm.edaily.co.kr/News/Read?newsId=02256646642369000&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[185/506] https://pharm.edaily.co.kr/News/Read?newsId=02378006645318048&mediaCodeNo=257
+  → 본문 3451자 수집
+[186/506] https://pharm.edaily.co.kr/News/Read?newsId=02794566645349536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[187/506] https://pharm.edaily.co.kr/News/Read?newsId=02568246645317392&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[188/506] https://pharm.edaily.co.kr/News/Read?newsId=03670326642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[189/506] https://pharm.edaily.co.kr/News/Read?newsId=02863446645379712&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[190/506] https://pharm.edaily.co.kr/News/Read?newsId=03929446645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[191/506] https://pharm.edaily.co.kr/News/Read?newsId=02515766645317392&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[192/506] https://pharm.edaily.co.kr/News/Read?newsId=02683046642397208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[193/506] https://pharm.edaily.co.kr/News/Read?newsId=03404646642369328&mediaCodeNo=257
+  → 본문 7084자 수집
+  → 중간 저장 (30개)
+[194/506] https://pharm.edaily.co.kr/News/Read?newsId=04090166645319360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[195/506] https://pharm.edaily.co.kr/News/Read?newsId=02660086645354456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[196/506] https://pharm.edaily.co.kr/News/Read?newsId=02578086645320016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[197/506] https://pharm.edaily.co.kr/News/Read?newsId=01587526645318704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[198/506] https://pharm.edaily.co.kr/News/Read?newsId=01193926642368672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[199/506] https://pharm.edaily.co.kr/News/Read?newsId=02463286645321984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[200/506] https://pharm.edaily.co.kr/News/Read?newsId=02640406645347896&mediaCodeNo=257
+  → 본문 7432자 수집
+[201/506] https://pharm.edaily.co.kr/News/Read?newsId=02214006642404096&mediaCodeNo=257
+  → 본문 5901자 수집
+[202/506] https://pharm.edaily.co.kr/News/Read?newsId=02063126645321656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[203/506] https://pharm.edaily.co.kr/News/Read?newsId=01577686645318704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[204/506] https://pharm.edaily.co.kr/News/Read?newsId=02496086642399504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[205/506] https://pharm.edaily.co.kr/News/Read?newsId=03070086642367360&mediaCodeNo=257
+  → 본문 8633자 수집
+[206/506] https://pharm.edaily.co.kr/News/Read?newsId=02292726645320344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[207/506] https://pharm.edaily.co.kr/News/Read?newsId=01164406645321328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[208/506] https://pharm.edaily.co.kr/News/Read?newsId=02561686642397864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[209/506] https://pharm.edaily.co.kr/News/Read?newsId=02456726645317720&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[210/506] https://pharm.edaily.co.kr/News/Read?newsId=01161126642370968&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[211/506] https://pharm.edaily.co.kr/News/Read?newsId=01154566645353144&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[212/506] https://pharm.edaily.co.kr/News/Read?newsId=02784726645349536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[213/506] https://pharm.edaily.co.kr/News/Read?newsId=02522326645322640&mediaCodeNo=257
+  → 본문 6793자 수집
+[214/506] https://pharm.edaily.co.kr/News/Read?newsId=02568246645320672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[215/506] https://pharm.edaily.co.kr/News/Read?newsId=02558406645349208&mediaCodeNo=257
+  → 본문 6200자 수집
+[216/506] https://pharm.edaily.co.kr/News/Read?newsId=02686326645352488&mediaCodeNo=257
+  → 본문 7860자 수집
+[217/506] https://pharm.edaily.co.kr/News/Read?newsId=01866326642402456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[218/506] https://pharm.edaily.co.kr/News/Read?newsId=02433766645318048&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[219/506] https://pharm.edaily.co.kr/News/Read?newsId=02637126645347896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[220/506] https://pharm.edaily.co.kr/News/Read?newsId=02122166645319688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[221/506] https://pharm.edaily.co.kr/News/Read?newsId=02555126642399832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[222/506] https://pharm.edaily.co.kr/News/Read?newsId=02988086642367688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[223/506] https://pharm.edaily.co.kr/News/Read?newsId=02669926642369328&mediaCodeNo=257
+  → 본문 7375자 수집
+[224/506] https://pharm.edaily.co.kr/News/Read?newsId=02482966642395568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[225/506] https://pharm.edaily.co.kr/News/Read?newsId=03545686642394584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[226/506] https://pharm.edaily.co.kr/News/Read?newsId=02253366642404096&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[227/506] https://pharm.edaily.co.kr/News/Read?newsId=02751926645322640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[228/506] https://pharm.edaily.co.kr/News/Read?newsId=02837206645352488&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[229/506] https://pharm.edaily.co.kr/News/Read?newsId=02532166642397208&mediaCodeNo=257
+  → 본문 5498자 수집
+[230/506] https://pharm.edaily.co.kr/News/Read?newsId=02345206642395240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[231/506] https://pharm.edaily.co.kr/News/Read?newsId=01554726645316408&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[232/506] https://pharm.edaily.co.kr/News/Read?newsId=01918806642398848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[233/506] https://pharm.edaily.co.kr/News/Read?newsId=02210726642404096&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[234/506] https://pharm.edaily.co.kr/News/Read?newsId=02348486642368016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[235/506] https://pharm.edaily.co.kr/News/Read?newsId=01922086645352816&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[236/506] https://pharm.edaily.co.kr/News/Read?newsId=02371446645317720&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[237/506] https://pharm.edaily.co.kr/News/Read?newsId=01207046642400816&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[238/506] https://pharm.edaily.co.kr/News/Read?newsId=01633446645323296&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[239/506] https://pharm.edaily.co.kr/News/Read?newsId=02519046645322640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[240/506] https://pharm.edaily.co.kr/News/Read?newsId=01567846645321000&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[241/506] https://pharm.edaily.co.kr/News/Read?newsId=02532166645320672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[242/506] https://pharm.edaily.co.kr/News/Read?newsId=01594086645318704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[243/506] https://pharm.edaily.co.kr/News/Read?newsId=01630166645348224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[244/506] https://pharm.edaily.co.kr/News/Read?newsId=01174246642370968&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[245/506] https://pharm.edaily.co.kr/News/Read?newsId=02460006642401472&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[246/506] https://pharm.edaily.co.kr/News/Read?newsId=04165606645379712&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[247/506] https://pharm.edaily.co.kr/News/Read?newsId=02725686642368016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[248/506] https://pharm.edaily.co.kr/News/Read?newsId=02479686645316080&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[249/506] https://pharm.edaily.co.kr/News/Read?newsId=02305846642369984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[250/506] https://pharm.edaily.co.kr/News/Read?newsId=02535446645320016&mediaCodeNo=257
+  → 본문 7397자 수집
+[251/506] https://pharm.edaily.co.kr/News/Read?newsId=02312406645320344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[252/506] https://pharm.edaily.co.kr/News/Read?newsId=02404246645315752&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[253/506] https://pharm.edaily.co.kr/News/Read?newsId=02296006642369984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[254/506] https://pharm.edaily.co.kr/News/Read?newsId=02653526642397864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[255/506] https://pharm.edaily.co.kr/News/Read?newsId=01351366642401144&mediaCodeNo=257
+  → 본문 5994자 수집
+  → 중간 저장 (40개)
+[256/506] https://pharm.edaily.co.kr/News/Read?newsId=01190646645346256&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[257/506] https://pharm.edaily.co.kr/News/Read?newsId=01154566642403112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[258/506] https://pharm.edaily.co.kr/News/Read?newsId=02443606642369328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[259/506] https://pharm.edaily.co.kr/News/Read?newsId=02686326642401800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[260/506] https://pharm.edaily.co.kr/News/Read?newsId=01128326642396224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[261/506] https://pharm.edaily.co.kr/News/Read?newsId=01935206645348880&mediaCodeNo=257
+  → 본문 6211자 수집
+[262/506] https://pharm.edaily.co.kr/News/Read?newsId=02876566642399832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[263/506] https://pharm.edaily.co.kr/News/Read?newsId=02374726642394584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[264/506] https://pharm.edaily.co.kr/News/Read?newsId=02433766645346912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[265/506] https://pharm.edaily.co.kr/News/Read?newsId=01679366642398192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[266/506] https://pharm.edaily.co.kr/News/Read?newsId=02633846642397208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[267/506] https://pharm.edaily.co.kr/News/Read?newsId=02794566645350192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[268/506] https://pharm.edaily.co.kr/News/Read?newsId=01938486645353472&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[269/506] https://pharm.edaily.co.kr/News/Read?newsId=03099606642369328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[270/506] https://pharm.edaily.co.kr/News/Read?newsId=02128726645346584&mediaCodeNo=257
+  → 본문 7156자 수집
+[271/506] https://pharm.edaily.co.kr/News/Read?newsId=02446886642394584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[272/506] https://pharm.edaily.co.kr/News/Read?newsId=01892566642369656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[273/506] https://pharm.edaily.co.kr/News/Read?newsId=02902806642394256&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[274/506] https://pharm.edaily.co.kr/News/Read?newsId=03132406645354784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[275/506] https://pharm.edaily.co.kr/News/Read?newsId=02801126645380040&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[276/506] https://pharm.edaily.co.kr/News/Read?newsId=02604326645322968&mediaCodeNo=257
+  → 본문 6780자 수집
+[277/506] https://pharm.edaily.co.kr/News/Read?newsId=02194326645346584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[278/506] https://pharm.edaily.co.kr/News/Read?newsId=01266086642398520&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[279/506] https://pharm.edaily.co.kr/News/Read?newsId=02515766642396880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[280/506] https://pharm.edaily.co.kr/News/Read?newsId=03011046645350192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[281/506] https://pharm.edaily.co.kr/News/Read?newsId=02581366645320016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[282/506] https://pharm.edaily.co.kr/News/Read?newsId=02627286645349864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[283/506] https://pharm.edaily.co.kr/News/Read?newsId=02423926645320344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[284/506] https://pharm.edaily.co.kr/News/Read?newsId=03657206642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[285/506] https://pharm.edaily.co.kr/News/Read?newsId=01548166645314112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[286/506] https://pharm.edaily.co.kr/News/Read?newsId=02706006642403768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[287/506] https://pharm.edaily.co.kr/News/Read?newsId=02092646645350520&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[288/506] https://pharm.edaily.co.kr/News/Read?newsId=02348486642367032&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[289/506] https://pharm.edaily.co.kr/News/Read?newsId=02794566645354128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[290/506] https://pharm.edaily.co.kr/News/Read?newsId=03198006645354784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[291/506] https://pharm.edaily.co.kr/News/Read?newsId=03273446645354784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[292/506] https://pharm.edaily.co.kr/News/Read?newsId=02348486642395568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[293/506] https://pharm.edaily.co.kr/News/Read?newsId=01718726642368344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[294/506] https://pharm.edaily.co.kr/News/Read?newsId=02204166642403440&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[295/506] https://pharm.edaily.co.kr/News/Read?newsId=02384566645318376&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[296/506] https://pharm.edaily.co.kr/News/Read?newsId=02489526645317392&mediaCodeNo=257
+  → 본문 5886자 수집
+[297/506] https://pharm.edaily.co.kr/News/Read?newsId=02624006645380040&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[298/506] https://pharm.edaily.co.kr/News/Read?newsId=02509206645322312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[299/506] https://pharm.edaily.co.kr/News/Read?newsId=02417366642395240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[300/506] https://pharm.edaily.co.kr/News/Read?newsId=01141446642403112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[301/506] https://pharm.edaily.co.kr/News/Read?newsId=02082806645350520&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[302/506] https://pharm.edaily.co.kr/News/Read?newsId=04201686642396552&mediaCodeNo=257
+  → 본문 5692자 수집
+[303/506] https://pharm.edaily.co.kr/News/Read?newsId=02660086645322640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[304/506] https://pharm.edaily.co.kr/News/Read?newsId=02742086645352488&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[305/506] https://pharm.edaily.co.kr/News/Read?newsId=01151286645321328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[306/506] https://pharm.edaily.co.kr/News/Read?newsId=02482966645320672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[307/506] https://pharm.edaily.co.kr/News/Read?newsId=01984406645319360&mediaCodeNo=257
+  → 본문 5311자 수집
+[308/506] https://pharm.edaily.co.kr/News/Read?newsId=02525606642369984&mediaCodeNo=257
+  → 본문 8177자 수집
+[309/506] https://pharm.edaily.co.kr/News/Read?newsId=01840086642370312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[310/506] https://pharm.edaily.co.kr/News/Read?newsId=02548566645349864&mediaCodeNo=257
+  → 본문 7071자 수집
+[311/506] https://pharm.edaily.co.kr/News/Read?newsId=01974566645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[312/506] https://pharm.edaily.co.kr/News/Read?newsId=03503046642395568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[313/506] https://pharm.edaily.co.kr/News/Read?newsId=02318966645318048&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[314/506] https://pharm.edaily.co.kr/News/Read?newsId=02364886642367688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[315/506] https://pharm.edaily.co.kr/News/Read?newsId=01804006642399176&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[316/506] https://pharm.edaily.co.kr/News/Read?newsId=01203766645351176&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[317/506] https://pharm.edaily.co.kr/News/Read?newsId=01154566642396224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[318/506] https://pharm.edaily.co.kr/News/Read?newsId=02915926645347896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[319/506] https://pharm.edaily.co.kr/News/Read?newsId=01879446642366704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[320/506] https://pharm.edaily.co.kr/News/Read?newsId=02558406642399504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[321/506] https://pharm.edaily.co.kr/News/Read?newsId=02601046645322968&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[322/506] https://pharm.edaily.co.kr/News/Read?newsId=02532166645320016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[323/506] https://pharm.edaily.co.kr/News/Read?newsId=01580966645316408&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[324/506] https://pharm.edaily.co.kr/News/Read?newsId=01951606645355112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[325/506] https://pharm.edaily.co.kr/News/Read?newsId=01377606642401144&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[326/506] https://pharm.edaily.co.kr/News/Read?newsId=02466566642396880&mediaCodeNo=257
+  → 본문 5582자 수집
+[327/506] https://pharm.edaily.co.kr/News/Read?newsId=02778166642366704&mediaCodeNo=257
+  → 본문 6256자 수집
+  → 중간 저장 (50개)
+[328/506] https://pharm.edaily.co.kr/News/Read?newsId=02594486642403768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[329/506] https://pharm.edaily.co.kr/News/Read?newsId=01784326645379056&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[330/506] https://pharm.edaily.co.kr/News/Read?newsId=03040566645354784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[331/506] https://pharm.edaily.co.kr/News/Read?newsId=02476406645315424&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[332/506] https://pharm.edaily.co.kr/News/Read?newsId=01908966642394256&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[333/506] https://pharm.edaily.co.kr/News/Read?newsId=01430086645313784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[334/506] https://pharm.edaily.co.kr/News/Read?newsId=02568246642397208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[335/506] https://pharm.edaily.co.kr/News/Read?newsId=02109046645314768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[336/506] https://pharm.edaily.co.kr/News/Read?newsId=01895846642402456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[337/506] https://pharm.edaily.co.kr/News/Read?newsId=02892966645350192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[338/506] https://pharm.edaily.co.kr/News/Read?newsId=02719126645352160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[339/506] https://pharm.edaily.co.kr/News/Read?newsId=01184086645316736&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[340/506] https://pharm.edaily.co.kr/News/Read?newsId=03535846645379712&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[341/506] https://pharm.edaily.co.kr/News/Read?newsId=02345206642367688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[342/506] https://pharm.edaily.co.kr/News/Read?newsId=02630566645347568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[343/506] https://pharm.edaily.co.kr/News/Read?newsId=02689606645353800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[344/506] https://pharm.edaily.co.kr/News/Read?newsId=03926166645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[345/506] https://pharm.edaily.co.kr/News/Read?newsId=01856486645355112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[346/506] https://pharm.edaily.co.kr/News/Read?newsId=02528886642369984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[347/506] https://pharm.edaily.co.kr/News/Read?newsId=01708886642368344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[348/506] https://pharm.edaily.co.kr/News/Read?newsId=02456726642367360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[349/506] https://pharm.edaily.co.kr/News/Read?newsId=02971686645349536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[350/506] https://pharm.edaily.co.kr/News/Read?newsId=01580966645318704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[351/506] https://pharm.edaily.co.kr/News/Read?newsId=01908966645321656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[352/506] https://pharm.edaily.co.kr/News/Read?newsId=02489526642403768&mediaCodeNo=257
+  → 본문 5402자 수집
+[353/506] https://pharm.edaily.co.kr/News/Read?newsId=02706006645380040&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[354/506] https://pharm.edaily.co.kr/News/Read?newsId=01131606642396224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[355/506] https://pharm.edaily.co.kr/News/Read?newsId=02522326642395240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[356/506] https://pharm.edaily.co.kr/News/Read?newsId=02532166642403768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[357/506] https://pharm.edaily.co.kr/News/Read?newsId=02991366642394256&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[358/506] https://pharm.edaily.co.kr/News/Read?newsId=02617446642397864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[359/506] https://pharm.edaily.co.kr/News/Read?newsId=01715446642369656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[360/506] https://pharm.edaily.co.kr/News/Read?newsId=01190646642368672&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[361/506] https://pharm.edaily.co.kr/News/Read?newsId=01722006642368344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[362/506] https://pharm.edaily.co.kr/News/Read?newsId=02853606642368016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[363/506] https://pharm.edaily.co.kr/News/Read?newsId=01869606642402456&mediaCodeNo=257
+  → 본문 5644자 수집
+[364/506] https://pharm.edaily.co.kr/News/Read?newsId=03673606642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[365/506] https://pharm.edaily.co.kr/News/Read?newsId=02542006642367032&mediaCodeNo=257
+  → 본문 4605자 수집
+[366/506] https://pharm.edaily.co.kr/News/Read?newsId=01200486642366376&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[367/506] https://pharm.edaily.co.kr/News/Read?newsId=02509206642401800&mediaCodeNo=257
+  → 본문 5383자 수집
+[368/506] https://pharm.edaily.co.kr/News/Read?newsId=02479686645322312&mediaCodeNo=257
+  → 본문 7188자 수집
+[369/506] https://pharm.edaily.co.kr/News/Read?newsId=02036886642396552&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[370/506] https://pharm.edaily.co.kr/News/Read?newsId=02325526642370312&mediaCodeNo=257
+  → 본문 5216자 수집
+[371/506] https://pharm.edaily.co.kr/News/Read?newsId=01210326642366376&mediaCodeNo=257
+  → 본문 5648자 수집
+[372/506] https://pharm.edaily.co.kr/News/Read?newsId=02473126645320016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[373/506] https://pharm.edaily.co.kr/News/Read?newsId=02427206645318376&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[374/506] https://pharm.edaily.co.kr/News/Read?newsId=02378006645315752&mediaCodeNo=257
+  → 본문 7639자 수집
+[375/506] https://pharm.edaily.co.kr/News/Read?newsId=02558406642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[376/506] https://pharm.edaily.co.kr/News/Read?newsId=02502646645318048&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[377/506] https://pharm.edaily.co.kr/News/Read?newsId=02679766645352488&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[378/506] https://pharm.edaily.co.kr/News/Read?newsId=02656806642403768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[379/506] https://pharm.edaily.co.kr/News/Read?newsId=02528886642397864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[380/506] https://pharm.edaily.co.kr/News/Read?newsId=01233286642402128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[381/506] https://pharm.edaily.co.kr/News/Read?newsId=01872886642366704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[382/506] https://pharm.edaily.co.kr/News/Read?newsId=02728966642368016&mediaCodeNo=257
+  → 본문 5863자 수집
+[383/506] https://pharm.edaily.co.kr/News/Read?newsId=01951606645317064&mediaCodeNo=257
+  → 본문 5751자 수집
+  → 중간 저장 (60개)
+[384/506] https://pharm.edaily.co.kr/News/Read?newsId=02004086642396552&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[385/506] https://pharm.edaily.co.kr/News/Read?newsId=01646566645348224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[386/506] https://pharm.edaily.co.kr/News/Read?newsId=02095926645350520&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[387/506] https://pharm.edaily.co.kr/News/Read?newsId=02755206645322968&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[388/506] https://pharm.edaily.co.kr/News/Read?newsId=01708886642369656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[389/506] https://pharm.edaily.co.kr/News/Read?newsId=01574406645316408&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[390/506] https://pharm.edaily.co.kr/News/Read?newsId=02351766642395568&mediaCodeNo=257
+  → 본문 6030자 수집
+[391/506] https://pharm.edaily.co.kr/News/Read?newsId=01210326645379384&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[392/506] https://pharm.edaily.co.kr/News/Read?newsId=02538726642397536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[393/506] https://pharm.edaily.co.kr/News/Read?newsId=01931926645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[394/506] https://pharm.edaily.co.kr/News/Read?newsId=02492806642403768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[395/506] https://pharm.edaily.co.kr/News/Read?newsId=02591206645322312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[396/506] https://pharm.edaily.co.kr/News/Read?newsId=01695766642398192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[397/506] https://pharm.edaily.co.kr/News/Read?newsId=01184086645346256&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[398/506] https://pharm.edaily.co.kr/News/Read?newsId=01725286642400488&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[399/506] https://pharm.edaily.co.kr/News/Read?newsId=01138166645319032&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[400/506] https://pharm.edaily.co.kr/News/Read?newsId=01951606642394256&mediaCodeNo=257
+  → 본문 5704자 수집
+[401/506] https://pharm.edaily.co.kr/News/Read?newsId=02630566645349208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[402/506] https://pharm.edaily.co.kr/News/Read?newsId=02584646645347240&mediaCodeNo=257
+  → 본문 6284자 수집
+[403/506] https://pharm.edaily.co.kr/News/Read?newsId=02417366645317720&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[404/506] https://pharm.edaily.co.kr/News/Read?newsId=02371446642395240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[405/506] https://pharm.edaily.co.kr/News/Read?newsId=02482966645318376&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[406/506] https://pharm.edaily.co.kr/News/Read?newsId=02309126642369984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[407/506] https://pharm.edaily.co.kr/News/Read?newsId=01981126645319360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[408/506] https://pharm.edaily.co.kr/News/Read?newsId=02004086645314768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[409/506] https://pharm.edaily.co.kr/News/Read?newsId=02036886645319688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[410/506] https://pharm.edaily.co.kr/News/Read?newsId=02797846645350192&mediaCodeNo=257
+  → 본문 5217자 수집
+[411/506] https://pharm.edaily.co.kr/News/Read?newsId=02876566645347568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[412/506] https://pharm.edaily.co.kr/News/Read?newsId=02171366642394912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[413/506] https://pharm.edaily.co.kr/News/Read?newsId=02499366642396880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[414/506] https://pharm.edaily.co.kr/News/Read?newsId=02469846642395568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[415/506] https://pharm.edaily.co.kr/News/Read?newsId=01193926645351504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[416/506] https://pharm.edaily.co.kr/News/Read?newsId=01554726645313456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[417/506] https://pharm.edaily.co.kr/News/Read?newsId=02309126642368016&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[418/506] https://pharm.edaily.co.kr/News/Read?newsId=02056566642394912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[419/506] https://pharm.edaily.co.kr/News/Read?newsId=01935206645321656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[420/506] https://pharm.edaily.co.kr/News/Read?newsId=01712166642369656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[421/506] https://pharm.edaily.co.kr/News/Read?newsId=01715446642400488&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[422/506] https://pharm.edaily.co.kr/News/Read?newsId=01216886642400816&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[423/506] https://pharm.edaily.co.kr/News/Read?newsId=01954886645355112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[424/506] https://pharm.edaily.co.kr/News/Read?newsId=02059846642398848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[425/506] https://pharm.edaily.co.kr/News/Read?newsId=02545286645349864&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[426/506] https://pharm.edaily.co.kr/News/Read?newsId=01472726645313784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[427/506] https://pharm.edaily.co.kr/News/Read?newsId=01584246645318704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[428/506] https://pharm.edaily.co.kr/News/Read?newsId=02512486642401800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[429/506] https://pharm.edaily.co.kr/News/Read?newsId=04739606642399504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[430/506] https://pharm.edaily.co.kr/News/Read?newsId=02879846645354128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[431/506] https://pharm.edaily.co.kr/News/Read?newsId=02269766645317720&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[432/506] https://pharm.edaily.co.kr/News/Read?newsId=01141446645353144&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[433/506] https://pharm.edaily.co.kr/News/Read?newsId=02876566645349536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[434/506] https://pharm.edaily.co.kr/News/Read?newsId=02479686645320672&mediaCodeNo=257
+  → 본문 6820자 수집
+[435/506] https://pharm.edaily.co.kr/News/Read?newsId=03204566645353800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[436/506] https://pharm.edaily.co.kr/News/Read?newsId=02522326642399832&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[437/506] https://pharm.edaily.co.kr/News/Read?newsId=02817526645347896&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[438/506] https://pharm.edaily.co.kr/News/Read?newsId=02548566642397536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[439/506] https://pharm.edaily.co.kr/News/Read?newsId=02056566645353472&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[440/506] https://pharm.edaily.co.kr/News/Read?newsId=02791286645349536&mediaCodeNo=257
+  → 본문 4690자 수집
+[441/506] https://pharm.edaily.co.kr/News/Read?newsId=02633846645347240&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[442/506] https://pharm.edaily.co.kr/News/Read?newsId=01170966645321328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[443/506] https://pharm.edaily.co.kr/News/Read?newsId=01623606645323296&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[444/506] https://pharm.edaily.co.kr/News/Read?newsId=01190646645351176&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[445/506] https://pharm.edaily.co.kr/News/Read?newsId=01974566642369000&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[446/506] https://pharm.edaily.co.kr/News/Read?newsId=01249686642402128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[447/506] https://pharm.edaily.co.kr/News/Read?newsId=02404246642369984&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[448/506] https://pharm.edaily.co.kr/News/Read?newsId=01216886645350848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[449/506] https://pharm.edaily.co.kr/News/Read?newsId=02571526642397536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[450/506] https://pharm.edaily.co.kr/News/Read?newsId=02535446642397208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[451/506] https://pharm.edaily.co.kr/News/Read?newsId=02473126645315752&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[452/506] https://pharm.edaily.co.kr/News/Read?newsId=02404246642394584&mediaCodeNo=257
+  → 본문 7342자 수집
+[453/506] https://pharm.edaily.co.kr/News/Read?newsId=02519046642400160&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[454/506] https://pharm.edaily.co.kr/News/Read?newsId=02082806642396552&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[455/506] https://pharm.edaily.co.kr/News/Read?newsId=02384566645320344&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[456/506] https://pharm.edaily.co.kr/News/Read?newsId=02958566642367688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[457/506] https://pharm.edaily.co.kr/News/Read?newsId=01210326645351504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[458/506] https://pharm.edaily.co.kr/News/Read?newsId=02404246645315424&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[459/506] https://pharm.edaily.co.kr/News/Read?newsId=02453446645316080&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[460/506] https://pharm.edaily.co.kr/News/Read?newsId=01892566642370312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[461/506] https://pharm.edaily.co.kr/News/Read?newsId=01889286642399176&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[462/506] https://pharm.edaily.co.kr/News/Read?newsId=01935206645352816&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[463/506] https://pharm.edaily.co.kr/News/Read?newsId=02400966642394584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[464/506] https://pharm.edaily.co.kr/News/Read?newsId=02076246645346584&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[465/506] https://pharm.edaily.co.kr/News/Read?newsId=01994246642394912&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[466/506] https://pharm.edaily.co.kr/News/Read?newsId=02548566642367032&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[467/506] https://pharm.edaily.co.kr/News/Read?newsId=02863446642367032&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[468/506] https://pharm.edaily.co.kr/News/Read?newsId=02482966645349208&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[469/506] https://pharm.edaily.co.kr/News/Read?newsId=02801126645350192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[470/506] https://pharm.edaily.co.kr/News/Read?newsId=01567846645318704&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[471/506] https://pharm.edaily.co.kr/News/Read?newsId=03890086645353800&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[472/506] https://pharm.edaily.co.kr/News/Read?newsId=01459606642370640&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[473/506] https://pharm.edaily.co.kr/News/Read?newsId=01174246645316736&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[474/506] https://pharm.edaily.co.kr/News/Read?newsId=02112326645348880&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[475/506] https://pharm.edaily.co.kr/News/Read?newsId=01541606645313456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[476/506] https://pharm.edaily.co.kr/News/Read?newsId=02883126645349536&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[477/506] https://pharm.edaily.co.kr/News/Read?newsId=02522326642400160&mediaCodeNo=257
+  → 본문 4854자 수집
+[478/506] https://pharm.edaily.co.kr/News/Read?newsId=02791286645354128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[479/506] https://pharm.edaily.co.kr/News/Read?newsId=02004086645321656&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[480/506] https://pharm.edaily.co.kr/News/Read?newsId=01659686645348224&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[481/506] https://pharm.edaily.co.kr/News/Read?newsId=02148406645319688&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[482/506] https://pharm.edaily.co.kr/News/Read?newsId=02351766645315096&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[483/506] https://pharm.edaily.co.kr/News/Read?newsId=02646966645354128&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[484/506] https://pharm.edaily.co.kr/News/Read?newsId=02889686645380040&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[485/506] https://pharm.edaily.co.kr/News/Read?newsId=01275926642402784&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[486/506] https://pharm.edaily.co.kr/News/Read?newsId=01948326645355112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[487/506] https://pharm.edaily.co.kr/News/Read?newsId=01167686645321328&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[488/506] https://pharm.edaily.co.kr/News/Read?newsId=03417766642403768&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[489/506] https://pharm.edaily.co.kr/News/Read?newsId=02919206642367360&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[490/506] https://pharm.edaily.co.kr/News/Read?newsId=02942166645354456&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[491/506] https://pharm.edaily.co.kr/News/Read?newsId=01912246645321656&mediaCodeNo=257
+  → 본문 5115자 수집
+[492/506] https://pharm.edaily.co.kr/News/Read?newsId=03575206645379712&mediaCodeNo=257
+  → 본문 6273자 수집
+  → 중간 저장 (70개)
+[493/506] https://pharm.edaily.co.kr/News/Read?newsId=02296006645320344&mediaCodeNo=257
+  → 본문 5418자 수집
+[494/506] https://pharm.edaily.co.kr/News/Read?newsId=01912246645355112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[495/506] https://pharm.edaily.co.kr/News/Read?newsId=02578086642367688&mediaCodeNo=257
+  → 본문 5750자 수집
+[496/506] https://pharm.edaily.co.kr/News/Read?newsId=02650246645354128&mediaCodeNo=257
+  → 본문 5601자 수집
+[497/506] https://pharm.edaily.co.kr/News/Read?newsId=01692486642398192&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[498/506] https://pharm.edaily.co.kr/News/Read?newsId=01879446642370312&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[499/506] https://pharm.edaily.co.kr/News/Read?newsId=02443606642401472&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[500/506] https://pharm.edaily.co.kr/News/Read?newsId=01567846645314112&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[501/506] https://pharm.edaily.co.kr/News/Read?newsId=02161526642403440&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[502/506] https://pharm.edaily.co.kr/News/Read?newsId=02374726645318048&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[503/506] https://pharm.edaily.co.kr/News/Read?newsId=02446886642395568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[504/506] https://pharm.edaily.co.kr/News/Read?newsId=02706006645347568&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[505/506] https://pharm.edaily.co.kr/News/Read?newsId=02460006642399504&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+[506/506] https://pharm.edaily.co.kr/News/Read?newsId=01302166645350848&mediaCodeNo=257
+  → 날짜 범위 밖, 스킵
+
+저장 완료: pharm_articles_2025_jan_oct.json (73개)

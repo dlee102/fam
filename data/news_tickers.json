@@ -1,0 +1,4433 @@
+{
+  "generated_at": "2026-03-05T04:13:02.197Z",
+  "source": "pharm_articles_manual_sentiment.json",
+  "total_articles": 293,
+  "unique_tickers": [
+    "000070",
+    "000100",
+    "000150",
+    "000220",
+    "000250",
+    "000520",
+    "000640",
+    "000660",
+    "000720",
+    "000810",
+    "001060",
+    "001360",
+    "002210",
+    "002390",
+    "003000",
+    "003090",
+    "003120",
+    "003220",
+    "003240",
+    "003550",
+    "003850",
+    "004310",
+    "004720",
+    "005500",
+    "005690",
+    "005930",
+    "005940",
+    "006280",
+    "006620",
+    "006800",
+    "007460",
+    "008560",
+    "008930",
+    "009290",
+    "009420",
+    "009450",
+    "010060",
+    "011690",
+    "012450",
+    "014950",
+    "016360",
+    "016580",
+    "017670",
+    "018250",
+    "019170",
+    "024850",
+    "028260",
+    "028300",
+    "030610",
+    "032830",
+    "034940",
+    "038290",
+    "039200",
+    "039490",
+    "039840",
+    "041920",
+    "041960",
+    "042520",
+    "043150",
+    "047920",
+    "048410",
+    "048530",
+    "049180",
+    "051910",
+    "052670",
+    "053950",
+    "056090",
+    "059090",
+    "065170",
+    "065510",
+    "068270",
+    "069620",
+    "071950",
+    "078160",
+    "082270",
+    "084110",
+    "084990",
+    "085660",
+    "086040",
+    "086450",
+    "086820",
+    "086900",
+    "087010",
+    "092040",
+    "094170",
+    "099190",
+    "102460",
+    "102940",
+    "108860",
+    "115180",
+    "115450",
+    "128940",
+    "137310",
+    "138610",
+    "140410",
+    "140610",
+    "141080",
+    "145020",
+    "145720",
+    "153710",
+    "156100",
+    "166480",
+    "170900",
+    "174900",
+    "176750",
+    "179530",
+    "182400",
+    "183490",
+    "185490",
+    "185750",
+    "187660",
+    "195940",
+    "196170",
+    "196300",
+    "199550",
+    "199800",
+    "200670",
+    "204840",
+    "206650",
+    "207940",
+    "208340",
+    "214150",
+    "214260",
+    "214370",
+    "214450",
+    "215380",
+    "215600",
+    "216080",
+    "217730",
+    "221800",
+    "226400",
+    "226950",
+    "228670",
+    "228760",
+    "229000",
+    "235980",
+    "244460",
+    "246710",
+    "249420",
+    "260660",
+    "261780",
+    "263050",
+    "268600",
+    "284620",
+    "285130",
+    "287840",
+    "290650",
+    "291650",
+    "293480",
+    "298060",
+    "298380",
+    "299170",
+    "299660",
+    "302440",
+    "303810",
+    "305090",
+    "307750",
+    "308080",
+    "308430",
+    "310210",
+    "314130",
+    "314930",
+    "317690",
+    "318020",
+    "318060",
+    "322510",
+    "326030",
+    "328130",
+    "331920",
+    "334970",
+    "337840",
+    "338220",
+    "338840",
+    "340450",
+    "347850",
+    "348150",
+    "352770",
+    "354200",
+    "358570",
+    "359090",
+    "365270",
+    "372320",
+    "373110",
+    "376900",
+    "377220",
+    "380550",
+    "383930",
+    "384470",
+    "388870",
+    "389470",
+    "389650",
+    "394800",
+    "397030",
+    "403550",
+    "424870",
+    "439580",
+    "445680",
+    "456160",
+    "458870",
+    "461030",
+    "464490",
+    "475830",
+    "475960",
+    "476040",
+    "476060",
+    "476830",
+    "477120",
+    "491000",
+    "950160",
+    "950200",
+    "950210",
+    "950220",
+    "AZN",
+    "AimedBio",
+    "GSK",
+    "ImmuneOncia",
+    "K-Bio",
+    "LLY",
+    "MRK",
+    "NEUROPHET",
+    "NVO",
+    "PFE",
+    "Platform",
+    "ROG",
+    "SNY",
+    "비상장"
+  ],
+  "articles": [
+    {
+      "newsId": "02000806645317064",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02000806645317064&mediaCodeNo=257",
+      "title": "조원영 강남지인병원장 “‘웨이메드 엔도’ 등 의료AI 도입 후 진료품질 평균화”[전문가 인사이트]",
+      "tickers": [
+        "328130",
+        "384470"
+      ],
+      "published_date": "2026-01-12",
+      "original_tickers": [
+        "328130",
+        "384470"
+      ]
+    },
+    {
+      "newsId": "02555126645352160",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02555126645352160&mediaCodeNo=257",
+      "title": "성장 가능성에 기대감 쏠린 와이투솔루션·유투바이오 '上'[바이오맥짚기]",
+      "tickers": [
+        "011690",
+        "221800"
+      ],
+      "published_date": "2026-02-19",
+      "original_tickers": [
+        "003090",
+        "011690",
+        "086820",
+        "221800"
+      ]
+    },
+    {
+      "newsId": "02345206645318376",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02345206645318376&mediaCodeNo=257",
+      "title": "비알팜텍, 분자접착제 기술 이전 기대에 '上'...앱클론·현대바이오도 ↑ [바이오맥짚기]",
+      "tickers": [
+        "048410",
+        "174900"
+      ],
+      "published_date": "2026-01-16",
+      "original_tickers": [
+        "048410",
+        "065170",
+        "174900"
+      ]
+    },
+    {
+      "newsId": "01951606645317064",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01951606645317064&mediaCodeNo=257",
+      "title": "Rznomics·Gencurix, JPMHC Attendees Draw Attention[K-Bio Pulse]",
+      "tickers": [
+        "068270",
+        "229000"
+      ],
+      "published_date": "2026-01-12",
+      "original_tickers": [
+        "068270",
+        "229000",
+        "LLY",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "01954886645355112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01954886645355112&mediaCodeNo=257",
+      "title": "\"주식상장, 미국 진출 및 기술 이전으로 성장 박차\"[지브레인 대해부③]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-28",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02017206645319360",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02017206645319360&mediaCodeNo=257",
+      "title": "마이크로디지탈, 북미 시장 진출 본격화…안정적 흑자 궤도 진입",
+      "tickers": [
+        "305090"
+      ],
+      "published_date": "2026-01-19",
+      "original_tickers": [
+        "068270",
+        "305090"
+      ]
+    },
+    {
+      "newsId": "01141446645319032",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01141446645319032&mediaCodeNo=257",
+      "title": "'시총 3조' 인실리코메디슨 성공 입증...韓 AI신약개발사 현황은?",
+      "tickers": [
+        "394800",
+        "SNY"
+      ],
+      "published_date": "2026-01-18",
+      "original_tickers": [
+        "394800",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02742086645349864",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02742086645349864&mediaCodeNo=257",
+      "title": "김동민 제이엘케이 대표 \"美·日서 7개씩 제품 인허가...올해 동시 공략 개시\"",
+      "tickers": [
+        "322510"
+      ],
+      "published_date": "2026-02-12",
+      "original_tickers": [
+        "322510"
+      ]
+    },
+    {
+      "newsId": "03919606645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03919606645348880&mediaCodeNo=257",
+      "title": "\"국내 도매상서 글로벌 의약품 유통 디지털 혁신 퍼스트무버 도약\"[블루엠텍 대해부①]",
+      "tickers": [
+        "439580"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "302440",
+        "439580",
+        "MRK",
+        "SNY"
+      ]
+    },
+    {
+      "newsId": "02971686645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02971686645349536&mediaCodeNo=257",
+      "title": "메지온, 트럼프 대통령 승인으로 3000억 ‘티켓’ 손에 넣다",
+      "tickers": [
+        "140410"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "140410"
+      ]
+    },
+    {
+      "newsId": "02751926645322640",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02751926645322640&mediaCodeNo=257",
+      "title": "동운아나텍, 글로벌 최초 타액 혈당측정기 연내 상용화될까",
+      "tickers": [
+        "094170"
+      ],
+      "published_date": "2026-01-29",
+      "original_tickers": [
+        "094170"
+      ]
+    },
+    {
+      "newsId": "02476406645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02476406645320016&mediaCodeNo=257",
+      "title": "LG AI연구원 솔루션 도입 엔젠바이오 '上'...기술 이전에도 알테오젠↓[바이오맥짚기]",
+      "tickers": [
+        "196170",
+        "354200"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "196170",
+        "354200",
+        "464490",
+        "GSK"
+      ]
+    },
+    {
+      "newsId": "01138166645319032",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01138166645319032&mediaCodeNo=257",
+      "title": "'글로벌사와 유통 계약 조율' 엘앤케이바이오, 생산 능력 확대로 승부수",
+      "tickers": [
+        "156100"
+      ],
+      "published_date": "2026-01-18",
+      "original_tickers": [
+        "156100"
+      ]
+    },
+    {
+      "newsId": "02876566645347568",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02876566645347568&mediaCodeNo=257",
+      "title": "환자 모니터링 시장 경쟁 2라운드, 이영신 씨어스 대표의 자신감…배경은?",
+      "tickers": [
+        "458870",
+        "비상장"
+      ],
+      "published_date": "2026-02-05",
+      "original_tickers": [
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02581366645347240",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02581366645347240&mediaCodeNo=257",
+      "title": "상한가 먼저, 공시는 밤에…셀레믹스, 최대주주 변경[바이오맥짚기]",
+      "tickers": [
+        "331920"
+      ],
+      "published_date": "2026-02-04",
+      "original_tickers": [
+        "041920",
+        "108860",
+        "215600",
+        "235980",
+        "291650",
+        "318060",
+        "331920"
+      ]
+    },
+    {
+      "newsId": "02584646645347240",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02584646645347240&mediaCodeNo=257",
+      "title": "Celemics hits limit before after hours filing[K-Bio Pulse]",
+      "tickers": [
+        "331920"
+      ],
+      "published_date": "2026-02-04",
+      "original_tickers": [
+        "331920"
+      ]
+    },
+    {
+      "newsId": "01584246645318704",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01584246645318704&mediaCodeNo=257",
+      "title": "\"애플과 견주는 수면측정 기술...글로벌 기기 중 최고 정확도 기록\"[에이슬립 대해부②]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-01-17",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02371446645317720",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02371446645317720&mediaCodeNo=257",
+      "title": "유투바이오·파로스아이·JLK 동반 상승…AI신약·의료 날았다[바이오맥짚기]",
+      "tickers": [
+        "221800"
+      ],
+      "published_date": "2026-01-14",
+      "original_tickers": [
+        "009290",
+        "221800",
+        "322510",
+        "388870"
+      ]
+    },
+    {
+      "newsId": "01577686645318704",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01577686645318704&mediaCodeNo=257",
+      "title": "\"KAIST 연구실서 글로벌 슬립테크 강자로 도약\" [에이슬립 대해부①]",
+      "tickers": [
+        "000720",
+        "009450"
+      ],
+      "published_date": "2026-01-17",
+      "original_tickers": [
+        "000720",
+        "009450",
+        "017670",
+        "032830",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02522326645322640",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02522326645322640&mediaCodeNo=257",
+      "title": "BL PharmTech hits five straight limit ups...GemVax extends rally [K-bio pulse]",
+      "tickers": [
+        "065170",
+        "082270"
+      ],
+      "published_date": "2026-01-29",
+      "original_tickers": [
+        "065170",
+        "082270",
+        "128940"
+      ]
+    },
+    {
+      "newsId": "01134886645348552",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01134886645348552&mediaCodeNo=257",
+      "title": "'항암·CAR-T 효과 분석 데이터 인프라'…CJ바사, 마이크로바이옴 新 전략",
+      "tickers": [
+        "038290"
+      ],
+      "published_date": "2026-02-08",
+      "original_tickers": [
+        "038290"
+      ]
+    },
+    {
+      "newsId": "02453446645316080",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02453446645316080&mediaCodeNo=257",
+      "title": "SK바이오팜, 엑스코프리 2차 처방 집중...'매출 60% 증가 기대'",
+      "tickers": [
+        "326030"
+      ],
+      "published_date": "2026-01-09",
+      "original_tickers": [
+        "326030"
+      ]
+    },
+    {
+      "newsId": "02604326645322968",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02604326645322968&mediaCodeNo=257",
+      "title": "CellBioN, Quracle Spark Commercialization Hopes[K-bio Pulse]",
+      "tickers": [
+        "308430",
+        "318020"
+      ],
+      "published_date": "2026-01-30",
+      "original_tickers": [
+        "308430",
+        "318020",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02791286645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02791286645354128&mediaCodeNo=257",
+      "title": "‘든든한 우군’ 동국제약·동국생명과학 3년 락업 협약[인벤테라 대해부②]",
+      "tickers": [
+        "086450",
+        "303810"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "086450",
+        "303810",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01974566645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01974566645348880&mediaCodeNo=257",
+      "title": "'좀비 바이오' 퇴출 빨라진다…'상폐 요주의' 기업은?",
+      "tickers": [
+        "034940",
+        "052670"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "034940",
+        "052670",
+        "182400",
+        "244460",
+        "263050",
+        "284620",
+        "298060",
+        "299660",
+        "328130",
+        "331920",
+        "352770"
+      ]
+    },
+    {
+      "newsId": "02378006645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02378006645318048&mediaCodeNo=257",
+      "title": "Investment Sentiment Shifts to Mid Risk...High Return Bio Stocks: Samyang Biopharm and U2Bio Surg...",
+      "tickers": [
+        "221800"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "221800"
+      ]
+    },
+    {
+      "newsId": "02794566645350192",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02794566645350192&mediaCodeNo=257",
+      "title": "시장 주류로 떠오른 인체유래 스킨부스터...엘엔씨바이오 등 기업가치 제고 '주목'",
+      "tickers": [
+        "042520",
+        "214450"
+      ],
+      "published_date": "2026-02-13",
+      "original_tickers": [
+        "042520",
+        "214450",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "03926166645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03926166645348880&mediaCodeNo=257",
+      "title": "\"AI·온라인 플랫폼 중심의 의약품 유통 디지털 전환 박차\"[블루엠텍 대해부②]",
+      "tickers": [
+        "439580"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "439580"
+      ]
+    },
+    {
+      "newsId": "02312406645320344",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02312406645320344&mediaCodeNo=257",
+      "title": "'카나브 만들었지만 시장 못 만들었다'… 알리코제약의 초라한 성적표",
+      "tickers": [
+        "260660"
+      ],
+      "published_date": "2026-01-22",
+      "original_tickers": [
+        "003850",
+        "005500",
+        "006620",
+        "016580",
+        "019170",
+        "086450",
+        "260660",
+        "293480"
+      ]
+    },
+    {
+      "newsId": "02597766645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02597766645353800&mediaCodeNo=257",
+      "title": "Hyundai Bio·Hyundai ADM Hit Upper Limit as Clinical Trials Move into Full Swing[K-Bio Pulse]",
+      "tickers": [
+        "009290",
+        "048410"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "009290",
+        "048410",
+        "187660",
+        "475830"
+      ]
+    },
+    {
+      "newsId": "02437046645346912",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02437046645346912&mediaCodeNo=257",
+      "title": "Bio Stocks Unfazed by ‘Black Monday’ Rout...Neurophet and BL Pharmtech Surge [K-Bio Pulse]",
+      "tickers": [
+        "065170",
+        "ROG"
+      ],
+      "published_date": "2026-02-03",
+      "original_tickers": [
+        "065170",
+        "ROG",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01951606645355112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01951606645355112&mediaCodeNo=257",
+      "title": "\"곡면 밀착·고해상도 신호 등 독보적인 BCI기술 보유\"[지브레인 대해부②]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-28",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02473126645315752",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02473126645315752&mediaCodeNo=257",
+      "title": "\"수퍼폰탄 뺐더니 달라졌다\"... 메지온 FUEL-2, 데이터가 답했다",
+      "tickers": [
+        "140410"
+      ],
+      "published_date": "2026-01-08",
+      "original_tickers": [
+        "140410"
+      ]
+    },
+    {
+      "newsId": "01190646645346256",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01190646645346256&mediaCodeNo=257",
+      "title": "박주철 하이센스바이오 대표 \"절치부심, 기평 재신청으로 세 번째 상장 도전\"",
+      "tickers": [
+        "138610"
+      ],
+      "published_date": "2026-02-01",
+      "original_tickers": [
+        "138610"
+      ]
+    },
+    {
+      "newsId": "02627286645349864",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02627286645349864&mediaCodeNo=257",
+      "title": "HLB, 신약 상업화 체제 전환 본격화…'리보세라닙' 매출 목표치 재검토 수순",
+      "tickers": [
+        "028300",
+        "207940"
+      ],
+      "published_date": "2026-02-12",
+      "original_tickers": [
+        "028300",
+        "207940",
+        "AZN",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02109046645314768",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02109046645314768&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]'로슈·릴리와 맞손' 뉴로핏, FDA 추가 허가 임박④",
+      "tickers": [
+        "380550",
+        "ROG"
+      ],
+      "published_date": "2026-01-05",
+      "original_tickers": [
+        "380550",
+        "LLY",
+        "NEUROPHET",
+        "ROG",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02489526642403768",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02489526642403768&mediaCodeNo=257",
+      "title": "ToolGen revalued after U.S. EU patent wins[K-Bio Pulse]",
+      "tickers": [
+        "199800",
+        "397030"
+      ],
+      "published_date": "2025-12-30",
+      "original_tickers": [
+        "199800",
+        "397030"
+      ]
+    },
+    {
+      "newsId": "02709286645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02709286645354128&mediaCodeNo=257",
+      "title": "‘상장 6개월차’ 지투지바이오에 기관투자자 1500억 베팅한 이유?",
+      "tickers": [
+        "456160"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "005940",
+        "006800",
+        "016360",
+        "087010",
+        "456160"
+      ]
+    },
+    {
+      "newsId": "02476406645315424",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02476406645315424&mediaCodeNo=257",
+      "title": "'엑셀라 효과’… 우정바이오, 차세대 비임상 기대감에 급등[바이오맥짚기]",
+      "tickers": [
+        "215380"
+      ],
+      "published_date": "2026-01-07",
+      "original_tickers": [
+        "028300",
+        "196300",
+        "215380",
+        "246710"
+      ]
+    },
+    {
+      "newsId": "02915926645347896",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02915926645347896&mediaCodeNo=257",
+      "title": "문여정 IMM인베스트먼트 전무 \"ADC·DDS·CNS 주목\"[바이오 VC 집중조명⑩]",
+      "tickers": [
+        "000070",
+        "087010"
+      ],
+      "published_date": "2026-02-06",
+      "original_tickers": [
+        "000070",
+        "087010",
+        "196170",
+        "298380",
+        "328130",
+        "372320",
+        "389470",
+        "456160",
+        "475830",
+        "AimedBio",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02886406645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02886406645349536&mediaCodeNo=257",
+      "title": "국내 첫 방사선의약품 상용화 임박... 다음 행보는[셀비온 대해부]②",
+      "tickers": [
+        "308430"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "196170",
+        "308430",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02482966645349208",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02482966645349208&mediaCodeNo=257",
+      "title": "알테오젠 SC기술, 블록버스터 항암제 임핀지에도 적용…'임상 1상 본격 개시'",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-02-10",
+      "original_tickers": [
+        "196170",
+        "AZN",
+        "GSK",
+        "MRK",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02791286645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02791286645349536&mediaCodeNo=257",
+      "title": "AprilBio Falls on Insider Sales...Cellbion, NEUROPHET Up[K-Bio Pulse]",
+      "tickers": [
+        "308430",
+        "397030"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "308430",
+        "397030",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01167686645314440",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01167686645314440&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10] '액체생검' 아이엠비디엑스, 올해 매출 100억·흑자 전환 예고③",
+      "tickers": [
+        "461030"
+      ],
+      "published_date": "2026-01-04",
+      "original_tickers": [
+        "461030"
+      ]
+    },
+    {
+      "newsId": "02676486645322968",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02676486645322968&mediaCodeNo=257",
+      "title": "이영신 씨어스테크놀로지 대표 \"원격의료 본격화...3월께 정부와 재택진료 사업 시행\"",
+      "tickers": [
+        "458870"
+      ],
+      "published_date": "2026-01-30",
+      "original_tickers": [
+        "458870"
+      ]
+    },
+    {
+      "newsId": "02630566645349208",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02630566645349208&mediaCodeNo=257",
+      "title": "메디포스트 “‘카티스템’ 韓 3상보다 부담 덜한 설계…美 3상 성공 자신”",
+      "tickers": [
+        "078160"
+      ],
+      "published_date": "2026-02-10",
+      "original_tickers": [
+        "078160",
+        "086820",
+        "140610",
+        "950160"
+      ]
+    },
+    {
+      "newsId": "02082806645319360",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02082806645319360&mediaCodeNo=257",
+      "title": "'텐배거' 초기 들어선 K의료기기 삼총사...올해 임계점 돌파 예고",
+      "tickers": [
+        "187660",
+        "376900"
+      ],
+      "published_date": "2026-01-19",
+      "original_tickers": [
+        "187660",
+        "376900",
+        "389650",
+        "458870",
+        "477120",
+        "491000"
+      ]
+    },
+    {
+      "newsId": "01161126645316736",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01161126645316736&mediaCodeNo=257",
+      "title": "예병덕 서울아산병원 교수 \"램시마SC, 정맥주사대비 환자 편의성 월등\"[전문가 인사이트]",
+      "tickers": [
+        "068270"
+      ],
+      "published_date": "2026-01-11",
+      "original_tickers": [
+        "068270"
+      ]
+    },
+    {
+      "newsId": "02542006645315424",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02542006645315424&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]제테마, 미국에 승부 던졌다… 1조 매출 향한 풀스윙⑥",
+      "tickers": [
+        "216080"
+      ],
+      "published_date": "2026-01-07",
+      "original_tickers": [
+        "216080"
+      ]
+    },
+    {
+      "newsId": "01190646645351504",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01190646645351504&mediaCodeNo=257",
+      "title": "양동원 서울성모병원 부원장 “레켐비에 슈퍼브레인 더하니, 치매 지연 효과 15%p 더 개선”[전문가 인...",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-17",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02601046645322968",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02601046645322968&mediaCodeNo=257",
+      "title": "셀비온·큐라클, 임상 성과에 사업화 기대 점화[바이오맥짚기]",
+      "tickers": [
+        "308430",
+        "365270"
+      ],
+      "published_date": "2026-01-30",
+      "original_tickers": [
+        "196170",
+        "308430",
+        "318020",
+        "354200",
+        "365270",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02627286645352160",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02627286645352160&mediaCodeNo=257",
+      "title": "日서 렉라자·리브리반트 위장관 출혈 증례보고…항응고제 병용투여 영향 가능성",
+      "tickers": [
+        "000100",
+        "039200"
+      ],
+      "published_date": "2026-02-19",
+      "original_tickers": [
+        "000100",
+        "039200",
+        "AZN"
+      ]
+    },
+    {
+      "newsId": "01587526645318704",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01587526645318704&mediaCodeNo=257",
+      "title": "'앱클론 원천기술 적용' HLX22에 베팅한 헨리우스, 블록버스터 기대감 ↑",
+      "tickers": [
+        "174900"
+      ],
+      "published_date": "2026-01-17",
+      "original_tickers": [
+        "174900"
+      ]
+    },
+    {
+      "newsId": "02479686645346912",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02479686645346912&mediaCodeNo=257",
+      "title": "김경민 용인세브란스 교수 \"GLP-1 비만약, 복합제보다 투약 주기 관건\"[전문가 인사이트]",
+      "tickers": [
+        "LLY",
+        "NVO"
+      ],
+      "published_date": "2026-02-03",
+      "original_tickers": [
+        "LLY",
+        "NVO"
+      ]
+    },
+    {
+      "newsId": "01151286645321328",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01151286645321328&mediaCodeNo=257",
+      "title": "이경열 쓰리빌리언 CSO \"AI로 신약 후보물질 5종 발굴...빅파마와 공동연구 본격화\"",
+      "tickers": [
+        "394800"
+      ],
+      "published_date": "2026-01-25",
+      "original_tickers": [
+        "394800"
+      ]
+    },
+    {
+      "newsId": "02502646645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02502646645318048&mediaCodeNo=257",
+      "title": "이슬기 디앤디파마텍 대표 \"경구약시장 개화 시작, 상반기 MASH신약 기술 이전 추진\"",
+      "tickers": [
+        "347850"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "196170",
+        "347850",
+        "LLY",
+        "NVO",
+        "PFE"
+      ]
+    },
+    {
+      "newsId": "03011046645350192",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03011046645350192&mediaCodeNo=257",
+      "title": "박용근 토모큐브 대표 “올해 오가노이드 분석 제품·의료기기 출시, BEP 달성 가시화”",
+      "tickers": [
+        "475960"
+      ],
+      "published_date": "2026-02-13",
+      "original_tickers": [
+        "475960"
+      ]
+    },
+    {
+      "newsId": "02689606645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02689606645353800&mediaCodeNo=257",
+      "title": "액체생검 그레일 ‘쇼크’...GC지놈·아이엠비디엑스 “사업 한계 지적은 억측, 오히려 기회”",
+      "tickers": [
+        "461030"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "005930",
+        "028260",
+        "340450",
+        "461030"
+      ]
+    },
+    {
+      "newsId": "02112326645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02112326645348880&mediaCodeNo=257",
+      "title": "홍병진 레몬헬스케어 대표 \"상급병원 80%·매출 160억 달성...韓 '오라클' 되겠다\"",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02706006645347568",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02706006645347568&mediaCodeNo=257",
+      "title": "디앤디파마텍·퍼스트바이오 공동 개발 뇌질환 신약 기술이전 가능성 '부각'",
+      "tickers": [
+        "347850"
+      ],
+      "published_date": "2026-02-05",
+      "original_tickers": [
+        "141080",
+        "196170",
+        "287840",
+        "347850",
+        "PFE",
+        "SNY"
+      ]
+    },
+    {
+      "newsId": "02519046645322640",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02519046645322640&mediaCodeNo=257",
+      "title": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+      "tickers": [
+        "065170",
+        "082270"
+      ],
+      "published_date": "2026-01-29",
+      "original_tickers": [
+        "001360",
+        "065170",
+        "082270",
+        "128940"
+      ]
+    },
+    {
+      "newsId": "02040166645319688",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02040166645319688&mediaCodeNo=257",
+      "title": "Cellumed Hits Upper Limit on Hopes for Ownership Sale[K-Bio Pulse]",
+      "tickers": [
+        "049180",
+        "445680"
+      ],
+      "published_date": "2026-01-20",
+      "original_tickers": [
+        "049180",
+        "445680",
+        "AZN"
+      ]
+    },
+    {
+      "newsId": "02296006645320344",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02296006645320344&mediaCodeNo=257",
+      "title": "2% Royalty Shock at Alteogen Ripples Through Korean Biotech[K-Bio Pulse]",
+      "tickers": [
+        "141080",
+        "196170"
+      ],
+      "published_date": "2026-01-22",
+      "original_tickers": [
+        "141080",
+        "196170",
+        "298380",
+        "LLY",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "01210326645351504",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01210326645351504&mediaCodeNo=257",
+      "title": "'CRO 후발주자' 디티앤씨알오, 올해 실적 반등 자신하는 이유",
+      "tickers": [
+        "383930"
+      ],
+      "published_date": "2026-02-17",
+      "original_tickers": [
+        "383930"
+      ]
+    },
+    {
+      "newsId": "02892966645350192",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02892966645350192&mediaCodeNo=257",
+      "title": "'허가'보다 빠른 데이터의 확신… K바이오, '입도선매'로 가치 입증",
+      "tickers": [
+        "000100",
+        "078160"
+      ],
+      "published_date": "2026-02-13",
+      "original_tickers": [
+        "000100",
+        "078160",
+        "128940",
+        "141080",
+        "298380"
+      ]
+    },
+    {
+      "newsId": "01623606645323296",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01623606645323296&mediaCodeNo=257",
+      "title": "'1200억 밸류' 노벨티노빌리티, 상장철회 7개월새 달라진 세 가지",
+      "tickers": [
+        "006280",
+        "071950"
+      ],
+      "published_date": "2026-01-31",
+      "original_tickers": [
+        "006280",
+        "071950",
+        "170900",
+        "185490",
+        "199800"
+      ]
+    },
+    {
+      "newsId": "02876566645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02876566645349536&mediaCodeNo=257",
+      "title": "1세대 바이오 저력...글로벌 기업 기반 닦는다[셀비온 대해부]①",
+      "tickers": [
+        "308430"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "196170",
+        "308430",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02568246645320672",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02568246645320672&mediaCodeNo=257",
+      "title": "큐라클 CU01 임상 2b상 성공...'케렌디아 한계 넘어 고칼륨 위험 없는 게임체인저'",
+      "tickers": [
+        "365270"
+      ],
+      "published_date": "2026-01-23",
+      "original_tickers": [
+        "003850",
+        "318020",
+        "365270"
+      ]
+    },
+    {
+      "newsId": "01121766645348552",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01121766645348552&mediaCodeNo=257",
+      "title": "김해진 엔솔바이오 대표 “골관절염 신약 근본치료제 검증 최종 단계 돌입...빅파마 큰 관심”",
+      "tickers": [
+        "140610",
+        "196170"
+      ],
+      "published_date": "2026-02-08",
+      "original_tickers": [
+        "140610",
+        "196170"
+      ]
+    },
+    {
+      "newsId": "02742086645354456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02742086645354456&mediaCodeNo=257",
+      "title": "강국진 엘앤케이바이오 회장 “글로벌 기업과 유통 논의 95% 완료…매출 1000억 목표”",
+      "tickers": [
+        "156100"
+      ],
+      "published_date": "2026-02-26",
+      "original_tickers": [
+        "156100"
+      ]
+    },
+    {
+      "newsId": "02515766645346912",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02515766645346912&mediaCodeNo=257",
+      "title": "“빠진 머리 다시 자라게 한다?”…JW중외제약, ‘모낭 재생’ 탈모 신약 판 흔든다",
+      "tickers": [
+        "001060"
+      ],
+      "published_date": "2026-02-03",
+      "original_tickers": [
+        "001060"
+      ]
+    },
+    {
+      "newsId": "02653526645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02653526645379712&mediaCodeNo=257",
+      "title": "'코스닥150 편입' 에임드바이오 급등…바텍·국전약품 上[바이오맥짚기]",
+      "tickers": [
+        "043150",
+        "307750"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "043150",
+        "229000",
+        "307750",
+        "AimedBio"
+      ]
+    },
+    {
+      "newsId": "02355046645315096",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02355046645315096&mediaCodeNo=257",
+      "title": "Pharos iBio Surges...Orum Therapeutics Hits New High[K-Bio Pulse]",
+      "tickers": [
+        "028300",
+        "388870"
+      ],
+      "published_date": "2026-01-06",
+      "original_tickers": [
+        "028300",
+        "388870",
+        "475830",
+        "477120"
+      ]
+    },
+    {
+      "newsId": "02059846642403440",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02059846642403440&mediaCodeNo=257",
+      "title": "Cellumed, DXVX…Buoyed By Major Shareholders' Investments [K-Bio Pulse]",
+      "tickers": [
+        "049180",
+        "068270"
+      ],
+      "published_date": "2025-12-29",
+      "original_tickers": [
+        "049180",
+        "068270",
+        "128940"
+      ]
+    },
+    {
+      "newsId": "02686326645352488",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02686326645352488&mediaCodeNo=257",
+      "title": "Shares of Kwangdong Soar as FDA Approves Presbyopia Eye Drop...U2Bio·CorestemChemon ↑[K-Bio Pul...",
+      "tickers": [
+        "009290",
+        "221800"
+      ],
+      "published_date": "2026-02-20",
+      "original_tickers": [
+        "009290",
+        "221800"
+      ]
+    },
+    {
+      "newsId": "02482966645322312",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02482966645322312&mediaCodeNo=257",
+      "title": "日 진출 메디포스트, 7000억 가치 평가에 上…현대바이오도 급등[바이오맥짚기]",
+      "tickers": [
+        "048410",
+        "078160"
+      ],
+      "published_date": "2026-01-28",
+      "original_tickers": [
+        "000070",
+        "048410",
+        "078160",
+        "187660"
+      ]
+    },
+    {
+      "newsId": "04090166645319360",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=04090166645319360&mediaCodeNo=257",
+      "title": "‘신장 되돌리는 약’ 될까…큐라클 CU01, 2b상 결과 임박",
+      "tickers": [
+        "365270"
+      ],
+      "published_date": "2026-01-19",
+      "original_tickers": [
+        "003850",
+        "318020",
+        "365270"
+      ]
+    },
+    {
+      "newsId": "02755206645322968",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02755206645322968&mediaCodeNo=257",
+      "title": "기술 이전 성과 낸 K바이오, IPO출격 대비...제2의 알테오젠 누가될까",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-01-30",
+      "original_tickers": [
+        "000100",
+        "039200",
+        "170900",
+        "196170",
+        "475830",
+        "476830",
+        "AimedBio",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02817526645347896",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02817526645347896&mediaCodeNo=257",
+      "title": "오종민 와이투솔루션 부사장 “올해 3대 첨단 사업 대전환점… 매출 더블업 성장 예고”",
+      "tickers": [
+        "011690"
+      ],
+      "published_date": "2026-02-06",
+      "original_tickers": [
+        "011690"
+      ]
+    },
+    {
+      "newsId": "03198006645354784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03198006645354784&mediaCodeNo=257",
+      "title": "이돈행 넥스트바이오메디컬 대표 \"내년 흑자전환...5년 내 매출 1000억 돌파\"",
+      "tickers": [
+        "187660",
+        "477120"
+      ],
+      "published_date": "2026-02-27",
+      "original_tickers": [
+        "187660",
+        "477120"
+      ]
+    },
+    {
+      "newsId": "02715846645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02715846645379712&mediaCodeNo=257",
+      "title": "‘600억 소송까지’…한미그룹 경영권 분쟁 재점화에 외인 자금 엑소더스 우려",
+      "tickers": [
+        "008930"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "008930"
+      ]
+    },
+    {
+      "newsId": "02558406645346912",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02558406645346912&mediaCodeNo=257",
+      "title": "\"올해 전체 매출 3분의 1 기대\"...'리투오'에 힘 싣는 엘앤씨바이오",
+      "tickers": [
+        "290650"
+      ],
+      "published_date": "2026-02-03",
+      "original_tickers": [
+        "200670",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "02515766645317392",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02515766645317392&mediaCodeNo=257",
+      "title": "'‘플루빅토보다 싸고 쎄다'…셀비온, 中 러브콜 ‘재점화’",
+      "tickers": [
+        "308430"
+      ],
+      "published_date": "2026-01-13",
+      "original_tickers": [
+        "308430",
+        "AZN"
+      ]
+    },
+    {
+      "newsId": "02135286645317064",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02135286645317064&mediaCodeNo=257",
+      "title": "김선우 딥바이오 대표 \"직원 감소로 위기? 300개 GPU가 대신한다\"",
+      "tickers": [
+        "229000",
+        "ROG"
+      ],
+      "published_date": "2026-01-12",
+      "original_tickers": [
+        "229000",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02214006642404096",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02214006642404096&mediaCodeNo=257",
+      "title": "WSI Surges 16%...Cellumed Hits Limit Down [K-bio pulse]",
+      "tickers": [
+        "049180"
+      ],
+      "published_date": "2025-12-31",
+      "original_tickers": [
+        "049180"
+      ]
+    },
+    {
+      "newsId": "01223446645379056",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01223446645379056&mediaCodeNo=257",
+      "title": "'자산 2조' 빗장 풀린 제약바이오 이사회… '몰빵 투표' 공포에 거물급 방패 세우...",
+      "tickers": [
+        "K-Bio"
+      ],
+      "published_date": "2026-03-01",
+      "original_tickers": [
+        "K-Bio"
+      ]
+    },
+    {
+      "newsId": "02797846645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02797846645379712&mediaCodeNo=257",
+      "title": "K-액체생검, 아이엠비디엑스·지씨지놈 글로벌에서도 격돌 [용호상박 K바이오]",
+      "tickers": [
+        "461030"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "461030"
+      ]
+    },
+    {
+      "newsId": "01584246645321000",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01584246645321000&mediaCodeNo=257",
+      "title": "듀켐바이오, 신약 상반기 공개…“12兆 삼중음성유방암 치료제 시장 정조준”",
+      "tickers": [
+        "176750"
+      ],
+      "published_date": "2026-01-24",
+      "original_tickers": [
+        "176750",
+        "196170",
+        "308430"
+      ]
+    },
+    {
+      "newsId": "01567846645318704",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01567846645318704&mediaCodeNo=257",
+      "title": "'위고비·마운자로' 비만약 유통 효과 누린 블루엠텍, 다음 묘수는?",
+      "tickers": [
+        "439580"
+      ],
+      "published_date": "2026-01-17",
+      "original_tickers": [
+        "086900",
+        "196170",
+        "200670",
+        "439580"
+      ]
+    },
+    {
+      "newsId": "02433766645321984",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02433766645321984&mediaCodeNo=257",
+      "title": "“약 한번 맞아보고 죽고 싶다”…젬백스, GV1001 조건부 허가 승부수",
+      "tickers": [
+        "082270"
+      ],
+      "published_date": "2026-01-27",
+      "original_tickers": [
+        "001360",
+        "082270"
+      ]
+    },
+    {
+      "newsId": "03040566645354784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03040566645354784&mediaCodeNo=257",
+      "title": "삼천당제약, 공시엔 없던 5.3조원...거래소 “계약서에도 없던 숫자”",
+      "tickers": [
+        "000250"
+      ],
+      "published_date": "2026-02-27",
+      "original_tickers": [
+        "000250"
+      ]
+    },
+    {
+      "newsId": "01561286645321000",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01561286645321000&mediaCodeNo=257",
+      "title": "韓·日 빅마파 어나프라주 판매 러브콜 비보존...\"글로벌 기업들과 기술 이전 논의\"",
+      "tickers": [
+        "128940"
+      ],
+      "published_date": "2026-01-24",
+      "original_tickers": [
+        "128940"
+      ]
+    },
+    {
+      "newsId": "02479686645316080",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02479686645316080&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]'3000억 현금 무장' 오름테라퓨틱, 유망 기술 도입해 성장 박차⑧",
+      "tickers": [
+        "475830"
+      ],
+      "published_date": "2026-01-09",
+      "original_tickers": [
+        "028300",
+        "298380",
+        "475830"
+      ]
+    },
+    {
+      "newsId": "02558406645349208",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02558406645349208&mediaCodeNo=257",
+      "title": "Jeil Bio’s 29,000% Jump an Illusion...ImmuneOncia Slides on Capital Raise[K-Bio Pulse]",
+      "tickers": [
+        "000100",
+        "328130"
+      ],
+      "published_date": "2026-02-10",
+      "original_tickers": [
+        "000100",
+        "328130",
+        "358570"
+      ]
+    },
+    {
+      "newsId": "01856486645355112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01856486645355112&mediaCodeNo=257",
+      "title": "스카이랩스, 높아진 거래소 문턱 넘을까...주목할 포인트는",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-28",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02578086645315424",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02578086645315424&mediaCodeNo=257",
+      "title": "오름, 6개월 만에 주가 6.3배 '껑충'…저평가 국면 벗어난 이유",
+      "tickers": [
+        "475830",
+        "AZN"
+      ],
+      "published_date": "2026-01-07",
+      "original_tickers": [
+        "475830",
+        "AZN",
+        "PFE"
+      ]
+    },
+    {
+      "newsId": "02479686645317392",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02479686645317392&mediaCodeNo=257",
+      "title": "의료기기 삼총사 약진...그래피·리브스메드·WSI 급등[바이오맥짚기]",
+      "tickers": [
+        "318060",
+        "491000"
+      ],
+      "published_date": "2026-01-13",
+      "original_tickers": [
+        "299170",
+        "318060",
+        "491000"
+      ]
+    },
+    {
+      "newsId": "02630566645347568",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02630566645347568&mediaCodeNo=257",
+      "title": "아프리카돼지열병 유행에 코미팜↑…'로슈 파트너' 바이오다인도 주목[바이오맥짚기]",
+      "tickers": [
+        "041960",
+        "314930"
+      ],
+      "published_date": "2026-02-05",
+      "original_tickers": [
+        "003850",
+        "024850",
+        "028300",
+        "041960",
+        "196170",
+        "314930",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "01633446645323296",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01633446645323296&mediaCodeNo=257",
+      "title": "우주·동물약·M&A…제약업계 '오너 3세' 신사업 실험 한창",
+      "tickers": [
+        "000220",
+        "003220"
+      ],
+      "published_date": "2026-01-31",
+      "original_tickers": [
+        "000220",
+        "003220",
+        "003850"
+      ]
+    },
+    {
+      "newsId": "02004086645321656",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02004086645321656&mediaCodeNo=257",
+      "title": "'키트루다 SC' 2% 로열티 논란…알테오젠, 다른 계약은 괜찮을까",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-01-26",
+      "original_tickers": [
+        "196170",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "01659686645348224",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01659686645348224&mediaCodeNo=257",
+      "title": "LG화학도 탐냈던 AI신약개발사 히츠…\"젊은 천재와 노련한 선장\"[사제 공동창업]",
+      "tickers": [
+        "051910"
+      ],
+      "published_date": "2026-02-07",
+      "original_tickers": [
+        "003850",
+        "006280",
+        "051910",
+        "128940",
+        "185750",
+        "195940",
+        "249420",
+        "285130",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02532166645320672",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02532166645320672&mediaCodeNo=257",
+      "title": "\"중국 진출·홈케어 시장 침투\"…클래시스, 4조 몸값 회복 나선다",
+      "tickers": [
+        "214150"
+      ],
+      "published_date": "2026-01-23",
+      "original_tickers": [
+        "145020",
+        "214150",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02584646645322640",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02584646645322640&mediaCodeNo=257",
+      "title": "엔도로보틱스 공동대표들 \"지분욕심 내는 순간 패착...사제창업, 업계 자리잡길\"[사제 공동창...",
+      "tickers": [
+        "012450"
+      ],
+      "published_date": "2026-01-29",
+      "original_tickers": [
+        "012450"
+      ]
+    },
+    {
+      "newsId": "02679766645352488",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02679766645352488&mediaCodeNo=257",
+      "title": "광동제약, 판권 보유 노안치료제 FDA 승인 '上'...유투바이오·코아스템켐온도 ↑[바이오맥짚...",
+      "tickers": [
+        "009290",
+        "166480"
+      ],
+      "published_date": "2026-02-20",
+      "original_tickers": [
+        "003090",
+        "009290",
+        "166480",
+        "221800"
+      ]
+    },
+    {
+      "newsId": "01981126645319360",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01981126645319360&mediaCodeNo=257",
+      "title": "풀리지 않는 탈모 해법 찾을까...프롬바이오·현대약품 ↑[바이오맥짚기]",
+      "tickers": [
+        "004310",
+        "377220"
+      ],
+      "published_date": "2026-01-19",
+      "original_tickers": [
+        "004310",
+        "049180",
+        "179530",
+        "290650",
+        "377220"
+      ]
+    },
+    {
+      "newsId": "01151286645319032",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01151286645319032&mediaCodeNo=257",
+      "title": "레이저옵텍, 성장 엔진 재가동...혈관 레이저 등 신제품 앞세워 '실적 반등'",
+      "tickers": [
+        "199550"
+      ],
+      "published_date": "2026-01-18",
+      "original_tickers": [
+        "199550"
+      ]
+    },
+    {
+      "newsId": "02660086645322640",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02660086645322640&mediaCodeNo=257",
+      "title": "적자 잔혹사 고리 끊은 GC녹십자…알리글로 투트랙 전략으로 성장 박차",
+      "tickers": [
+        "006280"
+      ],
+      "published_date": "2026-01-29",
+      "original_tickers": [
+        "006280"
+      ]
+    },
+    {
+      "newsId": "01472726645313784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01472726645313784&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]엘앤씨바이오, '품절템' 리투오 앞세워 사상 최대 실적 예고①",
+      "tickers": [
+        "290650"
+      ],
+      "published_date": "2026-01-02",
+      "original_tickers": [
+        "290650"
+      ]
+    },
+    {
+      "newsId": "01193926645351504",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01193926645351504&mediaCodeNo=257",
+      "title": "인투셀, 플랫폼 가치 입증하려면…'복수 기술이전'이 반등 열쇠",
+      "tickers": [
+        "287840"
+      ],
+      "published_date": "2026-02-17",
+      "original_tickers": [
+        "287840",
+        "298380"
+      ]
+    },
+    {
+      "newsId": "02509206645322312",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02509206645322312&mediaCodeNo=257",
+      "title": "K바이오 골관절염 치료제, FDA 허가 따놓은 당상인 이유",
+      "tickers": [
+        "086820",
+        "950160"
+      ],
+      "published_date": "2026-01-28",
+      "original_tickers": [
+        "086820",
+        "950160"
+      ]
+    },
+    {
+      "newsId": "02545286645349864",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02545286645349864&mediaCodeNo=257",
+      "title": "냉탕 온탕 오간 에이프릴바이오…실적 호조에 로킷·휴젤 상승[바이오맥짚기]",
+      "tickers": [
+        "145020",
+        "397030"
+      ],
+      "published_date": "2026-02-12",
+      "original_tickers": [
+        "145020",
+        "376900",
+        "397030"
+      ]
+    },
+    {
+      "newsId": "02348486645318376",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02348486645318376&mediaCodeNo=257",
+      "title": "BL Pharmtech Hits Upper Limit on Expectations for Molecular Glue Technology License Out[K-bio pul...",
+      "tickers": [
+        "048410",
+        "065170"
+      ],
+      "published_date": "2026-01-16",
+      "original_tickers": [
+        "048410",
+        "065170"
+      ]
+    },
+    {
+      "newsId": "03204566645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03204566645353800&mediaCodeNo=257",
+      "title": "‘룬드벡 연례보고서 언급’ 콘테라파마…RNA 기술 추가 파트너십도 기대",
+      "tickers": [
+        "003000",
+        "ROG"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "003000",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02801126645347240",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02801126645347240&mediaCodeNo=257",
+      "title": "백신 사업도 고수익 사업 입증…유바이오로직스, 폭발적 성장 비결",
+      "tickers": [
+        "206650"
+      ],
+      "published_date": "2026-02-04",
+      "original_tickers": [
+        "206650",
+        "261780",
+        "299660",
+        "302440"
+      ]
+    },
+    {
+      "newsId": "03535846645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03535846645379712&mediaCodeNo=257",
+      "title": "메디포스트 '카티스템' 日 임상 3상 종료…2분기 결과 발표",
+      "tickers": [
+        "078160"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "078160"
+      ]
+    },
+    {
+      "newsId": "02194326645346584",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02194326645346584&mediaCodeNo=257",
+      "title": "김현수 휴비츠 대표 “올해 ‘게임체인저’ OCT 구강스캐너 출시…기술 접목 계속”",
+      "tickers": [
+        "065510"
+      ],
+      "published_date": "2026-02-02",
+      "original_tickers": [
+        "065510"
+      ]
+    },
+    {
+      "newsId": "02423926645320344",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02423926645320344&mediaCodeNo=257",
+      "title": "'법차손 이슈 해결’ 퀀타매트릭스, 신속 항생제 솔루션 앞세워 반등 예고",
+      "tickers": [
+        "317690"
+      ],
+      "published_date": "2026-01-22",
+      "original_tickers": [
+        "059090",
+        "317690"
+      ]
+    },
+    {
+      "newsId": "02128726645346584",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02128726645346584&mediaCodeNo=257",
+      "title": "ABL Bio Slides on Sanofi Reprioritization...Stock Specific Risks Hit Biotechs[K-Bio Pulse]",
+      "tickers": [
+        "028300",
+        "298380"
+      ],
+      "published_date": "2026-02-02",
+      "original_tickers": [
+        "028300",
+        "298380",
+        "328130",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01184086645316736",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01184086645316736&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]'설립 후 5건 기술 이전' 에이프릴바이오, 올해 임상통해 플랫폼가치 ...",
+      "tickers": [
+        "397030"
+      ],
+      "published_date": "2026-01-11",
+      "original_tickers": [
+        "141080",
+        "226950",
+        "298380",
+        "397030",
+        "GSK"
+      ]
+    },
+    {
+      "newsId": "02801126645350192",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02801126645350192&mediaCodeNo=257",
+      "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+      "tickers": [
+        "005690",
+        "099190"
+      ],
+      "published_date": "2026-02-13",
+      "original_tickers": [
+        "005690",
+        "048410",
+        "099190",
+        "187660",
+        "229000"
+      ]
+    },
+    {
+      "newsId": "02719126645352160",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02719126645352160&mediaCodeNo=257",
+      "title": "JW중외제약 헴리브라, ‘피 멎는 약’이 아니다…출혈 자체를 없앤 치료 혁명",
+      "tickers": [
+        "001060"
+      ],
+      "published_date": "2026-02-19",
+      "original_tickers": [
+        "001060",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02345206645321984",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02345206645321984&mediaCodeNo=257",
+      "title": "LIVSMED soars to limit up...PharmAbcine delists at 115 won [K-Bio Pulse]",
+      "tickers": [
+        "491000"
+      ],
+      "published_date": "2026-01-27",
+      "original_tickers": [
+        "491000"
+      ]
+    },
+    {
+      "newsId": "02817526645352160",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02817526645352160&mediaCodeNo=257",
+      "title": "디앤디파마텍, 대사이상지방간염 신약 기술 이전 시나리오 세 가지",
+      "tickers": [
+        "347850"
+      ],
+      "published_date": "2026-02-19",
+      "original_tickers": [
+        "347850",
+        "GSK",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02318966645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02318966645318048&mediaCodeNo=257",
+      "title": "한스바이오메드, 日 스킨부스터 판 흔든다…인픽스와 독점 공급 계약",
+      "tickers": [
+        "042520"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "042520",
+        "214450",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "02624006645349208",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02624006645349208&mediaCodeNo=257",
+      "title": "임선민 연세암병원 교수 \"렉라자 6주 투약 데이터로 암 치료 길 판가름\"[전문가 인사이트]",
+      "tickers": [
+        "000100"
+      ],
+      "published_date": "2026-02-10",
+      "original_tickers": [
+        "000100"
+      ]
+    },
+    {
+      "newsId": "01938486645353472",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01938486645353472&mediaCodeNo=257",
+      "title": "광동제약 이틀째 상한가 이끈 유베지, 국내 시장 선점 가능성[바이오맥짚기]",
+      "tickers": [
+        "009290"
+      ],
+      "published_date": "2026-02-23",
+      "original_tickers": [
+        "009290",
+        "086040"
+      ]
+    },
+    {
+      "newsId": "02374726645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02374726645318048&mediaCodeNo=257",
+      "title": "투심 중위험·고수익 기대주로 이동...삼양바이오팜·유투바이오 ↑ [바이오맥짚기]",
+      "tickers": [
+        "221800"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "000070",
+        "069620",
+        "221800",
+        "403550"
+      ]
+    },
+    {
+      "newsId": "02404246645315752",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02404246645315752&mediaCodeNo=257",
+      "title": "라파스, 마이크로니들 비만패치 SC제형 반감기 넘었다...\"기술 수출 기대 UP\"",
+      "tickers": [
+        "214260"
+      ],
+      "published_date": "2026-01-08",
+      "original_tickers": [
+        "214260",
+        "NVO"
+      ]
+    },
+    {
+      "newsId": "01912246645355112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01912246645355112&mediaCodeNo=257",
+      "title": "디시젠, 내달 ‘상장 관문’ 기평 돌입...실적 기반해 연내 진입 목표",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-28",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02840486645349864",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02840486645349864&mediaCodeNo=257",
+      "title": "'체질 개선 완료' SD바이오센서, 실적 반등위한 비장의 카드는?",
+      "tickers": [
+        "137310"
+      ],
+      "published_date": "2026-02-12",
+      "original_tickers": [
+        "137310"
+      ]
+    },
+    {
+      "newsId": "02427206645318376",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02427206645318376&mediaCodeNo=257",
+      "title": "‘日정형외과 강자’ 테이코쿠 손잡은 메디포스트…수천억 매출 가시권",
+      "tickers": [
+        "078160"
+      ],
+      "published_date": "2026-01-16",
+      "original_tickers": [
+        "078160"
+      ]
+    },
+    {
+      "newsId": "03273446645354784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03273446645354784&mediaCodeNo=257",
+      "title": "어려운 배달도 척척…약물전달 플랫폼이 뜬다[다크호스 플랫폼④]",
+      "tickers": [
+        "Platform"
+      ],
+      "published_date": "2026-02-27",
+      "original_tickers": [
+        "Platform"
+      ]
+    },
+    {
+      "newsId": "01170966645321328",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01170966645321328&mediaCodeNo=257",
+      "title": "\"경쟁사 2.6조원에 성공...AAV 황반변성치료제 기술 이전 추진\"[엘리시젠 대해부③]",
+      "tickers": [
+        "102460"
+      ],
+      "published_date": "2026-01-25",
+      "original_tickers": [
+        "102460"
+      ]
+    },
+    {
+      "newsId": "02555126645322312",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02555126645322312&mediaCodeNo=257",
+      "title": "알테오젠 충격 속…로슈와 두 자릿수 로열티 바이오다인 재평가",
+      "tickers": [
+        "196170",
+        "314930"
+      ],
+      "published_date": "2026-01-28",
+      "original_tickers": [
+        "141080",
+        "196170",
+        "226950",
+        "298380",
+        "314930",
+        "476830",
+        "GSK",
+        "MRK",
+        "ROG",
+        "SNY"
+      ]
+    },
+    {
+      "newsId": "01633446645348224",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01633446645348224&mediaCodeNo=257",
+      "title": "\"무릎 외 척추 등 AI영상진단 SW 차례로 출시...수술 로봇 상용화도 박차\"[코넥티브 대해부③...",
+      "tickers": [
+        "049180",
+        "078160"
+      ],
+      "published_date": "2026-02-07",
+      "original_tickers": [
+        "049180",
+        "078160",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01184086645346256",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01184086645346256&mediaCodeNo=257",
+      "title": "'출시 2년 만에 점유율 7.5%'…아이센스, 연속혈당측정기 사업 ‘잭팟’ 가능할까",
+      "tickers": [
+        "099190"
+      ],
+      "published_date": "2026-02-01",
+      "original_tickers": [
+        "099190"
+      ]
+    },
+    {
+      "newsId": "02384566645321984",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02384566645321984&mediaCodeNo=257",
+      "title": "오스코텍 항내성 항암제, 조 단위 ‘빅 딜’ 기대되는 이유",
+      "tickers": [
+        "039200"
+      ],
+      "published_date": "2026-01-27",
+      "original_tickers": [
+        "039200",
+        "MRK",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01935206645352816",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01935206645352816&mediaCodeNo=257",
+      "title": "'실적 슈퍼사이클 진입'…디오, 영업이익 3배 폭증 시동",
+      "tickers": [
+        "039840"
+      ],
+      "published_date": "2026-02-21",
+      "original_tickers": [
+        "000660",
+        "005930",
+        "039840"
+      ]
+    },
+    {
+      "newsId": "02646966645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02646966645354128&mediaCodeNo=257",
+      "title": "한미사이언스 ‘경영권 충돌’에 급등...현대ADM·바이오톡스텍도 ↑[바이오맥짚기]",
+      "tickers": [
+        "008930",
+        "086040"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "008930",
+        "068270",
+        "086040",
+        "128940",
+        "187660"
+      ]
+    },
+    {
+      "newsId": "01154566645353144",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01154566645353144&mediaCodeNo=257",
+      "title": "박진영 용인세브란스 정신과 교수 \"슬립큐로 불면증 사각지대 해결\"[전문가 인사이트]",
+      "tickers": [
+        "002390",
+        "비상장"
+      ],
+      "published_date": "2026-02-22",
+      "original_tickers": [
+        "002390",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01207046645350848",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01207046645350848&mediaCodeNo=257",
+      "title": "中우시 '945개 美프로젝트', K바이오의 기회될까",
+      "tickers": [
+        "068270",
+        "086820"
+      ],
+      "published_date": "2026-02-15",
+      "original_tickers": [
+        "068270",
+        "086820",
+        "128940",
+        "207940",
+        "GSK"
+      ]
+    },
+    {
+      "newsId": "02374726645315752",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02374726645315752&mediaCodeNo=257",
+      "title": "바이오 최대 행사 JPMHC 주목…큐로셀, 국산 1호 CAR-T 기대 [바이오맥짚기]",
+      "tickers": [
+        "372320"
+      ],
+      "published_date": "2026-01-08",
+      "original_tickers": [
+        "207940",
+        "226950",
+        "328130",
+        "372320",
+        "AZN",
+        "GSK",
+        "LLY"
+      ]
+    },
+    {
+      "newsId": "02063126645321656",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02063126645321656&mediaCodeNo=257",
+      "title": "'먹는 위고비' 출시 직후 예상 상회…디앤디파마텍, 몸값도 뛴다",
+      "tickers": [
+        "347850"
+      ],
+      "published_date": "2026-01-26",
+      "original_tickers": [
+        "128940",
+        "249420",
+        "347850",
+        "NVO",
+        "PFE"
+      ]
+    },
+    {
+      "newsId": "01226726645379056",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01226726645379056&mediaCodeNo=257",
+      "title": "‘몸값 2090억’ 메쥬, 내년 흑전 자신…'텐배거' 씨어스 사례 재현할까",
+      "tickers": [
+        "458870",
+        "비상장"
+      ],
+      "published_date": "2026-03-01",
+      "original_tickers": [
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "04165606645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=04165606645379712&mediaCodeNo=257",
+      "title": "[생생확대경]극심한 정보 비대칭, 삼천당제약 숫자가 시장을 압도할 때",
+      "tickers": [
+        "000250"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "000250"
+      ]
+    },
+    {
+      "newsId": "01948326645355112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01948326645355112&mediaCodeNo=257",
+      "title": "\"뇌신호 읽는 기술 앞세워 한국의 뉴럴링크 도약\" [지브레인 대해부①]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-28",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01167686645321328",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01167686645321328&mediaCodeNo=257",
+      "title": "\"경쟁사 황반변성치료제 치료 효과 수개월...NG101, 최소 5년 지속\"[엘리시젠 대해부②]",
+      "tickers": [
+        "102460"
+      ],
+      "published_date": "2026-01-25",
+      "original_tickers": [
+        "102460"
+      ]
+    },
+    {
+      "newsId": "02292726645320344",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02292726645320344&mediaCodeNo=257",
+      "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-01-22",
+      "original_tickers": [
+        "014950",
+        "087010",
+        "141080",
+        "196170",
+        "226950",
+        "298380",
+        "338840",
+        "389470",
+        "456160",
+        "476830",
+        "LLY",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "01977846645353472",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01977846645353472&mediaCodeNo=257",
+      "title": "씨엔알리서치, 동전주 퇴출 위기?...해외 매출 확대·M&A로 돌파",
+      "tickers": [
+        "359090"
+      ],
+      "published_date": "2026-02-23",
+      "original_tickers": [
+        "359090"
+      ]
+    },
+    {
+      "newsId": "02637126645347896",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02637126645347896&mediaCodeNo=257",
+      "title": "엑셀세라퓨틱스, 대만發 호재에 상한가 직행... 셀레믹스·쿼드메디슨도 강세 [바이오맥짚기]",
+      "tickers": [
+        "331920",
+        "373110"
+      ],
+      "published_date": "2026-02-06",
+      "original_tickers": [
+        "000100",
+        "039200",
+        "331920",
+        "373110",
+        "461030",
+        "464490"
+      ]
+    },
+    {
+      "newsId": "01190646645351176",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01190646645351176&mediaCodeNo=257",
+      "title": "'임플란트계 TSMC 꿈꾼다'…시지메드텍, 브랜드로 증명하고 CDMO로 폭주",
+      "tickers": [
+        "056090"
+      ],
+      "published_date": "2026-02-16",
+      "original_tickers": [
+        "056090"
+      ]
+    },
+    {
+      "newsId": "02135286645319360",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02135286645319360&mediaCodeNo=257",
+      "title": "김남용 큐리옥스 대표 \"日 대리점 첫 판매 계약...글로벌 제약사와 전사 표준 계약 논의\"",
+      "tickers": [
+        "445680",
+        "AZN"
+      ],
+      "published_date": "2026-01-19",
+      "original_tickers": [
+        "445680",
+        "AZN",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02568246645317392",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02568246645317392&mediaCodeNo=257",
+      "title": "씨어스테크놀로지보다 우월하다는 메디아나…뜯어보니 '씽크' 억측 사실과 달랐다",
+      "tickers": [
+        "041920",
+        "458870"
+      ],
+      "published_date": "2026-01-13",
+      "original_tickers": [
+        "041920",
+        "069620",
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01154566645314440",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01154566645314440&mediaCodeNo=257",
+      "title": "진양곤 HLB 의장 \"'삼고초려' 영입 김태한, 간암신약 상용화 등 역량 발휘 기대\"",
+      "tickers": [
+        "024850",
+        "028300"
+      ],
+      "published_date": "2026-01-04",
+      "original_tickers": [
+        "024850",
+        "028300",
+        "047920",
+        "115450",
+        "196300",
+        "207940",
+        "AZN"
+      ]
+    },
+    {
+      "newsId": "01180806645379384",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01180806645379384&mediaCodeNo=257",
+      "title": "스타라타 ‘상장폐지’에 힘빠진 소송, 레이저옵텍 美시장 재도약 나선다",
+      "tickers": [
+        "199550"
+      ],
+      "published_date": "2026-03-02",
+      "original_tickers": [
+        "199550"
+      ]
+    },
+    {
+      "newsId": "02095926645350520",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02095926645350520&mediaCodeNo=257",
+      "title": "필수항목된 美바이오 대관... 104억 쏟은 삼성, 오너家 나선 셀트리온",
+      "tickers": [
+        "068270"
+      ],
+      "published_date": "2026-02-14",
+      "original_tickers": [
+        "068270",
+        "207940",
+        "326030"
+      ]
+    },
+    {
+      "newsId": "01912246645321656",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01912246645321656&mediaCodeNo=257",
+      "title": "Investor Sentiment Lifted by Expectations of ‘Tangible Results’ Ensol Bio & L&K BioMed Surge[K-...",
+      "tickers": [
+        "140610",
+        "156100"
+      ],
+      "published_date": "2026-01-26",
+      "original_tickers": [
+        "140610",
+        "156100"
+      ]
+    },
+    {
+      "newsId": "02148406645319688",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02148406645319688&mediaCodeNo=257",
+      "title": "바이오솔루션, 카티라이프 美 3상 드라이브…“패키지 딜도 고려”",
+      "tickers": [
+        "086820"
+      ],
+      "published_date": "2026-01-20",
+      "original_tickers": [
+        "086820"
+      ]
+    },
+    {
+      "newsId": "01541606645313456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01541606645313456&mediaCodeNo=257",
+      "title": "김현기 스톤브릿지벤처스 상무 \"아델·인제니아·넥스아이 상장 기대\"[바이오VC 집중조명]⑨",
+      "tickers": [
+        "000640",
+        "196170"
+      ],
+      "published_date": "2026-01-01",
+      "original_tickers": [
+        "000640",
+        "196170",
+        "348150",
+        "475830",
+        "476060",
+        "491000",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01567846645314112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01567846645314112&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]\"다빈치 독점 깬다\"…리브스메드, 90도 꺾는 기술로 흑자 전환②",
+      "tickers": [
+        "491000"
+      ],
+      "published_date": "2026-01-03",
+      "original_tickers": [
+        "491000"
+      ]
+    },
+    {
+      "newsId": "03575206645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03575206645379712&mediaCodeNo=257",
+      "title": "Aimedbio Charges Higher on KOSDAQ 150 Boost[K-Bio Pulse]",
+      "tickers": [
+        "229000"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "229000"
+      ]
+    },
+    {
+      "newsId": "01216886645350848",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01216886645350848&mediaCodeNo=257",
+      "title": "온코닉테라퓨틱스, 올해 매출·영업익 더블업 성장 자신하는 이유",
+      "tickers": [
+        "476060"
+      ],
+      "published_date": "2026-02-15",
+      "original_tickers": [
+        "476060"
+      ]
+    },
+    {
+      "newsId": "01643286645323296",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01643286645323296&mediaCodeNo=257",
+      "title": "유럽 의사들 먼저 알아봤다...넥스트바이오메디컬, ‘인공관절 수술 후 통증’에도 효과",
+      "tickers": [
+        "389650"
+      ],
+      "published_date": "2026-01-31",
+      "original_tickers": [
+        "187660",
+        "389650",
+        "477120"
+      ]
+    },
+    {
+      "newsId": "02666646645354456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02666646645354456&mediaCodeNo=257",
+      "title": "Kyungnam Pharm Hits Daily Upper Limit on Share Consolidation Plan[K-Bio Pulse]",
+      "tickers": [
+        "128940",
+        "308080"
+      ],
+      "published_date": "2026-02-26",
+      "original_tickers": [
+        "128940",
+        "308080"
+      ]
+    },
+    {
+      "newsId": "02489526645317392",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02489526645317392&mediaCodeNo=257",
+      "title": "Surge of the Medical Device Trio... Graphy·Livsmed·WSI Skyrocket [K-Bio Pulse]",
+      "tickers": [
+        "491000"
+      ],
+      "published_date": "2026-01-13",
+      "original_tickers": [
+        "491000"
+      ]
+    },
+    {
+      "newsId": "02889686645380040",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02889686645380040&mediaCodeNo=257",
+      "title": "이뮨온시아, 국산 1호 PD-L1 면역항암제 상용화 박차",
+      "tickers": [
+        "ImmuneOncia"
+      ],
+      "published_date": "2026-03-04",
+      "original_tickers": [
+        "ImmuneOncia"
+      ]
+    },
+    {
+      "newsId": "02433766645346912",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02433766645346912&mediaCodeNo=257",
+      "title": "‘검은 월요일’도 뉴로핏·비엘팜텍 등 바이오 상승세 못 꺾었다↑ [바이오맥짚기]",
+      "tickers": [
+        "065170",
+        "380550"
+      ],
+      "published_date": "2026-02-03",
+      "original_tickers": [
+        "065170",
+        "354200",
+        "380550",
+        "NEUROPHET",
+        "ROG",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01984406645319360",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01984406645319360&mediaCodeNo=257",
+      "title": "Unsolved Hair Loss Seeking a Breakthrough?...FromBio and Hyundai Pharm Surge [K-Bio Pulse]",
+      "tickers": [
+        "004310",
+        "377220"
+      ],
+      "published_date": "2026-01-19",
+      "original_tickers": [
+        "004310",
+        "377220"
+      ]
+    },
+    {
+      "newsId": "01626886645348224",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01626886645348224&mediaCodeNo=257",
+      "title": "\"AI영상진단·수술 로봇 모두 갖춘 의료AI계 다크호스\"[코넥티브 대해부①]",
+      "tickers": [
+        "000150",
+        "003550"
+      ],
+      "published_date": "2026-02-07",
+      "original_tickers": [
+        "000150",
+        "003550",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "05635046645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=05635046645379712&mediaCodeNo=257",
+      "title": "ROWAN Signed MoU with Japan’s NCGG and SoftBank Robotics to Accelerate Entry into the Japanese D...",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02417366645317720",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02417366645317720&mediaCodeNo=257",
+      "title": "박세진 유엑스엔 대표 \"연내 세계 첫 백금 CGM 국내 허가...중동도 적극 공략\"",
+      "tickers": [
+        "337840"
+      ],
+      "published_date": "2026-01-14",
+      "original_tickers": [
+        "137310",
+        "337840"
+      ]
+    },
+    {
+      "newsId": "01630166645348224",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01630166645348224&mediaCodeNo=257",
+      "title": "\"근골격계질환 진단부터 사후 관리까지 국내서 유일하게 가능\"[코넥티브 대해부②]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-07",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02594486645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02594486645353800&mediaCodeNo=257",
+      "title": "'임상 본격화' 현대바이오·현대ADM 동반 '上'...시지메드텍·엔지켐도 ↑[바이오...",
+      "tickers": [
+        "048410",
+        "056090"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "009290",
+        "048410",
+        "056090",
+        "183490",
+        "187660",
+        "475830"
+      ]
+    },
+    {
+      "newsId": "02341926645321984",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02341926645321984&mediaCodeNo=257",
+      "title": "오버행 해소 리브스메드 상한가…'상폐' 파멥신 115원에 퇴장[바이오맥짚기]",
+      "tickers": [
+        "491000"
+      ],
+      "published_date": "2026-01-27",
+      "original_tickers": [
+        "007460",
+        "208340",
+        "491000"
+      ]
+    },
+    {
+      "newsId": "02843766645354456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02843766645354456&mediaCodeNo=257",
+      "title": "위고비가 흔든 MASH 판…디앤디·한미약품엔 기회일까 위기일까",
+      "tickers": [
+        "128940"
+      ],
+      "published_date": "2026-02-26",
+      "original_tickers": [
+        "128940"
+      ]
+    },
+    {
+      "newsId": "02879846645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02879846645354128&mediaCodeNo=257",
+      "title": "기술 하나로 판 키운다…토모큐브·스페클립스 전략[다크호스 플랫폼③]",
+      "tickers": [
+        "475960"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "475960"
+      ]
+    },
+    {
+      "newsId": "02482966645318376",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02482966645318376&mediaCodeNo=257",
+      "title": "'리보세라닙' FDA허가 표류 속 주가는 견고…HLB, 명과 암은?",
+      "tickers": [
+        "028300",
+        "084990"
+      ],
+      "published_date": "2026-01-16",
+      "original_tickers": [
+        "028300",
+        "084990",
+        "145020",
+        "207940"
+      ]
+    },
+    {
+      "newsId": "01180806645346256",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01180806645346256&mediaCodeNo=257",
+      "title": "김지윤 칠곡경북대병원 교수 “헴리브라, 4주간 혈중 농도 일정 유지…높은 순응도 강점”[전문가 인사...",
+      "tickers": [
+        "001060"
+      ],
+      "published_date": "2026-02-01",
+      "original_tickers": [
+        "001060"
+      ]
+    },
+    {
+      "newsId": "01216886645351176",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01216886645351176&mediaCodeNo=257",
+      "title": "'최대 3831억 상장 시총 도전' 아이엠바이오로직스 주목할 점 세 가지",
+      "tickers": [
+        "195940",
+        "338840"
+      ],
+      "published_date": "2026-02-16",
+      "original_tickers": [
+        "195940",
+        "338840",
+        "424870",
+        "456160",
+        "475830",
+        "476830",
+        "491000",
+        "AimedBio",
+        "ImmuneOncia",
+        "PFE",
+        "SNY"
+      ]
+    },
+    {
+      "newsId": "02535446645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02535446645320016&mediaCodeNo=257",
+      "title": "NGeneBio Hits Upper Price Limit After Adopting LG AI Research Institute’s Solution[K-Bio Pulse]",
+      "tickers": [
+        "196170",
+        "GSK"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "196170",
+        "GSK"
+      ]
+    },
+    {
+      "newsId": "01872886645351832",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01872886645351832&mediaCodeNo=257",
+      "title": "한독, ‘오픈 이노베이션’ 결실 맺나…항암·희귀질환 앞세워 올해 대도약 '잰걸음'",
+      "tickers": [
+        "298380",
+        "SNY"
+      ],
+      "published_date": "2026-02-18",
+      "original_tickers": [
+        "298380",
+        "SNY"
+      ]
+    },
+    {
+      "newsId": "01646566645348224",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01646566645348224&mediaCodeNo=257",
+      "title": "'몸값 거품' 불식시킨 리브스메드…기술특례 불신의 늪 마침표 찍는다",
+      "tickers": [
+        "491000"
+      ],
+      "published_date": "2026-02-07",
+      "original_tickers": [
+        "491000"
+      ]
+    },
+    {
+      "newsId": "02076246645346584",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02076246645346584&mediaCodeNo=257",
+      "title": "박정환 메쥬 대표 “환자 모니터링 시장 재편, 응급 대응·M350이 판 가른다”",
+      "tickers": [
+        "170900",
+        "458870"
+      ],
+      "published_date": "2026-02-02",
+      "original_tickers": [
+        "170900",
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01931926645352816",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01931926645352816&mediaCodeNo=257",
+      "title": "무한 확장 신약 개발 플랫폼…황금알 낳는 거위 후보는?[다크호스 플랫폼 ①]",
+      "tickers": [
+        "039200",
+        "141080"
+      ],
+      "published_date": "2026-02-21",
+      "original_tickers": [
+        "039200",
+        "141080",
+        "196170",
+        "308430",
+        "476830",
+        "GSK",
+        "LLY",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "01167686645353144",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01167686645353144&mediaCodeNo=257",
+      "title": "‘짐머 파워’ 폭발…오스테오닉, 글로벌 공급망 편입에 매출·이익 급증",
+      "tickers": [
+        "226400"
+      ],
+      "published_date": "2026-02-22",
+      "original_tickers": [
+        "226400"
+      ]
+    },
+    {
+      "newsId": "02791286645347568",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02791286645347568&mediaCodeNo=257",
+      "title": "알테오젠 로열티율 공개로 빅파마·K바이오텍 힘의 불균형 ‘수면 위로’",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-02-05",
+      "original_tickers": [
+        "196170",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02535446645347568",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02535446645347568&mediaCodeNo=257",
+      "title": "\"카티라이프 효과 확실...수술 20개월 차에도 초자연골 계속 재생\"",
+      "tickers": [
+        "086820"
+      ],
+      "published_date": "2026-02-05",
+      "original_tickers": [
+        "086820"
+      ]
+    },
+    {
+      "newsId": "02463286645321984",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02463286645321984&mediaCodeNo=257",
+      "title": "'시총 100조' 노리는 삼성바이오로직스, 美공장 인수 효과 세 가지",
+      "tickers": [
+        "207940"
+      ],
+      "published_date": "2026-01-27",
+      "original_tickers": [
+        "207940",
+        "GSK"
+      ]
+    },
+    {
+      "newsId": "02584646645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02584646645320016&mediaCodeNo=257",
+      "title": "‘30년 덴탈·3D프린팅 노하우’ 세계 최초 형상기억 투명교정장치 바탕[그래피 대해부]①",
+      "tickers": [
+        "318060"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "318060"
+      ]
+    },
+    {
+      "newsId": "02706006645380040",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02706006645380040&mediaCodeNo=257",
+      "title": "AI소재기업 거듭난 파미셀, CDMO·원료의약품 사업 확대 '드라이브'",
+      "tickers": [
+        "005690"
+      ],
+      "published_date": "2026-03-04",
+      "original_tickers": [
+        "005690"
+      ]
+    },
+    {
+      "newsId": "02046726645314768",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02046726645314768&mediaCodeNo=257",
+      "title": "클래시스 볼뉴머, \"효능 높이고 통증 줄였다\"…써마지 넘어 中1.4조 시장 재편 신호탄",
+      "tickers": [
+        "214150"
+      ],
+      "published_date": "2026-01-05",
+      "original_tickers": [
+        "214150"
+      ]
+    },
+    {
+      "newsId": "02010646645314768",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02010646645314768&mediaCodeNo=257",
+      "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+      "tickers": [
+        "049180",
+        "068270"
+      ],
+      "published_date": "2026-01-05",
+      "original_tickers": [
+        "049180",
+        "068270",
+        "LLY"
+      ]
+    },
+    {
+      "newsId": "02056566645353472",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02056566645353472&mediaCodeNo=257",
+      "title": "홍성표 피플앤드테크놀러지 대표 \"환자 모니터링 연계 플랫폼으로 넥스트 씨어스 노린다\"",
+      "tickers": [
+        "005930",
+        "008560"
+      ],
+      "published_date": "2026-02-23",
+      "original_tickers": [
+        "005930",
+        "008560",
+        "012450",
+        "039490",
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02082806645350520",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02082806645350520&mediaCodeNo=257",
+      "title": "'셀트리온 신약 파트너' 카이진 \"누적 기술 이전 규모 2조원…내년 상장 도전\"",
+      "tickers": [
+        "068270"
+      ],
+      "published_date": "2026-02-14",
+      "original_tickers": [
+        "009420",
+        "068270",
+        "069620",
+        "GSK",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01430086645313784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01430086645313784&mediaCodeNo=257",
+      "title": "\"ECM 제품에 3D 안면스캐너 기술 접목\"...레이, 에스테틱 신사업 승부수",
+      "tickers": [
+        "228670"
+      ],
+      "published_date": "2026-01-02",
+      "original_tickers": [
+        "228670"
+      ]
+    },
+    {
+      "newsId": "01210326645379384",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01210326645379384&mediaCodeNo=257",
+      "title": "자타공인 당뇨 1인자 원규장 교수 “큐라클 CU01 칼륨 걱정 줄이고 신장 지킨다\"[전문가 인사이트]",
+      "tickers": [
+        "318020"
+      ],
+      "published_date": "2026-03-02",
+      "original_tickers": [
+        "318020"
+      ]
+    },
+    {
+      "newsId": "03050406645354784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03050406645354784&mediaCodeNo=257",
+      "title": "No Envy for Semis... Intron Bio, Gencurix Hit Upper Limit[K-Bio Pulse]",
+      "tickers": [
+        "187660",
+        "229000"
+      ],
+      "published_date": "2026-02-27",
+      "original_tickers": [
+        "187660",
+        "229000",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02633846645347240",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02633846645347240&mediaCodeNo=257",
+      "title": "이의일 엑셀세라퓨틱스 대표 “대만 매출 두자릿수 이상 성장...화학조성배지로 패러다임 전환”",
+      "tickers": [
+        "373110"
+      ],
+      "published_date": "2026-02-04",
+      "original_tickers": [
+        "373110"
+      ]
+    },
+    {
+      "newsId": "01164406645321328",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01164406645321328&mediaCodeNo=257",
+      "title": "\"산업銀·K백신펀드 1·2·3호 운영사 동시 투자한 혁신신약 개발사\"[엘리시젠 대해부①]",
+      "tickers": [
+        "102460"
+      ],
+      "published_date": "2026-01-25",
+      "original_tickers": [
+        "102460"
+      ]
+    },
+    {
+      "newsId": "01908966645321656",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01908966645321656&mediaCodeNo=257",
+      "title": "'실질적 성과' 기대에 몰린 투심…엔솔바이오·엘앤케이바이오↑[바이오맥짚기]",
+      "tickers": [
+        "156100"
+      ],
+      "published_date": "2026-01-26",
+      "original_tickers": [
+        "140610",
+        "156100"
+      ]
+    },
+    {
+      "newsId": "02004086645314768",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02004086645314768&mediaCodeNo=257",
+      "title": "글로벌 시장 매출 확대 전망에 그래피·셀트리온 초강세[바이오맥짚기]",
+      "tickers": [
+        "068270",
+        "318060"
+      ],
+      "published_date": "2026-01-05",
+      "original_tickers": [
+        "049180",
+        "068270",
+        "290650",
+        "318060"
+      ]
+    },
+    {
+      "newsId": "03132406645354784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03132406645354784&mediaCodeNo=257",
+      "title": "바이젠셀, 임상 2상 결과 핵심 포인트는…조건부 허가 가능할까",
+      "tickers": [
+        "308080"
+      ],
+      "published_date": "2026-02-27",
+      "original_tickers": [
+        "308080"
+      ]
+    },
+    {
+      "newsId": "01922086645352816",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01922086645352816&mediaCodeNo=257",
+      "title": "천두성 포스트바이오 대표 “반려동물부터 가축까지, 전천후 동물헬스케어 기업 목표”",
+      "tickers": [
+        "214260",
+        "비상장"
+      ],
+      "published_date": "2026-02-21",
+      "original_tickers": [
+        "214260",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01548166645314112",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01548166645314112&mediaCodeNo=257",
+      "title": "웰리시스, 180억 프리IPO 완료…\"다중생체신호기기 라인업 확대\"",
+      "tickers": [
+        "005500",
+        "005930"
+      ],
+      "published_date": "2026-01-03",
+      "original_tickers": [
+        "005500",
+        "005930",
+        "030610",
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02384566645320344",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02384566645320344&mediaCodeNo=257",
+      "title": "'키트루다 SC' J-코드 확보…알테오젠, SC제형 전환 가속화 수혜 기대",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-01-22",
+      "original_tickers": [
+        "196170",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02863446645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02863446645379712&mediaCodeNo=257",
+      "title": "파인메딕스, 내시경용 지혈 시술기구 日하반기 허가...시장 전망은?",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02378006645317720",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02378006645317720&mediaCodeNo=257",
+      "title": "AI Drug Discovery & Medical Sectors Take Flight[K-Bio Pulse]",
+      "tickers": [
+        "009290",
+        "221800"
+      ],
+      "published_date": "2026-01-14",
+      "original_tickers": [
+        "009290",
+        "221800",
+        "388870"
+      ]
+    },
+    {
+      "newsId": "01220166645351176",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01220166645351176&mediaCodeNo=257",
+      "title": "오상훈 오가노이드사이언스 대표 “성장 전략 대전환, 오닉스바이오파운더리로 규모의 경제 가능”",
+      "tickers": [
+        "476040"
+      ],
+      "published_date": "2026-02-16",
+      "original_tickers": [
+        "000810",
+        "005930",
+        "085660",
+        "476040"
+      ]
+    },
+    {
+      "newsId": "01935206645321656",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01935206645321656&mediaCodeNo=257",
+      "title": "삼일제약, 연골 되돌리는 로어시비빈트로 수천억 '잭팟' 꿈꾼다",
+      "tickers": [
+        "000520"
+      ],
+      "published_date": "2026-01-26",
+      "original_tickers": [
+        "000520",
+        "078160",
+        "950160"
+      ]
+    },
+    {
+      "newsId": "01144726645321328",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01144726645321328&mediaCodeNo=257",
+      "title": "이영신 씨어스 대표 “환자 모니터링 사업, 수가 전략이 10년 데스밸리 끝냈다”",
+      "tickers": [
+        "458870"
+      ],
+      "published_date": "2026-01-25",
+      "original_tickers": [
+        "458870"
+      ]
+    },
+    {
+      "newsId": "02791286645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02791286645353800&mediaCodeNo=257",
+      "title": "인체 유래 ECM 스킨부스터, 미용인가 치료인가…규제는 어떻게",
+      "tickers": [
+        "042520",
+        "290650"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "042520",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "02122166645346584",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02122166645346584&mediaCodeNo=257",
+      "title": "ABL바이오, 사노피 변수에 20만원선 붕괴…HLB·루닛도 악재 부각[바이오맥짚기]",
+      "tickers": [
+        "328130",
+        "SNY"
+      ],
+      "published_date": "2026-02-02",
+      "original_tickers": [
+        "028300",
+        "298380",
+        "328130",
+        "380550",
+        "NEUROPHET",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "03929446645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03929446645348880&mediaCodeNo=257",
+      "title": "\"올해 비만약 이어 에스테틱 유통 확대로 매출 첫 2000억·흑자 전환 예고\"[블루엠텍 대해부...",
+      "tickers": [
+        "439580"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "200670",
+        "439580"
+      ]
+    },
+    {
+      "newsId": "01220166645379056",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01220166645379056&mediaCodeNo=257",
+      "title": "루닛·뷰노·코어라인 상장 후 지속된 시장조달…자생력 갖추려면",
+      "tickers": [
+        "328130",
+        "338220"
+      ],
+      "published_date": "2026-03-01",
+      "original_tickers": [
+        "328130",
+        "338220",
+        "384470"
+      ]
+    },
+    {
+      "newsId": "01197206645379384",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01197206645379384&mediaCodeNo=257",
+      "title": "리가켐바이오, 1년새 항체 도입 6개…항체 강화 하는 이유",
+      "tickers": [
+        "141080"
+      ],
+      "published_date": "2026-03-02",
+      "original_tickers": [
+        "141080"
+      ]
+    },
+    {
+      "newsId": "02640406645347896",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02640406645347896&mediaCodeNo=257",
+      "title": "Xcell Therapeutics Hits Upper Limit...Celemics·QuadMedicine ↑[K-Bio Pulse]",
+      "tickers": [
+        "331920",
+        "461030"
+      ],
+      "published_date": "2026-02-06",
+      "original_tickers": [
+        "331920",
+        "461030"
+      ]
+    },
+    {
+      "newsId": "02473126645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02473126645320016&mediaCodeNo=257",
+      "title": "한상열 인제니아 대표 “추가 기술수출·5년 누적 매출 8000억 기대”",
+      "tickers": [
+        "458870",
+        "AimedBio"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "458870",
+        "AimedBio",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02479686645322312",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02479686645322312&mediaCodeNo=257",
+      "title": "MediPost hits limit on Japan valuation...Hyundai Bio rallies[K-Bio Pulse]",
+      "tickers": [
+        "048410",
+        "078160"
+      ],
+      "published_date": "2026-01-28",
+      "original_tickers": [
+        "048410",
+        "078160",
+        "187660"
+      ]
+    },
+    {
+      "newsId": "02371446645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02371446645318048&mediaCodeNo=257",
+      "title": "'시총 6·11·26조 기업들과 동시 협상'… 비엘팜텍, 분자접착제로 조 단위 빅딜 정조준",
+      "tickers": [
+        "065170"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "065170",
+        "LLY",
+        "NVO"
+      ]
+    },
+    {
+      "newsId": "02469846645315752",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02469846645315752&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]전립선암 치료제 상용화 초읽기 셀비온, 기업가치 ‘퀀텀점프’ 예고⑦",
+      "tickers": [
+        "308430"
+      ],
+      "published_date": "2026-01-08",
+      "original_tickers": [
+        "196170",
+        "308430",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02788006645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02788006645354128&mediaCodeNo=257",
+      "title": "신태현 대표 “나노구조체 '인비니티', MRI조영제·ADC 겨냥”[인벤테라 대해부①]",
+      "tickers": [
+        "004720",
+        "065170"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "004720",
+        "065170",
+        "293480",
+        "303810",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01302166645350848",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01302166645350848&mediaCodeNo=257",
+      "title": "남학현 아이센스 대표 “라이프스캔과 독점계약 아냐…성과입증시 확장”",
+      "tickers": [
+        "099190"
+      ],
+      "published_date": "2026-02-15",
+      "original_tickers": [
+        "099190",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02397686645315096",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02397686645315096&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]‘텐배거’ 씨어스테크놀로지, 원격 환자 모니터링 시장 장악⑤",
+      "tickers": [
+        "458870"
+      ],
+      "published_date": "2026-01-06",
+      "original_tickers": [
+        "458870"
+      ]
+    },
+    {
+      "newsId": "02660086645354456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02660086645354456&mediaCodeNo=257",
+      "title": "'주식 병합' 경남제약, 상한가 직행...바이젠셀·비보존제약도 ↑[바이오맥짚기]",
+      "tickers": [
+        "053950",
+        "308080"
+      ],
+      "published_date": "2026-02-26",
+      "original_tickers": [
+        "053950",
+        "128940",
+        "308080"
+      ]
+    },
+    {
+      "newsId": "02092646645350520",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02092646645350520&mediaCodeNo=257",
+      "title": "뎅기열 '팬데믹' 직면한 베트남, K-바이오 ‘구원투수’ 될까",
+      "tickers": [
+        "048410",
+        "MRK"
+      ],
+      "published_date": "2026-02-14",
+      "original_tickers": [
+        "048410",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02578086645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02578086645320016&mediaCodeNo=257",
+      "title": "“소아부터 노인까지 시장 무한 확장” 형상기억 투명교정장치[그래피 대해부]②",
+      "tickers": [
+        "318060"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "318060"
+      ]
+    },
+    {
+      "newsId": "01554726645316408",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01554726645316408&mediaCodeNo=257",
+      "title": "[2026 유망바이오 톱10]큐리언트, ‘모카시클립’ 잠재력 끌어낼 한 해⑨",
+      "tickers": [
+        "115180"
+      ],
+      "published_date": "2026-01-10",
+      "original_tickers": [
+        "115180",
+        "MRK",
+        "PFE"
+      ]
+    },
+    {
+      "newsId": "02351766645315096",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02351766645315096&mediaCodeNo=257",
+      "title": "파로스아이바이오 '강세'…오름테라퓨틱, 신고가 경신[바이오 맥짚기]",
+      "tickers": [
+        "388870",
+        "475830"
+      ],
+      "published_date": "2026-01-06",
+      "original_tickers": [
+        "028300",
+        "187660",
+        "196300",
+        "226950",
+        "388870",
+        "389650",
+        "475830",
+        "477120",
+        "PFE"
+      ]
+    },
+    {
+      "newsId": "01817126645351832",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01817126645351832&mediaCodeNo=257",
+      "title": "\"회생계획안 결의만 남았다\" 동성제약 인수 추진하는 태광산업...왜?",
+      "tickers": [
+        "002210",
+        "003240"
+      ],
+      "published_date": "2026-02-18",
+      "original_tickers": [
+        "002210",
+        "003240",
+        "018250"
+      ]
+    },
+    {
+      "newsId": "02581366645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02581366645320016&mediaCodeNo=257",
+      "title": "\"3년 내 美매출 수백억원 기대…관세·기술 유출도 완벽 대비”[그래피 대해부]③",
+      "tickers": [
+        "318060"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "318060"
+      ]
+    },
+    {
+      "newsId": "01876166645351832",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01876166645351832&mediaCodeNo=257",
+      "title": "아프리카돼지열병 전수조사 개시…동물진단 옵티팜 수혜 기대",
+      "tickers": [
+        "153710"
+      ],
+      "published_date": "2026-02-18",
+      "original_tickers": [
+        "153710"
+      ]
+    },
+    {
+      "newsId": "01574406645316408",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01574406645316408&mediaCodeNo=257",
+      "title": "아미코젠 \"올해 배지·레진 신사업 매출 약 200억 전망…BEP 근접 기대\"",
+      "tickers": [
+        "092040"
+      ],
+      "published_date": "2026-01-10",
+      "original_tickers": [
+        "092040"
+      ]
+    },
+    {
+      "newsId": "02378006645315752",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02378006645315752&mediaCodeNo=257",
+      "title": "JPM Spotlight...CuroCell Eyes Korea’s First CAR-T [K-bio pulse]",
+      "tickers": [
+        "207940",
+        "328130"
+      ],
+      "published_date": "2026-01-08",
+      "original_tickers": [
+        "207940",
+        "328130",
+        "AZN",
+        "GSK",
+        "LLY"
+      ]
+    },
+    {
+      "newsId": "02797846645350192",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02797846645350192&mediaCodeNo=257",
+      "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+      "tickers": [
+        "005690",
+        "048410"
+      ],
+      "published_date": "2026-02-13",
+      "original_tickers": [
+        "005690",
+        "048410",
+        "099190",
+        "187660",
+        "229000"
+      ]
+    },
+    {
+      "newsId": "01210326645350848",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01210326645350848&mediaCodeNo=257",
+      "title": "'창업자 별세' 오스코텍, 경영권 전망과 제노스코 지분 인수 향방은?",
+      "tickers": [
+        "039200"
+      ],
+      "published_date": "2026-02-15",
+      "original_tickers": [
+        "039200"
+      ]
+    },
+    {
+      "newsId": "02036886645319688",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02036886645319688&mediaCodeNo=257",
+      "title": "셀루메드, 경영권 매각 기대감에 '上'...지놈앤컴퍼니·큐리옥스도 ↑ [바이오맥짚기]",
+      "tickers": [
+        "049180",
+        "314130"
+      ],
+      "published_date": "2026-01-20",
+      "original_tickers": [
+        "049180",
+        "314130",
+        "445680",
+        "AZN"
+      ]
+    },
+    {
+      "newsId": "02532166645320016",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02532166645320016&mediaCodeNo=257",
+      "title": "삼익제약, 주가 50% 띄운 장기지속형 플랫폼…뜯어보니 기술 경쟁력↓",
+      "tickers": [
+        "014950"
+      ],
+      "published_date": "2026-01-21",
+      "original_tickers": [
+        "014950",
+        "087010",
+        "389470",
+        "456160"
+      ]
+    },
+    {
+      "newsId": "01371046645313784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01371046645313784&mediaCodeNo=257",
+      "title": "김종우 듀켐바이오 부회장 “2026년 국내 유일 치매진단제 매출 두 배 증가 전망”",
+      "tickers": [
+        "176750"
+      ],
+      "published_date": "2026-01-02",
+      "original_tickers": [
+        "005500",
+        "176750"
+      ]
+    },
+    {
+      "newsId": "02742086645352488",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02742086645352488&mediaCodeNo=257",
+      "title": "돈되는 환자 모니터링 시장, 씨어스 vs 메쥬...시장 재편될까[용호상박 K바이오]",
+      "tickers": [
+        "458870",
+        "비상장"
+      ],
+      "published_date": "2026-02-20",
+      "original_tickers": [
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02735526645347240",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02735526645347240&mediaCodeNo=257",
+      "title": "미용의료기기 시총 왕좌 내준 파마리서치, 1위 오른 클래시스…해외 확장 속도가 '키'",
+      "tickers": [
+        "214150",
+        "214450"
+      ],
+      "published_date": "2026-02-04",
+      "original_tickers": [
+        "042520",
+        "214150",
+        "214450",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "02384566645318376",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02384566645318376&mediaCodeNo=257",
+      "title": "전승호 코오롱티슈진 대표 \"TG-C, 세계 최초 무릎골관절염 근원치료제 기대\"",
+      "tickers": [
+        "950160"
+      ],
+      "published_date": "2026-01-16",
+      "original_tickers": [
+        "102940",
+        "326030",
+        "950160"
+      ]
+    },
+    {
+      "newsId": "01931926645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01931926645348880&mediaCodeNo=257",
+      "title": "트럼프Rx 태풍속…'주력약 퇴출' 삼일↓·'M&A 기대' 오스코텍↑[바이오맥짚기]",
+      "tickers": [
+        "039200"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "000100",
+        "000520",
+        "039200",
+        "314130"
+      ]
+    },
+    {
+      "newsId": "02571526645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02571526645318048&mediaCodeNo=257",
+      "title": "홍유석 지놈앤컴퍼니 대표 \"전임상 단계 ADC신약 2건 추가 기술 이전 목표\"",
+      "tickers": [
+        "314130"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "128940",
+        "314130",
+        "347850",
+        "GSK"
+      ]
+    },
+    {
+      "newsId": "02269766645317720",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02269766645317720&mediaCodeNo=257",
+      "title": "독일 판매 막힌 키트루다SC, 하반기 유럽서 판매금지 늘어날까",
+      "tickers": [
+        "196170",
+        "MRK"
+      ],
+      "published_date": "2026-01-14",
+      "original_tickers": [
+        "196170",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "01128326645348552",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01128326645348552&mediaCodeNo=257",
+      "title": "삼성·롯데·셀트리온, 美 CDMO 공장 스펙 뜯어봤더니",
+      "tickers": [
+        "068270"
+      ],
+      "published_date": "2026-02-08",
+      "original_tickers": [
+        "068270",
+        "207940",
+        "GSK",
+        "LLY"
+      ]
+    },
+    {
+      "newsId": "02837206645352488",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02837206645352488&mediaCodeNo=257",
+      "title": "\"공모주 사, 말아?\" 카나프테라퓨틱스, 투자 핵심 포인트 세 가지",
+      "tickers": [
+        "000100",
+        "006280"
+      ],
+      "published_date": "2026-02-20",
+      "original_tickers": [
+        "000100",
+        "006280",
+        "039200",
+        "170900",
+        "AZN",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02250086645346584",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02250086645346584&mediaCodeNo=257",
+      "title": "'해외 창업' K바이오, 기술 이전 실적 앞세워 줄줄이 코스닥행",
+      "tickers": [
+        "016360",
+        "039200"
+      ],
+      "published_date": "2026-02-02",
+      "original_tickers": [
+        "016360",
+        "039200",
+        "475830",
+        "950160",
+        "950200",
+        "950210",
+        "950220",
+        "AZN",
+        "GSK",
+        "ROG",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02404246645315424",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02404246645315424&mediaCodeNo=257",
+      "title": "고종성 제노스코 대표 “진짜 치료하는 폐섬유증 신약 자신…잠재가치 2조 넘을 것”",
+      "tickers": [
+        "039200",
+        "ROG"
+      ],
+      "published_date": "2026-01-07",
+      "original_tickers": [
+        "039200",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "03890086645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03890086645353800&mediaCodeNo=257",
+      "title": "최대주주 지분 희석의 후폭풍…경영권 흔들리는 바이오기업은",
+      "tickers": [
+        "003000",
+        "003120"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "003000",
+        "003120",
+        "005500",
+        "010060",
+        "039200",
+        "084990",
+        "092040",
+        "145720",
+        "217730",
+        "268600"
+      ]
+    },
+    {
+      "newsId": "03850726645380040",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03850726645380040&mediaCodeNo=257",
+      "title": "현대바이오, 뎅기열 치료제 임상 2·3상 진입 초읽기...‘베트남 보건 실세 총출동’",
+      "tickers": [
+        "048410"
+      ],
+      "published_date": "2026-03-04",
+      "original_tickers": [
+        "048410"
+      ]
+    },
+    {
+      "newsId": "02591206645322312",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02591206645322312&mediaCodeNo=257",
+      "title": "바이젠셀, 보령發 오버행 부담 조기 해소…의료장비 도매·CMO로 승부",
+      "tickers": [
+        "003850",
+        "308080"
+      ],
+      "published_date": "2026-01-28",
+      "original_tickers": [
+        "003850",
+        "308080"
+      ]
+    },
+    {
+      "newsId": "02794566645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02794566645354128&mediaCodeNo=257",
+      "title": "\"조영제 해외 출시·글로벌 기술이전으로 2028년 흑전 예고\"[인벤테라 대해부③]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02482966645316080",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02482966645316080&mediaCodeNo=257",
+      "title": "장기지속형 주사 새해에도 힘받는다...지투지바이오·삼익제약 ↑ [바이오맥짚기]",
+      "tickers": [
+        "014950",
+        "456160"
+      ],
+      "published_date": "2026-01-09",
+      "original_tickers": [
+        "014950",
+        "049180",
+        "456160"
+      ]
+    },
+    {
+      "newsId": "02558406645352160",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02558406645352160&mediaCodeNo=257",
+      "title": "Y2Solution and U2Bio Surge on Rising Expectations for Growth Potential[K-Bio Pulse]",
+      "tickers": [
+        "221800"
+      ],
+      "published_date": "2026-02-19",
+      "original_tickers": [
+        "221800"
+      ]
+    },
+    {
+      "newsId": "01554726645313456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01554726645313456&mediaCodeNo=257",
+      "title": "'엘앤씨바이오·광동제약과 혈맹' 휴메딕스, 올해 기대되는 이유",
+      "tickers": [
+        "009290",
+        "200670"
+      ],
+      "published_date": "2026-01-01",
+      "original_tickers": [
+        "009290",
+        "084110",
+        "145020",
+        "200670",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "02548566645349864",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02548566645349864&mediaCodeNo=257",
+      "title": "AprilBio Swings from Cold to Hot...Rokit and Hugel Climb on Earnings Strength[K-Bio Pulse]",
+      "tickers": [
+        "397030"
+      ],
+      "published_date": "2026-02-12",
+      "original_tickers": [
+        "397030"
+      ]
+    },
+    {
+      "newsId": "02555126645349208",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02555126645349208&mediaCodeNo=257",
+      "title": "제일바이오, 2만9000% 상승 착시효과…이뮨온시아는 대규모 유증에 급락[바이오맥짚기]",
+      "tickers": [
+        "424870"
+      ],
+      "published_date": "2026-02-10",
+      "original_tickers": [
+        "000100",
+        "052670",
+        "328130",
+        "358570",
+        "424870",
+        "ImmuneOncia"
+      ]
+    },
+    {
+      "newsId": "03220966645320672",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03220966645320672&mediaCodeNo=257",
+      "title": "엔솔바이오, 골관절염 치료제 임상 3상 승인...‘기술수출 논의 본격화 ’",
+      "tickers": [
+        "140610"
+      ],
+      "published_date": "2026-01-23",
+      "original_tickers": [
+        "140610"
+      ]
+    },
+    {
+      "newsId": "02883126645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02883126645349536&mediaCodeNo=257",
+      "title": "투자자가 묻다...머크와 협력 진행 상황은? [셀비온 대해부]③",
+      "tickers": [
+        "308430",
+        "MRK"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "196170",
+        "308430",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "03093046645317720",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03093046645317720&mediaCodeNo=257",
+      "title": "“Xellar Effect”… Woojung Bio Jumps[K-Bio Pulse]",
+      "tickers": [
+        "028300"
+      ],
+      "published_date": "2026-01-14",
+      "original_tickers": [
+        "028300"
+      ]
+    },
+    {
+      "newsId": "02942166645354456",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02942166645354456&mediaCodeNo=257",
+      "title": "134억 프리IPO 완료, '연내 상장 도전' 에이티센스...강점은?",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-26",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02482966645320672",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02482966645320672&mediaCodeNo=257",
+      "title": "알테오젠, 일시적 투심하락 관망세 전환…삼양바이오팜 가파른 상승[바이오맥짚기]",
+      "tickers": [
+        "196170"
+      ],
+      "published_date": "2026-01-23",
+      "original_tickers": [
+        "000070",
+        "196170",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02456726645317720",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02456726645317720&mediaCodeNo=257",
+      "title": "안재영 보로노이 미국지사장 \"고형암 신약 VRN 10·VRN11 기술 이전 총력\"",
+      "tickers": [
+        "310210"
+      ],
+      "published_date": "2026-01-14",
+      "original_tickers": [
+        "001060",
+        "195940",
+        "310210",
+        "LLY"
+      ]
+    },
+    {
+      "newsId": "01935206645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01935206645348880&mediaCodeNo=257",
+      "title": "Samil Plunges on 'Main Drug Withdrawal' while Oscotec Soars on 'M&A Hopes' [K...",
+      "tickers": [
+        "000520",
+        "039200"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "000520",
+        "039200"
+      ]
+    },
+    {
+      "newsId": "02833926645352488",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02833926645352488&mediaCodeNo=257",
+      "title": "엠투웬티, ‘근손실 0.4%’ 중주파로 SCI저널 등재...\"디지털치료제 선도 \"",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-20",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02056566645348880",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02056566645348880&mediaCodeNo=257",
+      "title": "동국제약·휴메딕스·엘앤씨바이오 ‘기술 전이’ 전략 잭팟…다음 타자는",
+      "tickers": [
+        "086450",
+        "200670"
+      ],
+      "published_date": "2026-02-09",
+      "original_tickers": [
+        "065510",
+        "086450",
+        "094170",
+        "200670",
+        "290650"
+      ]
+    },
+    {
+      "newsId": "01203766645351176",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01203766645351176&mediaCodeNo=257",
+      "title": "지난해 흑자전환 성공한 지엘팜텍, 실적 퀀텀점프 복안은?",
+      "tickers": [
+        "204840"
+      ],
+      "published_date": "2026-02-16",
+      "original_tickers": [
+        "128940",
+        "204840"
+      ]
+    },
+    {
+      "newsId": "03047126645354784",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03047126645354784&mediaCodeNo=257",
+      "title": "반도체주 안 부럽다...인트론바이오·젠큐릭스 등 상한가 신고[바이오맥짚기]",
+      "tickers": [
+        "048530",
+        "229000"
+      ],
+      "published_date": "2026-02-27",
+      "original_tickers": [
+        "000250",
+        "048530",
+        "187660",
+        "229000",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "02624006645380040",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02624006645380040&mediaCodeNo=257",
+      "title": "'검은 화요일' 속 빛난 바이오株…우정바이오·국전약품·시지메디텍 나란히 상승[바이오맥짚...",
+      "tickers": [
+        "307750"
+      ],
+      "published_date": "2026-03-04",
+      "original_tickers": [
+        "056090",
+        "307750"
+      ]
+    },
+    {
+      "newsId": "01580966645316408",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01580966645316408&mediaCodeNo=257",
+      "title": "'SK·롯데' 오너 3세 바이오사업에 전진 배치한 까닭은?",
+      "tickers": [
+        "207940",
+        "326030"
+      ],
+      "published_date": "2026-01-10",
+      "original_tickers": [
+        "207940",
+        "326030"
+      ]
+    },
+    {
+      "newsId": "02801126645380040",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02801126645380040&mediaCodeNo=257",
+      "title": "‘AOC가 뭐길래’ 진양곤 HLB 의장의 파나진 잇단 지분 매수 배경은",
+      "tickers": [
+        "028300"
+      ],
+      "published_date": "2026-03-04",
+      "original_tickers": [
+        "028300"
+      ]
+    },
+    {
+      "newsId": "02122166645319688",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02122166645319688&mediaCodeNo=257",
+      "title": "환자 모니터링 시장 경쟁 자신한 메디아나…실제 경쟁력은",
+      "tickers": [
+        "041920"
+      ],
+      "published_date": "2026-01-20",
+      "original_tickers": [
+        "000100",
+        "041920",
+        "069620",
+        "170900",
+        "458870",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01567846645321000",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01567846645321000&mediaCodeNo=257",
+      "title": "윤인영 분당서울대병원 교수 \"앱노트랙, 수면무호흡증시장 게임체인저 가능\"[전문가 인사이...",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-01-24",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02433766645318048",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02433766645318048&mediaCodeNo=257",
+      "title": "에이즈 재발 막는 韓 기술 네이처 논문 등재",
+      "tickers": [
+        "445680",
+        "AZN"
+      ],
+      "published_date": "2026-01-15",
+      "original_tickers": [
+        "445680",
+        "AZN",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "03138966645379712",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=03138966645379712&mediaCodeNo=257",
+      "title": "파마리서치, 재조합단백질 신약개발기업 코넥스트와 '중장기 파트너십'",
+      "tickers": [
+        "214450"
+      ],
+      "published_date": "2026-03-03",
+      "original_tickers": [
+        "214450"
+      ]
+    },
+    {
+      "newsId": "02797846645353800",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02797846645353800&mediaCodeNo=257",
+      "title": "폭스재단·NIH가 만든 실적 점프…소마젠, 흑자 성장 시대 개막",
+      "tickers": [
+        "950200"
+      ],
+      "published_date": "2026-02-24",
+      "original_tickers": [
+        "038290",
+        "950200",
+        "AZN"
+      ]
+    },
+    {
+      "newsId": "02709286645347896",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02709286645347896&mediaCodeNo=257",
+      "title": "‘아프던 방광암 검사 끝’…지노믹트리 얼리텍-B, 국내 1400억에 해외 성장 어디까지?",
+      "tickers": [
+        "228760"
+      ],
+      "published_date": "2026-02-06",
+      "original_tickers": [
+        "228760"
+      ]
+    },
+    {
+      "newsId": "02784726645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02784726645349536&mediaCodeNo=257",
+      "title": "에이프릴바이오, 임상 결과 전 내부자 매도…셀비온·뉴로핏은 강세[바이오 맥짚기]",
+      "tickers": [
+        "308430",
+        "380550"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "308430",
+        "380550",
+        "397030",
+        "NEUROPHET",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02545286645316080",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02545286645316080&mediaCodeNo=257",
+      "title": "\"개량신약·CDMO 전면에\"...다산제약, 올해 IPO 대어 예고",
+      "tickers": [
+        "028300",
+        "068270"
+      ],
+      "published_date": "2026-01-09",
+      "original_tickers": [
+        "028300",
+        "068270",
+        "086450",
+        "185750"
+      ]
+    },
+    {
+      "newsId": "01141446645353144",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01141446645353144&mediaCodeNo=257",
+      "title": "'옥석가리기' 본격화된 AI 신약·진단...향후 전망은?[다크호스 플랫폼②]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-02-22",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "02794566645349536",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02794566645349536&mediaCodeNo=257",
+      "title": "내부자 매도에 흔들린 에이프릴바이오, 파트너사 임상 성과로 '반전'",
+      "tickers": [
+        "397030"
+      ],
+      "published_date": "2026-02-11",
+      "original_tickers": [
+        "084990",
+        "215600",
+        "397030"
+      ]
+    },
+    {
+      "newsId": "02479686645320672",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02479686645320672&mediaCodeNo=257",
+      "title": "Alteogen Sees Temporary Dip in Investor Sentiment Market Turns Cautious[K-Bio Pulse]",
+      "tickers": [
+        "196170",
+        "MRK"
+      ],
+      "published_date": "2026-01-23",
+      "original_tickers": [
+        "196170",
+        "MRK"
+      ]
+    },
+    {
+      "newsId": "02063126645317064",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02063126645317064&mediaCodeNo=257",
+      "title": "올해 주목되는 글로벌 바이오시장 키워드 '신경질환·항암·비만'",
+      "tickers": [
+        "000100",
+        "006280"
+      ],
+      "published_date": "2026-01-12",
+      "original_tickers": [
+        "000100",
+        "006280",
+        "024850",
+        "028300",
+        "039200",
+        "068270",
+        "128940",
+        "170900",
+        "226950",
+        "249420",
+        "347850",
+        "476830",
+        "LLY",
+        "PFE",
+        "ROG",
+        "SNY",
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "04309926645314768",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=04309926645314768&mediaCodeNo=257",
+      "title": "'바토클리맙' 상용화 삐걱…한올바이오파마 \"일본 카드 남았다\"",
+      "tickers": [
+        "009420"
+      ],
+      "published_date": "2026-01-05",
+      "original_tickers": [
+        "009420"
+      ]
+    },
+    {
+      "newsId": "01580966645318704",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01580966645318704&mediaCodeNo=257",
+      "title": "이동헌 에이슬립 대표 \"착용 없는 수면 데이터, 글로벌 표준 만들 것\" [에이슬립 대해부③]",
+      "tickers": [
+        "비상장"
+      ],
+      "published_date": "2026-01-17",
+      "original_tickers": [
+        "비상장"
+      ]
+    },
+    {
+      "newsId": "01784326645379056",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01784326645379056&mediaCodeNo=257",
+      "title": "영원한 강자 없다(?)...시험대 오른 비만약 제왕 노보노디스크 [클릭, 글로벌 제약·바이오]",
+      "tickers": [
+        "NVO"
+      ],
+      "published_date": "2026-03-01",
+      "original_tickers": [
+        "LLY",
+        "NVO"
+      ]
+    },
+    {
+      "newsId": "02486246645316080",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02486246645316080&mediaCodeNo=257",
+      "title": "Long-Acting Injectables Gain Momentum in the New Year...Samik Pharm and G2GBio Surge[K-Bio Pulse]",
+      "tickers": [
+        "049180"
+      ],
+      "published_date": "2026-01-09",
+      "original_tickers": [
+        "049180"
+      ]
+    },
+    {
+      "newsId": "01941766645353472",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01941766645353472&mediaCodeNo=257",
+      "title": "Yuvezzi Approval Lifts Kwangdong...Biotoxtech Jumps on Record Primate Deal[K-Bio Pulse]",
+      "tickers": [
+        "009290"
+      ],
+      "published_date": "2026-02-23",
+      "original_tickers": [
+        "009290"
+      ]
+    },
+    {
+      "newsId": "02650246645354128",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02650246645354128&mediaCodeNo=257",
+      "title": "Hanmi Science Jumps Amid Power Struggle Over Corporate Control[K-BIO Pulse]",
+      "tickers": [
+        "068270",
+        "128940"
+      ],
+      "published_date": "2026-02-25",
+      "original_tickers": [
+        "068270",
+        "128940",
+        "187660"
+      ]
+    },
+    {
+      "newsId": "01594086645318704",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01594086645318704&mediaCodeNo=257",
+      "title": "케어젠 'CG-P5' 1상 마침표…신약개발사 전환 시험대",
+      "tickers": [
+        "214370"
+      ],
+      "published_date": "2026-01-17",
+      "original_tickers": [
+        "214370"
+      ]
+    },
+    {
+      "newsId": "02633846645347568",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=02633846645347568&mediaCodeNo=257",
+      "title": "ASF outbreak lifts Komipharm...Biodyne gains spotlight[K-Bio Pulse]",
+      "tickers": [
+        "028300",
+        "041960"
+      ],
+      "published_date": "2026-02-05",
+      "original_tickers": [
+        "028300",
+        "041960",
+        "314930",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "01948326645317064",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01948326645317064&mediaCodeNo=257",
+      "title": "JPMHC 참석 기업 주목…'유봇' 기대감에 WSI↑[바이오맥짚기]",
+      "tickers": [
+        "068270",
+        "229000"
+      ],
+      "published_date": "2026-01-12",
+      "original_tickers": [
+        "068270",
+        "229000",
+        "299170",
+        "334970",
+        "476830",
+        "ROG"
+      ]
+    },
+    {
+      "newsId": "01174246645316736",
+      "url": "https://pharm.edaily.co.kr/News/Read?newsId=01174246645316736&mediaCodeNo=257",
+      "title": "'매출 더블업 성장' 넥스트바이오메디컬, 올해 첫 연간 흑자 전환 예고",
+      "tickers": [
+        "389650"
+      ],
+      "published_date": "2026-01-11",
+      "original_tickers": [
+        "187660",
+        "389650",
+        "477120"
+      ]
+    }
+  ]
+}

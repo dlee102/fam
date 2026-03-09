@@ -41,3 +41,15 @@ fam/
 ## API
 
 - `GET /api/health` - 헬스체크 엔드포인트
+- `GET /api/quant/scores?date=YYYYMMDD&symbol=ISIN` - 퀀트 점수 (외국인 수급, 거래량, 호가 불균형)
+
+## 퀀트 점수 (quant/)
+
+`02.TRADING2/04. data` 의 books, trades, foreign_flow parquet 기반 점수 계산.
+
+```bash
+pip install -r requirements-quant.txt
+python3 -m quant.run 20240102 --symbol KR7000020008
+```
+
+자세한 내용은 `quant/README.md` 참고.

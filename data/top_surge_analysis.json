@@ -1,0 +1,2207 @@
+{
+  "generated_at": "2026-03-09T14:23:10.886560",
+  "horizons": [
+    1,
+    2,
+    3,
+    10
+  ],
+  "top_n": 30,
+  "total_pairs": 637,
+  "top_by_horizon": {
+    "1": [
+      {
+        "rank": 1,
+        "ticker": "373110",
+        "name": "엑셀세라퓨틱스",
+        "title": "이의일 엑셀세라퓨틱스 대표 “대만 매출 두자릿수 이상 성장...화학조성배지로 패러다임 전환”",
+        "ret_pct": 29.98,
+        "ret_t0_pct": -1.8,
+        "vol_ratio": 1.27,
+        "gap_pct": 0.8,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-04"
+      },
+      {
+        "rank": 2,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "현대바이오, 뎅기열 치료제 임상 2·3상 진입 초읽기...‘베트남 보건 실세 총출동’",
+        "ret_pct": 29.97,
+        "ret_t0_pct": -27.86,
+        "vol_ratio": 0.37,
+        "gap_pct": -1.96,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "임상/데이터"
+        ],
+        "t0_date": "2026-03-04"
+      },
+      {
+        "rank": 3,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "Bio Stocks Unfazed by ‘Black Monday’ Rout...Neurophet and BL Pharmtech Surge [K-",
+        "ret_pct": 29.94,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-03"
+      },
+      {
+        "rank": 4,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "‘검은 월요일’도 뉴로핏·비엘팜텍 등 바이오 상승세 못 꺾었다↑ [바이오맥짚기]",
+        "ret_pct": 29.94,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-03"
+      },
+      {
+        "rank": 5,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+        "ret_pct": 29.94,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 6,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "글로벌 시장 매출 확대 전망에 그래피·셀트리온 초강세[바이오맥짚기]",
+        "ret_pct": 29.94,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 7,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "BL PharmTech hits five straight limit ups...GemVax extends rally [K-bio pulse]",
+        "ret_pct": 29.81,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 8,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+        "ret_pct": 29.81,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 9,
+        "ticker": "354200",
+        "name": "엔젠바이오",
+        "title": "셀비온·큐라클, 임상 성과에 사업화 기대 점화[바이오맥짚기]",
+        "ret_pct": 29.8,
+        "ret_t0_pct": -9.58,
+        "vol_ratio": 0.43,
+        "gap_pct": -0.22,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "임상/데이터"
+        ],
+        "t0_date": "2026-01-30"
+      },
+      {
+        "rank": 10,
+        "ticker": "221800",
+        "name": "유투바이오",
+        "title": "Shares of Kwangdong Soar as FDA Approves Presbyopia Eye Drop...U2Bio·CorestemChe",
+        "ret_pct": 29.79,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-02-20"
+      },
+      {
+        "rank": 11,
+        "ticker": "221800",
+        "name": "유투바이오",
+        "title": "광동제약, 판권 보유 노안치료제 FDA 승인 '上'...유투바이오·코아스템켐온도 ↑[바이오맥짚...",
+        "ret_pct": 29.79,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-02-20"
+      },
+      {
+        "rank": 12,
+        "ticker": "078160",
+        "name": "메디포스트",
+        "title": "삼일제약, 연골 되돌리는 로어시비빈트로 수천억 '잭팟' 꿈꾼다",
+        "ret_pct": 29.77,
+        "ret_t0_pct": 9.65,
+        "vol_ratio": 3.77,
+        "gap_pct": -1.94,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-26"
+      },
+      {
+        "rank": 13,
+        "ticker": "290650",
+        "name": "엘앤씨바이오",
+        "title": "시장 주류로 떠오른 인체유래 스킨부스터...엘엔씨바이오 등 기업가치 제고 '주목'",
+        "ret_pct": 23.36,
+        "ret_t0_pct": 3.34,
+        "vol_ratio": 1.59,
+        "gap_pct": -0.86,
+        "strategies": [
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 14,
+        "ticker": "082270",
+        "name": "젬백스",
+        "title": "“약 한번 맞아보고 죽고 싶다”…젬백스, GV1001 조건부 허가 승부수",
+        "ret_pct": 21.82,
+        "ret_t0_pct": 0.44,
+        "vol_ratio": 1.12,
+        "gap_pct": -5.88,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-01-27"
+      },
+      {
+        "rank": 15,
+        "ticker": "086040",
+        "name": "바이오톡스텍",
+        "title": "광동제약 이틀째 상한가 이끈 유베지, 국내 시장 선점 가능성[바이오맥짚기]",
+        "ret_pct": 20.96,
+        "ret_t0_pct": 1.72,
+        "vol_ratio": 1.08,
+        "gap_pct": 1.25,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-23"
+      },
+      {
+        "rank": 16,
+        "ticker": "331920",
+        "name": "셀레믹스",
+        "title": "'좀비 바이오' 퇴출 빨라진다…'상폐 요주의' 기업은?",
+        "ret_pct": 20.59,
+        "ret_t0_pct": 3.05,
+        "vol_ratio": 0.19,
+        "gap_pct": -4.92,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-09"
+      },
+      {
+        "rank": 17,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "한미사이언스 ‘경영권 충돌’에 급등...현대ADM·바이오톡스텍도 ↑[바이오맥짚기]",
+        "ret_pct": 19.14,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-25"
+      },
+      {
+        "rank": 18,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "Hanmi Science Jumps Amid Power Struggle Over Corporate Control[K-BIO Pulse]",
+        "ret_pct": 19.14,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-25"
+      },
+      {
+        "rank": 19,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 19.11,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 20,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 19.11,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 21,
+        "ticker": "048530",
+        "name": "인트론바이오",
+        "title": "반도체주 안 부럽다...인트론바이오·젠큐릭스 등 상한가 신고[바이오맥짚기]",
+        "ret_pct": 18.89,
+        "ret_t0_pct": -9.97,
+        "vol_ratio": 12.98,
+        "gap_pct": 20.26,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-27"
+      },
+      {
+        "rank": 22,
+        "ticker": "464490",
+        "name": "쿼드메디슨",
+        "title": "LG AI연구원 솔루션 도입 엔젠바이오 '上'...기술 이전에도 알테오젠↓[바이오맥짚기]",
+        "ret_pct": 17.44,
+        "ret_t0_pct": -8.51,
+        "vol_ratio": 0.73,
+        "gap_pct": -1.49,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 23,
+        "ticker": "140610",
+        "name": "엔솔바이오사이언스",
+        "title": "엔솔바이오, 골관절염 치료제 임상 3상 승인...‘기술수출 논의 본격화 ’",
+        "ret_pct": 14.99,
+        "ret_t0_pct": 14.94,
+        "vol_ratio": 2.09,
+        "gap_pct": 1.87,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기술수출/계약",
+          "임상/데이터",
+          "허가/승인"
+        ],
+        "t0_date": "2026-01-23"
+      },
+      {
+        "rank": 24,
+        "ticker": "042520",
+        "name": "한스바이오메드",
+        "title": "시장 주류로 떠오른 인체유래 스킨부스터...엘엔씨바이오 등 기업가치 제고 '주목'",
+        "ret_pct": 14.49,
+        "ret_t0_pct": -2.95,
+        "vol_ratio": 0.73,
+        "gap_pct": -1.13,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 25,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 14.21,
+        "ret_t0_pct": 4.34,
+        "vol_ratio": 1.31,
+        "gap_pct": -2.86,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 26,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 14.21,
+        "ret_t0_pct": 4.34,
+        "vol_ratio": 1.31,
+        "gap_pct": -2.86,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 27,
+        "ticker": "458870",
+        "name": "씨어스테크놀로지",
+        "title": "한상열 인제니아 대표 “추가 기술수출·5년 누적 매출 8000억 기대”",
+        "ret_pct": 13.8,
+        "ret_t0_pct": 3.29,
+        "vol_ratio": 1.26,
+        "gap_pct": -4.97,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기술수출/계약",
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 28,
+        "ticker": "005690",
+        "name": "파미셀",
+        "title": "AI소재기업 거듭난 파미셀, CDMO·원료의약품 사업 확대 '드라이브'",
+        "ret_pct": 12.66,
+        "ret_t0_pct": -15.73,
+        "vol_ratio": 1.0,
+        "gap_pct": -6.2,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-03-04"
+      },
+      {
+        "rank": 29,
+        "ticker": "141080",
+        "name": "리가켐바이오",
+        "title": "2% Royalty Shock at Alteogen Ripples Through Korean Biotech[K-Bio Pulse]",
+        "ret_pct": 12.32,
+        "ret_t0_pct": 0.82,
+        "vol_ratio": 0.98,
+        "gap_pct": 1.84,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 30,
+        "ticker": "141080",
+        "name": "리가켐바이오",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 12.32,
+        "ret_t0_pct": 0.82,
+        "vol_ratio": 0.98,
+        "gap_pct": 1.84,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      }
+    ],
+    "2": [
+      {
+        "rank": 1,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+        "ret_pct": 68.88,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 2,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "글로벌 시장 매출 확대 전망에 그래피·셀트리온 초강세[바이오맥짚기]",
+        "ret_pct": 68.88,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 3,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "Bio Stocks Unfazed by ‘Black Monday’ Rout...Neurophet and BL Pharmtech Surge [K-",
+        "ret_pct": 68.8,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-03"
+      },
+      {
+        "rank": 4,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "‘검은 월요일’도 뉴로핏·비엘팜텍 등 바이오 상승세 못 꺾었다↑ [바이오맥짚기]",
+        "ret_pct": 68.8,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-03"
+      },
+      {
+        "rank": 5,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "BL PharmTech hits five straight limit ups...GemVax extends rally [K-bio pulse]",
+        "ret_pct": 68.54,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 6,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+        "ret_pct": 68.54,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 7,
+        "ticker": "048530",
+        "name": "인트론바이오",
+        "title": "반도체주 안 부럽다...인트론바이오·젠큐릭스 등 상한가 신고[바이오맥짚기]",
+        "ret_pct": 54.51,
+        "ret_t0_pct": -9.97,
+        "vol_ratio": 12.98,
+        "gap_pct": 20.26,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-27"
+      },
+      {
+        "rank": 8,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "WSI Surges 16%...Cellumed Hits Limit Down [K-bio pulse]",
+        "ret_pct": 35.89,
+        "ret_t0_pct": -29.98,
+        "vol_ratio": 0.76,
+        "gap_pct": -26.43,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-02"
+      },
+      {
+        "rank": 9,
+        "ticker": "056090",
+        "name": "시지메드텍",
+        "title": "'임플란트계 TSMC 꿈꾼다'…시지메드텍, 브랜드로 증명하고 CDMO로 폭주",
+        "ret_pct": 35.33,
+        "ret_t0_pct": 14.79,
+        "vol_ratio": 2.21,
+        "gap_pct": 1.22,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 10,
+        "ticker": "298380",
+        "name": "에이비엘바이오",
+        "title": "2% Royalty Shock at Alteogen Ripples Through Korean Biotech[K-Bio Pulse]",
+        "ret_pct": 34.19,
+        "ret_t0_pct": 1.41,
+        "vol_ratio": 0.85,
+        "gap_pct": 1.92,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 11,
+        "ticker": "298380",
+        "name": "에이비엘바이오",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 34.19,
+        "ret_t0_pct": 1.41,
+        "vol_ratio": 0.85,
+        "gap_pct": 1.92,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 12,
+        "ticker": "078160",
+        "name": "메디포스트",
+        "title": "삼일제약, 연골 되돌리는 로어시비빈트로 수천억 '잭팟' 꿈꾼다",
+        "ret_pct": 32.26,
+        "ret_t0_pct": 9.65,
+        "vol_ratio": 3.77,
+        "gap_pct": -1.94,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-26"
+      },
+      {
+        "rank": 13,
+        "ticker": "221800",
+        "name": "유투바이오",
+        "title": "성장 가능성에 기대감 쏠린 와이투솔루션·유투바이오 '上'[바이오맥짚기]",
+        "ret_pct": 29.79,
+        "ret_t0_pct": 29.99,
+        "vol_ratio": 1.02,
+        "gap_pct": 0.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 14,
+        "ticker": "221800",
+        "name": "유투바이오",
+        "title": "Y2Solution and U2Bio Surge on Rising Expectations for Growth Potential[K-Bio Pul",
+        "ret_pct": 29.79,
+        "ret_t0_pct": 29.99,
+        "vol_ratio": 1.02,
+        "gap_pct": 0.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 15,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "뎅기열 '팬데믹' 직면한 베트남, K-바이오 ‘구원투수’ 될까",
+        "ret_pct": 29.33,
+        "ret_t0_pct": 14.21,
+        "vol_ratio": 1.56,
+        "gap_pct": 0.25,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 16,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 25.75,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 17,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 25.75,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 18,
+        "ticker": "141080",
+        "name": "리가켐바이오",
+        "title": "2% Royalty Shock at Alteogen Ripples Through Korean Biotech[K-Bio Pulse]",
+        "ret_pct": 25.66,
+        "ret_t0_pct": 0.82,
+        "vol_ratio": 0.98,
+        "gap_pct": 1.84,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 19,
+        "ticker": "141080",
+        "name": "리가켐바이오",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 25.66,
+        "ret_t0_pct": 0.82,
+        "vol_ratio": 0.98,
+        "gap_pct": 1.84,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 20,
+        "ticker": "354200",
+        "name": "엔젠바이오",
+        "title": "셀비온·큐라클, 임상 성과에 사업화 기대 점화[바이오맥짚기]",
+        "ret_pct": 25.12,
+        "ret_t0_pct": -9.58,
+        "vol_ratio": 0.43,
+        "gap_pct": -0.22,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "임상/데이터"
+        ],
+        "t0_date": "2026-01-30"
+      },
+      {
+        "rank": 21,
+        "ticker": "331920",
+        "name": "셀레믹스",
+        "title": "엑셀세라퓨틱스, 대만發 호재에 상한가 직행... 셀레믹스·쿼드메디슨도 강세 [바이오맥짚기]",
+        "ret_pct": 24.27,
+        "ret_t0_pct": 8.8,
+        "vol_ratio": 2.87,
+        "gap_pct": 1.79,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-06"
+      },
+      {
+        "rank": 22,
+        "ticker": "331920",
+        "name": "셀레믹스",
+        "title": "Xcell Therapeutics Hits Upper Limit...Celemics·QuadMedicine ↑[K-Bio Pulse]",
+        "ret_pct": 24.27,
+        "ret_t0_pct": 8.8,
+        "vol_ratio": 2.87,
+        "gap_pct": 1.79,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-06"
+      },
+      {
+        "rank": 23,
+        "ticker": "226950",
+        "name": "올릭스",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 23.89,
+        "ret_t0_pct": 0.76,
+        "vol_ratio": 1.0,
+        "gap_pct": 0.51,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 24,
+        "ticker": "290650",
+        "name": "엘앤씨바이오",
+        "title": "시장 주류로 떠오른 인체유래 스킨부스터...엘엔씨바이오 등 기업가치 제고 '주목'",
+        "ret_pct": 23.36,
+        "ret_t0_pct": 3.34,
+        "vol_ratio": 1.59,
+        "gap_pct": -0.86,
+        "strategies": [
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 25,
+        "ticker": "314130",
+        "name": "지놈앤컴퍼니",
+        "title": "홍유석 지놈앤컴퍼니 대표 \"전임상 단계 ADC신약 2건 추가 기술 이전 목표\"",
+        "ret_pct": 22.8,
+        "ret_t0_pct": 9.26,
+        "vol_ratio": 0.93,
+        "gap_pct": 2.36,
+        "strategies": [
+          "B",
+          "C"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "임상/데이터",
+          "허가/승인"
+        ],
+        "t0_date": "2026-01-15"
+      },
+      {
+        "rank": 26,
+        "ticker": "082270",
+        "name": "젬백스",
+        "title": "“약 한번 맞아보고 죽고 싶다”…젬백스, GV1001 조건부 허가 승부수",
+        "ret_pct": 21.67,
+        "ret_t0_pct": 0.44,
+        "vol_ratio": 1.12,
+        "gap_pct": -5.88,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-01-27"
+      },
+      {
+        "rank": 27,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "日 진출 메디포스트, 7000억 가치 평가에 上…현대바이오도 급등[바이오맥짚기]",
+        "ret_pct": 20.97,
+        "ret_t0_pct": 14.67,
+        "vol_ratio": 4.51,
+        "gap_pct": 22.07,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-28"
+      },
+      {
+        "rank": 28,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "MediPost hits limit on Japan valuation...Hyundai Bio rallies[K-Bio Pulse]",
+        "ret_pct": 20.97,
+        "ret_t0_pct": 14.67,
+        "vol_ratio": 4.51,
+        "gap_pct": 22.07,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "상장/투자"
+        ],
+        "t0_date": "2026-01-28"
+      },
+      {
+        "rank": 29,
+        "ticker": "140610",
+        "name": "엔솔바이오사이언스",
+        "title": "김해진 엔솔바이오 대표 “골관절염 신약 근본치료제 검증 최종 단계 돌입...빅파마 큰 관심”",
+        "ret_pct": 20.9,
+        "ret_t0_pct": 3.22,
+        "vol_ratio": 0.68,
+        "gap_pct": 4.67,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-02-09"
+      },
+      {
+        "rank": 30,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "Hyundai Bio·Hyundai ADM Hit Upper Limit as Clinical Trials Move into Full Swing[",
+        "ret_pct": 19.14,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 0.29,
+        "gap_pct": 0.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-24"
+      }
+    ],
+    "3": [
+      {
+        "rank": 1,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+        "ret_pct": 99.53,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 2,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "글로벌 시장 매출 확대 전망에 그래피·셀트리온 초강세[바이오맥짚기]",
+        "ret_pct": 99.53,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 3,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "WSI Surges 16%...Cellumed Hits Limit Down [K-bio pulse]",
+        "ret_pct": 76.61,
+        "ret_t0_pct": -29.98,
+        "vol_ratio": 0.76,
+        "gap_pct": -26.43,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-02"
+      },
+      {
+        "rank": 4,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "BL PharmTech hits five straight limit ups...GemVax extends rally [K-bio pulse]",
+        "ret_pct": 68.54,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 5,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+        "ret_pct": 68.54,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 6,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 63.41,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 7,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 63.41,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 8,
+        "ticker": "048530",
+        "name": "인트론바이오",
+        "title": "반도체주 안 부럽다...인트론바이오·젠큐릭스 등 상한가 신고[바이오맥짚기]",
+        "ret_pct": 60.05,
+        "ret_t0_pct": -9.97,
+        "vol_ratio": 12.98,
+        "gap_pct": 20.26,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-27"
+      },
+      {
+        "rank": 9,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 47.71,
+        "ret_t0_pct": 4.34,
+        "vol_ratio": 1.31,
+        "gap_pct": -2.86,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 10,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 47.71,
+        "ret_t0_pct": 4.34,
+        "vol_ratio": 1.31,
+        "gap_pct": -2.86,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 11,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "뎅기열 '팬데믹' 직면한 베트남, K-바이오 ‘구원투수’ 될까",
+        "ret_pct": 45.56,
+        "ret_t0_pct": 14.21,
+        "vol_ratio": 1.56,
+        "gap_pct": 0.25,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 12,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "Bio Stocks Unfazed by ‘Black Monday’ Rout...Neurophet and BL Pharmtech Surge [K-",
+        "ret_pct": 39.28,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-03"
+      },
+      {
+        "rank": 13,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "‘검은 월요일’도 뉴로핏·비엘팜텍 등 바이오 상승세 못 꺾었다↑ [바이오맥짚기]",
+        "ret_pct": 39.28,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-03"
+      },
+      {
+        "rank": 14,
+        "ticker": "078160",
+        "name": "메디포스트",
+        "title": "삼일제약, 연골 되돌리는 로어시비빈트로 수천억 '잭팟' 꿈꾼다",
+        "ret_pct": 38.9,
+        "ret_t0_pct": 9.65,
+        "vol_ratio": 3.77,
+        "gap_pct": -1.94,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-26"
+      },
+      {
+        "rank": 15,
+        "ticker": "318060",
+        "name": "그래피",
+        "title": "‘30년 덴탈·3D프린팅 노하우’ 세계 최초 형상기억 투명교정장치 바탕[그래피 대해부]①",
+        "ret_pct": 36.26,
+        "ret_t0_pct": -3.15,
+        "vol_ratio": 1.65,
+        "gap_pct": -2.99,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 16,
+        "ticker": "318060",
+        "name": "그래피",
+        "title": "“소아부터 노인까지 시장 무한 확장” 형상기억 투명교정장치[그래피 대해부]②",
+        "ret_pct": 36.26,
+        "ret_t0_pct": -3.15,
+        "vol_ratio": 1.65,
+        "gap_pct": -2.99,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 17,
+        "ticker": "318060",
+        "name": "그래피",
+        "title": "\"3년 내 美매출 수백억원 기대…관세·기술 유출도 완벽 대비”[그래피 대해부]③",
+        "ret_pct": 36.26,
+        "ret_t0_pct": -3.15,
+        "vol_ratio": 1.65,
+        "gap_pct": -2.99,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 18,
+        "ticker": "221800",
+        "name": "유투바이오",
+        "title": "Shares of Kwangdong Soar as FDA Approves Presbyopia Eye Drop...U2Bio·CorestemChe",
+        "ret_pct": 36.08,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-02-20"
+      },
+      {
+        "rank": 19,
+        "ticker": "221800",
+        "name": "유투바이오",
+        "title": "광동제약, 판권 보유 노안치료제 FDA 승인 '上'...유투바이오·코아스템켐온도 ↑[바이오맥짚...",
+        "ret_pct": 36.08,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "허가/승인"
+        ],
+        "t0_date": "2026-02-20"
+      },
+      {
+        "rank": 20,
+        "ticker": "298380",
+        "name": "에이비엘바이오",
+        "title": "2% Royalty Shock at Alteogen Ripples Through Korean Biotech[K-Bio Pulse]",
+        "ret_pct": 35.58,
+        "ret_t0_pct": 1.41,
+        "vol_ratio": 0.85,
+        "gap_pct": 1.92,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 21,
+        "ticker": "298380",
+        "name": "에이비엘바이오",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 35.58,
+        "ret_t0_pct": 1.41,
+        "vol_ratio": 0.85,
+        "gap_pct": 1.92,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 22,
+        "ticker": "476060",
+        "name": "온코닉테라퓨틱스",
+        "title": "온코닉테라퓨틱스, 올해 매출·영업익 더블업 성장 자신하는 이유",
+        "ret_pct": 34.73,
+        "ret_t0_pct": 3.06,
+        "vol_ratio": 0.81,
+        "gap_pct": 0.93,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 23,
+        "ticker": "087010",
+        "name": "펩트론",
+        "title": "삼익제약, 주가 50% 띄운 장기지속형 플랫폼…뜯어보니 기술 경쟁력↓",
+        "ret_pct": 31.15,
+        "ret_t0_pct": -13.21,
+        "vol_ratio": 2.92,
+        "gap_pct": -2.44,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 24,
+        "ticker": "141080",
+        "name": "리가켐바이오",
+        "title": "2% Royalty Shock at Alteogen Ripples Through Korean Biotech[K-Bio Pulse]",
+        "ret_pct": 30.6,
+        "ret_t0_pct": 0.82,
+        "vol_ratio": 0.98,
+        "gap_pct": 1.84,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 25,
+        "ticker": "141080",
+        "name": "리가켐바이오",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 30.6,
+        "ret_t0_pct": 0.82,
+        "vol_ratio": 0.98,
+        "gap_pct": 1.84,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      },
+      {
+        "rank": 26,
+        "ticker": "314130",
+        "name": "지놈앤컴퍼니",
+        "title": "홍유석 지놈앤컴퍼니 대표 \"전임상 단계 ADC신약 2건 추가 기술 이전 목표\"",
+        "ret_pct": 29.28,
+        "ret_t0_pct": 9.26,
+        "vol_ratio": 0.93,
+        "gap_pct": 2.36,
+        "strategies": [
+          "B",
+          "C"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "임상/데이터",
+          "허가/승인"
+        ],
+        "t0_date": "2026-01-15"
+      },
+      {
+        "rank": 27,
+        "ticker": "056090",
+        "name": "시지메드텍",
+        "title": "'임플란트계 TSMC 꿈꾼다'…시지메드텍, 브랜드로 증명하고 CDMO로 폭주",
+        "ret_pct": 28.87,
+        "ret_t0_pct": 14.79,
+        "vol_ratio": 2.21,
+        "gap_pct": 1.22,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 28,
+        "ticker": "018250",
+        "name": "애경산업",
+        "title": "\"회생계획안 결의만 남았다\" 동성제약 인수 추진하는 태광산업...왜?",
+        "ret_pct": 28.02,
+        "ret_t0_pct": -0.5,
+        "vol_ratio": 1.8,
+        "gap_pct": -0.57,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "상장/투자"
+        ],
+        "t0_date": "2026-02-19"
+      },
+      {
+        "rank": 29,
+        "ticker": "458870",
+        "name": "씨어스테크놀로지",
+        "title": "'텐배거' 초기 들어선 K의료기기 삼총사...올해 임계점 돌파 예고",
+        "ret_pct": 27.01,
+        "ret_t0_pct": -2.47,
+        "vol_ratio": 0.38,
+        "gap_pct": -2.7,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-19"
+      },
+      {
+        "rank": 30,
+        "ticker": "226950",
+        "name": "올릭스",
+        "title": "'2% 로열티'가 무너뜨린 신뢰…알테오젠發 바이오株 동반 하락[바이오맥짚기]",
+        "ret_pct": 26.07,
+        "ret_t0_pct": 0.76,
+        "vol_ratio": 1.0,
+        "gap_pct": 0.51,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-22"
+      }
+    ],
+    "10": [
+      {
+        "rank": 1,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "비알팜텍, 분자접착제 기술 이전 기대에 '上'...앱클론·현대바이오도 ↑ [바이오맥짚기]",
+        "ret_pct": 385.09,
+        "ret_t0_pct": -10.24,
+        "vol_ratio": 1.95,
+        "gap_pct": 0.63,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-16"
+      },
+      {
+        "rank": 2,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "BL Pharmtech Hits Upper Limit on Expectations for Molecular Glue Technology Lice",
+        "ret_pct": 385.09,
+        "ret_t0_pct": -10.24,
+        "vol_ratio": 1.95,
+        "gap_pct": 0.63,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-16"
+      },
+      {
+        "rank": 3,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "'시총 6·11·26조 기업들과 동시 협상'… 비엘팜텍, 분자접착제로 조 단위 빅딜 정조준",
+        "ret_pct": 235.43,
+        "ret_t0_pct": 29.86,
+        "vol_ratio": 2.53,
+        "gap_pct": 15.54,
+        "strategies": [
+          "B"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-15"
+      },
+      {
+        "rank": 4,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "유럽 의사들 먼저 알아봤다...넥스트바이오메디컬, ‘인공관절 수술 후 통증’에도 효과",
+        "ret_pct": 183.09,
+        "ret_t0_pct": -8.14,
+        "vol_ratio": 0.38,
+        "gap_pct": 2.07,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-02"
+      },
+      {
+        "rank": 5,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+        "ret_pct": 179.29,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 6,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "글로벌 시장 매출 확대 전망에 그래피·셀트리온 초강세[바이오맥짚기]",
+        "ret_pct": 179.29,
+        "ret_t0_pct": 4.58,
+        "vol_ratio": 1.65,
+        "gap_pct": -7.18,
+        "strategies": [
+          "C",
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-05"
+      },
+      {
+        "rank": 7,
+        "ticker": "229000",
+        "name": "젠큐릭스",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 177.23,
+        "ret_t0_pct": -6.77,
+        "vol_ratio": 1.38,
+        "gap_pct": -2.56,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 8,
+        "ticker": "229000",
+        "name": "젠큐릭스",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 177.23,
+        "ret_t0_pct": -6.77,
+        "vol_ratio": 1.38,
+        "gap_pct": -2.56,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 9,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "WSI Surges 16%...Cellumed Hits Limit Down [K-bio pulse]",
+        "ret_pct": 125.0,
+        "ret_t0_pct": -29.98,
+        "vol_ratio": 0.76,
+        "gap_pct": -26.43,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-02"
+      },
+      {
+        "rank": 10,
+        "ticker": "318060",
+        "name": "그래피",
+        "title": "‘30년 덴탈·3D프린팅 노하우’ 세계 최초 형상기억 투명교정장치 바탕[그래피 대해부]①",
+        "ret_pct": 96.42,
+        "ret_t0_pct": -3.15,
+        "vol_ratio": 1.65,
+        "gap_pct": -2.99,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 11,
+        "ticker": "318060",
+        "name": "그래피",
+        "title": "“소아부터 노인까지 시장 무한 확장” 형상기억 투명교정장치[그래피 대해부]②",
+        "ret_pct": 96.42,
+        "ret_t0_pct": -3.15,
+        "vol_ratio": 1.65,
+        "gap_pct": -2.99,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 12,
+        "ticker": "318060",
+        "name": "그래피",
+        "title": "\"3년 내 美매출 수백억원 기대…관세·기술 유출도 완벽 대비”[그래피 대해부]③",
+        "ret_pct": 96.42,
+        "ret_t0_pct": -3.15,
+        "vol_ratio": 1.65,
+        "gap_pct": -2.99,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-21"
+      },
+      {
+        "rank": 13,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "BL PharmTech hits five straight limit ups...GemVax extends rally [K-bio pulse]",
+        "ret_pct": 96.24,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 14,
+        "ticker": "065170",
+        "name": "비엘팜텍",
+        "title": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+        "ret_pct": 96.24,
+        "ret_t0_pct": 0.0,
+        "vol_ratio": 0.0,
+        "gap_pct": -100.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-29"
+      },
+      {
+        "rank": 15,
+        "ticker": "041920",
+        "name": "메디아나",
+        "title": "환자 모니터링 시장 경쟁 자신한 메디아나…실제 경쟁력은",
+        "ret_pct": 91.62,
+        "ret_t0_pct": 1.44,
+        "vol_ratio": 0.22,
+        "gap_pct": 0.23,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-20"
+      },
+      {
+        "rank": 16,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "비알팜텍, 분자접착제 기술 이전 기대에 '上'...앱클론·현대바이오도 ↑ [바이오맥짚기]",
+        "ret_pct": 91.0,
+        "ret_t0_pct": 10.51,
+        "vol_ratio": 5.46,
+        "gap_pct": -0.56,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-16"
+      },
+      {
+        "rank": 17,
+        "ticker": "048410",
+        "name": "현대바이오",
+        "title": "BL Pharmtech Hits Upper Limit on Expectations for Molecular Glue Technology Lice",
+        "ret_pct": 91.0,
+        "ret_t0_pct": 10.51,
+        "vol_ratio": 5.46,
+        "gap_pct": -0.56,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-16"
+      },
+      {
+        "rank": 18,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "아이센스, CGM ‘유럽’ 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+        "ret_pct": 86.31,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 19,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "i-Sens Soars 23% on EU CGM Expansion [K-bio pulse]",
+        "ret_pct": 86.31,
+        "ret_t0_pct": 29.93,
+        "vol_ratio": 1.24,
+        "gap_pct": 1.06,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-13"
+      },
+      {
+        "rank": 20,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "장기지속형 주사 새해에도 힘받는다...지투지바이오·삼익제약 ↑ [바이오맥짚기]",
+        "ret_pct": 74.24,
+        "ret_t0_pct": -12.51,
+        "vol_ratio": 1.23,
+        "gap_pct": 4.15,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-09"
+      },
+      {
+        "rank": 21,
+        "ticker": "049180",
+        "name": "셀루메드",
+        "title": "Long-Acting Injectables Gain Momentum in the New Year...Samik Pharm and G2GBio S",
+        "ret_pct": 74.24,
+        "ret_t0_pct": -12.51,
+        "vol_ratio": 1.23,
+        "gap_pct": 4.15,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-09"
+      },
+      {
+        "rank": 22,
+        "ticker": "290650",
+        "name": "엘앤씨바이오",
+        "title": "풀리지 않는 탈모 해법 찾을까...프롬바이오·현대약품 ↑[바이오맥짚기]",
+        "ret_pct": 60.81,
+        "ret_t0_pct": -1.09,
+        "vol_ratio": 0.5,
+        "gap_pct": -1.81,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-19"
+      },
+      {
+        "rank": 23,
+        "ticker": "078160",
+        "name": "메디포스트",
+        "title": "‘日정형외과 강자’ 테이코쿠 손잡은 메디포스트…수천억 매출 가시권",
+        "ret_pct": 59.57,
+        "ret_t0_pct": 2.04,
+        "vol_ratio": 1.02,
+        "gap_pct": 0.0,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "실적/성장"
+        ],
+        "t0_date": "2026-01-16"
+      },
+      {
+        "rank": 24,
+        "ticker": "099190",
+        "name": "아이센스",
+        "title": "'출시 2년 만에 점유율 7.5%'…아이센스, 연속혈당측정기 사업 ‘잭팟’ 가능할까",
+        "ret_pct": 56.76,
+        "ret_t0_pct": 4.63,
+        "vol_ratio": 2.6,
+        "gap_pct": -1.83,
+        "strategies": [
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-02-02"
+      },
+      {
+        "rank": 25,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "日 진출 메디포스트, 7000억 가치 평가에 上…현대바이오도 급등[바이오맥짚기]",
+        "ret_pct": 49.15,
+        "ret_t0_pct": -6.69,
+        "vol_ratio": 2.1,
+        "gap_pct": 9.55,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-28"
+      },
+      {
+        "rank": 26,
+        "ticker": "187660",
+        "name": "현대ADM",
+        "title": "MediPost hits limit on Japan valuation...Hyundai Bio rallies[K-Bio Pulse]",
+        "ret_pct": 49.15,
+        "ret_t0_pct": -6.69,
+        "vol_ratio": 2.1,
+        "gap_pct": 9.55,
+        "strategies": [],
+        "pattern_group": "패턴없음",
+        "article_types": [
+          "상장/투자"
+        ],
+        "t0_date": "2026-01-28"
+      },
+      {
+        "rank": 27,
+        "ticker": "314130",
+        "name": "지놈앤컴퍼니",
+        "title": "홍유석 지놈앤컴퍼니 대표 \"전임상 단계 ADC신약 2건 추가 기술 이전 목표\"",
+        "ret_pct": 42.99,
+        "ret_t0_pct": 9.26,
+        "vol_ratio": 0.93,
+        "gap_pct": 2.36,
+        "strategies": [
+          "B",
+          "C"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "임상/데이터",
+          "허가/승인"
+        ],
+        "t0_date": "2026-01-15"
+      },
+      {
+        "rank": 28,
+        "ticker": "024850",
+        "name": "HLB이노베이션",
+        "title": "올해 주목되는 글로벌 바이오시장 키워드 '신경질환·항암·비만'",
+        "ret_pct": 40.92,
+        "ret_t0_pct": 5.33,
+        "vol_ratio": 3.1,
+        "gap_pct": 1.69,
+        "strategies": [
+          "A"
+        ],
+        "pattern_group": "관망",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-12"
+      },
+      {
+        "rank": 29,
+        "ticker": "290650",
+        "name": "엘앤씨바이오",
+        "title": "한스바이오메드, 日 스킨부스터 판 흔든다…인픽스와 독점 공급 계약",
+        "ret_pct": 40.79,
+        "ret_t0_pct": 1.09,
+        "vol_ratio": 0.53,
+        "gap_pct": 0.73,
+        "strategies": [
+          "C"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-15"
+      },
+      {
+        "rank": 30,
+        "ticker": "950160",
+        "name": "코오롱티슈진",
+        "title": "전승호 코오롱티슈진 대표 \"TG-C, 세계 최초 무릎골관절염 근원치료제 기대\"",
+        "ret_pct": 40.56,
+        "ret_t0_pct": 3.46,
+        "vol_ratio": 2.79,
+        "gap_pct": -0.97,
+        "strategies": [
+          "D"
+        ],
+        "pattern_group": "추천",
+        "article_types": [
+          "기타"
+        ],
+        "t0_date": "2026-01-16"
+      }
+    ]
+  },
+  "characteristics": {
+    "1": {
+      "count": 30,
+      "pattern_group": {
+        "패턴없음": 23,
+        "추천": 5,
+        "관망": 2
+      },
+      "strategies": {
+        "C": 4,
+        "D": 3,
+        "A": 2
+      },
+      "article_types": {
+        "실적/성장": 5,
+        "임상/데이터": 3,
+        "기타": 19,
+        "허가/승인": 4,
+        "기술수출/계약": 2
+      },
+      "avg_vol_ratio": 1.3,
+      "avg_gap_pct": -27.32,
+      "avg_ret_t0_pct": 1.31
+    },
+    "2": {
+      "count": 30,
+      "pattern_group": {
+        "추천": 8,
+        "패턴없음": 17,
+        "관망": 5
+      },
+      "strategies": {
+        "C": 8,
+        "D": 3,
+        "A": 4,
+        "B": 1
+      },
+      "article_types": {
+        "기타": 22,
+        "실적/성장": 3,
+        "임상/데이터": 2,
+        "허가/승인": 3,
+        "상장/투자": 1
+      },
+      "avg_vol_ratio": 1.79,
+      "avg_gap_pct": -12.1,
+      "avg_ret_t0_pct": 7.22
+    },
+    "3": {
+      "count": 30,
+      "pattern_group": {
+        "추천": 7,
+        "패턴없음": 20,
+        "관망": 3
+      },
+      "strategies": {
+        "C": 8,
+        "D": 2,
+        "A": 2,
+        "B": 1
+      },
+      "article_types": {
+        "기타": 21,
+        "실적/성장": 5,
+        "허가/승인": 3,
+        "임상/데이터": 1,
+        "상장/투자": 1
+      },
+      "avg_vol_ratio": 1.54,
+      "avg_gap_pct": -20.93,
+      "avg_ret_t0_pct": 2.28
+    },
+    "10": {
+      "count": 30,
+      "pattern_group": {
+        "패턴없음": 20,
+        "관망": 5,
+        "추천": 5
+      },
+      "strategies": {
+        "B": 2,
+        "C": 4,
+        "D": 4,
+        "A": 3
+      },
+      "article_types": {
+        "기타": 23,
+        "실적/성장": 5,
+        "상장/투자": 1,
+        "임상/데이터": 1,
+        "허가/승인": 1
+      },
+      "avg_vol_ratio": 1.68,
+      "avg_gap_pct": -6.91,
+      "avg_ret_t0_pct": 0.87
+    }
+  },
+  "best_per_horizon": {
+    "1": {
+      "rank": 1,
+      "ticker": "373110",
+      "name": "엑셀세라퓨틱스",
+      "title": "이의일 엑셀세라퓨틱스 대표 “대만 매출 두자릿수 이상 성장...화학조성배지로 패러다임 전환”",
+      "ret_pct": 29.98,
+      "ret_t0_pct": -1.8,
+      "vol_ratio": 1.27,
+      "gap_pct": 0.8,
+      "strategies": [],
+      "pattern_group": "패턴없음",
+      "article_types": [
+        "실적/성장"
+      ],
+      "t0_date": "2026-02-04"
+    },
+    "2": {
+      "rank": 1,
+      "ticker": "049180",
+      "name": "셀루메드",
+      "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+      "ret_pct": 68.88,
+      "ret_t0_pct": 4.58,
+      "vol_ratio": 1.65,
+      "gap_pct": -7.18,
+      "strategies": [
+        "C",
+        "D"
+      ],
+      "pattern_group": "추천",
+      "article_types": [
+        "기타"
+      ],
+      "t0_date": "2026-01-05"
+    },
+    "3": {
+      "rank": 1,
+      "ticker": "049180",
+      "name": "셀루메드",
+      "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+      "ret_pct": 99.53,
+      "ret_t0_pct": 4.58,
+      "vol_ratio": 1.65,
+      "gap_pct": -7.18,
+      "strategies": [
+        "C",
+        "D"
+      ],
+      "pattern_group": "추천",
+      "article_types": [
+        "기타"
+      ],
+      "t0_date": "2026-01-05"
+    },
+    "10": {
+      "rank": 1,
+      "ticker": "065170",
+      "name": "비엘팜텍",
+      "title": "비알팜텍, 분자접착제 기술 이전 기대에 '上'...앱클론·현대바이오도 ↑ [바이오맥짚기]",
+      "ret_pct": 385.09,
+      "ret_t0_pct": -10.24,
+      "vol_ratio": 1.95,
+      "gap_pct": 0.63,
+      "strategies": [],
+      "pattern_group": "패턴없음",
+      "article_types": [
+        "기타"
+      ],
+      "t0_date": "2026-01-16"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Period = "2d" | "5d" | "10d";
 
@@ -21,7 +21,7 @@ const DUMMY_DATA: Record<Period, ScoreData> = {
     breakdown: [
       { label: "모멘텀", score: 85, weight: 30 },
       { label: "추세", score: 70, weight: 30 },
-      { label: "변동성", score: 90, weight: 20 },
+      { label: "유동성", score: 90, weight: 20 },
       { label: "거래량", score: 80, weight: 20 },
     ],
   },
@@ -31,7 +31,7 @@ const DUMMY_DATA: Record<Period, ScoreData> = {
     breakdown: [
       { label: "모멘텀", score: 60, weight: 30 },
       { label: "추세", score: 75, weight: 30 },
-      { label: "변동성", score: 65, weight: 20 },
+      { label: "유동성", score: 65, weight: 20 },
       { label: "거래량", score: 70, weight: 20 },
     ],
   },
@@ -41,15 +41,61 @@ const DUMMY_DATA: Record<Period, ScoreData> = {
     breakdown: [
       { label: "모멘텀", score: 40, weight: 30 },
       { label: "추세", score: 55, weight: 30 },
-      { label: "변동성", score: 45, weight: 20 },
+      { label: "유동성", score: 45, weight: 20 },
       { label: "거래량", score: 50, weight: 20 },
     ],
   },
 };
 
-export function TechnicalScoreCard() {
+interface TechnicalScoreCardProps {
+  symbol?: string;
+  date?: string;
+}
+
+export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
   const [period, setPeriod] = useState<Period>("5d");
-  const data = DUMMY_DATA[period];
+  const [data, setData] = useState<ScoreData>(DUMMY_DATA["5d"]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!symbol || !date) {
+      setData(DUMMY_DATA[period]);
+      return;
+    }
+    setLoading(true);
+    fetch(`/api/quant/scores?date=${date}&symbol=${encodeURIComponent(symbol)}`)
+      .then((r) => r.json())
+      .then((d) => {
+        const mom = d.momentum ?? 50;
+        const trend = d.trend ?? 50;
+        const spread = d.spread ?? 50;
+        const vol = d.volume ?? 50;
+        const breakdown = [
+          { label: "모멘텀", score: Math.round(mom), weight: 30 },
+          { label: "추세", score: Math.round(trend), weight: 30 },
+          { label: "유동성", score: Math.round(spread), weight: 20 },
+          { label: "거래량", score: Math.round(vol), weight: 20 },
+        ];
+        const totalScore = Math.round(
+          (mom * 30 + trend * 30 + spread * 20 + vol * 20) / 100
+        );
+        setData({
+          name: DUMMY_DATA[period].name,
+          totalScore,
+          breakdown,
+        });
+      })
+      .catch(() => setData(DUMMY_DATA[period]))
+      .finally(() => setLoading(false));
+  }, [symbol, date]);
+
+  useEffect(() => {
+    if (symbol && date) {
+      setData((prev) => ({ ...prev, name: DUMMY_DATA[period].name }));
+    } else {
+      setData(DUMMY_DATA[period]);
+    }
+  }, [period, symbol, date]);
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "#059669"; // Strong Positive
@@ -133,7 +179,7 @@ export function TechnicalScoreCard() {
         }}
       >
         <div style={{ fontSize: "0.75rem", color: "#6b7280", marginBottom: "0.25rem" }}>
-          {data.name}
+          {data.name} {loading && <span style={{ color: "#9ca3af" }}>(조회중)</span>}
         </div>
         <div
           style={{

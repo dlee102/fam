@@ -1,12 +1,42 @@
 "use client";
 
-const SUPPLY_DATA = [
-  { label: "외국인 수급 AI 모델", value: 1240, color: "#2563eb" },
-];
+import { useEffect, useState } from "react";
 
-export function SupplyDemandCard() {
-  const maxValue = 2000; // 기준값 설정
-  
+const DUMMY_VALUE = 1240;
+const maxValue = 2000;
+
+interface SupplyDemandCardProps {
+  /** ISIN (e.g. KR7000020008). 있으면 API에서 실데이터 조회 */
+  symbol?: string;
+  /** YYYYMMDD. symbol과 함께 있어야 조회 */
+  date?: string;
+}
+
+export function SupplyDemandCard({ symbol, date }: SupplyDemandCardProps) {
+  const [value, setValue] = useState<number | null>(DUMMY_VALUE);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!symbol || !date) {
+      setValue(DUMMY_VALUE);
+      return;
+    }
+    setLoading(true);
+    fetch(`/api/quant/scores?date=${date}&symbol=${encodeURIComponent(symbol)}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.foreign_net_millions != null) {
+          setValue(d.foreign_net_millions);
+        }
+      })
+      .catch(() => setValue(DUMMY_VALUE))
+      .finally(() => setLoading(false));
+  }, [symbol, date]);
+
+  const displayValue = value ?? DUMMY_VALUE;
+  const isPositive = displayValue >= 0;
+  const barWidth = (Math.min(Math.abs(displayValue), maxValue) / maxValue) * 100;
+
   return (
     <div
       style={{
@@ -25,38 +55,34 @@ export function SupplyDemandCard() {
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        {SUPPLY_DATA.map((item) => {
-          const isPositive = item.value >= 0;
-          const barWidth = (Math.min(Math.abs(item.value), maxValue) / maxValue) * 100;
-          
-          return (
-            <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ fontSize: "0.8125rem", color: "#4b5563", fontWeight: 500 }}>현재 수급 강도</div>
-                <div 
-                  style={{ 
-                    fontSize: "1rem", 
-                    fontWeight: 700,
-                    color: isPositive ? "#2563eb" : "#dc2626"
-                  }}
-                >
-                  {isPositive ? "+" : ""}{item.value.toLocaleString()}
-                </div>
-              </div>
-              <div style={{ width: "100%", height: "8px", backgroundColor: "#f3f4f6", borderRadius: "4px", overflow: "hidden" }}>
-                <div 
-                  style={{ 
-                    width: `${barWidth}%`, 
-                    height: "100%", 
-                    backgroundColor: item.color,
-                    borderRadius: "4px",
-                    transition: "width 0.5s ease-out"
-                  }} 
-                />
-              </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ fontSize: "0.8125rem", color: "#4b5563", fontWeight: 500 }}>
+              현재 수급 강도 {loading && <span style={{ color: "#9ca3af" }}>(조회중)</span>}
             </div>
-          );
-        })}
+            <div
+              style={{
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: isPositive ? "#2563eb" : "#dc2626",
+              }}
+            >
+              {isPositive ? "+" : ""}
+              {displayValue.toLocaleString()}
+            </div>
+          </div>
+          <div style={{ width: "100%", height: "8px", backgroundColor: "#f3f4f6", borderRadius: "4px", overflow: "hidden" }}>
+            <div
+              style={{
+                width: `${barWidth}%`,
+                height: "100%",
+                backgroundColor: isPositive ? "#2563eb" : "#dc2626",
+                borderRadius: "4px",
+                transition: "width 0.5s ease-out",
+              }}
+            />
+          </div>
+        </div>
       </div>
       
       <p style={{ fontSize: "0.6875rem", color: "#94a3b8", marginTop: "1rem", textAlign: "center" }}>
