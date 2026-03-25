@@ -1,68 +1,54 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { sb, qLabel } from "./sidebar-tokens";
 
 const GaugeChart = dynamic(() => import("react-gauge-chart"), { ssr: false });
 
 export function RiskGauge({ value }: { value: number }) {
   const clamped = Math.min(100, Math.max(0, value));
   const percent = clamped / 100;
+  const band =
+    clamped < 33 ? "낮음" : clamped < 66 ? "보통" : "높음";
+  const bandColor =
+    clamped < 33 ? "#047857" : clamped < 66 ? "#b45309" : "#c2410c";
 
   return (
-    <div style={{ marginTop: "1.25rem" }}>
-      <div
-        style={{
-          fontSize: "0.8125rem",
-          fontWeight: 600,
-          marginBottom: "0.5rem",
-          color: "#525252",
-        }}
-      >
-        위험도
-      </div>
+    <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
+      <div style={{ ...qLabel, marginBottom: "0.5rem" }}>위험도</div>
       <GaugeChart
         id="risk-gauge"
-        nrOfLevels={20}
+        nrOfLevels={15}
         percent={percent}
-        colors={["#059669", "#d97706", "#dc2626"]}
-        arcWidth={0.25}
-        arcPadding={0.02}
-        cornerRadius={2}
-        needleColor="#374151"
-        needleBaseColor="#374151"
-        textColor="#1a1a1a"
+        colors={[...sb.gauge]}
+        arcWidth={0.22}
+        arcPadding={0.01}
+        cornerRadius={1}
+        needleColor="#0f172a"
+        needleBaseColor="#0f172a"
+        textColor={sb.text}
         formatTextValue={(val) => {
           const num = parseFloat(val);
           const pct = num <= 1 ? Math.round(num * 100) : Math.round(num);
           return `${pct}%`;
         }}
-        style={{ height: 120 }}
+        style={{ height: 108 }}
       />
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "0.875rem",
-          fontWeight: 600,
-          color: "#059669",
-          marginTop: "-0.75rem",
-          marginBottom: "0.25rem",
-        }}
-      >
-        양호
-      </div>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          fontSize: "0.6875rem",
-          color: "#9ca3af",
-          paddingLeft: "4px",
-          paddingRight: "4px",
+          alignItems: "center",
+          marginTop: "-0.35rem",
+          fontSize: "0.75rem",
+          color: sb.muted,
         }}
       >
-        <span>낮음</span>
-        <span>높음</span>
+        <span>
+          구간 <span style={{ fontWeight: 600, color: bandColor }}>{band}</span>
+        </span>
+        <span style={{ color: sb.faint }}>0 — 100</span>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import {
   BacktestLineChart,
   TechScoreRadarChart,
@@ -11,6 +11,7 @@ import {
   QuantRatingBar,
   FactorGradesTable,
 } from "./ReportCharts";
+import { REPORT_PRESENTER_HELP, type ReportPresenterSectionId } from "./reportPresenterHelp";
 
 const QUANT_INDICATOR = { 단기: "매수", 중기: "보유", 장기: "매수" } as const;
 const RISK_LEVEL = 14;
@@ -66,32 +67,112 @@ function ReportLine({
 }
 
 function ReportSection({
+  sectionId,
   title,
   subtitle,
   children,
 }: {
+  sectionId?: ReportPresenterSectionId;
   title: string;
   subtitle?: string;
   children: React.ReactNode;
 }) {
+  const [helpOpen, setHelpOpen] = useState(false);
+  const helpPanelId = useId();
+  const helpBlocks = sectionId ? REPORT_PRESENTER_HELP[sectionId] : null;
+
   return (
     <section style={{ marginBottom: "2.5rem" }}>
-      <h2
+      <div
         style={{
-          fontSize: "1rem",
-          fontWeight: 600,
-          color: "#1a1a1a",
-          marginBottom: subtitle ? "0.25rem" : "1rem",
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          gap: "0.75rem",
           paddingBottom: "0.5rem",
           borderBottom: "1px solid #e5e5e5",
+          marginBottom: subtitle ? "0.25rem" : helpOpen && helpBlocks ? "0.5rem" : "1rem",
         }}
       >
-        {title}
-      </h2>
+        <h2
+          style={{
+            fontSize: "1rem",
+            fontWeight: 600,
+            color: "#1a1a1a",
+            margin: 0,
+            flex: 1,
+            minWidth: 0,
+            lineHeight: 1.45,
+          }}
+        >
+          {title}
+        </h2>
+        {helpBlocks && (
+          <button
+            type="button"
+            aria-expanded={helpOpen}
+            aria-controls={helpPanelId}
+            title="발표자용 설명"
+            onClick={() => setHelpOpen((o) => !o)}
+            style={{
+              flexShrink: 0,
+              width: 28,
+              height: 28,
+              borderRadius: "50%",
+              border: "1px solid #d4d4d4",
+              background: helpOpen ? "#f3f4f6" : "#fafafa",
+              color: "#525252",
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              lineHeight: 1,
+            }}
+          >
+            ?
+          </button>
+        )}
+      </div>
       {subtitle && (
-        <p style={{ fontSize: "0.8125rem", color: "#737373", marginBottom: "1rem" }}>
+        <p style={{ fontSize: "0.8125rem", color: "#737373", margin: "0 0 1rem" }}>
           {subtitle}
         </p>
+      )}
+      {helpOpen && helpBlocks && (
+        <div
+          id={helpPanelId}
+          role="region"
+          aria-label="발표자용 설명"
+          style={{
+            margin: "0 0 1rem",
+            padding: "0.875rem 1rem",
+            backgroundColor: "#fffbeb",
+            border: "1px solid #fde68a",
+            borderRadius: "6px",
+            fontSize: "0.8125rem",
+            lineHeight: 1.65,
+            color: "#422006",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "0.6875rem",
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+              color: "#b45309",
+              marginBottom: "0.5rem",
+            }}
+          >
+            발표자용 · 점수·등급 기준
+          </div>
+          {helpBlocks.map((para, i) => (
+            <p key={i} style={{ margin: i === 0 ? 0 : "0.5rem 0 0" }}>
+              {para}
+            </p>
+          ))}
+        </div>
       )}
       {children}
     </section>
@@ -141,12 +222,13 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
       {/* AI 인텔리전스 종합 점수 */}
-      <ReportSection title="AI 인텔리전스 종합 점수">
+      <ReportSection sectionId="ai-total" title="AI 인텔리전스 종합 점수">
         <AIScoreProgress score={80} />
       </ReportSection>
 
       {/* Quant Rating (Seeking Alpha 스타일) */}
       <ReportSection
+        sectionId="quant-rating"
         title="Quant Rating"
         subtitle="1 Strong Sell ~ 5 Strong Buy · 퀀트 팩터 종합 등급"
       >
@@ -155,6 +237,7 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
 
       {/* 팩터 등급 */}
       <ReportSection
+        sectionId="factor-grades"
         title="팩터 등급"
         subtitle="밸류에이션, 성장성, 수익성, 모멘텀, 리비전"
       >
@@ -170,7 +253,7 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
       </ReportSection>
 
       {/* 퀀트 인텔리전스 지표 */}
-      <ReportSection title="퀀트 인텔리전스 지표">
+      <ReportSection sectionId="quant-indicator" title="퀀트 인텔리전스 지표">
         {Object.entries(QUANT_INDICATOR).map(([term, signal]) => (
           <ReportLine
             key={term}
@@ -182,7 +265,7 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
       </ReportSection>
 
       {/* 위험도 */}
-      <ReportSection title="위험도">
+      <ReportSection sectionId="risk" title="위험도">
         <ReportLine label="위험 수준" value={`${RISK_LEVEL}%`} valueColor="#059669" />
         <ReportLine label="평가" value="양호" valueColor="#059669" />
         <div
@@ -201,12 +284,13 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
       </ReportSection>
 
       {/* 발행일 기준 수익률 */}
-      <ReportSection title="발행일 기준 수익률" subtitle="기준일: 2025.02.01">
+      <ReportSection sectionId="publish-return" title="발행일 기준 수익률" subtitle="기준일: 2025.02.01">
         <ReturnLineChart returnRate={8.5} />
       </ReportSection>
 
       {/* 기술적 지표 분석 */}
       <ReportSection
+        sectionId="technical"
         title="기술적 지표 분석"
         subtitle={`2d / 5d / 10d — Momentum Score ${techScores.total}점 ${loadingTech ? "(조회중)" : ""}`}
       >
@@ -222,6 +306,7 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
 
       {/* 과거 유사 기사 백테스트 */}
       <ReportSection
+        sectionId="backtest"
         title="과거 유사 기사 백테스트"
         subtitle="유사 호재 발생 후 5일간 흐름"
       >
@@ -236,6 +321,7 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
 
       {/* 섹터 전이 효과 */}
       <ReportSection
+        sectionId="ripple"
         title="섹터 전이 효과 (Ripple Effect)"
         subtitle="공급망 및 경쟁사 퀀트 점수 분석"
       >
@@ -249,7 +335,7 @@ export function ReportContent({ symbol, date }: ReportContentProps) {
       </ReportSection>
 
       {/* 연관 종목 순위 */}
-      <ReportSection title="연관 종목 순위">
+      <ReportSection sectionId="related" title="연관 종목 순위">
         <RelatedStocksBarChart
           data={RELATED_STOCKS.map((s) => ({
             symbol: s.symbol,

@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
+import { sb, qLabel } from "./sidebar-tokens";
 
 const CHART_DATA = [
   { day: "D-3", value: 0 },
@@ -26,77 +27,76 @@ const RETURN_RATE = 8.5;
 
 export function ReturnChartCard() {
   return (
-    <div
-      style={{
-        marginTop: "1.5rem",
-        padding: "1.25rem",
-        backgroundColor: "#fff",
-        borderRadius: "8px",
-        border: "1px solid #e5e5e5",
-      }}
-    >
-      <h3
-        style={{
-          fontSize: "0.9375rem",
-          fontWeight: 600,
-          marginBottom: "0.75rem",
-          color: "#1a1a1a",
-        }}
-      >
-        발행일 기준 수익률
-      </h3>
+    <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
+      <div style={{ ...qLabel, marginBottom: "0.5rem" }}>발행일 대비 수익률</div>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "0.5rem",
+          alignItems: "baseline",
+          marginBottom: "0.625rem",
           fontSize: "0.8125rem",
         }}
       >
-        <span style={{ color: "#737373" }}>기준일: {ISSUE_DATE}</span>
+        <span style={{ color: sb.faint }}>기준 {ISSUE_DATE}</span>
         <span
           style={{
-            fontWeight: 700,
+            fontWeight: 600,
             fontSize: "1rem",
-            color: RETURN_RATE >= 0 ? "#059669" : "#dc2626",
+            color: RETURN_RATE >= 0 ? sb.up : sb.down,
+            letterSpacing: "-0.02em",
           }}
         >
           {RETURN_RATE >= 0 ? "+" : ""}
           {RETURN_RATE}%
         </span>
       </div>
-      <div style={{ width: "100%", height: 100 }}>
+      <div style={{ width: "100%", height: 104 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={CHART_DATA} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#6b7280" }} />
+          <LineChart data={CHART_DATA} margin={{ top: 6, right: 6, left: 0, bottom: 4 }}>
+            <CartesianGrid strokeDasharray="3 6" stroke={sb.grid} vertical={false} />
+            <XAxis
+              dataKey="day"
+              tick={{ fontSize: 10, fill: sb.muted }}
+              axisLine={{ stroke: sb.border }}
+              tickLine={false}
+            />
             <YAxis
-              tick={{ fontSize: 10, fill: "#6b7280" }}
+              tick={{ fontSize: 10, fill: sb.muted }}
               tickFormatter={(v) => `${v}%`}
-              width={28}
+              width={32}
+              axisLine={false}
+              tickLine={false}
             />
             <ReferenceLine
               x="발행일"
-              stroke="#dc2626"
-              strokeDasharray="4 2"
-              strokeWidth={1.5}
+              stroke={sb.refLine}
+              strokeDasharray="4 4"
+              strokeWidth={1.25}
             />
             <Tooltip
-              formatter={(value: number | undefined) => [`${value != null ? (value >= 0 ? "+" : "") + value + "%" : "-"}`, "수익률"]}
-              contentStyle={{ fontSize: "0.75rem", borderRadius: "6px", border: "1px solid #e5e7eb" }}
+              formatter={(value: number | undefined) => [
+                `${value != null ? (value >= 0 ? "+" : "") + value + "%" : "—"}`,
+                "수익률",
+              ]}
+              contentStyle={{
+                fontSize: "0.75rem",
+                borderRadius: 8,
+                border: `1px solid ${sb.border}`,
+                boxShadow: "0 4px 12px rgba(15, 23, 42, 0.08)",
+              }}
             />
             <Line
               type="monotone"
               dataKey="value"
-              stroke="#059669"
+              stroke={sb.chartLine}
               strokeWidth={2}
-              dot={{ fill: "#059669", r: 3 }}
-              activeDot={{ r: 5 }}
+              dot={{ fill: sb.chartLine, r: 2.5, strokeWidth: 0 }}
+              activeDot={{ r: 4, fill: sb.chartLine }}
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </section>
   );
 }

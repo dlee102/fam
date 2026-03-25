@@ -74,21 +74,144 @@ a {
   margin-bottom: 0;
 }
 
-/* 기사 페이지 - 본문 + 퀀트 지표 사이드바 */
+/* /stats 요약 섹션 차트 2열 */
+.stats-summary-charts {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .stats-summary-charts {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* 기사 페이지 - 본문 + 하단 퀀트 대시보드 */
 .article-page-layout {
-  max-width: 960px;
+  max-width: 60rem; /* 960px */
   margin: 0 auto;
   padding: 0 2rem;
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .article-page-layout .quant-indicator-sidebar {
-    width: 100% !important;
-    position: static !important;
+.article-page-article {
+  max-width: 42rem; /* 본문 줄 길이 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-quant-dashboard {
+  margin-top: 3.25rem;
+  padding: 2rem 1.5rem 2.25rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  font-variant-numeric: tabular-nums;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+    0 1px 3px rgba(15, 23, 42, 0.04),
+    0 12px 40px -16px rgba(15, 23, 42, 0.12);
+}
+
+.article-quant-dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.35rem;
+  position: relative;
+}
+
+.article-quant-dashboard-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.75rem;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #0f766e, #2dd4bf);
+}
+
+.article-quant-dashboard-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.article-quant-dashboard-desc {
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.55;
+  max-width: 36rem;
+}
+
+.article-quant-dashboard-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.article-quant-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.125rem;
+  align-items: stretch;
+}
+
+@media (min-width: 680px) {
+  .article-quant-dashboard-grid--kpi {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.125rem;
   }
-  .article-page-layout .article-with-sidebar {
-    flex-direction: column !important;
+
+  .article-quant-dashboard-grid--charts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .article-quant-dashboard-grid--split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.quant-dash-cell {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem 1.35rem;
+  min-width: 0;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 0 0 1px rgba(15, 23, 42, 0.02);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .quant-dash-cell:hover {
+    border-color: rgba(13, 148, 136, 0.12);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.05),
+      0 8px 24px -12px rgba(15, 23, 42, 0.1);
+  }
+}
+
+/* 그리드 셀 첫 블록: 컴포넌트 기본 상단 구분선 제거 */
+.quant-dash-cell > :first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+@media (max-width: 768px) {
+  .article-page-layout .article-quant-dashboard {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 

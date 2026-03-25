@@ -1,75 +1,57 @@
 "use client";
 
+import { sb, qLabel } from "./sidebar-tokens";
+
 export function AIScoreGauge({ score = 80 }: { score?: number }) {
   const clamped = Math.min(100, Math.max(0, score));
-  const percent = clamped / 100;
-  const barColor = clamped >= 70 ? "#059669" : clamped >= 40 ? "#d97706" : "#dc2626";
+  const label =
+    clamped >= 70 ? "상위" : clamped >= 40 ? "중간" : "하위";
 
   return (
-    <div
-      style={{
-        marginBottom: "1.5rem",
-        padding: "1.25rem",
-        backgroundColor: "#fff",
-        borderRadius: "8px",
-        border: "1px solid #e5e5e5",
-      }}
-    >
-      <h3
-        style={{
-          fontSize: "0.9375rem",
-          fontWeight: 600,
-          marginBottom: "0.75rem",
-          color: "#1a1a1a",
-          textAlign: "center",
-        }}
-      >
-        AI 인텔리전스 종합 점수
-      </h3>
-      <div style={{ marginBottom: "0.5rem" }}>
-        <div
-          style={{
-            height: "12px",
-            backgroundColor: "#f3f4f6",
-            borderRadius: "6px",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            style={{
-              width: `${percent * 100}%`,
-              height: "100%",
-              backgroundColor: barColor,
-              borderRadius: "6px",
-              transition: "width 0.3s ease",
-            }}
-          />
-        </div>
-      </div>
+    <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
+      <div style={{ ...qLabel, marginBottom: "0.625rem" }}>AI 종합 점수</div>
       <div
         style={{
           display: "flex",
+          alignItems: "baseline",
           justifyContent: "space-between",
-          alignItems: "center",
-          marginTop: "0.5rem",
+          gap: "0.75rem",
+          marginBottom: "0.75rem",
         }}
       >
-        <span style={{ fontSize: "1rem", fontWeight: 700, color: barColor }}>
-          {clamped}점
-        </span>
         <span
           style={{
-            fontSize: "0.8125rem",
+            fontSize: "2rem",
             fontWeight: 600,
-            color: "#059669",
-            padding: "0.2rem 0.6rem",
-            backgroundColor: "#ecfdf5",
-            borderRadius: "9999px",
+            color: sb.text,
+            letterSpacing: "-0.03em",
+            lineHeight: 1,
           }}
         >
-          긍정
+          {clamped}
+        </span>
+        <span style={{ fontSize: "0.75rem", color: sb.muted, fontWeight: 500 }}>
+          / 100 · <span style={{ color: sb.text }}>{label}</span>
         </span>
       </div>
-    </div>
+      <div
+        style={{
+          height: "6px",
+          backgroundColor: sb.grid,
+          borderRadius: 9999,
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: `${clamped}%`,
+            height: "100%",
+            background: `linear-gradient(90deg, ${sb.accent} 0%, #14b8a6 100%)`,
+            borderRadius: 9999,
+            transition: "width 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        />
+      </div>
+    </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sb, qLabel } from "./sidebar-tokens";
 
 type Period = "2d" | "5d" | "10d";
 
@@ -52,6 +53,19 @@ interface TechnicalScoreCardProps {
   date?: string;
 }
 
+function scoreTone(score: number): string {
+  if (score >= 80) return sb.up;
+  if (score < 40) return sb.down;
+  return sb.text;
+}
+
+function statusLabel(score: number): string {
+  if (score >= 80) return "강세";
+  if (score >= 60) return "우호";
+  if (score >= 40) return "중립";
+  return "약세";
+}
+
 export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
   const [period, setPeriod] = useState<Period>("5d");
   const [data, setData] = useState<ScoreData>(DUMMY_DATA["5d"]);
@@ -97,71 +111,47 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
     }
   }, [period, symbol, date]);
 
-  const getScoreColor = (score: number) => {
-    if (score >= 80) return "#059669"; // Strong Positive
-    if (score >= 60) return "#10b981"; // Positive
-    if (score >= 40) return "#d97706"; // Neutral
-    return "#dc2626"; // Negative
-  };
-
-  const getStatusText = (score: number) => {
-    if (score >= 80) return "매우 긍정";
-    if (score >= 60) return "긍정";
-    if (score >= 40) return "중립";
-    return "부정";
-  };
+  const tone = scoreTone(data.totalScore);
 
   return (
-    <div
-      style={{
-        marginTop: "1.5rem",
-        padding: "1.25rem",
-        backgroundColor: "#fff",
-        borderRadius: "8px",
-        border: "1px solid #e5e5e5",
-      }}
-    >
+    <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           marginBottom: "1rem",
+          gap: "0.75rem",
         }}
       >
-        <h3
-          style={{
-            fontSize: "0.9375rem",
-            fontWeight: 600,
-            color: "#1a1a1a",
-            margin: 0,
-          }}
-        >
-          기술적 지표 분석
-        </h3>
+        <div style={qLabel}>기술 점수</div>
         <div
           style={{
-            display: "flex",
-            backgroundColor: "#f3f4f6",
-            padding: "2px",
-            borderRadius: "6px",
+            display: "inline-flex",
+            padding: "3px",
+            borderRadius: 10,
+            backgroundColor: sb.grid,
+            gap: 2,
           }}
         >
           {(["2d", "5d", "10d"] as Period[]).map((p) => (
             <button
               key={p}
+              type="button"
               onClick={() => setPeriod(p)}
               style={{
-                padding: "4px 8px",
-                fontSize: "0.75rem",
-                fontWeight: 500,
+                padding: "5px 10px",
+                fontSize: "0.6875rem",
+                fontWeight: 600,
+                fontFamily: "inherit",
                 border: "none",
-                borderRadius: "4px",
                 cursor: "pointer",
-                backgroundColor: period === p ? "#fff" : "transparent",
-                color: period === p ? "#1a1a1a" : "#6b7280",
-                boxShadow: period === p ? "0 1px 2px rgba(0,0,0,0.05)" : "none",
-                transition: "all 0.2s",
+                borderRadius: 8,
+                backgroundColor: period === p ? sb.surface : "transparent",
+                color: period === p ? sb.text : sb.muted,
+                boxShadow:
+                  period === p ? "0 1px 2px rgba(15, 23, 42, 0.06)" : "none",
+                transition: "background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease",
               }}
             >
               {p}
@@ -170,36 +160,35 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
         </div>
       </div>
 
-      <div
-        style={{
-          textAlign: "center",
-          padding: "1rem 0",
-          borderBottom: "1px solid #f3f4f6",
-          marginBottom: "1rem",
-        }}
-      >
-        <div style={{ fontSize: "0.75rem", color: "#6b7280", marginBottom: "0.25rem" }}>
-          {data.name} {loading && <span style={{ color: "#9ca3af" }}>(조회중)</span>}
+      <div style={{ marginBottom: "1rem" }}>
+        <div style={{ fontSize: "0.75rem", color: sb.faint, marginBottom: "0.25rem" }}>
+          {data.name}
+          {loading && <span style={{ marginLeft: "0.35rem", color: sb.muted }}>조회 중</span>}
         </div>
-        <div
-          style={{
-            fontSize: "2rem",
-            fontWeight: 800,
-            color: getScoreColor(data.totalScore),
-          }}
-        >
-          {data.totalScore}
-          <span style={{ fontSize: "1rem", fontWeight: 600, marginLeft: "2px" }}>점</span>
-        </div>
-        <div
-          style={{
-            fontSize: "0.875rem",
-            fontWeight: 600,
-            color: getScoreColor(data.totalScore),
-            marginTop: "0.25rem",
-          }}
-        >
-          {getStatusText(data.totalScore)}
+        <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", flexWrap: "wrap" }}>
+          <span
+            style={{
+              fontSize: "1.75rem",
+              fontWeight: 600,
+              color: sb.text,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            {data.totalScore}
+          </span>
+          <span style={{ fontSize: "0.8125rem", color: sb.faint }}>/ 100</span>
+          <span
+            style={{
+              fontSize: "0.8125rem",
+              color: tone,
+              fontWeight: 600,
+              padding: "2px 8px",
+              borderRadius: 9999,
+              backgroundColor: tone === sb.text ? sb.grid : `${tone}14`,
+            }}
+          >
+            {statusLabel(data.totalScore)}
+          </span>
         </div>
       </div>
 
@@ -214,14 +203,14 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
                 marginBottom: "0.25rem",
               }}
             >
-              <span style={{ color: "#4b5563", fontWeight: 500 }}>{item.label}</span>
-              <span style={{ color: "#1a1a1a", fontWeight: 600 }}>{item.score}점</span>
+              <span style={{ color: sb.muted }}>{item.label}</span>
+              <span style={{ color: sb.text, fontWeight: 600 }}>{item.score}</span>
             </div>
             <div
               style={{
-                height: "6px",
-                backgroundColor: "#f3f4f6",
-                borderRadius: "3px",
+                height: "5px",
+                backgroundColor: sb.grid,
+                borderRadius: 9999,
                 overflow: "hidden",
               }}
             >
@@ -229,15 +218,15 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
                 style={{
                   width: `${item.score}%`,
                   height: "100%",
-                  backgroundColor: getScoreColor(item.score),
-                  borderRadius: "3px",
-                  transition: "width 0.4s ease-out",
+                  background: `linear-gradient(90deg, ${sb.accent}, #2dd4bf)`,
+                  borderRadius: 9999,
+                  transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               />
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

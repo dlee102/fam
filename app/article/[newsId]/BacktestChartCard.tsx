@@ -9,6 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { sb, qLabel } from "./sidebar-tokens";
 
 const BACKTEST_DATA = [
   { day: "발행일", value: 0 },
@@ -22,55 +23,77 @@ const AVG_RETURN = 3.8;
 
 export function BacktestChartCard() {
   return (
-    <div
-      style={{
-        marginTop: "1.5rem",
-        padding: "1.25rem",
-        backgroundColor: "#f8fafc",
-        borderRadius: "8px",
-        border: "1px solid #e2e8f0",
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", marginBottom: "1rem" }}>
+    <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: "0.625rem",
+          gap: "0.75rem",
+        }}
+      >
         <div>
-          <h3 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "#1e293b", margin: 0 }}>
-            과거 유사 기사 백테스트
-          </h3>
-          <p style={{ fontSize: "0.75rem", color: "#64748b", marginTop: "0.25rem" }}>
-            유사 호재 발생 후 5일간 흐름
+          <div style={{ ...qLabel, marginBottom: "0.25rem" }}>유사 기사 백테스트</div>
+          <p style={{ fontSize: "0.75rem", color: sb.faint, margin: 0, lineHeight: 1.45 }}>
+            유사 호재군 · 이후 5거래일 누적
           </p>
         </div>
-        <div style={{ textAlign: "right" }}>
-          <div style={{ fontSize: "0.75rem", color: "#64748b" }}>평균 수익률</div>
-          <div style={{ fontSize: "1rem", fontWeight: 700, color: "#2563eb" }}>+{AVG_RETURN}%</div>
+        <div style={{ textAlign: "right", flexShrink: 0 }}>
+          <div style={{ fontSize: "0.6875rem", color: sb.faint, fontWeight: 500 }}>평균</div>
+          <div
+            style={{
+              fontSize: "1rem",
+              fontWeight: 600,
+              color: sb.text,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            +{AVG_RETURN}%
+          </div>
         </div>
       </div>
 
-      <div style={{ width: "100%", height: 120 }}>
+      <div style={{ width: "100%", height: 116 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={BACKTEST_DATA} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#64748b" }} />
+          <LineChart data={BACKTEST_DATA} margin={{ top: 6, right: 6, left: 0, bottom: 4 }}>
+            <CartesianGrid strokeDasharray="3 6" stroke={sb.grid} vertical={false} />
+            <XAxis
+              dataKey="day"
+              tick={{ fontSize: 10, fill: sb.muted }}
+              axisLine={{ stroke: sb.border }}
+              tickLine={false}
+            />
             <YAxis
-              tick={{ fontSize: 10, fill: "#64748b" }}
+              tick={{ fontSize: 10, fill: sb.muted }}
               tickFormatter={(v) => `${v}%`}
-              width={28}
+              width={32}
+              axisLine={false}
+              tickLine={false}
             />
             <Tooltip
-              formatter={(value: number | undefined) => [`${value != null ? (value >= 0 ? "+" : "") + value + "%" : "-"}`, "수익률"]}
-              contentStyle={{ fontSize: "0.75rem", borderRadius: "6px", border: "1px solid #e2e8f0" }}
+              formatter={(value: number | undefined) => [
+                `${value != null ? (value >= 0 ? "+" : "") + value + "%" : "—"}`,
+                "수익률",
+              ]}
+              contentStyle={{
+                fontSize: "0.75rem",
+                borderRadius: 8,
+                border: `1px solid ${sb.border}`,
+                boxShadow: "0 4px 12px rgba(15, 23, 42, 0.08)",
+              }}
             />
             <Line
               type="monotone"
               dataKey="value"
-              stroke="#2563eb"
+              stroke={sb.chartLineAlt}
               strokeWidth={2}
-              dot={{ fill: "#2563eb", r: 3 }}
-              activeDot={{ r: 5 }}
+              dot={{ fill: sb.chartLineAlt, r: 2.5, strokeWidth: 0 }}
+              activeDot={{ r: 4, fill: sb.chartLineAlt }}
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </section>
   );
 }

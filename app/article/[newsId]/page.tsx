@@ -2,17 +2,14 @@ import Link from "next/link";
 import { fetchArticleContent } from "@/lib/crawl-article";
 import { getArticleByNewsId } from "@/lib/news-tickers";
 import { getTickerName } from "@/lib/ticker-names";
-import { loadEntryHoldSummary } from "@/lib/entry-hold-stats";
-import { getQuantSignalsByNewsId } from "@/lib/quant-signals";
 import { StockChartToggle } from "./StockChartToggle";
-import { QuantTradingGuide } from "./QuantTradingGuide";
 import { AIScoreGauge } from "./AIScoreGauge";
 import { RiskGauge } from "./RiskGauge";
 import { ReturnChartCard } from "./ReturnChartCard";
 import { TechnicalScoreCard } from "./TechnicalScoreCard";
 import { BacktestChartCard } from "./BacktestChartCard";
-import { SupplyDemandCard } from "./SupplyDemandCard";
 import { RippleEffectCard } from "./RippleEffectCard";
+import { qLabel, sb } from "./sidebar-tokens";
 
 const QUANT_INDICATOR_DUMMY = {
   단기: "매수",
@@ -36,15 +33,12 @@ export default async function ArticlePage({
   params: Promise<{ newsId: string }>;
 }) {
   const { newsId } = await params;
-  const [articleResult, tickerResult, entryHoldSummary] = await Promise.allSettled([
+  const [articleResult, tickerResult] = await Promise.allSettled([
     fetchArticleContent(newsId),
     Promise.resolve(getArticleByNewsId(newsId)),
-    Promise.resolve(loadEntryHoldSummary()),
   ]);
   const article = articleResult.status === "fulfilled" ? articleResult.value : null;
   const tickerEntry = tickerResult.status === "fulfilled" ? tickerResult.value : null;
-  const quantSummary = entryHoldSummary.status === "fulfilled" ? entryHoldSummary.value : null;
-  const tickerSignals = getQuantSignalsByNewsId(newsId);
 
   if (!article) {
     return (
@@ -71,20 +65,20 @@ export default async function ArticlePage({
         ← 목록으로
       </Link>
 
-      <div className="article-with-sidebar" style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
-        <article style={{ flex: 1, minWidth: 0 }}>
+      <article className="article-page-article">
         <h1
           style={{
-            fontSize: "1.5rem",
+            fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)",
             fontWeight: 700,
-            lineHeight: 1.4,
+            lineHeight: 1.35,
             marginBottom: "1rem",
+            color: "#171717",
           }}
         >
           {article.title}
         </h1>
         {article.subtitle && (
-          <p style={{ fontSize: "1rem", color: "#525252", marginBottom: "0.5rem" }}>
+          <p style={{ fontSize: "1rem", color: "#525252", marginBottom: "0.5rem", lineHeight: 1.55 }}>
             {article.subtitle}
           </p>
         )}
@@ -105,26 +99,11 @@ export default async function ArticlePage({
             )}
           />
         )}
-        {quantSummary && (
-          <QuantTradingGuide
-            entryHoldSummary={quantSummary}
-            tickerSignals={Object.keys(tickerSignals).length > 0 ? tickerSignals : undefined}
-            tickerNames={
-              tickerEntry
-                ? Object.fromEntries(
-                    tickerEntry.tickers
-                      .filter((t) => /^\d{6}$/.test(t))
-                      .map((t) => [t, getTickerName(t)])
-                  )
-                : undefined
-            }
-          />
-        )}
         <div
           className="article-body"
           style={{
-            fontSize: "1.25rem",
-            lineHeight: 1.9,
+            fontSize: "1.125rem",
+            lineHeight: 1.85,
             color: "#404040",
           }}
         >
@@ -164,135 +143,154 @@ export default async function ArticlePage({
         </div>
       </article>
 
-      <aside
-        className="quant-indicator-sidebar"
-        style={{
-          width: "300px",
-          flexShrink: 0,
-          padding: "1.25rem",
-          backgroundColor: "#fff",
-          borderRadius: "8px",
-          border: "1px solid #e5e5e5",
-          position: "sticky",
-          top: "1rem",
-        }}
-      >
-        <AIScoreGauge score={80} />
-        <h3
-          style={{
-            fontSize: "0.9375rem",
-            fontWeight: 600,
-            marginBottom: "1rem",
-            color: "#1a1a1a",
-          }}
-        >
-          퀀트 인텔리전스 지표
-        </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          {Object.entries(QUANT_INDICATOR_DUMMY).map(
-            ([term, signal]) => (
-              <div
-                key={term}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  fontSize: "0.875rem",
-                }}
-              >
-                <span style={{ color: "#525252" }}>{term}</span>
-                <span
-                  style={{
-                    fontWeight: 600,
-                    color:
-                      signal === "매수"
-                        ? "#059669"
-                        : (signal as string) === "매도"
-                          ? "#dc2626"
-                          : "#737373",
-                  }}
-                >
-                  {signal}
-                </span>
-              </div>
-            )
-          )}
-        </div>
-        <RiskGauge value={RISK_LEVEL_DUMMY} />
+      <section className="article-quant-dashboard" aria-labelledby="article-quant-dashboard-title">
+        <header className="article-quant-dashboard-header">
+          <h2 id="article-quant-dashboard-title" className="article-quant-dashboard-title">
+            퀀트 인사이트
+          </h2>
+          <p className="article-quant-dashboard-desc">
+            기사 맥락을 숫자로 요약합니다. 모델·더미 구간이 포함될 수 있습니다.
+          </p>
+        </header>
 
-        <ReturnChartCard />
-
-        <TechnicalScoreCard symbol="KR7000020008" date="20240102" />
-
-        <BacktestChartCard />
-
-        <SupplyDemandCard symbol="KR7000020008" date="20240102" />
-
-        <RippleEffectCard />
-
-        <div
-          style={{
-            marginTop: "1.5rem",
-            padding: "1.25rem",
-            backgroundColor: "#fff",
-            borderRadius: "8px",
-            border: "1px solid #e5e5e5",
-          }}
-        >
-          <h3
-            style={{
-              fontSize: "0.9375rem",
-              fontWeight: 600,
-              marginBottom: "1rem",
-              color: "#1a1a1a",
-            }}
-          >
-            연관 종목 순위
-          </h3>
-          <div style={{ fontSize: "0.8125rem", overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  <th style={{ textAlign: "left", padding: "0.5rem 0.25rem", color: "#737373", fontWeight: 500 }}>
-                    종목
-                  </th>
-                  <th style={{ textAlign: "right", padding: "0.5rem 0.25rem", color: "#737373", fontWeight: 500 }}>
-                    최종가
-                  </th>
-                  <th style={{ textAlign: "right", padding: "0.5rem 0.25rem", color: "#737373", fontWeight: 500 }}>
-                    등락률
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {RELATED_STOCKS_DUMMY.map((stock, i) => (
-                  <tr key={stock.symbol} style={{ borderTop: "1px solid #f0f0f0" }}>
-                    <td style={{ padding: "0.5rem 0.25rem" }}>
-                      <div style={{ fontWeight: 600, color: "#1a1a1a" }}>{stock.symbol}</div>
-                      <div style={{ fontSize: "0.75rem", color: "#737373" }}>{stock.name}</div>
-                    </td>
-                    <td style={{ textAlign: "right", padding: "0.5rem 0.25rem", color: "#404040" }}>
-                      {stock.price.toLocaleString()}
-                    </td>
-                    <td
+        <div className="article-quant-dashboard-rows">
+          <div className="article-quant-dashboard-grid article-quant-dashboard-grid--kpi">
+            <div className="quant-dash-cell">
+              <AIScoreGauge score={80} />
+            </div>
+            <div className="quant-dash-cell">
+              <div>
+                <div style={{ ...qLabel, marginBottom: "0.625rem" }}>시그널 · 더미</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  {Object.entries(QUANT_INDICATOR_DUMMY).map(([term, signal]) => (
+                    <div
+                      key={term}
                       style={{
-                        textAlign: "right",
-                        padding: "0.5rem 0.25rem",
-                        fontWeight: 600,
-                        color: stock.change >= 0 ? "#059669" : "#dc2626",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        fontSize: "0.75rem",
                       }}
                     >
-                      {stock.change >= 0 ? "+" : ""}
-                      {stock.change}%
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      <span style={{ color: sb.muted }}>{term}</span>
+                      <span
+                        style={{
+                          fontWeight: 600,
+                          color:
+                            signal === "매수"
+                              ? sb.up
+                              : (signal as string) === "매도"
+                                ? sb.down
+                                : sb.text,
+                        }}
+                      >
+                        {signal}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="quant-dash-cell">
+              <RiskGauge value={RISK_LEVEL_DUMMY} />
+            </div>
+          </div>
+
+          <div className="article-quant-dashboard-grid article-quant-dashboard-grid--charts">
+            <div className="quant-dash-cell">
+              <ReturnChartCard />
+            </div>
+            <div className="quant-dash-cell">
+              <BacktestChartCard />
+            </div>
+          </div>
+
+          <div className="article-quant-dashboard-grid">
+            <div className="quant-dash-cell">
+              <TechnicalScoreCard symbol="KR7000020008" date="20240102" />
+            </div>
+          </div>
+
+          <div className="article-quant-dashboard-grid article-quant-dashboard-grid--split">
+            <div className="quant-dash-cell">
+              <RippleEffectCard />
+            </div>
+            <div className="quant-dash-cell">
+              <section>
+                <div style={{ ...qLabel, marginBottom: "0.625rem" }}>연관 종목</div>
+                <div style={{ fontSize: "0.75rem", overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <thead>
+                      <tr style={{ borderBottom: `1px solid ${sb.border}` }}>
+                        <th
+                          style={{
+                            textAlign: "left",
+                            padding: "0.35rem 0",
+                            color: sb.faint,
+                            fontWeight: 600,
+                            fontSize: "0.5625rem",
+                            letterSpacing: "0.06em",
+                          }}
+                        >
+                          심볼
+                        </th>
+                        <th
+                          style={{
+                            textAlign: "right",
+                            padding: "0.35rem 0",
+                            color: sb.faint,
+                            fontWeight: 600,
+                            fontSize: "0.5625rem",
+                            letterSpacing: "0.06em",
+                          }}
+                        >
+                          가격
+                        </th>
+                        <th
+                          style={{
+                            textAlign: "right",
+                            padding: "0.35rem 0",
+                            color: sb.faint,
+                            fontWeight: 600,
+                            fontSize: "0.5625rem",
+                            letterSpacing: "0.06em",
+                          }}
+                        >
+                          Δ%
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {RELATED_STOCKS_DUMMY.map((stock) => (
+                        <tr key={stock.symbol} style={{ borderTop: `1px solid ${sb.rule}` }}>
+                          <td style={{ padding: "0.4rem 0" }}>
+                            <div style={{ fontWeight: 600, color: sb.text, fontSize: "0.75rem" }}>{stock.symbol}</div>
+                            <div style={{ fontSize: "0.625rem", color: sb.muted }}>{stock.name}</div>
+                          </td>
+                          <td style={{ textAlign: "right", padding: "0.4rem 0", color: sb.text }}>
+                            {stock.price.toLocaleString()}
+                          </td>
+                          <td
+                            style={{
+                              textAlign: "right",
+                              padding: "0.4rem 0",
+                              fontWeight: 600,
+                              color: stock.change >= 0 ? sb.up : sb.down,
+                            }}
+                          >
+                            {stock.change >= 0 ? "+" : ""}
+                            {stock.change}%
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
-      </aside>
-    </div>
+      </section>
     </main>
   );
 }
