@@ -46,8 +46,10 @@ export default function RootLayout({
             </a>
           </header>
           <header
-            className="header-nav"
+            className="site-header-nav"
             style={{
+              position: "relative",
+              zIndex: 50,
               padding: "0.625rem 2rem",
               backgroundColor: "var(--color-surface)",
               borderBottom: "1px solid var(--color-border)",

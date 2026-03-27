@@ -38,7 +38,7 @@ export default function NavTabs() {
           pathname === href || (href !== "/" && pathname.startsWith(href));
         return (
           <Link
-            key={href}
+            key={`${href}-${label}`}
             href={href}
             data-active={isActive}
             className={`nav-tab nav-tab--${variant}`}

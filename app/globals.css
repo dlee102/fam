@@ -221,6 +221,11 @@ a {
   }
 }
 
+/* 상단 2행 내비: 본문·오버레이보다 위에서 클릭이 먹도록 */
+.site-header-nav {
+  isolation: isolate;
+}
+
 /* 상단 탭 — 섹션별 성격 (기본 / 뉴스·티커 / 통계 / 보고서) */
 .nav-tabs {
   display: flex;
@@ -231,6 +236,8 @@ a {
   background-color: var(--color-bg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 .nav-tabs__divider {
@@ -243,6 +250,7 @@ a {
 }
 
 .nav-tab {
+  display: inline-block;
   padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
   font-weight: 600;
@@ -251,6 +259,8 @@ a {
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   color: var(--color-text-muted);
   background-color: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(13, 148, 136, 0.15);
 }
 
 .nav-tab[data-active="true"] {
@@ -319,6 +329,12 @@ a {
 }
 
 .article-link:hover span {
+  color: var(--color-accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.kiwoom-card-title-link:hover {
   color: var(--color-accent) !important;
   text-decoration: underline;
   text-underline-offset: 2px;
