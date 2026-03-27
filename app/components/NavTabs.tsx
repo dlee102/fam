@@ -18,8 +18,17 @@ const tabs: TabItem[] = [
   { type: "link", href: "/report", label: "종합 보고서", variant: "report" },
 ];
 
+/** trailing slash·쿼리 차이 흡수 (Vercel·프록시 경로와 로컬 불일치 완화) */
+function pathMatches(pathname: string, href: string): boolean {
+  const p = pathname.split("?")[0].replace(/\/$/, "") || "/";
+  const h = href.replace(/\/$/, "") || "/";
+  if (p === h) return true;
+  if (h === "/") return p === "/";
+  return p === h || p.startsWith(`${h}/`);
+}
+
 export default function NavTabs() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   return (
     <nav className="nav-tabs" aria-label="주요 메뉴">
@@ -34,8 +43,7 @@ export default function NavTabs() {
           );
         }
         const { href, label, variant } = item;
-        const isActive =
-          pathname === href || (href !== "/" && pathname.startsWith(href));
+        const isActive = pathMatches(pathname, href);
         return (
           <Link
             key={`${href}-${label}`}
