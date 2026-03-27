@@ -2,6 +2,7 @@ import { fetchPharmArticles } from "@/lib/crawl-pharm";
 import { getArticleByNewsId } from "@/lib/news-tickers";
 import { getStockChartData } from "@/lib/stock-chart-api";
 import { getTickerName } from "@/lib/ticker-names";
+import { buildFallbackOhlc } from "@/lib/kiwoom-fallback-ohlc";
 import { computeKiwoomBands } from "@/lib/kiwoom-robo-bands";
 import { KiwoomRoboMarketContent } from "./KiwoomRoboMarketContent";
 
@@ -44,7 +45,12 @@ export default async function KiwoomRoboMarketPage() {
   const centerDate = normalizeCenterDate(entry?.published_date);
 
   const chartRes = await getStockChartData(centerDate, [ticker]);
-  const ohlc = chartRes?.data?.[ticker] ?? [];
+  let ohlc = chartRes?.data?.[ticker] ?? [];
+  let usedSyntheticOhlc = false;
+  if (ohlc.length === 0) {
+    ohlc = buildFallbackOhlc(centerDate, ticker);
+    usedSyntheticOhlc = ohlc.length > 0;
+  }
   const bandPack = ohlc.length > 0 ? computeKiwoomBands(ohlc) : null;
   const bands = bandPack?.bands ?? null;
   const bandMeta = bandPack?.meta ?? null;
@@ -83,6 +89,7 @@ export default async function KiwoomRoboMarketPage() {
         centerDate={centerDate}
         chartError={chartError}
         usedFallbackTicker={usedFallbackTicker}
+        usedSyntheticOhlc={usedSyntheticOhlc}
       />
     </main>
   );

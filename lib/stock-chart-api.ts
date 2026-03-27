@@ -37,37 +37,66 @@ export async function getStockChartData(
   const tickerList = tickers.join(",");
 
   return new Promise((resolve) => {
-    const proc = spawn(
-      "python3",
-      ["scripts/stock_chart_data.py", date, tickerList],
-      { cwd: projectRoot }
-    );
+    let settled = false;
+    const finish = (value: StockChartResponse | null) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      resolve(value);
+    };
+
+    let proc: ReturnType<typeof spawn>;
+    try {
+      proc = spawn("python3", ["scripts/stock_chart_data.py", date, tickerList], {
+        cwd: projectRoot,
+      });
+    } catch (e) {
+      console.error("[stock-chart-api] spawn threw:", e);
+      resolve(null);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      try {
+        proc.kill("SIGKILL");
+      } catch {
+        /* ignore */
+      }
+      console.error("[stock-chart-api] timeout after 12s");
+      finish(null);
+    }, 12_000);
 
     let stdout = "";
     let stderr = "";
 
-    proc.stdout.on("data", (chunk) => {
+    proc.stdout?.on("data", (chunk) => {
       stdout += chunk.toString();
     });
-    proc.stderr.on("data", (chunk) => {
+    proc.stderr?.on("data", (chunk) => {
       stderr += chunk.toString();
     });
 
+    proc.on("error", (err) => {
+      console.error("[stock-chart-api] spawn error:", err);
+      finish(null);
+    });
+
     proc.on("close", (code) => {
+      if (settled) return;
       if (code !== 0) {
         console.error("[stock-chart-api] stderr:", stderr);
-        resolve(null);
+        finish(null);
         return;
       }
       try {
         const parsed = JSON.parse(stdout.trim());
         if (parsed.error) {
-          resolve(null);
+          finish(null);
           return;
         }
-        resolve(parsed as StockChartResponse);
+        finish(parsed as StockChartResponse);
       } catch {
-        resolve(null);
+        finish(null);
       }
     });
   });

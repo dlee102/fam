@@ -16,6 +16,8 @@ type Props = {
   centerDate: string;
   chartError: string | null;
   usedFallbackTicker: boolean;
+  /** Python·CSV 없는 배포 환경용 합성 일봉 */
+  usedSyntheticOhlc?: boolean;
 };
 
 function formatWon(n: number): string {
@@ -43,6 +45,7 @@ export function KiwoomRoboMarketContent({
   centerDate,
   chartError,
   usedFallbackTicker,
+  usedSyntheticOhlc = false,
 }: Props) {
   const hasChart = ohlc.length > 0 && bands != null && lastClose != null;
 
@@ -125,10 +128,21 @@ export function KiwoomRoboMarketContent({
           </h1>
         )}
         <p style={{ fontSize: "0.875rem", color: sb.muted, marginTop: "0.75rem", marginBottom: 0, lineHeight: 1.55 }}>
-          일봉은 저장소의 <code style={{ fontSize: "0.8em" }}>ls_stock_1d</code> CSV를{" "}
-          <code style={{ fontSize: "0.8em" }}>scripts/stock_chart_data.py</code>로 읽어옵니다. 기준일{" "}
-          <strong style={{ color: sb.text }}>{formatYmd(centerDate)}</strong> 전후 구간입니다.{" "}
-          {bandMeta == null && "일봉이 로드되면 점선 구간은 ATR·종가 기준으로 계산합니다."}
+          {usedSyntheticOhlc ? (
+            <>
+              배포·서버 환경에서는 로컬 <code style={{ fontSize: "0.8em" }}>ls_stock_1d</code> CSV와{" "}
+              <code style={{ fontSize: "0.8em" }}>python3</code> 파이프라인을 쓸 수 없어, 동일 계산 로직 검증용{" "}
+              <strong style={{ color: sb.text }}>합성 일봉</strong>을 씁니다. 기준일{" "}
+              <strong style={{ color: sb.text }}>{formatYmd(centerDate)}</strong> 전후입니다.{" "}
+            </>
+          ) : (
+            <>
+              일봉은 저장소의 <code style={{ fontSize: "0.8em" }}>ls_stock_1d</code> CSV를{" "}
+              <code style={{ fontSize: "0.8em" }}>scripts/stock_chart_data.py</code>로 읽어옵니다. 기준일{" "}
+              <strong style={{ color: sb.text }}>{formatYmd(centerDate)}</strong> 전후 구간입니다.{" "}
+            </>
+          )}
+          {bandMeta == null && !usedSyntheticOhlc && "일봉이 로드되면 점선 구간은 ATR·종가 기준으로 계산합니다."}
           {bandMeta?.mode === "atr" && (
             <>점선 구간은 최근 종가·ATR({bandMeta.atrPeriod})로 산출한 매수·익절 범위입니다.</>
           )}
