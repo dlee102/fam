@@ -1,0 +1,66 @@
+{
+  "note": "발췌 원본: data/top_surge_analysis.json 종목·기사. 퍼블 후 수익률은 화면 시연용으로 5%~29% 범위로 표기. ai_score는 UI 시연용 0~100.",
+  "source_generated_at": "2026-03-09T14:23:10.886560",
+  "rows": [
+    {
+      "rank": 1,
+      "ticker": "065170",
+      "name": "비엘팜텍",
+      "title": "비알팜텍, 분자접착제 기술 이전 기대에 '上'...앱클론·현대바이오도 ↑ [바이오맥짚기]",
+      "ai_score": 94,
+      "ret_t10_pct": 29,
+      "t0_date": "2026-01-16",
+      "pattern_group": "패턴없음"
+    },
+    {
+      "rank": 2,
+      "ticker": "187660",
+      "name": "현대ADM",
+      "title": "유럽 의사들 먼저 알아봤다...넥스트바이오메디컬, '인공관절 수술 후 통증'에도 효과",
+      "ai_score": 91,
+      "ret_t10_pct": 24,
+      "t0_date": "2026-02-02",
+      "pattern_group": "패턴없음"
+    },
+    {
+      "rank": 3,
+      "ticker": "049180",
+      "name": "셀루메드",
+      "title": "Graphy, Celltrion rally on global revenue prospects[K-Bio Pulse]",
+      "ai_score": 88,
+      "ret_t10_pct": 19,
+      "t0_date": "2026-01-05",
+      "pattern_group": "추천"
+    },
+    {
+      "rank": 4,
+      "ticker": "229000",
+      "name": "젠큐릭스",
+      "title": "아이센스, CGM '유럽' 기대에 23%↑…파미셀, 호실적에 상승[바이오맥짚기]",
+      "ai_score": 86,
+      "ret_t10_pct": 15,
+      "t0_date": "2026-02-13",
+      "pattern_group": "패턴없음"
+    },
+    {
+      "rank": 5,
+      "ticker": "318060",
+      "name": "그래피",
+      "title": "'30년 덴탈·3D프린팅 노하우' 세계 최초 형상기억 투명교정장치 바탕[그래피 대해부]①",
+      "ai_score": 82,
+      "ret_t10_pct": 11,
+      "t0_date": "2026-01-21",
+      "pattern_group": "패턴없음"
+    },
+    {
+      "rank": 6,
+      "ticker": "041920",
+      "name": "메디아나",
+      "title": "환자 모니터링 시장 경쟁 자신한 메디아나…실제 경쟁력은",
+      "ai_score": 79,
+      "ret_t10_pct": 5,
+      "t0_date": "2026-01-20",
+      "pattern_group": "패턴없음"
+    }
+  ]
+}

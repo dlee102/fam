@@ -9,6 +9,7 @@ import { ReturnChartCard } from "./ReturnChartCard";
 import { TechnicalScoreCard } from "./TechnicalScoreCard";
 import { BacktestChartCard } from "./BacktestChartCard";
 import { RippleEffectCard } from "./RippleEffectCard";
+import { StatsArticleAiRankCard } from "@/app/stats/StatsArticleAiRankCard";
 import { qLabel, sb } from "./sidebar-tokens";
 
 const QUANT_INDICATOR_DUMMY = {
@@ -287,6 +288,12 @@ export default async function ArticlePage({
                   </table>
                 </div>
               </section>
+            </div>
+          </div>
+
+          <div className="article-quant-dashboard-grid">
+            <div className="quant-dash-cell">
+              <StatsArticleAiRankCard embedded />
             </div>
           </div>
         </div>

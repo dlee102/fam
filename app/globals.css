@@ -221,14 +221,96 @@ a {
   }
 }
 
-/* 상단 탭 네비게이션 - 호버 효과 */
-.nav-tab:hover {
-  background-color: rgba(13, 148, 136, 0.1) !important;
-  color: var(--color-accent) !important;
+/* 상단 탭 — 섹션별 성격 (기본 / 뉴스·티커 / 통계 / 보고서) */
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
 }
-.nav-tab[data-active="true"]:hover {
-  background-color: var(--color-accent-hover) !important;
-  color: #fff !important;
+
+.nav-tabs__divider {
+  width: 1px;
+  height: 1.35rem;
+  margin: 0 0.35rem;
+  background: var(--color-border-strong);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.nav-tab {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  color: var(--color-text-muted);
+  background-color: transparent;
+}
+
+.nav-tab[data-active="true"] {
+  color: #fff;
+}
+
+/* 퀀트·상품 (1번~6번, 키움 로보마켓) — 기존 틸 */
+.nav-tab--default[data-active="true"] {
+  background-color: var(--color-accent);
+  box-shadow: 0 1px 2px rgba(13, 148, 136, 0.3);
+}
+.nav-tab--default:hover:not([data-active="true"]) {
+  background-color: rgba(13, 148, 136, 0.1);
+  color: var(--color-accent);
+}
+.nav-tab--default[data-active="true"]:hover {
+  background-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+/* 뉴스+티커 — 피드·감성 피드, 인디고 */
+.nav-tab--news[data-active="true"] {
+  background: linear-gradient(135deg, #4338ca 0%, #6366f1 100%);
+  box-shadow: 0 1px 3px rgba(67, 56, 202, 0.35);
+}
+.nav-tab--news:hover:not([data-active="true"]) {
+  background-color: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+}
+.nav-tab--news[data-active="true"]:hover {
+  background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%);
+  color: #fff;
+}
+
+/* 기본 통계 — 수치·차트, 스카이 */
+.nav-tab--stats[data-active="true"] {
+  background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
+  box-shadow: 0 1px 3px rgba(14, 165, 233, 0.35);
+}
+.nav-tab--stats:hover:not([data-active="true"]) {
+  background-color: rgba(14, 165, 233, 0.12);
+  color: #0369a1;
+}
+.nav-tab--stats[data-active="true"]:hover {
+  background: linear-gradient(135deg, #075985 0%, #0284c7 100%);
+  color: #fff;
+}
+
+/* 종합 보고서 — 문서·리포트, 앰버 */
+.nav-tab--report[data-active="true"] {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+  box-shadow: 0 1px 3px rgba(180, 83, 9, 0.35);
+}
+.nav-tab--report:hover:not([data-active="true"]) {
+  background-color: rgba(217, 119, 6, 0.12);
+  color: #b45309;
+}
+.nav-tab--report[data-active="true"]:hover {
+  background: linear-gradient(135deg, #92400e 0%, #b45309 100%);
+  color: #fff;
 }
 
 .logo-link:hover {
@@ -240,4 +322,10 @@ a {
   color: var(--color-accent) !important;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.kiwoom-article-title:hover {
+  color: var(--color-accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
