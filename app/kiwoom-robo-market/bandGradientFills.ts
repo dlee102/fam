@@ -19,12 +19,14 @@ class BandFillRenderer implements IPrimitivePaneRenderer {
   ) {}
 
   draw(target: CanvasRenderingTarget2D): void {
-    if (this.yTop === null || this.yBottom === null) return;
+    const yTop = this.yTop;
+    const yBottom = this.yBottom;
+    if (yTop === null || yBottom === null) return;
     target.useBitmapCoordinateSpace((scope) => {
       const ctx = scope.context;
       const w = scope.bitmapSize.width;
-      const top = Math.round(this.yTop * scope.verticalPixelRatio);
-      const bottom = Math.round(this.yBottom * scope.verticalPixelRatio);
+      const top = Math.round(yTop * scope.verticalPixelRatio);
+      const bottom = Math.round(yBottom * scope.verticalPixelRatio);
       const height = Math.max(1, bottom - top);
       const midY = top + height / 2;
 
