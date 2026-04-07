@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import Link from "next/link";
 import { sb, qLabel } from "@/app/article/[newsId]/sidebar-tokens";
 import type { PerArticleManifestRow, PerArticleManifestSummary } from "./per-article-manifest";
@@ -236,9 +236,8 @@ export function PerArticleManifestPanel({
               const k = rowKey(r);
               const isExpanded = expandedKey === k;
               return (
-                <>
+                <Fragment key={k}>
                   <tr
-                    key={k}
                     onClick={() => toggleRow(r)}
                     style={{
                       borderBottom: isExpanded ? "none" : `1px solid ${sb.grid}`,
@@ -278,13 +277,13 @@ export function PerArticleManifestPanel({
                     </td>
                   </tr>
                   {isExpanded && (
-                    <tr key={`${k}-chart`} style={{ borderBottom: `1px solid ${sb.grid}` }}>
+                    <tr style={{ borderBottom: `1px solid ${sb.grid}` }}>
                       <td colSpan={10} style={{ padding: 0 }}>
                         <ArticleEodChart row={r} />
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               );
             })}
           </tbody>
