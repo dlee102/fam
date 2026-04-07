@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-기사 퍼블리싱 이후 양전(상승) 종목 클러스터링 분석
+기사 공개 이후 양전(상승) 종목 클러스터링 분석
 
 - news_tickers.json의 기사별 published_date, tickers 사용
 - ls_stock_1d/*.csv 일봉 데이터로 T+1, T+3, T+5 수익률 계산
@@ -172,8 +172,8 @@ def run_analysis(horizons: list[int] = [1, 3, 5]):
                 return "상"
             df_result[f"cluster_{h}d"] = df_result[col].apply(cluster)
 
-    # 최소 기사 수 필터 (노이즈 제거)
-    min_count = 2
+    # 최소 기사 수 필터 (노이즈 제거) — 5건 미만은 양전률 추정치가 너무 불안정
+    min_count = 5
     df_filtered = df_result[df_result["count_1d"] >= min_count].copy()
 
     return df_result, df_filtered, {
@@ -181,13 +181,16 @@ def run_analysis(horizons: list[int] = [1, 3, 5]):
         "total_pairs_analyzed": total_pairs,
         "skipped_no_data": skipped_no_data,
         "skipped_no_future": skipped_no_future,
+        "min_count_filter": min_count,
     }
 
 
 def print_report(df_all: pd.DataFrame, df_filtered: pd.DataFrame, stats: dict):
     """결과 출력"""
     print("=" * 70)
-    print("기사 퍼블리싱 이후 양전(상승) 종목 클러스터링")
+    print("기사 공개 이후 양전(상승) 종목 클러스터링")
+    print("⚠ 주의: T0 종가 진입 가정이며, 당일 장중 공개 시각을 반영하지 않습니다.")
+    print("⚠ 클러스터는 동일 표본 내 상대 분위 기준이며, 미래 수익을 보장하지 않습니다.")
     print("=" * 70)
     print(f"총 기사 수: {stats['total_articles']}")
     print(f"분석된 (기사×종목×기간) 쌍: {stats['total_pairs_analyzed']}")
@@ -195,6 +198,7 @@ def print_report(df_all: pd.DataFrame, df_filtered: pd.DataFrame, stats: dict):
     print()
 
     horizons = [1, 3, 5]
+    mc = stats.get("min_count_filter", 5)
     for h in horizons:
         col = f"positive_rate_{h}d"
         if col not in df_filtered.columns:
@@ -202,7 +206,7 @@ def print_report(df_all: pd.DataFrame, df_filtered: pd.DataFrame, stats: dict):
         valid = df_filtered[col].dropna()
         if len(valid) == 0:
             continue
-        print(f"--- T+{h} 거래일 양전률 (기사 2건 이상 종목) ---")
+        print(f"--- T+{h} 거래일 양전률 (기사 {mc}건 이상 종목) ---")
         top = df_filtered.nlargest(15, col)[["ticker", "name", f"count_{h}d", col, f"avg_return_{h}d"]]
         top[col] = top[col].apply(lambda x: f"{x:.1%}" if pd.notna(x) else "-")
         top[f"avg_return_{h}d"] = top[f"avg_return_{h}d"].apply(lambda x: f"{x:.2%}" if pd.notna(x) else "-")

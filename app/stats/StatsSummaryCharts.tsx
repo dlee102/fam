@@ -102,7 +102,7 @@ export function StatsSummaryCharts({ pipeline, entryWinRateAt7d }: Props) {
             입장 시점별 승률 (보유 7거래일)
           </h3>
           <p style={{ fontSize: "12px", color: "#737373", margin: "0 0 16px", lineHeight: 1.5 }}>
-            동일 보유일 기준으로 입장 시점만 비교했습니다.
+            보유 7거래일 고정, 입장 정의(A~E)별 승률(5분봉 기반 entry_hold_stats).
           </p>
           <div style={{ height: 260, width: "100%" }}>
             <ResponsiveContainer width="100%" height="100%">

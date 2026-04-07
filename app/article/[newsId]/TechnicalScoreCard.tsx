@@ -53,10 +53,22 @@ interface TechnicalScoreCardProps {
   date?: string;
 }
 
-function scoreTone(score: number): string {
-  if (score >= 80) return sb.up;
-  if (score < 40) return sb.down;
+function scoreLevel(score: number): "up" | "down" | "neutral" {
+  if (score >= 80) return "up";
+  if (score < 40) return "down";
+  return "neutral";
+}
+
+function scoreToneColor(level: "up" | "down" | "neutral"): string {
+  if (level === "up") return sb.up;
+  if (level === "down") return sb.down;
   return sb.text;
+}
+
+function statusBadgeBg(level: "up" | "down" | "neutral"): string {
+  if (level === "up") return "color-mix(in srgb, var(--quant-up) 16%, transparent)";
+  if (level === "down") return "color-mix(in srgb, var(--quant-down) 16%, transparent)";
+  return sb.grid;
 }
 
 function statusLabel(score: number): string {
@@ -111,7 +123,8 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
     }
   }, [period, symbol, date]);
 
-  const tone = scoreTone(data.totalScore);
+  const level = scoreLevel(data.totalScore);
+  const tone = scoreToneColor(level);
 
   return (
     <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
@@ -149,8 +162,7 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
                 borderRadius: 8,
                 backgroundColor: period === p ? sb.surface : "transparent",
                 color: period === p ? sb.text : sb.muted,
-                boxShadow:
-                  period === p ? "0 1px 2px rgba(15, 23, 42, 0.06)" : "none",
+                boxShadow: period === p ? "var(--quant-segment-shadow)" : "none",
                 transition: "background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease",
               }}
             >
@@ -184,7 +196,7 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
               fontWeight: 600,
               padding: "2px 8px",
               borderRadius: 9999,
-              backgroundColor: tone === sb.text ? sb.grid : `${tone}14`,
+              backgroundColor: statusBadgeBg(level),
             }}
           >
             {statusLabel(data.totalScore)}
@@ -218,7 +230,8 @@ export function TechnicalScoreCard({ symbol, date }: TechnicalScoreCardProps) {
                 style={{
                   width: `${item.score}%`,
                   height: "100%",
-                  background: `linear-gradient(90deg, ${sb.accent}, #2dd4bf)`,
+                  background:
+                    "linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-hover) 100%)",
                   borderRadius: 9999,
                   transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}

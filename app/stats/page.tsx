@@ -5,7 +5,7 @@ import { StatsReportFaq } from "./StatsReportFaq";
 
 export const metadata = {
   title: "뉴스 기반 주가 반응 분석 보고서 | FAM",
-  description: "기사 퍼블리싱 이후 입장 시점 및 보유 기간별 수익률·승률 정량 분석",
+  description: "기사 공개 이후 입장 시점 및 보유 기간별 수익률·승률 정량 분석",
 };
 
 type ClusteringData = {
@@ -71,13 +71,23 @@ type AdvancedStatsData = {
   }>;
 };
 
+type EntryHoldRow = {
+  entry: string;
+  entry_label: string;
+  hold_days: number;
+  count: number;
+  win_rate: number;
+  avg_return: number;
+};
+
 type EntryHoldData = {
   generated_at: string;
+  methodology_note?: string;
   summary: {
-    best_win_rate: { entry_label: string; hold_days: number; win_rate: number; avg_return: number; count: number };
-    best_avg_return: { entry_label: string; hold_days: number; win_rate: number; avg_return: number; count: number };
+    best_win_rate: EntryHoldRow;
+    best_avg_return: EntryHoldRow;
   };
-  detail: Array<{ entry: string; entry_label: string; hold_days: number; count: number; win_rate: number; avg_return: number }>;
+  detail: EntryHoldRow[];
 };
 
 type TopSurgeItem = {
@@ -250,8 +260,9 @@ export default function StatsPage() {
           <li style={{ marginBottom: "6px" }}>
             기사 <strong>{clusteringData?.stats.total_articles ?? "—"}</strong>건 → 수익 계산 케이스{" "}
             <strong>{clusteringData?.stats.total_pairs_analyzed ?? "—"}</strong>개, 시세 부족 제외{" "}
-            <strong>{(clusteringData?.stats.skipped_no_data ?? 0) + (clusteringData?.stats.skipped_no_future ?? 0)}</strong>개. T0 기준{" "}
-            <strong>당일 종가·익일 시가·익일 종가</strong> 3가지 매수 가정 후 보유일만 바꾼 단순 매수·보유,{" "}
+            <strong>{(clusteringData?.stats.skipped_no_data ?? 0) + (clusteringData?.stats.skipped_no_future ?? 0)}</strong>개(클러스터링 파이프라인).{" "}
+            별도로 <strong>entry_hold_stats.json</strong>은 eodhd manifest의 <strong>EODHD 5분봉</strong>만으로 입장·청산 가격을 잡은{" "}
+            A~E 그리드이며, 거래일 순서만 EOD <code style={{ fontSize: "13px" }}>bars.date</code>로 맞춤.{" "}
             <strong>수수료·세금·슬리피지 없음</strong>.
           </li>
           <li style={{ marginBottom: "6px" }}>
@@ -263,7 +274,7 @@ export default function StatsPage() {
             <strong>{baselineRow ? pct(baselineRow.win_rate_10d) : "—"}</strong>
           </li>
           <li>
-            <strong>퀀트 긍정 신호</strong> 조합 극값 — <strong>승률 최대</strong>:{" "}
+            <strong>5분봉 입장×보유</strong> 그리드 극값 — <strong>승률 최대</strong>:{" "}
             <strong>{bestWin?.entry_label ?? "—"}</strong>·<strong>{bestWin?.hold_days ?? "—"}</strong>일 → 수익{" "}
             <strong>{bestWin ? ret(bestWin.avg_return) : "—"}</strong>, 승률 <strong>{bestWin ? pct(bestWin.win_rate) : "—"}</strong>, n=
             <strong>{bestWin?.count ?? "—"}</strong>
@@ -296,10 +307,10 @@ export default function StatsPage() {
           </div>
           {entryHoldData && (
             <div>
-              <div style={{ fontSize: "12px", color: "#525252", marginBottom: "4px" }}>퀀트 긍정 신호 기준 최적 시나리오</div>
+              <div style={{ fontSize: "12px", color: "#525252", marginBottom: "4px" }}>5분봉 입장 그리드 극값 (manifest)</div>
               <div style={{ fontSize: "13px" }}>
-                • <strong>승률 최대 (퀀트 긍정 신호):</strong> {entryHoldData.summary.best_win_rate.entry_label} ({pct(entryHoldData.summary.best_win_rate.win_rate)})<br/>
-                • <strong>평균 수익 최대 (퀀트 긍정 신호):</strong> {entryHoldData.summary.best_avg_return.entry_label} ({ret(entryHoldData.summary.best_avg_return.avg_return)})<br/>
+                • <strong>승률 최대:</strong> {entryHoldData.summary.best_win_rate.entry_label} ({pct(entryHoldData.summary.best_win_rate.win_rate)})<br/>
+                • <strong>평균 수익 최대:</strong> {entryHoldData.summary.best_avg_return.entry_label} ({ret(entryHoldData.summary.best_avg_return.avg_return)})<br/>
                 • <strong>권장 보유:</strong> {entryHoldData.summary.best_win_rate.hold_days} ~ {entryHoldData.summary.best_avg_return.hold_days} 거래일
               </div>
             </div>
@@ -322,14 +333,7 @@ export default function StatsPage() {
                   .filter((r) => r.hold_days === 7)
                   .sort((a, b) => a.entry.localeCompare(b.entry))
                   .map((r) => ({
-                    label:
-                      r.entry === "A"
-                        ? "T=0 종가"
-                        : r.entry === "B"
-                          ? "T+1 시가"
-                          : r.entry === "C"
-                            ? "T+1 종가"
-                            : r.entry_label,
+                    label: r.entry_label,
                     winRatePct: r.win_rate * 100,
                   }))
               : null
@@ -341,15 +345,24 @@ export default function StatsPage() {
       <section style={reportStyles.section}>
         <h2 style={reportStyles.h1}>2. 입장 시점 및 보유 기간 분석</h2>
         <p style={{ margin: "0 0 12px", lineHeight: 1.6 }}>
-          <strong>언제 사고, 얼마나 들고 있어야 할까?</strong> 뉴스가 나온 뒤 세 가지 입장 시점을 비교했다.
+          <strong>언제 사고, 얼마나 들고 있어야 할까?</strong> 전부 <strong>EODHD 5분봉</strong> 가격으로 정의한다. 거래일 캘린더만 EOD
+          JSON의 <code style={{ fontSize: "13px" }}>bars[].date</code> 순서를 쓴다(일봉 OHLC 수치는 사용하지 않음).
         </p>
         <ul style={{ margin: "0 0 12px", paddingLeft: "1.25rem", lineHeight: 1.7 }}>
-          <li><strong>T=0 종가</strong>: 뉴스 나온 당일 장 마감가에 매수</li>
-          <li><strong>T+1 시가</strong>: 다음날 장 시작가에 매수 (당일 급등 피하고 다음날 들어감)</li>
-          <li><strong>T+1 종가</strong>: 다음날 장 마감가에 매수 (되돌림 후 들어감)</li>
+          <li><strong>A</strong>: t0 거래일 장중 <strong>마지막 5분봉 종가</strong></li>
+          <li><strong>B</strong>: T+1 거래일 <strong>첫 5분봉 시가</strong></li>
+          <li><strong>C</strong>: T+1 거래일 장중 <strong>마지막 5분봉 종가</strong></li>
+          <li><strong>D</strong>: T+1 <strong>첫 5분봉 종가</strong></li>
+          <li><strong>E</strong>: T+1 <strong>두 번째 5분봉 시가</strong></li>
+          <li>청산: 보유 h거래일째 해당일 장중 <strong>마지막 5분봉 종가</strong>(A는 t0+h, B~E는 T+1+h)</li>
         </ul>
+        {entryHoldData?.methodology_note ? (
+          <p style={{ margin: "0 0 12px", lineHeight: 1.55, fontSize: "0.875rem", color: "#525252" }}>
+            {entryHoldData.methodology_note}
+          </p>
+        ) : null}
         <p style={{ margin: "0 0 12px", lineHeight: 1.6, color: "#166534", fontWeight: 600 }}>
-          → 결과: <strong>다음날 시가(T+1)에 사서 7~10일 보유</strong>가 승률·수익률 모두 가장 좋았다.
+          → 이번 스냅샷 기준 극값은 아래 표 초록 칸을 보면 된다(표본은 manifest 중 인트라+EOD 동시에 있는 이벤트).
         </p>
         {entryHoldData && (
           <div style={{ overflowX: "auto", marginTop: "12px" }}>
@@ -364,13 +377,15 @@ export default function StatsPage() {
                 </tr>
               </thead>
               <tbody>
-                {entryHoldData.detail.slice(0, 15).map((r, i) => {
-                  const isBestWinRate = r.entry === "B" && r.hold_days === entryHoldData.summary.best_win_rate.hold_days;
-                  const isBestReturn = r.entry === "B" && r.hold_days === entryHoldData.summary.best_avg_return.hold_days;
+                {entryHoldData.detail.map((r, i) => {
+                  const bw = entryHoldData.summary.best_win_rate;
+                  const br = entryHoldData.summary.best_avg_return;
+                  const isBestWinRate = r.entry === bw.entry && r.hold_days === bw.hold_days;
+                  const isBestReturn = r.entry === br.entry && r.hold_days === br.hold_days;
                   const isBest = isBestWinRate || isBestReturn;
                   return (
                     <tr
-                      key={i}
+                      key={`d-${i}-${r.entry}-${r.hold_days}`}
                       style={isBest ? { backgroundColor: "#dcfce7" } : undefined}
                     >
                       <td style={reportStyles.td}>{r.entry_label}</td>
@@ -384,7 +399,7 @@ export default function StatsPage() {
               </tbody>
             </table>
             <p style={{ marginTop: "8px", fontSize: "0.8125rem", color: "#525252" }}>
-              초록 = 최고 승률 또는 최고 수익률 조건
+              초록 = 5분봉 A~E 그리드에서 최고 승률 또는 최고 평균 수익 조건
             </p>
           </div>
         )}

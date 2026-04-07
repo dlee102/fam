@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import NavTabs from "./components/NavTabs";
+import { AppSidebar } from "./components/PrimaryNav";
+import { ThemeToggle } from "./components/ThemeToggle";
 
-const notoSansKr = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+const themeInitScript = `(function(){try{var p=localStorage.getItem("fam-theme");var d;if(p==="light")d=!1;else if(p==="dark")d=!0;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",d?"dark":"light");}catch(e){}})();`;
 
 export const metadata: Metadata = {
   title: "FAM 뉴스",
@@ -19,46 +17,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={notoSansKr.className}>
-        <div className="layout-center" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-          <header
-            className="header-main"
-            style={{
-              padding: "1.25rem 2rem",
-              backgroundColor: "var(--color-surface)",
-              borderBottom: "1px solid var(--color-border)",
-              boxShadow: "var(--shadow-sm)",
-            }}
-          >
-            <a
-              href="/"
-              className="logo-link"
-              style={{
-                fontSize: "1.35rem",
-                fontWeight: 600,
-                color: "var(--color-text)",
-                letterSpacing: "-0.02em",
-                textDecoration: "none",
-              }}
-            >
-              Qraft AI quant indicator
-            </a>
-          </header>
-          <header
-            className="site-header-nav"
-            style={{
-              position: "relative",
-              zIndex: 50,
-              padding: "0.625rem 2rem",
-              backgroundColor: "var(--color-surface)",
-              borderBottom: "1px solid var(--color-border)",
-            }}
-          >
-            <NavTabs />
-          </header>
-          <div style={{ flex: 1, width: "100%" }}>
-            {children}
+    <html lang="ko" suppressHydrationWarning>
+      <body>
+        <Script
+          id="fam-theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+        <div className="site-root">
+          <div className="site-header-sticky">
+            <header className="site-header site-header--brand">
+              <div className="site-header__edge site-header__edge--split">
+                <a href="/" className="logo-link site-logo">
+                  Qraft AI quant indicator
+                </a>
+                <ThemeToggle />
+              </div>
+            </header>
+          </div>
+          <div className="site-body">
+            <AppSidebar />
+            <div className="site-main-wrap">
+              <div className="site-main">{children}</div>
+            </div>
           </div>
         </div>
       </body>

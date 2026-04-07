@@ -16,7 +16,7 @@ export type ArticleAiRankDemo = {
   }>;
 };
 
-/** 퍼블 후 수익률 표시 범위 (데모·UI 정책) */
+/** 기사 공개 후 수익률 표시 범위 (데모·UI 정책) */
 export function clampPublishReturnPct(v: number): number {
   return Math.min(29, Math.max(5, v));
 }
@@ -32,8 +32,8 @@ function loadDemo(): ArticleAiRankDemo | null {
 
 const cardShell = {
   borderRadius: "8px",
-  border: "1px solid #e5e7eb",
-  background: "linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%)",
+  border: "1px solid var(--stats-card-border)",
+  background: "var(--stats-card-bg)",
   padding: "22px 22px 18px",
   marginBottom: "40px",
 } as const;
@@ -68,7 +68,7 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
             fontWeight: 700,
             letterSpacing: "-0.02em",
             margin: 0,
-            color: "#0f172a",
+            color: "var(--color-text)",
           }}
         >
           기사·종목 AI 점수 및 성과 랭킹
@@ -79,8 +79,8 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
             fontWeight: 600,
             letterSpacing: "0.06em",
             textTransform: "uppercase" as const,
-            color: "#0369a1",
-            backgroundColor: "#e0f2fe",
+            color: "var(--stats-badge-fg)",
+            backgroundColor: "var(--stats-badge-bg)",
             padding: "4px 10px",
             borderRadius: "999px",
           }}
@@ -93,13 +93,20 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
           margin: "0 0 16px",
           fontSize: embedded ? "0.75rem" : "13px",
           lineHeight: 1.55,
-          color: "#475569",
+          color: "var(--color-text-muted)",
         }}
       >
-        기사 퍼블리싱 이후 수익률(T+10 거래일, T0 종가 진입 가정)은 <strong>5%~29%</strong> 구간으로 표시합니다. AI 종합 점수와 함께 봅니다.
+        기사 공개 이후 수익률(T+10 거래일, T0 종가 진입 가정)은 <strong>5%~29%</strong> 구간으로 표시합니다. AI 종합 점수와 함께 봅니다.
         아래 표는 집계 파이프라인 사례를 발췌한 <strong>UI 시연용</strong>입니다.
       </p>
-      <div style={{ overflowX: "auto", borderRadius: "6px", border: "1px solid #e2e8f0", backgroundColor: "#fff" }}>
+      <div
+        style={{
+          overflowX: "auto",
+          borderRadius: "6px",
+          border: "1px solid var(--color-border-subtle)",
+          backgroundColor: "var(--color-elevated)",
+        }}
+      >
         <table
           style={{
             width: "100%",
@@ -108,24 +115,64 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
           }}
         >
           <thead>
-            <tr style={{ backgroundColor: "#f8fafc" }}>
-              <th style={{ textAlign: "left", padding: "10px 12px", fontWeight: 600, color: "#334155", borderBottom: "1px solid #e2e8f0" }}>
+            <tr style={{ backgroundColor: "var(--quant-canvas)" }}>
+              <th
+                style={{
+                  textAlign: "left",
+                  padding: "10px 12px",
+                  fontWeight: 600,
+                  color: "var(--quant-label)",
+                  borderBottom: "1px solid var(--color-border-subtle)",
+                }}
+              >
                 순위
               </th>
-              <th style={{ textAlign: "left", padding: "10px 12px", fontWeight: 600, color: "#334155", borderBottom: "1px solid #e2e8f0" }}>
+              <th
+                style={{
+                  textAlign: "left",
+                  padding: "10px 12px",
+                  fontWeight: 600,
+                  color: "var(--quant-label)",
+                  borderBottom: "1px solid var(--color-border-subtle)",
+                }}
+              >
                 종목
               </th>
-              <th style={{ textAlign: "left", padding: "10px 12px", fontWeight: 600, color: "#334155", borderBottom: "1px solid #e2e8f0" }}>
+              <th
+                style={{
+                  textAlign: "left",
+                  padding: "10px 12px",
+                  fontWeight: 600,
+                  color: "var(--quant-label)",
+                  borderBottom: "1px solid var(--color-border-subtle)",
+                }}
+              >
                 기사 제목
               </th>
-              <th style={{ textAlign: "right", padding: "10px 12px", fontWeight: 600, color: "#334155", borderBottom: "1px solid #e2e8f0", whiteSpace: "nowrap" }}>
+              <th
+                style={{
+                  textAlign: "right",
+                  padding: "10px 12px",
+                  fontWeight: 600,
+                  color: "var(--quant-label)",
+                  borderBottom: "1px solid var(--color-border-subtle)",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 AI 점수
               </th>
               <th
-                title="기사 퍼블리싱일(T0) 종가 진입 → T+10 거래일 종가 기준 누적 수익률"
-                style={{ textAlign: "right", padding: "10px 12px", fontWeight: 600, color: "#334155", borderBottom: "1px solid #e2e8f0", whiteSpace: "nowrap" }}
+                title="기사 공개일(T0) 종가 진입 → T+10 거래일 종가 기준 누적 수익률"
+                style={{
+                  textAlign: "right",
+                  padding: "10px 12px",
+                  fontWeight: 600,
+                  color: "var(--quant-label)",
+                  borderBottom: "1px solid var(--color-border-subtle)",
+                  whiteSpace: "nowrap",
+                }}
               >
-                퍼블 후 수익률 (T+10)
+                공개 후 수익률 (T+10)
               </th>
             </tr>
           </thead>
@@ -134,26 +181,69 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
               const pubRet = clampPublishReturnPct(r.ret_t10_pct);
               return (
                 <tr key={`${r.ticker}-${r.rank}-${r.t0_date}`}>
-                  <td style={{ padding: "10px 12px", borderBottom: "1px solid #f1f5f9", fontWeight: 600, color: "#64748b" }}>{r.rank}</td>
-                  <td style={{ padding: "10px 12px", borderBottom: "1px solid #f1f5f9", fontWeight: 600, color: "#0f172a" }}>
-                    {r.name}
-                    <span style={{ display: "block", fontSize: "11px", fontWeight: 500, color: "#94a3b8" }}>{r.ticker}</span>
+                  <td
+                    style={{
+                      padding: "10px 12px",
+                      borderBottom: "1px solid var(--quant-grid)",
+                      fontWeight: 600,
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    {r.rank}
                   </td>
                   <td
                     style={{
                       padding: "10px 12px",
-                      borderBottom: "1px solid #f1f5f9",
-                      color: "#334155",
+                      borderBottom: "1px solid var(--quant-grid)",
+                      fontWeight: 600,
+                      color: "var(--color-text)",
+                    }}
+                  >
+                    {r.name}
+                    <span
+                      style={{
+                        display: "block",
+                        fontSize: "11px",
+                        fontWeight: 500,
+                        color: "var(--color-text-faint)",
+                      }}
+                    >
+                      {r.ticker}
+                    </span>
+                  </td>
+                  <td
+                    style={{
+                      padding: "10px 12px",
+                      borderBottom: "1px solid var(--quant-grid)",
+                      color: "var(--quant-label)",
                       maxWidth: "320px",
                       lineHeight: 1.45,
                     }}
                   >
                     <span title={r.title}>{r.title.length > 56 ? `${r.title.slice(0, 56)}…` : r.title}</span>
                   </td>
-                  <td style={{ padding: "10px 12px", borderBottom: "1px solid #f1f5f9", textAlign: "right", fontVariantNumeric: "tabular-nums" as const, fontWeight: 600, color: "#0c4a6e" }}>
+                  <td
+                    style={{
+                      padding: "10px 12px",
+                      borderBottom: "1px solid var(--quant-grid)",
+                      textAlign: "right",
+                      fontVariantNumeric: "tabular-nums" as const,
+                      fontWeight: 600,
+                      color: "var(--stats-ai-score)",
+                    }}
+                  >
                     {r.ai_score}
                   </td>
-                  <td style={{ padding: "10px 12px", borderBottom: "1px solid #f1f5f9", textAlign: "right", fontVariantNumeric: "tabular-nums" as const, fontWeight: 600, color: pubRet >= 0 ? "#b91c1c" : "#1d4ed8" }}>
+                  <td
+                    style={{
+                      padding: "10px 12px",
+                      borderBottom: "1px solid var(--quant-grid)",
+                      textAlign: "right",
+                      fontVariantNumeric: "tabular-nums" as const,
+                      fontWeight: 600,
+                      color: pubRet >= 0 ? "var(--stats-kr-up)" : "var(--stats-kr-down)",
+                    }}
+                  >
                     {pubRet >= 0 ? "+" : ""}
                     {pubRet}%
                   </td>
@@ -163,7 +253,14 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
           </tbody>
         </table>
       </div>
-      <p style={{ margin: "12px 0 0", fontSize: embedded ? "0.625rem" : "11px", color: "#94a3b8", lineHeight: 1.5 }}>
+      <p
+        style={{
+          margin: "12px 0 0",
+          fontSize: embedded ? "0.625rem" : "11px",
+          color: "var(--color-text-faint)",
+          lineHeight: 1.5,
+        }}
+      >
         {data.note}
         {data.source_generated_at ? ` · 원본 집계 시각: ${data.source_generated_at}` : null}
       </p>

@@ -1,32 +1,38 @@
 import type { CSSProperties } from "react";
 
-/** 퀀트 대시보드 — 슬레이트 베이스, 단일 틸 악센트 (트렌디·전문 톤) */
+/** 퀀트 대시보드 토큰 — `globals.css`의 `--quant-*`와 연동 (라이트/다크) */
 export const sb = {
-  canvas: "#f8fafc",
-  surface: "#ffffff",
-  border: "#e2e8f0",
-  rule: "rgba(15, 23, 42, 0.06)",
-  text: "#0f172a",
-  muted: "#64748b",
-  faint: "#94a3b8",
-  label: "#475569",
+  canvas: "var(--quant-canvas)",
+  surface: "var(--quant-surface)",
+  border: "var(--quant-border)",
+  rule: "var(--quant-rule)",
+  text: "var(--quant-text)",
+  muted: "var(--quant-muted)",
+  faint: "var(--quant-faint)",
+  label: "var(--quant-label)",
 
-  up: "#047857",
-  down: "#be123c",
+  up: "var(--quant-up)",
+  down: "var(--quant-down)",
 
-  accent: "#0d9488",
-  accentSoft: "#ccfbf1",
+  accent: "var(--color-accent)",
+  accentSoft: "var(--color-accent-muted)",
 
-  grid: "#f1f5f9",
+  grid: "var(--quant-grid)",
 
-  chartLine: "#0d9488",
-  chartLineAlt: "#2563eb",
-  refLine: "#cbd5e1",
+  chartLine: "var(--color-accent)",
+  chartLineAlt: "var(--quant-chart-line-alt)",
+  refLine: "var(--quant-ref-line)",
 
-  gauge: ["#16a34a", "#65a30d", "#ca8a04", "#ea580c", "#dc2626"] as const,
+  gauge: [
+    "var(--quant-gauge-0)",
+    "var(--quant-gauge-1)",
+    "var(--quant-gauge-2)",
+    "var(--quant-gauge-3)",
+    "var(--quant-gauge-4)",
+  ] as const,
 } as const;
 
-/** 카드 내부 소제목 (대문자 금지, 읽기형 라벨) */
+/** 카드 내부 소제목 */
 export const qLabel: CSSProperties = {
   fontSize: "0.6875rem",
   fontWeight: 500,
@@ -41,18 +47,18 @@ export const rippleStyle: Record<
   { tag: string; tagBg: string; tagBorder: string }
 > = {
   Upstream: {
-    tag: "#134e4a",
-    tagBg: "#f0fdfa",
-    tagBorder: "#99f6e4",
+    tag: "var(--ripple-upstream-tag)",
+    tagBg: "var(--ripple-upstream-bg)",
+    tagBorder: "var(--ripple-upstream-border)",
   },
   Peer: {
-    tag: "#334155",
-    tagBg: "#f8fafc",
-    tagBorder: "#e2e8f0",
+    tag: "var(--ripple-peer-tag)",
+    tagBg: "var(--ripple-peer-bg)",
+    tagBorder: "var(--ripple-peer-border)",
   },
   Downstream: {
-    tag: "#1e3a8a",
-    tagBg: "#eff6ff",
-    tagBorder: "#bfdbfe",
+    tag: "var(--ripple-downstream-tag)",
+    tagBg: "var(--ripple-downstream-bg)",
+    tagBorder: "var(--ripple-downstream-border)",
   },
 };

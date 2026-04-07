@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-04-06T04:06:06.302589+00:00",
+  "n_intraday_path_ok": 1140,
+  "n_records_with_quant_date_attempted": 1140,
+  "n_usable_nonzero_final": 46,
+  "n_win_final_pos": 23,
+  "n_lose_final_neg": 23,
+  "n_no_isin_or_no_trades_row": 1094,
+  "n_note_isin_but_missing_core_scores": 0,
+  "group_compare_10d_final": {
+    "volume": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": 58.89565217391304,
+      "lose_mean": 56.60434782608696,
+      "win_median": 58.4,
+      "lose_median": 56.2,
+      "mannwhitney_p": 0.5376856748098472
+    },
+    "momentum": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": 49.2695652173913,
+      "lose_mean": 40.643478260869564,
+      "win_median": 49.5,
+      "lose_median": 38.7,
+      "mannwhitney_p": 0.26173552941722356
+    },
+    "trend": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": 48.926086956521736,
+      "lose_mean": 44.09130434782609,
+      "win_median": 54.9,
+      "lose_median": 43.2,
+      "mannwhitney_p": 0.6049595855879406
+    },
+    "spread": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": 54.369565217391305,
+      "lose_mean": 58.21304347826087,
+      "win_median": 50.0,
+      "lose_median": 50.5,
+      "mannwhitney_p": 0.5513825442614324
+    },
+    "orderbook": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": 58.221739130434784,
+      "lose_mean": 36.12608695652174,
+      "win_median": 50.0,
+      "lose_median": 27.7,
+      "mannwhitney_p": 0.02187605236360129
+    },
+    "foreign_flow": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": 37.16086956521739,
+      "lose_mean": 62.869565217391305,
+      "win_median": 28.6,
+      "lose_median": 63.9,
+      "mannwhitney_p": 0.0010422282856945844
+    },
+    "foreign_net_sum_raw": {
+      "n_win": 23,
+      "n_lose": 23,
+      "win_mean": -1052434783321.2609,
+      "lose_mean": 72913043478.26086,
+      "mannwhitney_p": 0.0036751992045602833
+    }
+  },
+  "notes": "ISIN은 이벤트일 trades parquet에 나온 종목만 매핑. 퀀트 parquet이 없는 날짜·종목은 제외. 점수는 당일 횡단면 퍼센타일/정의는 quant/scores 참고."
+}

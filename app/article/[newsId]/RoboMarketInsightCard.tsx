@@ -82,7 +82,8 @@ export function RoboMarketInsightCard() {
               style={{
                 width: `${DEMO.aiScore}%`,
                 height: "100%",
-                background: `linear-gradient(90deg, ${sb.accent} 0%, #14b8a6 100%)`,
+                background:
+                  "linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-hover) 100%)",
                 borderRadius: 9999,
               }}
             />
@@ -100,7 +101,7 @@ export function RoboMarketInsightCard() {
               style={{
                 height: "100%",
                 borderRadius: 9999,
-                background: "linear-gradient(90deg, #16a34a 0%, #eab308 52%, #dc2626 100%)",
+                background: "var(--quant-risk-gradient)",
                 opacity: 0.88,
               }}
             />
@@ -113,9 +114,9 @@ export function RoboMarketInsightCard() {
                 width: "10px",
                 height: "10px",
                 borderRadius: "50%",
-                background: "#fff",
-                border: `2px solid ${sb.text}`,
-                boxShadow: "0 1px 2px rgba(15,23,42,0.12)",
+                background: "var(--quant-robo-knob)",
+                border: `2px solid var(--quant-robo-knob-ring)`,
+                boxShadow: "var(--quant-robo-knob-shadow)",
                 zIndex: 1,
               }}
             />
@@ -162,7 +163,7 @@ export function RoboMarketInsightCard() {
             left: `${pct(p.buyLow)}%`,
             width: `${pct(p.buyHigh) - pct(p.buyLow)}%`,
             height: "100%",
-            background: "rgba(13, 148, 136, 0.22)",
+            background: "var(--quant-band-buy)",
           }}
         />
         <div
@@ -171,7 +172,7 @@ export function RoboMarketInsightCard() {
             left: `${pct(p.tp1Low)}%`,
             width: `${pct(p.tp1High) - pct(p.tp1Low)}%`,
             height: "100%",
-            background: "rgba(234, 179, 8, 0.28)",
+            background: "var(--quant-band-tp1)",
           }}
         />
         <div
@@ -180,7 +181,7 @@ export function RoboMarketInsightCard() {
             left: `${pct(p.tp2Low)}%`,
             width: `${pct(p.tp2High) - pct(p.tp2Low)}%`,
             height: "100%",
-            background: "rgba(67, 56, 202, 0.22)",
+            background: "var(--quant-band-tp2)",
           }}
         />
         <div
@@ -192,7 +193,7 @@ export function RoboMarketInsightCard() {
             width: "2px",
             marginLeft: "-1px",
             background: sb.text,
-            boxShadow: "0 0 0 1px #fff",
+            boxShadow: "0 0 0 1px var(--quant-line-marker-outline)",
             zIndex: 2,
           }}
         />
@@ -210,13 +211,13 @@ export function RoboMarketInsightCard() {
           </span>
         </div>
         <div>
-          <span style={{ fontWeight: 600, color: "#a16207" }}>1차 익절 </span>
+          <span style={{ fontWeight: 600, color: "var(--quant-tp1-label)" }}>1차 익절 </span>
           <span style={{ color: sb.muted }}>
             {formatWon(p.tp1Low)} ~ {formatWon(p.tp1High)}
           </span>
         </div>
         <div>
-          <span style={{ fontWeight: 600, color: "#4338ca" }}>2차 익절 </span>
+          <span style={{ fontWeight: 600, color: "var(--quant-tp2-label)" }}>2차 익절 </span>
           <span style={{ color: sb.muted }}>
             {formatWon(p.tp2Low)} ~ {formatWon(p.tp2High)}
           </span>

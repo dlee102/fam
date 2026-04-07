@@ -110,7 +110,7 @@ export function CandlestickChart({ data, refDate, height = 280 }: CandlestickCha
       layout: {
         background: { type: ColorType.Solid, color: "#ffffff" },
         textColor: "#6b7280",
-        fontFamily: "system-ui, sans-serif",
+        fontFamily: "Pretendard, system-ui, sans-serif",
         fontSize: 10,
       },
       grid: {

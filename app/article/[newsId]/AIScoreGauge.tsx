@@ -46,7 +46,8 @@ export function AIScoreGauge({ score = 80 }: { score?: number }) {
           style={{
             width: `${clamped}%`,
             height: "100%",
-            background: `linear-gradient(90deg, ${sb.accent} 0%, #14b8a6 100%)`,
+            background:
+              "linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-hover) 100%)",
             borderRadius: 9999,
             transition: "width 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
           }}

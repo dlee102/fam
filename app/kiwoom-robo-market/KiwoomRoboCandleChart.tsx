@@ -52,7 +52,7 @@ export function KiwoomRoboCandleChart({ ohlc, bands }: Props) {
       layout: {
         background: { type: ColorType.Solid, color: "#ffffff" },
         textColor: "#64748b",
-        fontFamily: "system-ui, sans-serif",
+        fontFamily: "Pretendard, system-ui, sans-serif",
         fontSize: 11,
       },
       grid: {

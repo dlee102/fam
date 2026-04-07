@@ -80,7 +80,9 @@ export function BacktestChartCard() {
                 fontSize: "0.75rem",
                 borderRadius: 8,
                 border: `1px solid ${sb.border}`,
-                boxShadow: "0 4px 12px rgba(15, 23, 42, 0.08)",
+                boxShadow: "var(--quant-tooltip-shadow)",
+                backgroundColor: "var(--quant-tooltip-bg)",
+                color: "var(--quant-tooltip-fg)",
               }}
             />
             <Line

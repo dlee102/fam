@@ -19,7 +19,7 @@ export default async function SentimentPage() {
     const tickerNames = getTickerNamesMap();
 
     return (
-        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '32px 24px', minHeight: '100vh', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '32px 24px', minHeight: '100vh', fontFamily: 'Pretendard, system-ui, sans-serif' }}>
             <header style={{ marginBottom: '24px', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem' }}>
                 <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--color-text)', letterSpacing: '-0.02em' }}>뉴스+티커</h1>
                 <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', marginTop: '0.5rem' }}>{sortedArticles.length}건 기사</p>

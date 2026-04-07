@@ -26,6 +26,11 @@ yarn-error.log*
 # env
 .env*.local
 
+# local API dumps
+/data/somedaynews/
+/data/somedaynews_sentiment.jsonl
+/data/eodhd_news_windows/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

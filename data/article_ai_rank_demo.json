@@ -1,5 +1,5 @@
 {
-  "note": "발췌 원본: data/top_surge_analysis.json 종목·기사. 퍼블 후 수익률은 화면 시연용으로 5%~29% 범위로 표기. ai_score는 UI 시연용 0~100.",
+  "note": "발췌 원본: data/top_surge_analysis.json 종목·기사. 기사 공개 후 수익률은 화면 시연용으로 5%~29% 범위로 표기. ai_score는 UI 시연용 0~100.",
   "source_generated_at": "2026-03-09T14:23:10.886560",
   "rows": [
     {

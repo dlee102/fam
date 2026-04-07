@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-04-07T16:34:50.982550",
+  "outcome": "진입 C, 보유 1거래일 수익률 (단위: 소수, 출력은 %)",
+  "n_events": 1346,
+  "rules": {
+    "t0_day_move_ge_10pct": {
+      "description": "T0 당일 장중 시가→종가(5분봉) >= 10%",
+      "high_move": {
+        "n": 36,
+        "mean_pct": 1.4185,
+        "win_rate": 0.5556
+      },
+      "low_move": {
+        "n": 1292,
+        "mean_pct": 0.0572,
+        "win_rate": 0.4381
+      },
+      "diff_mean_pct_high_minus_low": 1.3613,
+      "bootstrap_95ci_diff_pct": [
+        -1.478,
+        4.4854
+      ],
+      "interpretation_hint": "양수면 '급등일' 쪽 C·1일 평균이 더 큼"
+    },
+    "prior_low_within_3pct_of_C": {
+      "description": "(C진입가 - 전일 EOD 저가) / C진입가 가 (0, 3%]",
+      "tight": {
+        "n": 365,
+        "mean_pct": -0.2822,
+        "win_rate": 0.4411
+      },
+      "loose": {
+        "n": 621,
+        "mean_pct": 0.1215,
+        "win_rate": 0.4283
+      },
+      "diff_mean_pct_tight_minus_loose": -0.4037,
+      "bootstrap_95ci_diff_pct": [
+        -0.9145,
+        0.0951
+      ],
+      "interpretation_hint": "양수면 저점 근접 집단이 C·1일 평균이 더 큼"
+    },
+    "t0_volume_ge_3x_20d_avg": {
+      "description": "T0 5분봉 거래량 합 / 직전 20거래일 일별 5분봉 합 평균 >= 3",
+      "high_vol": {
+        "n": 168,
+        "mean_pct": -0.2861,
+        "win_rate": 0.3869
+      },
+      "low_vol": {
+        "n": 1174,
+        "mean_pct": 0.1599,
+        "win_rate": 0.4497
+      },
+      "diff_mean_pct_high_minus_low": -0.446,
+      "bootstrap_95ci_diff_pct": [
+        -1.4882,
+        0.6817
+      ],
+      "interpretation_hint": "양수면 고거래량 집단이 C·1일 평균이 더 큼"
+    }
+  },
+  "caveats": [
+    "동일 티커·다 기사 중복 표본 포함 가능.",
+    "3가지 규칙 동시 검정 → 다중비교로 우연한 유의 차 가능성 증가.",
+    "전일 저가·거래량 정의는 데이터 가용 범위에 의존."
+  ]
+}

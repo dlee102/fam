@@ -152,9 +152,11 @@ function tpBandsFromDisplayedReturns(
 
 /** 일봉 부족 시 폴백: 종가 대비 비율 */
 export function bandsFromLastClose(close: number): RoboPriceBands {
+  const buyLow = Math.round(close * 0.97);
+  const buyHigh = Math.round(close * 0.99);
   return {
-    buyLow: Math.round(close * 0.97),
-    buyHigh: Math.round(close * 0.99),
+    buyLow,
+    buyHigh,
     tp1Low: Math.round(close * 1.02),
     tp1High: Math.round(close * 1.045),
     tp2Low: Math.round(close * 1.06),
@@ -185,7 +187,11 @@ export function computeKiwoomBands(ohlc: DailyOhlc[]): KiwoomBandPack {
     const er = expectedReturnsPct(raw, lastClose, null);
     const atrForSpread = Math.max(1, Math.round((raw.buyHigh - raw.buyLow) * 0.45));
     const tp = tpBandsFromDisplayedReturns(raw.buyHigh, er, lastClose, atrForSpread);
-    const bands: RoboPriceBands = { buyLow: raw.buyLow, buyHigh: raw.buyHigh, ...tp };
+    const bands: RoboPriceBands = {
+      buyLow: raw.buyLow,
+      buyHigh: raw.buyHigh,
+      ...tp,
+    };
     const erFinal = expectedReturnsPct(bands, lastClose, null);
     return {
       bands,
@@ -221,7 +227,11 @@ export function computeKiwoomBands(ohlc: DailyOhlc[]): KiwoomBandPack {
   };
   const er = expectedReturnsPct(rawBands, lastClose, atr);
   const tp = tpBandsFromDisplayedReturns(buyHigh, er, lastClose, atr);
-  const bands: RoboPriceBands = { buyLow, buyHigh, ...tp };
+  const bands: RoboPriceBands = {
+    buyLow,
+    buyHigh,
+    ...tp,
+  };
   const erFinal = expectedReturnsPct(bands, lastClose, atr);
 
   return {

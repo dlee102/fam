@@ -43,9 +43,9 @@ export default async function ArticlePage({
 
   if (!article) {
     return (
-      <main className="news-container" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
-        <p style={{ color: "#737373" }}>기사를 불러올 수 없습니다.</p>
-        <Link href="/" style={{ color: "#2563eb", marginTop: "1rem", display: "inline-block" }}>
+      <main className="news-container">
+        <p className="muted-text">기사를 불러올 수 없습니다.</p>
+        <Link href="/" className="back-link">
           ← 목록으로
         </Link>
       </main>
@@ -53,16 +53,8 @@ export default async function ArticlePage({
   }
 
   return (
-    <main className="article-page-layout" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
-      <Link
-        href="/"
-        style={{
-          fontSize: "0.875rem",
-          color: "#737373",
-          marginBottom: "1.5rem",
-          display: "inline-block",
-        }}
-      >
+    <main className="article-page-layout">
+      <Link href="/" className="back-link back-link--article">
         ← 목록으로
       </Link>
 
@@ -73,18 +65,18 @@ export default async function ArticlePage({
             fontWeight: 700,
             lineHeight: 1.35,
             marginBottom: "1rem",
-            color: "#171717",
+            color: "var(--color-text)",
           }}
         >
           {article.title}
         </h1>
         {article.subtitle && (
-          <p style={{ fontSize: "1rem", color: "#525252", marginBottom: "0.5rem", lineHeight: 1.55 }}>
+          <p style={{ fontSize: "1rem", color: "var(--color-text-muted)", marginBottom: "0.5rem", lineHeight: 1.55 }}>
             {article.subtitle}
           </p>
         )}
         {article.date && (
-          <time style={{ fontSize: "0.875rem", color: "#737373", display: "block", marginBottom: "1.5rem" }}>
+          <time style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", display: "block", marginBottom: "1.5rem" }}>
             {article.date}
           </time>
         )}
@@ -105,7 +97,7 @@ export default async function ArticlePage({
           style={{
             fontSize: "1.125rem",
             lineHeight: 1.85,
-            color: "#404040",
+            color: "var(--color-text)",
           }}
         >
           {(article.bodyBlocks?.length ? article.bodyBlocks : article.body.split(/\n\n+/).filter((p) => p.trim()).map((c) => ({ type: "text" as const, content: c }))).flatMap((block, i) =>
@@ -130,7 +122,7 @@ export default async function ArticlePage({
                       <figcaption
                         style={{
                           fontSize: "0.875rem",
-                          color: "#737373",
+                          color: "var(--color-text-muted)",
                           marginTop: "0.5rem",
                           lineHeight: 1.5,
                         }}

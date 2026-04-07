@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-09T14:23:12.372762",
+  "generated_at": "2026-04-06T13:55:07.896430",
   "stats": {
     "total_articles": 293,
     "total_pairs_analyzed": 1038,
@@ -7,61 +7,11 @@
     "skipped_no_future": 51
   },
   "cluster_distribution": {
-    "중": 46,
-    "하": 18,
-    "상": 14
+    "중": 15,
+    "하": 2,
+    "상": 1
   },
   "top_positive": [
-    {
-      "ticker": "SNY",
-      "name": "SNY",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.013716144242350506,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "439580",
-      "name": "블루엠텍",
-      "count_1d": 4,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.021955114464546004,
-      "positive_rate_3d": 0.75,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "331920",
-      "name": "셀레믹스",
-      "count_1d": 4,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.06272636177277699,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "082270",
-      "name": "젬백스",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.0967857879074586,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 0.3333333333333333,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "042520",
-      "name": "한스바이오메드",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.07227120313115049,
-      "positive_rate_3d": 0.6666666666666666,
-      "positive_rate_5d": 0.6666666666666666,
-      "cluster_1d": "상"
-    },
     {
       "ticker": "ROG",
       "name": "ROG",
@@ -70,86 +20,6 @@
       "avg_return_1d": 0.016678870311004953,
       "positive_rate_3d": 0.8,
       "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "475960",
-      "name": "토모큐브",
-      "count_1d": 2,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.028531919324044124,
-      "positive_rate_3d": 0.5,
-      "positive_rate_5d": 0.5,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "445680",
-      "name": "큐리옥스바이오시스템즈",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.06492457424933366,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "140610",
-      "name": "엔솔바이오사이언스",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.08949495851493854,
-      "positive_rate_3d": 0.6666666666666666,
-      "positive_rate_5d": 0.3333333333333333,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "001060",
-      "name": "JW중외제약",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.07913092200599023,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 0.3333333333333333,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "388870",
-      "name": "파로스아이바이오",
-      "count_1d": 2,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.0056657223796034,
-      "positive_rate_3d": 0.0,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "950160",
-      "name": "코오롱티슈진",
-      "count_1d": 2,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.041877386087560114,
-      "positive_rate_3d": 0.5,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "005690",
-      "name": "파미셀",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.07889134053342624,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 1.0,
-      "cluster_1d": "상"
-    },
-    {
-      "ticker": "102460",
-      "name": "이연제약",
-      "count_1d": 3,
-      "positive_rate_1d": 1.0,
-      "avg_return_1d": 0.021333333333333333,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 0.0,
       "cluster_1d": "상"
     },
     {
@@ -170,26 +40,6 @@
       "avg_return_1d": 0.01962373826636817,
       "positive_rate_3d": 0.8,
       "positive_rate_5d": 0.8,
-      "cluster_1d": "중"
-    },
-    {
-      "ticker": "156100",
-      "name": "엘앤케이바이오",
-      "count_1d": 4,
-      "positive_rate_1d": 0.75,
-      "avg_return_1d": 0.010521954390806955,
-      "positive_rate_3d": 0.75,
-      "positive_rate_5d": 0.3333333333333333,
-      "cluster_1d": "중"
-    },
-    {
-      "ticker": "006280",
-      "name": "녹십자",
-      "count_1d": 4,
-      "positive_rate_1d": 0.75,
-      "avg_return_1d": 0.00631905038560418,
-      "positive_rate_3d": 0.5,
-      "positive_rate_5d": 0.5,
       "cluster_1d": "중"
     },
     {
@@ -223,44 +73,124 @@
       "cluster_1d": "중"
     },
     {
-      "ticker": "141080",
-      "name": "리가켐바이오",
-      "count_1d": 3,
-      "positive_rate_1d": 0.6666666666666666,
-      "avg_return_1d": -0.00663227802042519,
-      "positive_rate_3d": 1.0,
-      "positive_rate_5d": 1.0,
+      "ticker": "039200",
+      "name": "오스코텍",
+      "count_1d": 8,
+      "positive_rate_1d": 0.625,
+      "avg_return_1d": 0.006502694142220217,
+      "positive_rate_3d": 0.375,
+      "positive_rate_5d": 0.5,
       "cluster_1d": "중"
     },
     {
-      "ticker": "475830",
-      "name": "오름테라퓨틱",
-      "count_1d": 3,
-      "positive_rate_1d": 0.6666666666666666,
-      "avg_return_1d": -0.004081354690687625,
-      "positive_rate_3d": 0.3333333333333333,
+      "ticker": "196170",
+      "name": "알테오젠",
+      "count_1d": 15,
+      "positive_rate_1d": 0.6,
+      "avg_return_1d": 0.010356291615428097,
+      "positive_rate_3d": 0.8666666666666667,
+      "positive_rate_5d": 0.7333333333333333,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "028300",
+      "name": "코스닥",
+      "count_1d": 9,
+      "positive_rate_1d": 0.5555555555555556,
+      "avg_return_1d": 0.01904501340647724,
+      "positive_rate_3d": 0.25,
+      "positive_rate_5d": 0.5,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "048410",
+      "name": "현대바이오",
+      "count_1d": 9,
+      "positive_rate_1d": 0.4444444444444444,
+      "avg_return_1d": 0.04889451000778072,
+      "positive_rate_3d": 0.5,
+      "positive_rate_5d": 0.5,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "328130",
+      "name": "루닛",
+      "count_1d": 5,
+      "positive_rate_1d": 0.4,
+      "avg_return_1d": -0.028856002581834257,
+      "positive_rate_3d": 0.5,
+      "positive_rate_5d": 0.75,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "458870",
+      "name": "씨어스테크놀로지",
+      "count_1d": 9,
+      "positive_rate_1d": 0.3333333333333333,
+      "avg_return_1d": -0.010105369947159716,
+      "positive_rate_3d": 0.375,
+      "positive_rate_5d": 0.375,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "009290",
+      "name": "광동제약",
+      "count_1d": 7,
+      "positive_rate_1d": 0.2857142857142857,
+      "avg_return_1d": -0.015302917426592427,
+      "positive_rate_3d": 0.0,
       "positive_rate_5d": 0.0,
       "cluster_1d": "중"
     },
     {
-      "ticker": "AZN",
-      "name": "AZN",
-      "count_1d": 3,
-      "positive_rate_1d": 0.6666666666666666,
-      "avg_return_1d": -0.00038600788640520803,
-      "positive_rate_3d": 0.3333333333333333,
+      "ticker": "049180",
+      "name": "셀루메드",
+      "count_1d": 7,
+      "positive_rate_1d": 0.2857142857142857,
+      "avg_return_1d": -0.010905188138282198,
+      "positive_rate_3d": 0.5714285714285714,
+      "positive_rate_5d": 0.42857142857142855,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "221800",
+      "name": "유투바이오",
+      "count_1d": 7,
+      "positive_rate_1d": 0.14285714285714285,
+      "avg_return_1d": 0.0010525736102350006,
+      "positive_rate_3d": 0.42857142857142855,
+      "positive_rate_5d": 0.42857142857142855,
+      "cluster_1d": "중"
+    },
+    {
+      "ticker": "308430",
+      "name": "셀비온",
+      "count_1d": 9,
+      "positive_rate_1d": 0.1111111111111111,
+      "avg_return_1d": -0.01646447237167008,
+      "positive_rate_3d": 0.8888888888888888,
       "positive_rate_5d": 0.6666666666666666,
       "cluster_1d": "중"
     },
     {
-      "ticker": "214150",
-      "name": "클래시스",
-      "count_1d": 3,
-      "positive_rate_1d": 0.6666666666666666,
-      "avg_return_1d": -0.00930651998100739,
+      "ticker": "397030",
+      "name": "에이프릴바이오",
+      "count_1d": 6,
+      "positive_rate_1d": 0.0,
+      "avg_return_1d": -0.029945658431879824,
       "positive_rate_3d": 0.3333333333333333,
-      "positive_rate_5d": 0.6666666666666666,
-      "cluster_1d": "중"
+      "positive_rate_5d": 0.8333333333333334,
+      "cluster_1d": "하"
+    },
+    {
+      "ticker": "491000",
+      "name": "리브스메드",
+      "count_1d": 6,
+      "positive_rate_1d": 0.0,
+      "avg_return_1d": -0.042047592104061955,
+      "positive_rate_3d": 0.0,
+      "positive_rate_5d": 0.3333333333333333,
+      "cluster_1d": "하"
     }
   ]
 }

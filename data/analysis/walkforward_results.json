@@ -1,0 +1,81 @@
+{
+  "config": {
+    "n_folds": 3,
+    "opt_metric": "profit_factor",
+    "s1_grid": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "s2_grid": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "min_is_trades": 3
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "train": "2021-12-17 ~ 2023-02-14",
+      "val": "2023-02-15 ~ 2024-04-18",
+      "best_s1": 6,
+      "best_s2": 3,
+      "IS": {
+        "n": 9,
+        "sharpe": 0.781,
+        "win_rate": 66.7,
+        "avg_ret": 1.051
+      },
+      "OOS": {
+        "n": 3,
+        "sharpe": -0.755,
+        "win_rate": 33.3,
+        "avg_ret": -1.061
+      },
+      "degradation": 1.536
+    },
+    {
+      "fold": 2,
+      "train": "2021-12-17 ~ 2024-04-18",
+      "val": "2024-04-19 ~ 2025-05-21",
+      "best_s1": 6,
+      "best_s2": 5,
+      "IS": {
+        "n": 3,
+        "sharpe": 1.555,
+        "win_rate": 100.0,
+        "avg_ret": 2.18
+      },
+      "OOS": {
+        "n": 2,
+        "sharpe": -0.652,
+        "win_rate": 50.0,
+        "avg_ret": -1.261
+      },
+      "degradation": 2.207
+    },
+    {
+      "fold": 3,
+      "train": "2021-12-17 ~ 2025-05-21",
+      "val": "2025-05-22 ~ 2026-04-02",
+      "best_s1": 6,
+      "best_s2": 5,
+      "IS": {
+        "n": 5,
+        "sharpe": 0.344,
+        "win_rate": 80.0,
+        "avg_ret": 0.804
+      },
+      "OOS": {
+        "n": 0,
+        "sharpe": 0.0,
+        "win_rate": 0.0,
+        "avg_ret": 0.0
+      },
+      "degradation": 0.344
+    }
+  ]
+}

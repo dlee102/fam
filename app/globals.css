@@ -1,18 +1,211 @@
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Light.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Medium.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-SemiBold.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Bold.woff2")
+    format("woff2");
+}
+
 :root {
-  --color-bg: #f8fafc;
+  --font-sans: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --layout-max: 960px;
+  /* 사이드바 + 본문을 한 덩어리로 중앙 정렬할 때 쓰는 폭 */
+  --app-sidebar-w: 15.75rem;
+  /* 사이드바와 본문 열 사이 간격 */
+  --app-shell-gap: 2.75rem;
+  /* 헤더 아래 본문·사이드바 시작까지 상단 여백 */
+  --app-shell-pad-top: 1.75rem;
+  --app-sidebar-active-bg: rgba(0, 0, 0, 0.055);
+  --app-sidebar-avatar-bg: color-mix(in srgb, var(--color-text) 8%, var(--color-surface));
+  --app-sidebar-cta-ring: var(--color-border-subtle);
+  --page-pad-x: 1.25rem;
+  --page-pad-x-lg: 1.75rem;
+  --page-pad-y-top: 2.25rem;
+  --page-pad-y-bottom: 4rem;
+  --color-bg: #f5f5f7;
   --color-surface: #ffffff;
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
+  --color-border: #d2d2d7;
+  --color-border-subtle: #e8e8ed;
+  --color-border-strong: #bcbcc0;
+  --color-text: #2a2a2f;
+  --color-text-muted: #6f6f78;
+  --color-text-faint: #8b8b95;
   --color-accent: #0d9488;
   --color-accent-hover: #0f766e;
   --color-accent-muted: #ccfbf1;
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 12px;
+  --color-elevated: #ffffff;
+  color-scheme: light;
+
+  /* 퀀트 대시보드 · 차트 (라이트) */
+  --quant-canvas: #f1f5f9;
+  --quant-surface: #ffffff;
+  --quant-border: #e2e8f0;
+  --quant-rule: rgba(15, 23, 42, 0.08);
+  --quant-text: #1a2332;
+  --quant-muted: #5f6b7e;
+  --quant-faint: #8490a3;
+  --quant-label: #4d5b70;
+  --quant-up: #047857;
+  --quant-down: #be123c;
+  --quant-grid: #f1f5f9;
+  --quant-chart-line-alt: #2563eb;
+  --quant-ref-line: #cbd5e1;
+  --quant-tooltip-bg: #ffffff;
+  --quant-tooltip-fg: #0f172a;
+  --quant-tooltip-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --quant-segment-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --quant-gauge-0: #16a34a;
+  --quant-gauge-1: #65a30d;
+  --quant-gauge-2: #ca8a04;
+  --quant-gauge-3: #ea580c;
+  --quant-gauge-4: #dc2626;
+  --quant-risk-low: #047857;
+  --quant-risk-mid: #b45309;
+  --quant-risk-high: #c2410c;
+  --quant-risk-gradient: linear-gradient(90deg, #16a34a 0%, #eab308 52%, #dc2626 100%);
+  --quant-robo-knob: #ffffff;
+  --quant-robo-knob-ring: #0f172a;
+  --quant-robo-knob-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+  --quant-line-marker-outline: #ffffff;
+  --quant-band-buy: rgba(13, 148, 136, 0.22);
+  --quant-band-tp1: rgba(234, 179, 8, 0.28);
+  --quant-band-tp2: rgba(67, 56, 202, 0.22);
+  --quant-tp1-label: #a16207;
+  --quant-tp2-label: #4f46e5;
+  --ripple-upstream-tag: #134e4a;
+  --ripple-upstream-bg: #f0fdfa;
+  --ripple-upstream-border: #99f6e4;
+  --ripple-peer-tag: #334155;
+  --ripple-peer-bg: #f8fafc;
+  --ripple-peer-border: #e2e8f0;
+  --ripple-downstream-tag: #1e3a8a;
+  --ripple-downstream-bg: #eff6ff;
+  --ripple-downstream-border: #bfdbfe;
+  --stats-badge-fg: #0369a1;
+  --stats-badge-bg: #e0f2fe;
+  --stats-kr-up: #b91c1c;
+  --stats-kr-down: #2563eb;
+  --stats-ai-score: #0c4a6e;
+  --stats-card-border: #e5e7eb;
+  --stats-card-bg: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* 매트 다크 — 순수 블랙 대신 소프트 차콜 */
+:root[data-theme="dark"] {
+  --color-bg: #1a1a1c;
+  --color-surface: #242426;
+  --color-elevated: #2e2e32;
+  --color-border: #3e3e42;
+  --color-border-subtle: #323236;
+  --color-border-strong: #4a4a4e;
+  --color-text: #f6f6fa;
+  --color-text-muted: #c9c9d4;
+  --color-text-faint: #b4b4c0;
+  --color-accent: #4fd4c0;
+  --color-accent-hover: #6fdfcf;
+  --color-accent-muted: rgba(79, 212, 192, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+
+  --quant-canvas: #28282c;
+  --quant-surface: #323236;
+  --quant-border: #3e3e44;
+  --quant-rule: rgba(255, 255, 255, 0.08);
+  --quant-text: #f6f6fa;
+  --quant-muted: #c6c6d2;
+  --quant-faint: #aeaeb8;
+  --quant-label: #d6d6e0;
+  --quant-up: #4ade80;
+  --quant-down: #fb7185;
+  --quant-grid: #2a2a2e;
+  --quant-chart-line-alt: #60a5fa;
+  --quant-ref-line: #5c5c64;
+  --quant-tooltip-bg: #323236;
+  --quant-tooltip-fg: #f4f4f8;
+  --quant-tooltip-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --quant-segment-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --quant-gauge-0: #22c55e;
+  --quant-gauge-1: #84cc16;
+  --quant-gauge-2: #eab308;
+  --quant-gauge-3: #f97316;
+  --quant-gauge-4: #ef4444;
+  --quant-risk-low: #34d399;
+  --quant-risk-mid: #fbbf24;
+  --quant-risk-high: #fb923c;
+  --quant-risk-gradient: linear-gradient(90deg, #22c55e 0%, #eab308 50%, #ef4444 100%);
+  --quant-robo-knob: #3a3a3e;
+  --quant-robo-knob-ring: #ececf1;
+  --quant-robo-knob-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --quant-line-marker-outline: #1a1a1c;
+  --quant-band-buy: rgba(79, 212, 192, 0.22);
+  --quant-band-tp1: rgba(250, 204, 21, 0.2);
+  --quant-band-tp2: rgba(129, 140, 248, 0.22);
+  --quant-tp1-label: #fbbf24;
+  --quant-tp2-label: #a5b4fc;
+  --ripple-upstream-tag: #5eead4;
+  --ripple-upstream-bg: rgba(20, 184, 166, 0.12);
+  --ripple-upstream-border: rgba(45, 212, 191, 0.35);
+  --ripple-peer-tag: #cbd5e1;
+  --ripple-peer-bg: #2e2e32;
+  --ripple-peer-border: #48484e;
+  --ripple-downstream-tag: #93c5fd;
+  --ripple-downstream-bg: rgba(37, 99, 235, 0.18);
+  --ripple-downstream-border: rgba(96, 165, 250, 0.35);
+  --stats-badge-fg: #7dd3fc;
+  --stats-badge-bg: rgba(14, 165, 233, 0.22);
+  --stats-kr-up: #f87171;
+  --stats-kr-down: #60a5fa;
+  --stats-ai-score: #7dd3fc;
+  --stats-card-border: #3e3e44;
+  --stats-card-bg: linear-gradient(145deg, #242426 0%, #1e1e22 100%);
+
+  --app-sidebar-active-bg: rgba(255, 255, 255, 0.1);
+  --app-sidebar-avatar-bg: color-mix(in srgb, var(--color-text) 12%, var(--color-surface));
+  --app-sidebar-cta-ring: var(--color-border-subtle);
 }
 
 * {
@@ -25,8 +218,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 300;
   background: var(--color-bg);
   color: var(--color-text);
   min-height: 100vh;
@@ -40,25 +233,472 @@ a {
   text-decoration: none;
 }
 
-/* 뉴스 사이트 레이아웃 - 중앙 정렬 유지 */
+/* 콘텐츠 폭 · 좌우 패딩 통일 */
 .layout-center {
   width: 100%;
-  max-width: 960px;
+  max-width: var(--layout-max);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding-left: var(--page-pad-x);
+  padding-right: var(--page-pad-x);
 }
 
 .news-container {
-  max-width: 960px;
+  box-sizing: border-box;
+  max-width: var(--layout-max);
   margin: 0 auto;
-  padding: 0 2rem;
   width: 100%;
+  padding: var(--page-pad-y-top) var(--page-pad-x) var(--page-pad-y-bottom);
 }
 
 @media (min-width: 768px) {
-  .layout-center,
+  .layout-center {
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+
   .news-container {
-    padding: 0 3rem;
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+}
+
+/* 전역 셸: 풀블리드 헤더 + 본문 */
+.site-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+}
+
+.site-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .site-header-sticky {
+    background: var(--color-surface);
+  }
+}
+
+.site-header {
+  width: 100%;
+}
+
+/* 상단 바: 로고·토글은 뷰포트 가장자리 (레퍼런스의 Back 링크 위치와 동일한 역할) */
+.site-header__edge {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.75rem var(--page-pad-x) 0.65rem;
+}
+
+.site-header__edge--split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-header--nav .site-header__edge {
+  padding-top: 0.45rem;
+  padding-bottom: 0.55rem;
+}
+
+@media (min-width: 768px) {
+  .site-header__edge {
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+}
+
+/* 헤더 아래: 사이드바 + 간격 + 본문 열만 가운데 묶음 */
+.site-body {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  min-height: 0;
+  width: 100%;
+  max-width: calc(
+    var(--layout-max) + var(--app-sidebar-w) + var(--app-shell-gap) + 2 * var(--page-pad-x)
+  );
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: var(--app-shell-pad-top);
+  padding-left: var(--page-pad-x);
+  padding-right: var(--page-pad-x);
+  gap: var(--app-shell-gap);
+}
+
+.site-main-wrap {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--layout-max);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 사이드바 — 프로필 + 아이콘 네비 + 하단 CTA */
+.app-sidebar {
+  flex-shrink: 0;
+  width: var(--app-sidebar-w);
+  padding: 0.5rem 0 1.75rem 0;
+  background: transparent;
+}
+
+.app-sidebar__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app-sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.25rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.65rem 0.65rem 0.45rem;
+}
+
+.app-sidebar__avatar {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: var(--app-sidebar-avatar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-sidebar__avatar-letter {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+
+.app-sidebar__profile-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.app-sidebar__profile-title {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-sidebar__profile-sub {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-sidebar__nav--tree {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+}
+
+.app-sidebar__nav-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.app-sidebar__nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.app-sidebar__nav-sep {
+  flex-shrink: 0;
+  padding: 0.55rem 0.75rem;
+}
+
+.app-sidebar__nav-sep::before {
+  content: "";
+  display: block;
+  border-top: 1px solid var(--color-border-subtle);
+  opacity: 0.4;
+}
+
+.app-sidebar__row-wrap {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-sidebar__row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.125rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.app-sidebar__row-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-faint);
+}
+
+.app-sidebar__row[data-active="true"] .app-sidebar__row-icon {
+  color: var(--color-text-muted);
+}
+
+.app-sidebar__row-label {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-sidebar__row[data-active="true"] {
+  background-color: var(--app-sidebar-active-bg);
+}
+
+@media (hover: hover) {
+  .app-sidebar__row:hover:not([data-active="true"]) {
+    background-color: color-mix(in srgb, var(--app-sidebar-active-bg) 55%, transparent);
+  }
+}
+
+.app-sidebar__footer {
+  margin: 1rem 0.75rem 0;
+}
+
+.app-sidebar__cta {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.125rem;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--app-sidebar-cta-ring);
+  background: transparent;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.app-sidebar__cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+@media (hover: hover) {
+  .app-sidebar__cta:hover {
+    background-color: color-mix(in srgb, var(--app-sidebar-active-bg) 70%, transparent);
+  }
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .site-body {
+    flex-direction: column;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    padding: 0.5rem 0 0.65rem;
+  }
+
+  .app-sidebar__profile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .app-sidebar__footer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .site-body {
+    padding-top: 2.35rem;
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+    max-width: calc(
+      var(--layout-max) + var(--app-sidebar-w) + var(--app-shell-gap) + 2 * var(--page-pad-x-lg)
+    );
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --app-shell-gap: 3.25rem;
+    --app-shell-pad-top: 2.75rem;
+  }
+
+  .site-body {
+    padding-top: var(--app-shell-pad-top);
+  }
+}
+
+.site-logo {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* 홈 · 리스트 */
+.page-heading {
+  margin-bottom: 2rem;
+  padding-bottom: 1.125rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.page-heading__title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.feed__label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.125rem;
+}
+
+.feed__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feed__item {
+  padding: 0.875rem 0;
+}
+
+.feed__item--rule {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.feed__link {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.feed__thumb {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  background: var(--color-border-subtle);
+}
+
+.feed__title {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+  flex: 1;
+  letter-spacing: -0.02em;
+}
+
+.feed__empty {
+  padding: 1.25rem 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.muted-text {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.back-link--article {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+@media (hover: hover) {
+  .back-link:hover {
+    color: var(--color-text);
   }
 }
 
@@ -88,10 +728,11 @@ a {
 
 /* 기사 페이지 - 본문 + 하단 퀀트 대시보드 */
 .article-page-layout {
-  max-width: 60rem; /* 960px */
+  box-sizing: border-box;
+  max-width: var(--layout-max);
   margin: 0 auto;
-  padding: 0 2rem;
   width: 100%;
+  padding: var(--page-pad-y-top) var(--page-pad-x) var(--page-pad-y-bottom);
 }
 
 .article-page-article {
@@ -103,14 +744,11 @@ a {
 .article-quant-dashboard {
   margin-top: 3.25rem;
   padding: 2rem 1.5rem 2.25rem;
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
   font-variant-numeric: tabular-nums;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
-    0 1px 3px rgba(15, 23, 42, 0.04),
-    0 12px 40px -16px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 
 .article-quant-dashboard-header {
@@ -130,21 +768,21 @@ a {
   width: 2.75rem;
   height: 3px;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #0f766e, #2dd4bf);
+  background: linear-gradient(90deg, var(--color-accent-hover), var(--color-accent));
 }
 
 .article-quant-dashboard-title {
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.03em;
-  color: #0f172a;
+  color: var(--color-text);
   margin: 0;
   line-height: 1.25;
 }
 
 .article-quant-dashboard-desc {
   font-size: 0.8125rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   margin: 0;
   line-height: 1.55;
   max-width: 36rem;
@@ -179,23 +817,19 @@ a {
 }
 
 .quant-dash-cell {
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: var(--color-elevated);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 14px;
   padding: 1.25rem 1.35rem 1.35rem;
   min-width: 0;
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.04),
-    0 0 0 1px rgba(15, 23, 42, 0.02);
+  box-shadow: var(--shadow-sm);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 @media (hover: hover) {
   .quant-dash-cell:hover {
-    border-color: rgba(13, 148, 136, 0.12);
-    box-shadow:
-      0 1px 2px rgba(15, 23, 42, 0.05),
-      0 8px 24px -12px rgba(15, 23, 42, 0.1);
+    border-color: color-mix(in srgb, var(--color-accent) 28%, var(--color-border-subtle));
+    box-shadow: var(--shadow-md);
   }
 }
 
@@ -217,7 +851,8 @@ a {
 
 @media (min-width: 768px) {
   .article-page-layout {
-    padding: 0 3rem;
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
   }
 }
 
@@ -226,113 +861,116 @@ a {
   isolation: isolate;
 }
 
-/* 상단 탭 — 섹션별 성격 (기본 / 뉴스·티커 / 통계 / 보고서) */
+/* 백테스팅 하위 탭 (layout) */
+.backtesting-layout {
+  width: 100%;
+  padding-top: 0.35rem;
+}
+
+.backtesting-tabs-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 24px 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.backtesting-tabs.nav-tabs {
+  gap: 0.5rem;
+}
+
+.backtesting-tabs .nav-tab {
+  padding: 0.4rem 1rem;
+}
+
+/* 상단 탭 — Apple nav 스타일: 무배경, 순수 텍스트 */
 .nav-tabs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.25rem;
-  padding: 0.25rem;
-  background-color: var(--color-bg);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  gap: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   position: relative;
   z-index: 1;
 }
 
 .nav-tabs__divider {
   width: 1px;
-  height: 1.35rem;
-  margin: 0 0.35rem;
+  height: 0.9rem;
+  margin: 0 0.15rem;
   background: var(--color-border-strong);
   flex-shrink: 0;
-  opacity: 0.85;
+  opacity: 0.65;
 }
 
 .nav-tab {
   display: inline-block;
   flex-shrink: 0;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
+  padding: 0.25rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  border-radius: 0;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.15s ease;
   color: var(--color-text-muted);
   background-color: transparent;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(13, 148, 136, 0.15);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-tab[data-active="true"] {
-  color: #fff;
+  color: var(--color-text);
+  font-weight: 300;
 }
 
-/* 퀀트·상품 (1번~6번, 키움 로보마켓) — 기존 틸 */
-.nav-tab--default[data-active="true"] {
-  background-color: var(--color-accent);
-  box-shadow: 0 1px 2px rgba(13, 148, 136, 0.3);
-}
-.nav-tab--default:hover:not([data-active="true"]) {
-  background-color: rgba(13, 148, 136, 0.1);
-  color: var(--color-accent);
-}
-.nav-tab--default[data-active="true"]:hover {
-  background-color: var(--color-accent-hover);
-  color: #fff;
+@media (hover: hover) {
+  .nav-tab:hover:not([data-active="true"]) {
+    color: var(--color-text);
+  }
 }
 
-/* 뉴스+티커 — 피드·감성 피드, 인디고 */
-.nav-tab--news[data-active="true"] {
-  background: linear-gradient(135deg, #4338ca 0%, #6366f1 100%);
-  box-shadow: 0 1px 3px rgba(67, 56, 202, 0.35);
-}
-.nav-tab--news:hover:not([data-active="true"]) {
-  background-color: rgba(99, 102, 241, 0.12);
-  color: #4338ca;
-}
-.nav-tab--news[data-active="true"]:hover {
-  background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%);
-  color: #fff;
+/* 모든 variant 동일 — 무채색 텍스트만 */
+.nav-tab--default[data-active="true"],
+.nav-tab--news[data-active="true"],
+.nav-tab--stats[data-active="true"],
+.nav-tab--report[data-active="true"],
+.nav-tab--backtest[data-active="true"] {
+  color: var(--color-text);
+  background-color: transparent;
+  box-shadow: none;
 }
 
-/* 기본 통계 — 수치·차트, 스카이 */
-.nav-tab--stats[data-active="true"] {
-  background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
-  box-shadow: 0 1px 3px rgba(14, 165, 233, 0.35);
-}
-.nav-tab--stats:hover:not([data-active="true"]) {
-  background-color: rgba(14, 165, 233, 0.12);
-  color: #0369a1;
-}
-.nav-tab--stats[data-active="true"]:hover {
-  background: linear-gradient(135deg, #075985 0%, #0284c7 100%);
-  color: #fff;
+.nav-tab--default:hover:not([data-active="true"]),
+.nav-tab--news:hover:not([data-active="true"]),
+.nav-tab--stats:hover:not([data-active="true"]),
+.nav-tab--report:hover:not([data-active="true"]),
+.nav-tab--backtest:hover:not([data-active="true"]) {
+  background-color: transparent;
+  color: var(--color-text);
 }
 
-/* 종합 보고서 — 문서·리포트, 앰버 */
-.nav-tab--report[data-active="true"] {
-  background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
-  box-shadow: 0 1px 3px rgba(180, 83, 9, 0.35);
-}
-.nav-tab--report:hover:not([data-active="true"]) {
-  background-color: rgba(217, 119, 6, 0.12);
-  color: #b45309;
-}
-.nav-tab--report[data-active="true"]:hover {
-  background: linear-gradient(135deg, #92400e 0%, #b45309 100%);
-  color: #fff;
+.nav-tab--default[data-active="true"]:hover,
+.nav-tab--news[data-active="true"]:hover,
+.nav-tab--stats[data-active="true"]:hover,
+.nav-tab--report[data-active="true"]:hover,
+.nav-tab--backtest[data-active="true"]:hover {
+  color: var(--color-text);
+  background-color: transparent;
 }
 
 .logo-link:hover {
-  color: var(--color-accent) !important;
-  transition: color 0.2s ease;
+  color: var(--color-text-muted) !important;
+  transition: color 0.15s ease;
 }
 
-.article-link:hover span {
-  color: var(--color-accent) !important;
+.article-link:hover .feed__title {
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 .kiwoom-card-title-link:hover {
@@ -345,4 +983,37 @@ a {
   color: var(--color-accent) !important;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* 테마 전환 — 라이트 / 다크 / 시스템(자동) */
+.theme-toggle {
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+@media (hover: hover) {
+  .theme-toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-border);
+    background: color-mix(in srgb, var(--color-text) 5%, transparent);
+  }
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

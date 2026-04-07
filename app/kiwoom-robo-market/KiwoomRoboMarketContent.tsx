@@ -251,7 +251,6 @@ function RoboBandMetrics({
     parts.push(`이전고점×0.7 ${formatWon(meta.prevHigh70)}`);
   }
   parts.push("표시 수익률: 비용·슬리피지 반영, 일 ATR 대비 상한");
-  if (parts.length === 0) return null;
   return (
     <p
       style={{

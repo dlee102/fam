@@ -11,7 +11,11 @@ export function RiskGauge({ value }: { value: number }) {
   const band =
     clamped < 33 ? "낮음" : clamped < 66 ? "보통" : "높음";
   const bandColor =
-    clamped < 33 ? "#047857" : clamped < 66 ? "#b45309" : "#c2410c";
+    clamped < 33
+      ? "var(--quant-risk-low)"
+      : clamped < 66
+        ? "var(--quant-risk-mid)"
+        : "var(--quant-risk-high)";
 
   return (
     <section style={{ fontVariantNumeric: "tabular-nums", margin: 0, padding: 0, border: "none" }}>
@@ -24,8 +28,8 @@ export function RiskGauge({ value }: { value: number }) {
         arcWidth={0.22}
         arcPadding={0.01}
         cornerRadius={1}
-        needleColor="#0f172a"
-        needleBaseColor="#0f172a"
+        needleColor="var(--color-text)"
+        needleBaseColor="var(--color-text)"
         textColor={sb.text}
         formatTextValue={(val) => {
           const num = parseFloat(val);

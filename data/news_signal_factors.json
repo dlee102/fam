@@ -1,0 +1,466 @@
+{
+  "generated_at": "2026-04-07T16:47:40.893967",
+  "n_events": 1352,
+  "outcome": "진입 C (T+1 장종 5분봉 종가) 기준 수익률",
+  "entry_definition": "청산 = 각 진입일로부터 N거래일 뒤 장종 5분봉 종가",
+  "factors": {
+    "hold_1d": {
+      "hold_days": 1,
+      "factor_1_time_band": {
+        "groups": {
+          "pre": {
+            "n": 751,
+            "mean_pct": 0.1632,
+            "median_pct": -0.1119,
+            "win_rate": 0.4727
+          },
+          "intraday": {
+            "n": 584,
+            "mean_pct": -0.0414,
+            "median_pct": -0.2848,
+            "win_rate": 0.4007
+          },
+          "post": {
+            "n": 11,
+            "mean_pct": 1.8863,
+            "median_pct": 0.0,
+            "win_rate": 0.4545
+          }
+        },
+        "diff_pre_vs_rest": {
+          "point_pct": 0.169,
+          "ci95": [
+            -0.3095,
+            0.6321
+          ],
+          "likely_real": false
+        },
+        "diff_post_vs_rest": {
+          "point_pct": 1.8126,
+          "ci95": [
+            0.3889,
+            3.6226
+          ],
+          "likely_real": true
+        },
+        "note": "pre=~08:59 KST, intraday=09:00~15:29, post=15:30~ 기준"
+      },
+      "factor_2_t1_gap_up": {
+        "gap_up_2pct": {
+          "n": 153,
+          "mean_pct": -0.1533,
+          "median_pct": -1.0989,
+          "win_rate": 0.3268
+        },
+        "gap_flat": {
+          "n": 917,
+          "mean_pct": -0.0329,
+          "median_pct": -0.1098,
+          "win_rate": 0.4449
+        },
+        "gap_down_1pct": {
+          "n": 254,
+          "mean_pct": 0.7153,
+          "median_pct": 0.0,
+          "win_rate": 0.4921
+        },
+        "diff_flat_or_down_minus_gapup": {
+          "point_pct": 0.2828,
+          "ci95": [
+            -0.8066,
+            1.3246
+          ],
+          "likely_real": false
+        },
+        "note": "갭업 클수록 진입 C 직전에 이미 올라가 있는 상태 → 수익 불리 가설 검증"
+      },
+      "factor_3_upper_shadow_t0": {
+        "shadow_ge_50pct": {
+          "n": 631,
+          "mean_pct": 0.0733,
+          "median_pct": -0.2786,
+          "win_rate": 0.4311
+        },
+        "shadow_lt_50pct": {
+          "n": 519,
+          "mean_pct": 0.0747,
+          "median_pct": -0.0996,
+          "win_rate": 0.4528
+        },
+        "diff_clean_minus_shadow": {
+          "point_pct": 0.0014,
+          "ci95": [
+            -0.4972,
+            0.4864
+          ],
+          "likely_real": false
+        },
+        "note": "T0 당일 5분봉 고가·저가·종가 기반 윗꼬리 비율. 0=완전 양봉, 1=전부 윗꼬리"
+      },
+      "factor_4_ticker_past_sign": {
+        "past_positive_ticker": {
+          "n": 550,
+          "mean_pct": 0.8641,
+          "median_pct": 0.253,
+          "win_rate": 0.56
+        },
+        "past_negative_ticker": {
+          "n": 604,
+          "mean_pct": -0.6852,
+          "median_pct": -0.9398,
+          "win_rate": 0.3278
+        },
+        "first_time_ticker": {
+          "n": 192,
+          "mean_pct": 0.3008,
+          "median_pct": 0.0,
+          "win_rate": 0.4583
+        },
+        "diff_past_pos_minus_past_neg": {
+          "point_pct": 1.5494,
+          "ci95": [
+            1.0727,
+            2.0443
+          ],
+          "likely_real": true
+        },
+        "note": "룩어헤드 없음: article_idx 순서대로 처리, 해당 이벤트 이전 기사 결과만 참조"
+      }
+    },
+    "hold_5d": {
+      "hold_days": 5,
+      "factor_1_time_band": {
+        "groups": {
+          "pre": {
+            "n": 732,
+            "mean_pct": 0.8538,
+            "median_pct": 0.0,
+            "win_rate": 0.4986
+          },
+          "intraday": {
+            "n": 584,
+            "mean_pct": -0.9681,
+            "median_pct": -1.1796,
+            "win_rate": 0.399
+          },
+          "post": {
+            "n": 11,
+            "mean_pct": 3.2468,
+            "median_pct": 1.6181,
+            "win_rate": 0.9091
+          }
+        },
+        "diff_pre_vs_rest": {
+          "point_pct": 1.744,
+          "ci95": [
+            0.6009,
+            2.9253
+          ],
+          "likely_real": true
+        },
+        "diff_post_vs_rest": {
+          "point_pct": 3.2015,
+          "ci95": [
+            0.2205,
+            6.668
+          ],
+          "likely_real": true
+        },
+        "note": "pre=~08:59 KST, intraday=09:00~15:29, post=15:30~ 기준"
+      },
+      "factor_2_t1_gap_up": {
+        "gap_up_2pct": {
+          "n": 152,
+          "mean_pct": -2.9845,
+          "median_pct": -1.3335,
+          "win_rate": 0.4539
+        },
+        "gap_flat": {
+          "n": 910,
+          "mean_pct": 0.4811,
+          "median_pct": -0.6573,
+          "win_rate": 0.4451
+        },
+        "gap_down_1pct": {
+          "n": 247,
+          "mean_pct": 0.7173,
+          "median_pct": 0.703,
+          "win_rate": 0.5304
+        },
+        "diff_flat_or_down_minus_gapup": {
+          "point_pct": 3.5161,
+          "ci95": [
+            1.1102,
+            6.0735
+          ],
+          "likely_real": true
+        },
+        "note": "갭업 클수록 진입 C 직전에 이미 올라가 있는 상태 → 수익 불리 가설 검증"
+      },
+      "factor_3_upper_shadow_t0": {
+        "shadow_ge_50pct": {
+          "n": 619,
+          "mean_pct": -0.0504,
+          "median_pct": -1.2567,
+          "win_rate": 0.4152
+        },
+        "shadow_lt_50pct": {
+          "n": 515,
+          "mean_pct": -0.0431,
+          "median_pct": 0.5245,
+          "win_rate": 0.5146
+        },
+        "diff_clean_minus_shadow": {
+          "point_pct": 0.0073,
+          "ci95": [
+            -1.2804,
+            1.2272
+          ],
+          "likely_real": false
+        },
+        "note": "T0 당일 5분봉 고가·저가·종가 기반 윗꼬리 비율. 0=완전 양봉, 1=전부 윗꼬리"
+      },
+      "factor_4_ticker_past_sign": {
+        "past_positive_ticker": {
+          "n": 603,
+          "mean_pct": 1.4433,
+          "median_pct": 1.0638,
+          "win_rate": 0.5755
+        },
+        "past_negative_ticker": {
+          "n": 541,
+          "mean_pct": -1.3777,
+          "median_pct": -1.8219,
+          "win_rate": 0.3364
+        },
+        "first_time_ticker": {
+          "n": 183,
+          "mean_pct": -0.1619,
+          "median_pct": -1.2716,
+          "win_rate": 0.4317
+        },
+        "diff_past_pos_minus_past_neg": {
+          "point_pct": 2.8209,
+          "ci95": [
+            1.5637,
+            4.0704
+          ],
+          "likely_real": true
+        },
+        "note": "룩어헤드 없음: article_idx 순서대로 처리, 해당 이벤트 이전 기사 결과만 참조"
+      }
+    }
+  },
+  "summary": [
+    {
+      "hold_days": 1,
+      "factors": [
+        {
+          "name": "① 발행 시간대 — 장전 vs 기타",
+          "group_a": {
+            "n": 751,
+            "mean_pct": 0.1632,
+            "median_pct": -0.1119,
+            "win_rate": 0.4727
+          },
+          "group_b": {
+            "n": 595,
+            "mean_pct": null
+          },
+          "diff": {
+            "point_pct": 0.169,
+            "ci95": [
+              -0.3095,
+              0.6321
+            ],
+            "likely_real": false
+          },
+          "verdict": "CI 0 가름 → 불확실"
+        },
+        {
+          "name": "② T+1 갭업 2% 초과 — 갭 없음·갭다운 vs 갭업",
+          "group_a": {
+            "n": 917,
+            "mean_pct": -0.0329,
+            "median_pct": -0.1098,
+            "win_rate": 0.4449,
+            "label": "갭 없음"
+          },
+          "group_b": {
+            "n": 153,
+            "mean_pct": -0.1533,
+            "median_pct": -1.0989,
+            "win_rate": 0.3268,
+            "label": "갭업 2%+"
+          },
+          "diff": {
+            "point_pct": 0.2828,
+            "ci95": [
+              -0.8066,
+              1.3246
+            ],
+            "likely_real": false
+          },
+          "verdict": "CI 0 가름 → 불확실"
+        },
+        {
+          "name": "③ T0 윗꼬리 50% 미만 vs 이상",
+          "group_a": {
+            "n": 519,
+            "mean_pct": 0.0747,
+            "median_pct": -0.0996,
+            "win_rate": 0.4528,
+            "label": "양봉(윗꼬리 작음)"
+          },
+          "group_b": {
+            "n": 631,
+            "mean_pct": 0.0733,
+            "median_pct": -0.2786,
+            "win_rate": 0.4311,
+            "label": "윗꼬리 큼"
+          },
+          "diff": {
+            "point_pct": 0.0014,
+            "ci95": [
+              -0.4972,
+              0.4864
+            ],
+            "likely_real": false
+          },
+          "verdict": "CI 0 가름 → 불확실"
+        },
+        {
+          "name": "④ 종목 과거 반응 — 과거 양성 vs 음성 티커",
+          "group_a": {
+            "n": 550,
+            "mean_pct": 0.8641,
+            "median_pct": 0.253,
+            "win_rate": 0.56,
+            "label": "과거 평균+"
+          },
+          "group_b": {
+            "n": 604,
+            "mean_pct": -0.6852,
+            "median_pct": -0.9398,
+            "win_rate": 0.3278,
+            "label": "과거 평균-"
+          },
+          "diff": {
+            "point_pct": 1.5494,
+            "ci95": [
+              1.0727,
+              2.0443
+            ],
+            "likely_real": true
+          },
+          "verdict": "CI가 0 안 가름 → 유의"
+        }
+      ]
+    },
+    {
+      "hold_days": 5,
+      "factors": [
+        {
+          "name": "① 발행 시간대 — 장전 vs 기타",
+          "group_a": {
+            "n": 732,
+            "mean_pct": 0.8538,
+            "median_pct": 0.0,
+            "win_rate": 0.4986
+          },
+          "group_b": {
+            "n": 595,
+            "mean_pct": null
+          },
+          "diff": {
+            "point_pct": 1.744,
+            "ci95": [
+              0.6009,
+              2.9253
+            ],
+            "likely_real": true
+          },
+          "verdict": "CI가 0 안 가름 → 유의"
+        },
+        {
+          "name": "② T+1 갭업 2% 초과 — 갭 없음·갭다운 vs 갭업",
+          "group_a": {
+            "n": 910,
+            "mean_pct": 0.4811,
+            "median_pct": -0.6573,
+            "win_rate": 0.4451,
+            "label": "갭 없음"
+          },
+          "group_b": {
+            "n": 152,
+            "mean_pct": -2.9845,
+            "median_pct": -1.3335,
+            "win_rate": 0.4539,
+            "label": "갭업 2%+"
+          },
+          "diff": {
+            "point_pct": 3.5161,
+            "ci95": [
+              1.1102,
+              6.0735
+            ],
+            "likely_real": true
+          },
+          "verdict": "CI가 0 안 가름 → 유의"
+        },
+        {
+          "name": "③ T0 윗꼬리 50% 미만 vs 이상",
+          "group_a": {
+            "n": 515,
+            "mean_pct": -0.0431,
+            "median_pct": 0.5245,
+            "win_rate": 0.5146,
+            "label": "양봉(윗꼬리 작음)"
+          },
+          "group_b": {
+            "n": 619,
+            "mean_pct": -0.0504,
+            "median_pct": -1.2567,
+            "win_rate": 0.4152,
+            "label": "윗꼬리 큼"
+          },
+          "diff": {
+            "point_pct": 0.0073,
+            "ci95": [
+              -1.2804,
+              1.2272
+            ],
+            "likely_real": false
+          },
+          "verdict": "CI 0 가름 → 불확실"
+        },
+        {
+          "name": "④ 종목 과거 반응 — 과거 양성 vs 음성 티커",
+          "group_a": {
+            "n": 603,
+            "mean_pct": 1.4433,
+            "median_pct": 1.0638,
+            "win_rate": 0.5755,
+            "label": "과거 평균+"
+          },
+          "group_b": {
+            "n": 541,
+            "mean_pct": -1.3777,
+            "median_pct": -1.8219,
+            "win_rate": 0.3364,
+            "label": "과거 평균-"
+          },
+          "diff": {
+            "point_pct": 2.8209,
+            "ci95": [
+              1.5637,
+              4.0704
+            ],
+            "likely_real": true
+          },
+          "verdict": "CI가 0 안 가름 → 유의"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "generated_at": "2026-04-07T16:54:55.738408",
+  "strategy": "진입 C × 복합 룰 (과거 양성 티커 AND 갭업 <2%)",
+  "methodology": {
+    "walk_forward_split": "50:50 (article_idx 순)",
+    "calibration_period_n": 676,
+    "test_period_n": 677,
+    "calib_positive_tickers": 56,
+    "calib_negative_tickers": 77,
+    "test_new_tickers_skipped": 59,
+    "gap_threshold": "2%",
+    "note": "캘리브레이션 구간에서 과거 반응 집계 → 테스트 구간에만 룰 적용. 룩어헤드 없음."
+  },
+  "hold_periods": {
+    "1d": {
+      "hold_days": 1,
+      "baseline_all": {
+        "n": 677,
+        "mean_pct": 0.411,
+        "median_pct": 0.0,
+        "win_rate": 0.4771,
+        "n_pos": 323,
+        "n_neg": 331,
+        "avg_pos_pct": 3.5396,
+        "avg_neg_pct": -2.6136,
+        "profit_factor": 1.354
+      },
+      "strategy_rule": {
+        "n": 226,
+        "mean_pct": 0.3691,
+        "median_pct": 0.1063,
+        "win_rate": 0.5044,
+        "n_pos": 114,
+        "n_neg": 104,
+        "avg_pos_pct": 2.7415,
+        "avg_neg_pct": -2.2031,
+        "profit_factor": 1.244
+      },
+      "rejected": {
+        "n": 451,
+        "mean_pct": 0.4319,
+        "median_pct": -0.1575,
+        "win_rate": 0.4634,
+        "n_pos": 209,
+        "n_neg": 227,
+        "avg_pos_pct": 3.975,
+        "avg_neg_pct": -2.8016,
+        "profit_factor": 1.419
+      },
+      "diff_rule_vs_rejected": {
+        "point_pct": -0.0629,
+        "ci95": [
+          -0.7016,
+          0.558
+        ],
+        "likely_real": false
+      },
+      "diff_rule_vs_all": {
+        "point_pct": -0.0419,
+        "ci95": [
+          -0.6124,
+          0.5003
+        ],
+        "likely_real": false
+      }
+    },
+    "5d": {
+      "hold_days": 5,
+      "baseline_all": {
+        "n": 660,
+        "mean_pct": 0.8089,
+        "median_pct": -0.0251,
+        "win_rate": 0.4894,
+        "n_pos": 323,
+        "n_neg": 330,
+        "avg_pos_pct": 8.4798,
+        "avg_neg_pct": -6.6821,
+        "profit_factor": 1.269
+      },
+      "strategy_rule": {
+        "n": 223,
+        "mean_pct": 0.6787,
+        "median_pct": -0.2581,
+        "win_rate": 0.4798,
+        "n_pos": 107,
+        "n_neg": 114,
+        "avg_pos_pct": 7.0126,
+        "avg_neg_pct": -5.2543,
+        "profit_factor": 1.335
+      },
+      "rejected": {
+        "n": 437,
+        "mean_pct": 0.8753,
+        "median_pct": 0.0,
+        "win_rate": 0.4943,
+        "n_pos": 216,
+        "n_neg": 216,
+        "avg_pos_pct": 9.2066,
+        "avg_neg_pct": -7.4357,
+        "profit_factor": 1.238
+      },
+      "diff_rule_vs_rejected": {
+        "point_pct": -0.1966,
+        "ci95": [
+          -1.9788,
+          1.6158
+        ],
+        "likely_real": false
+      },
+      "diff_rule_vs_all": {
+        "point_pct": -0.1302,
+        "ci95": [
+          -1.6671,
+          1.4967
+        ],
+        "likely_real": false
+      }
+    },
+    "10d": {
+      "hold_days": 10,
+      "baseline_all": {
+        "n": 648,
+        "mean_pct": 1.655,
+        "median_pct": -0.4732,
+        "win_rate": 0.4707,
+        "n_pos": 305,
+        "n_neg": 338,
+        "avg_pos_pct": 14.1427,
+        "avg_neg_pct": -9.589,
+        "profit_factor": 1.475
+      },
+      "strategy_rule": {
+        "n": 222,
+        "mean_pct": -0.4849,
+        "median_pct": -0.4732,
+        "win_rate": 0.4595,
+        "n_pos": 102,
+        "n_neg": 118,
+        "avg_pos_pct": 9.7866,
+        "avg_neg_pct": -9.3719,
+        "profit_factor": 1.044
+      },
+      "rejected": {
+        "n": 426,
+        "mean_pct": 2.7701,
+        "median_pct": -0.5574,
+        "win_rate": 0.4765,
+        "n_pos": 203,
+        "n_neg": 220,
+        "avg_pos_pct": 16.3314,
+        "avg_neg_pct": -9.7055,
+        "profit_factor": 1.683
+      },
+      "diff_rule_vs_rejected": {
+        "point_pct": -3.2551,
+        "ci95": [
+          -7.8974,
+          0.3268
+        ],
+        "likely_real": false
+      },
+      "diff_rule_vs_all": {
+        "point_pct": -2.1399,
+        "ci95": [
+          -5.3913,
+          0.7118
+        ],
+        "likely_real": false
+      }
+    }
+  }
+}
