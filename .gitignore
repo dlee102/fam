@@ -24,12 +24,18 @@ yarn-debug.log*
 yarn-error.log*
 
 # env
+.env
 .env*.local
 
 # local API dumps
 /data/somedaynews/
 /data/somedaynews_sentiment.jsonl
 /data/eodhd_news_windows/
+
+# python / local caches
+**/__pycache__/
+*.pyc
+data/.cache/
 
 # typescript
 *.tsbuildinfo

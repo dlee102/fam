@@ -959,18 +959,6 @@ export default function PresentationPage() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap", justifySelf: "start" }}>
           <Link
-            href="/report"
-            style={{
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              color: theme.chromeFg,
-              textDecoration: "none",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            보고서
-          </Link>
-          <Link
             href="/"
             style={{
               fontSize: "0.875rem",

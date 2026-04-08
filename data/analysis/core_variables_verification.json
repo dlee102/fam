@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-04-08T05:54:43.939824+00:00",
+  "summary_ko": "경로 양·음 MWU 11개(Bonferroni p<0.0045): 누설·동어반복을 제외하면 예측용 단일 변수는 없음. D-1 기술지표 MWU 5개(Bonferroni p<0.0100): ['ma_5_20_spread']만 통과.",
+  "news_path_outcome_mwu": {
+    "json_path": "data/analysis/news_path_outcome_stats.json",
+    "n_mann_whitney_tests": 11,
+    "bonferroni_alpha_0_05": 0.004545454545454546,
+    "ranked": [
+      {
+        "feature": "final_ret",
+        "p_value": 7.211340427002449e-165,
+        "passes_bonferroni_news_block": true,
+        "classification": "tautology_outcome"
+      },
+      {
+        "feature": "event_day_ret",
+        "p_value": 1.2981942253643108e-05,
+        "passes_bonferroni_news_block": true,
+        "classification": "same_day_leakage"
+      },
+      {
+        "feature": "open_to_anchor_pct",
+        "p_value": 0.014897769032721034,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "ret_1d_pre",
+        "p_value": 0.015354950033914405,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "pre_publish_range_pct",
+        "p_value": 0.017338583422977043,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "overnight_gap",
+        "p_value": 0.09477153674804971,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "close_vs_ma20_pre",
+        "p_value": 0.2588263873390466,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "vol_ratio_eod",
+        "p_value": 0.311025975520581,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "close_vs_ma5_pre",
+        "p_value": 0.32036158274635507,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "ret_10d_pre",
+        "p_value": 0.3269933803314998,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      },
+      {
+        "feature": "ret_5d_pre",
+        "p_value": 0.369249507864604,
+        "passes_bonferroni_news_block": false,
+        "classification": "candidate"
+      }
+    ],
+    "passes_bonferroni_excluding_leakage_tautology": [],
+    "exploratory_p_lt_0_05_features": [
+      "open_to_anchor_pct",
+      "ret_1d_pre",
+      "pre_publish_range_pct"
+    ]
+  },
+  "technical_pre_event_mwu": {
+    "source_md": "technical_verification_report.md",
+    "n_mann_whitney_tests": 5,
+    "bonferroni_alpha_0_05": 0.01,
+    "ranked": [
+      {
+        "feature": "ma_5_20_spread",
+        "pos_mean": "2.47",
+        "neg_mean": "2.61",
+        "p_value": 0.0035,
+        "passes_bonferroni_tech_block": true
+      },
+      {
+        "feature": "atr_ratio",
+        "pos_mean": "5.30",
+        "neg_mean": "5.86",
+        "p_value": 0.0132,
+        "passes_bonferroni_tech_block": false
+      },
+      {
+        "feature": "bb_pct_b",
+        "pos_mean": "0.57",
+        "neg_mean": "0.64",
+        "p_value": 0.0396,
+        "passes_bonferroni_tech_block": false
+      },
+      {
+        "feature": "rsi_14",
+        "pos_mean": "53.82",
+        "neg_mean": "54.65",
+        "p_value": 0.1522,
+        "passes_bonferroni_tech_block": false
+      },
+      {
+        "feature": "bb_width",
+        "pos_mean": "28.94",
+        "neg_mean": "28.56",
+        "p_value": 0.6958,
+        "passes_bonferroni_tech_block": false
+      }
+    ],
+    "passes_bonferroni": [
+      "ma_5_20_spread"
+    ]
+  }
+}

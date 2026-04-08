@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  navItems,
-  pathMatches,
-  sidebarFooterCta,
-  sidebarWorkspace,
-  type NavItem,
-} from "./nav-config";
+import { navItems, pathMatches, sidebarWorkspace, type NavItem } from "./nav-config";
 import { SidebarNavIcon } from "./sidebar-icons";
 
 function splitNavSections(items: NavItem[]): Extract<NavItem, { type: "link" }>[][] {
@@ -98,31 +92,6 @@ function SidebarNav({ pathname }: { pathname: string }) {
   );
 }
 
-function SidebarFooter() {
-  return (
-    <div className="app-sidebar__footer">
-      <Link href={sidebarFooterCta.href} className="app-sidebar__cta">
-        <span className="app-sidebar__cta-icon" aria-hidden>
-          <svg
-            width={14}
-            height={14}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={1.75}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 5v14" />
-            <path d="M5 12h14" />
-          </svg>
-        </span>
-        {sidebarFooterCta.label}
-      </Link>
-    </div>
-  );
-}
-
 /** 왼쪽 세로 메뉴 (레이아웃용) */
 export function AppSidebar() {
   const pathname = usePathname() ?? "";
@@ -131,7 +100,6 @@ export function AppSidebar() {
       <div className="app-sidebar__stack">
         <SidebarProfile />
         <SidebarNav pathname={pathname} />
-        <SidebarFooter />
       </div>
     </aside>
   );

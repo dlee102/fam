@@ -1,6 +1,6 @@
-export type NavTabVariant = "default" | "news" | "stats" | "report" | "backtest";
+export type NavTabVariant = "default" | "news" | "stats" | "backtest";
 
-export type NavIcon = "home" | "chart" | "news" | "stats" | "document" | "flask";
+export type NavIcon = "home" | "chart" | "news" | "stats" | "flask";
 
 export type NavItem =
   | { type: "link"; href: string; label: string; variant: NavTabVariant; icon: NavIcon }
@@ -16,9 +16,7 @@ export const navItems: NavItem[] = [
     icon: "chart",
   },
   { type: "divider" },
-  { type: "link", href: "/sentiment", label: "뉴스+티커", variant: "news", icon: "news" },
   { type: "link", href: "/stats", label: "기본 통계", variant: "stats", icon: "stats" },
-  { type: "link", href: "/report", label: "종합 보고서", variant: "report", icon: "document" },
   { type: "link", href: "/backtesting", label: "백테스팅", variant: "backtest", icon: "flask" },
 ];
 
@@ -26,12 +24,6 @@ export const navItems: NavItem[] = [
 export const sidebarWorkspace = {
   title: "Qraft AI",
   subtitle: "FAM 뉴스",
-} as const;
-
-/** 사이드바 하단 CTA */
-export const sidebarFooterCta = {
-  href: "/report",
-  label: "종합 보고서 열기",
 } as const;
 
 export { pathMatches } from "@/lib/path-match";

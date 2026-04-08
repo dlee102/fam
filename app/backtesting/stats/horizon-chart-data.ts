@@ -1,6 +1,6 @@
 import type { HorizonEntrySeries } from "../lib/publish-horizon.types";
 
-export const HORIZON_ENTRY_ORDER = ["A", "B", "C", "D", "E"] as const;
+export const HORIZON_ENTRY_ORDER = ["A", "B", "C", "D", "E", "F"] as const;
 
 /** 차트·툴팁용: 말로 된 진입 정의 + 코드 */
 export function horizonEntryLegendName(
@@ -29,6 +29,7 @@ export const HORIZON_ENTRY_COLORS: Record<string, string> = {
   C: "#6366f1",
   D: "#10b981",
   E: "#f43f5e",
+  F: "#06b6d4",
 };
 
 export type HorizonChartRow = Record<string, number | null> & { day: number };

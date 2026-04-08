@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-publish_5d_high_ge_10pct.json 의 기사들을 somedaynews_article_tickers.json 제목과 조인해
-키워드 규칙으로 뉴스 유형(다중 태그) 집계.
+publish_5d_high_ge_10pct_entry_a_hold1_cohort.json(진입A·1일 코호트 1350, 그중 5일 +10% 히트) 기사를
+somedaynews_article_tickers.json 제목과 조인해 키워드 규칙으로 뉴스 유형(다중 태그) 집계.
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HITS = ROOT / "data/analysis/publish_5d_high_ge_10pct.json"
+HITS = ROOT / "data/analysis/publish_5d_high_ge_10pct_entry_a_hold1_cohort.json"
 TICKERS = ROOT / "data/somedaynews_article_tickers.json"
 OUT = ROOT / "data/analysis/publish_5d_article_themes.json"
 

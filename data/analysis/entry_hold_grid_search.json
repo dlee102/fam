@@ -1,0 +1,1371 @@
+{
+  "source": "data/publish_horizon_curve.json",
+  "generated_at_curve": "2026-04-08T13:29:36.456493",
+  "n_combinations": 128,
+  "top_by_avg_return_pct": [
+    {
+      "entry": "E",
+      "hold_trading_days": 18,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.7945,
+      "win_rate": 0.503575,
+      "n": 979,
+      "profit_factor": 1.479
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 19,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.7632,
+      "win_rate": 0.512024,
+      "n": 998,
+      "profit_factor": 1.3842
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 17,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.7295,
+      "win_rate": 0.473917,
+      "n": 1131,
+      "profit_factor": 1.6282
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 18,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.6625,
+      "win_rate": 0.490009,
+      "n": 1151,
+      "profit_factor": 1.5136
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 18,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.6357,
+      "win_rate": 0.505572,
+      "n": 987,
+      "profit_factor": 1.4281
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 17,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.6332,
+      "win_rate": 0.477612,
+      "n": 1139,
+      "profit_factor": 1.586
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 19,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.6277,
+      "win_rate": 0.502503,
+      "n": 999,
+      "profit_factor": 1.4267
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 18,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.4963,
+      "win_rate": 0.486557,
+      "n": 1153,
+      "profit_factor": 1.4837
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 17,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.4781,
+      "win_rate": 0.482002,
+      "n": 1139,
+      "profit_factor": 1.5278
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 18,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.4671,
+      "win_rate": 0.487512,
+      "n": 1001,
+      "profit_factor": 1.4691
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 18,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.4572,
+      "win_rate": 0.506586,
+      "n": 987,
+      "profit_factor": 1.3737
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 17,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.4404,
+      "win_rate": 0.470078,
+      "n": 1153,
+      "profit_factor": 1.5977
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 21,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.4134,
+      "win_rate": 0.501767,
+      "n": 566,
+      "profit_factor": 1.3326
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 21,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.3749,
+      "win_rate": 0.486819,
+      "n": 569,
+      "profit_factor": 1.4218
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 14,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.3393,
+      "win_rate": 0.477078,
+      "n": 1287,
+      "profit_factor": 1.5707
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 20,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.3189,
+      "win_rate": 0.479789,
+      "n": 569,
+      "profit_factor": 1.4923
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 15,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.2989,
+      "win_rate": 0.482785,
+      "n": 1307,
+      "profit_factor": 1.5005
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 20,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.2896,
+      "win_rate": 0.482014,
+      "n": 556,
+      "profit_factor": 1.4106
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 14,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2891,
+      "win_rate": 0.479907,
+      "n": 1294,
+      "profit_factor": 1.537
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 20,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2849,
+      "win_rate": 0.492806,
+      "n": 556,
+      "profit_factor": 1.3788
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 16,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.2469,
+      "win_rate": 0.468774,
+      "n": 1297,
+      "profit_factor": 1.5844
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 15,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.2466,
+      "win_rate": 0.468971,
+      "n": 1273,
+      "profit_factor": 1.587
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 15,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2223,
+      "win_rate": 0.469626,
+      "n": 1284,
+      "profit_factor": 1.5689
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 15,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.2175,
+      "win_rate": 0.485889,
+      "n": 1311,
+      "profit_factor": 1.4562
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 16,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.2019,
+      "win_rate": 0.461538,
+      "n": 1300,
+      "profit_factor": 1.584
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 14,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.1914,
+      "win_rate": 0.458716,
+      "n": 1308,
+      "profit_factor": 1.6468
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 20,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.1892,
+      "win_rate": 0.501799,
+      "n": 556,
+      "profit_factor": 1.3141
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 15,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.1703,
+      "win_rate": 0.469954,
+      "n": 1298,
+      "profit_factor": 1.5778
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 14,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.1484,
+      "win_rate": 0.476816,
+      "n": 1294,
+      "profit_factor": 1.5209
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 16,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.119,
+      "win_rate": 0.466393,
+      "n": 1220,
+      "profit_factor": 1.5698
+    }
+  ],
+  "top_by_profit_factor": [
+    {
+      "entry": "E",
+      "hold_trading_days": 12,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.0812,
+      "win_rate": 0.458787,
+      "n": 1286,
+      "profit_factor": 1.6513
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 14,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.1914,
+      "win_rate": 0.458716,
+      "n": 1308,
+      "profit_factor": 1.6468
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 12,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.0139,
+      "win_rate": 0.459815,
+      "n": 1294,
+      "profit_factor": 1.6295
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 17,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.7295,
+      "win_rate": 0.473917,
+      "n": 1131,
+      "profit_factor": 1.6282
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 17,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.4404,
+      "win_rate": 0.470078,
+      "n": 1153,
+      "profit_factor": 1.5977
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 13,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.0241,
+      "win_rate": 0.46208,
+      "n": 1279,
+      "profit_factor": 1.591
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 15,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.2466,
+      "win_rate": 0.468971,
+      "n": 1273,
+      "profit_factor": 1.587
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 17,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.6332,
+      "win_rate": 0.477612,
+      "n": 1139,
+      "profit_factor": 1.586
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 16,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.2469,
+      "win_rate": 0.468774,
+      "n": 1297,
+      "profit_factor": 1.5844
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 16,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.2019,
+      "win_rate": 0.461538,
+      "n": 1300,
+      "profit_factor": 1.584
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 12,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 1.9062,
+      "win_rate": 0.464832,
+      "n": 1308,
+      "profit_factor": 1.5828
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 15,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.1703,
+      "win_rate": 0.469954,
+      "n": 1298,
+      "profit_factor": 1.5778
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 14,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.3393,
+      "win_rate": 0.477078,
+      "n": 1287,
+      "profit_factor": 1.5707
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 16,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.119,
+      "win_rate": 0.466393,
+      "n": 1220,
+      "profit_factor": 1.5698
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 15,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2223,
+      "win_rate": 0.469626,
+      "n": 1284,
+      "profit_factor": 1.5689
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 13,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 1.9806,
+      "win_rate": 0.467391,
+      "n": 1288,
+      "profit_factor": 1.5614
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 13,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 1.8338,
+      "win_rate": 0.466974,
+      "n": 1302,
+      "profit_factor": 1.542
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 14,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2891,
+      "win_rate": 0.479907,
+      "n": 1294,
+      "profit_factor": 1.537
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 16,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.1097,
+      "win_rate": 0.469919,
+      "n": 1230,
+      "profit_factor": 1.5353
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 11,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 1.3862,
+      "win_rate": 0.452289,
+      "n": 1289,
+      "profit_factor": 1.5347
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 16,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.012,
+      "win_rate": 0.470257,
+      "n": 1244,
+      "profit_factor": 1.5336
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 12,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 1.8705,
+      "win_rate": 0.465997,
+      "n": 1294,
+      "profit_factor": 1.5327
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 17,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.4781,
+      "win_rate": 0.482002,
+      "n": 1139,
+      "profit_factor": 1.5278
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 13,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 1.8105,
+      "win_rate": 0.465839,
+      "n": 1288,
+      "profit_factor": 1.5273
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 14,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.1484,
+      "win_rate": 0.476816,
+      "n": 1294,
+      "profit_factor": 1.5209
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 18,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.6625,
+      "win_rate": 0.490009,
+      "n": 1151,
+      "profit_factor": 1.5136
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 15,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.2989,
+      "win_rate": 0.482785,
+      "n": 1307,
+      "profit_factor": 1.5005
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 11,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 1.3293,
+      "win_rate": 0.456857,
+      "n": 1298,
+      "profit_factor": 1.4971
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 11,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 1.1909,
+      "win_rate": 0.450693,
+      "n": 1298,
+      "profit_factor": 1.4955
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 20,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.3189,
+      "win_rate": 0.479789,
+      "n": 569,
+      "profit_factor": 1.4923
+    }
+  ],
+  "top_by_avg_times_winrate": [
+    {
+      "entry": "F",
+      "hold_trading_days": 19,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.7632,
+      "win_rate": 0.512024,
+      "n": 998,
+      "score_avg_x_wr": 1.414825
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 18,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.7945,
+      "win_rate": 0.503575,
+      "n": 979,
+      "score_avg_x_wr": 1.40724
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 18,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.6357,
+      "win_rate": 0.505572,
+      "n": 987,
+      "score_avg_x_wr": 1.332536
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 19,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.6277,
+      "win_rate": 0.502503,
+      "n": 999,
+      "score_avg_x_wr": 1.320427
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 18,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.6625,
+      "win_rate": 0.490009,
+      "n": 1151,
+      "score_avg_x_wr": 1.304649
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 17,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.7295,
+      "win_rate": 0.473917,
+      "n": 1131,
+      "score_avg_x_wr": 1.293556
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 17,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.6332,
+      "win_rate": 0.477612,
+      "n": 1139,
+      "score_avg_x_wr": 1.257648
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 18,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.4572,
+      "win_rate": 0.506586,
+      "n": 987,
+      "score_avg_x_wr": 1.244783
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 18,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.4963,
+      "win_rate": 0.486557,
+      "n": 1153,
+      "score_avg_x_wr": 1.214592
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 21,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.4134,
+      "win_rate": 0.501767,
+      "n": 566,
+      "score_avg_x_wr": 1.210964
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 18,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.4671,
+      "win_rate": 0.487512,
+      "n": 1001,
+      "score_avg_x_wr": 1.202741
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 17,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.4781,
+      "win_rate": 0.482002,
+      "n": 1139,
+      "score_avg_x_wr": 1.194449
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 21,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.3749,
+      "win_rate": 0.486819,
+      "n": 569,
+      "score_avg_x_wr": 1.156146
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 17,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.4404,
+      "win_rate": 0.470078,
+      "n": 1153,
+      "score_avg_x_wr": 1.147178
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 20,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2849,
+      "win_rate": 0.492806,
+      "n": 556,
+      "score_avg_x_wr": 1.126012
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 14,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.3393,
+      "win_rate": 0.477078,
+      "n": 1287,
+      "score_avg_x_wr": 1.116029
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 20,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.3189,
+      "win_rate": 0.479789,
+      "n": 569,
+      "score_avg_x_wr": 1.112583
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 15,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.2989,
+      "win_rate": 0.482785,
+      "n": 1307,
+      "score_avg_x_wr": 1.109874
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 20,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.2896,
+      "win_rate": 0.482014,
+      "n": 556,
+      "score_avg_x_wr": 1.103619
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 14,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2891,
+      "win_rate": 0.479907,
+      "n": 1294,
+      "score_avg_x_wr": 1.098555
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 20,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.1892,
+      "win_rate": 0.501799,
+      "n": 556,
+      "score_avg_x_wr": 1.098538
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 15,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.2175,
+      "win_rate": 0.485889,
+      "n": 1311,
+      "score_avg_x_wr": 1.077459
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 15,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.2466,
+      "win_rate": 0.468971,
+      "n": 1273,
+      "score_avg_x_wr": 1.05359
+    },
+    {
+      "entry": "A",
+      "hold_trading_days": 16,
+      "label": "T=0 장종 5분봉 종가",
+      "avg_return_pct": 2.2469,
+      "win_rate": 0.468774,
+      "n": 1297,
+      "score_avg_x_wr": 1.053288
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 15,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.2223,
+      "win_rate": 0.469626,
+      "n": 1284,
+      "score_avg_x_wr": 1.04365
+    },
+    {
+      "entry": "E",
+      "hold_trading_days": 19,
+      "label": "T+1 두 번째 5분봉 시가",
+      "avg_return_pct": 2.1104,
+      "win_rate": 0.494438,
+      "n": 809,
+      "score_avg_x_wr": 1.043462
+    },
+    {
+      "entry": "F",
+      "hold_trading_days": 20,
+      "label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "avg_return_pct": 2.0839,
+      "win_rate": 0.499397,
+      "n": 829,
+      "score_avg_x_wr": 1.040693
+    },
+    {
+      "entry": "D",
+      "hold_trading_days": 19,
+      "label": "T+1 첫 5분봉 종가",
+      "avg_return_pct": 2.0797,
+      "win_rate": 0.496314,
+      "n": 814,
+      "score_avg_x_wr": 1.032184
+    },
+    {
+      "entry": "B",
+      "hold_trading_days": 14,
+      "label": "T+1 첫 5분봉 시가",
+      "avg_return_pct": 2.1484,
+      "win_rate": 0.476816,
+      "n": 1294,
+      "score_avg_x_wr": 1.024391
+    },
+    {
+      "entry": "C",
+      "hold_trading_days": 15,
+      "label": "T+1 장종 5분봉 종가",
+      "avg_return_pct": 2.1703,
+      "win_rate": 0.469954,
+      "n": 1298,
+      "score_avg_x_wr": 1.019941
+    }
+  ],
+  "best_under_min_n": {
+    "500": [
+      {
+        "entry": "E",
+        "hold_trading_days": 18,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.7945,
+        "win_rate": 0.5036,
+        "n": 979,
+        "profit_factor": 1.479
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 19,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.7632,
+        "win_rate": 0.512,
+        "n": 998,
+        "profit_factor": 1.3842
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 17,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.7295,
+        "win_rate": 0.4739,
+        "n": 1131,
+        "profit_factor": 1.6282
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 18,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.6625,
+        "win_rate": 0.49,
+        "n": 1151,
+        "profit_factor": 1.5136
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 18,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.6357,
+        "win_rate": 0.5056,
+        "n": 987,
+        "profit_factor": 1.4281
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 17,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.6332,
+        "win_rate": 0.4776,
+        "n": 1139,
+        "profit_factor": 1.586
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 19,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.6277,
+        "win_rate": 0.5025,
+        "n": 999,
+        "profit_factor": 1.4267
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 18,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.4963,
+        "win_rate": 0.4866,
+        "n": 1153,
+        "profit_factor": 1.4837
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 17,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.4781,
+        "win_rate": 0.482,
+        "n": 1139,
+        "profit_factor": 1.5278
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 18,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.4671,
+        "win_rate": 0.4875,
+        "n": 1001,
+        "profit_factor": 1.4691
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 18,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.4572,
+        "win_rate": 0.5066,
+        "n": 987,
+        "profit_factor": 1.3737
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 17,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.4404,
+        "win_rate": 0.4701,
+        "n": 1153,
+        "profit_factor": 1.5977
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 21,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.4134,
+        "win_rate": 0.5018,
+        "n": 566,
+        "profit_factor": 1.3326
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 21,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.3749,
+        "win_rate": 0.4868,
+        "n": 569,
+        "profit_factor": 1.4218
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 14,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.3393,
+        "win_rate": 0.4771,
+        "n": 1287,
+        "profit_factor": 1.5707
+      }
+    ],
+    "800": [
+      {
+        "entry": "E",
+        "hold_trading_days": 18,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.7945,
+        "win_rate": 0.5036,
+        "n": 979,
+        "profit_factor": 1.479
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 19,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.7632,
+        "win_rate": 0.512,
+        "n": 998,
+        "profit_factor": 1.3842
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 17,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.7295,
+        "win_rate": 0.4739,
+        "n": 1131,
+        "profit_factor": 1.6282
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 18,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.6625,
+        "win_rate": 0.49,
+        "n": 1151,
+        "profit_factor": 1.5136
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 18,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.6357,
+        "win_rate": 0.5056,
+        "n": 987,
+        "profit_factor": 1.4281
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 17,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.6332,
+        "win_rate": 0.4776,
+        "n": 1139,
+        "profit_factor": 1.586
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 19,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.6277,
+        "win_rate": 0.5025,
+        "n": 999,
+        "profit_factor": 1.4267
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 18,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.4963,
+        "win_rate": 0.4866,
+        "n": 1153,
+        "profit_factor": 1.4837
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 17,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.4781,
+        "win_rate": 0.482,
+        "n": 1139,
+        "profit_factor": 1.5278
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 18,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.4671,
+        "win_rate": 0.4875,
+        "n": 1001,
+        "profit_factor": 1.4691
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 18,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.4572,
+        "win_rate": 0.5066,
+        "n": 987,
+        "profit_factor": 1.3737
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 17,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.4404,
+        "win_rate": 0.4701,
+        "n": 1153,
+        "profit_factor": 1.5977
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 14,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.3393,
+        "win_rate": 0.4771,
+        "n": 1287,
+        "profit_factor": 1.5707
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 15,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.2989,
+        "win_rate": 0.4828,
+        "n": 1307,
+        "profit_factor": 1.5005
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 14,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.2891,
+        "win_rate": 0.4799,
+        "n": 1294,
+        "profit_factor": 1.537
+      }
+    ],
+    "1000": [
+      {
+        "entry": "E",
+        "hold_trading_days": 17,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.7295,
+        "win_rate": 0.4739,
+        "n": 1131,
+        "profit_factor": 1.6282
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 18,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.6625,
+        "win_rate": 0.49,
+        "n": 1151,
+        "profit_factor": 1.5136
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 17,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.6332,
+        "win_rate": 0.4776,
+        "n": 1139,
+        "profit_factor": 1.586
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 18,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.4963,
+        "win_rate": 0.4866,
+        "n": 1153,
+        "profit_factor": 1.4837
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 17,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.4781,
+        "win_rate": 0.482,
+        "n": 1139,
+        "profit_factor": 1.5278
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 18,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.4671,
+        "win_rate": 0.4875,
+        "n": 1001,
+        "profit_factor": 1.4691
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 17,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.4404,
+        "win_rate": 0.4701,
+        "n": 1153,
+        "profit_factor": 1.5977
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 14,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.3393,
+        "win_rate": 0.4771,
+        "n": 1287,
+        "profit_factor": 1.5707
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 15,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.2989,
+        "win_rate": 0.4828,
+        "n": 1307,
+        "profit_factor": 1.5005
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 14,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.2891,
+        "win_rate": 0.4799,
+        "n": 1294,
+        "profit_factor": 1.537
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 16,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.2469,
+        "win_rate": 0.4688,
+        "n": 1297,
+        "profit_factor": 1.5844
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 15,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.2466,
+        "win_rate": 0.469,
+        "n": 1273,
+        "profit_factor": 1.587
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 15,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.2223,
+        "win_rate": 0.4696,
+        "n": 1284,
+        "profit_factor": 1.5689
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 15,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.2175,
+        "win_rate": 0.4859,
+        "n": 1311,
+        "profit_factor": 1.4562
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 16,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.2019,
+        "win_rate": 0.4615,
+        "n": 1300,
+        "profit_factor": 1.584
+      }
+    ],
+    "1200": [
+      {
+        "entry": "E",
+        "hold_trading_days": 14,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.3393,
+        "win_rate": 0.4771,
+        "n": 1287,
+        "profit_factor": 1.5707
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 15,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.2989,
+        "win_rate": 0.4828,
+        "n": 1307,
+        "profit_factor": 1.5005
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 14,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.2891,
+        "win_rate": 0.4799,
+        "n": 1294,
+        "profit_factor": 1.537
+      },
+      {
+        "entry": "A",
+        "hold_trading_days": 16,
+        "label": "T=0 장종 5분봉 종가",
+        "avg_return_pct": 2.2469,
+        "win_rate": 0.4688,
+        "n": 1297,
+        "profit_factor": 1.5844
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 15,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.2466,
+        "win_rate": 0.469,
+        "n": 1273,
+        "profit_factor": 1.587
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 15,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.2223,
+        "win_rate": 0.4696,
+        "n": 1284,
+        "profit_factor": 1.5689
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 15,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.2175,
+        "win_rate": 0.4859,
+        "n": 1311,
+        "profit_factor": 1.4562
+      },
+      {
+        "entry": "F",
+        "hold_trading_days": 16,
+        "label": "공개 시각 직후 첫 장중 5분봉 종가",
+        "avg_return_pct": 2.2019,
+        "win_rate": 0.4615,
+        "n": 1300,
+        "profit_factor": 1.584
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 14,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.1914,
+        "win_rate": 0.4587,
+        "n": 1308,
+        "profit_factor": 1.6468
+      },
+      {
+        "entry": "C",
+        "hold_trading_days": 15,
+        "label": "T+1 장종 5분봉 종가",
+        "avg_return_pct": 2.1703,
+        "win_rate": 0.47,
+        "n": 1298,
+        "profit_factor": 1.5778
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 14,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.1484,
+        "win_rate": 0.4768,
+        "n": 1294,
+        "profit_factor": 1.5209
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 16,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.119,
+        "win_rate": 0.4664,
+        "n": 1220,
+        "profit_factor": 1.5698
+      },
+      {
+        "entry": "D",
+        "hold_trading_days": 16,
+        "label": "T+1 첫 5분봉 종가",
+        "avg_return_pct": 2.1097,
+        "win_rate": 0.4699,
+        "n": 1230,
+        "profit_factor": 1.5353
+      },
+      {
+        "entry": "B",
+        "hold_trading_days": 15,
+        "label": "T+1 첫 5분봉 시가",
+        "avg_return_pct": 2.0821,
+        "win_rate": 0.4743,
+        "n": 1284,
+        "profit_factor": 1.4841
+      },
+      {
+        "entry": "E",
+        "hold_trading_days": 12,
+        "label": "T+1 두 번째 5분봉 시가",
+        "avg_return_pct": 2.0812,
+        "win_rate": 0.4588,
+        "n": 1286,
+        "profit_factor": 1.6513
+      }
+    ]
+  }
+}

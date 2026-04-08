@@ -11,7 +11,7 @@ import { StatsEmptyState } from "./StatsEmptyState";
 
 export const metadata: Metadata = {
   title: "기본 통계 | 백테스팅",
-  description: "발행일 기준 거래일 N일 보유 평균 수익률·승률 (1~30일, 진입 5종 비교)",
+  description: "발행일(T0) 이후 거래일 N일 보유 시 표본 평균 수익률",
 };
 
 export default function BacktestingStatsPage() {
@@ -24,9 +24,8 @@ export default function BacktestingStatsPage() {
       title="기본 통계"
       description={
         <>
-          기사 발행일(T0) 이후{" "}
-          <strong style={{ color: "var(--color-text)" }}>거래일 1~30일</strong> 구간별 표본 평균
-          수익률·승률입니다. 진입 방식 A~E를 토글해 비교할 수 있습니다.
+          <strong style={{ color: "var(--color-text)" }}>발행일 다음 거래일부터 N일 보유</strong>할 때의
+          표본 평균 수익률입니다. 시나리오 A~F는 진입 규칙이 다릅니다(F는 공개 시각 직후 첫 5분봉 종가) — 차트에서 겹쳐 비교하세요.
         </>
       }
     >

@@ -1,24 +1,50 @@
 import fs from "fs";
 import path from "path";
 
+export type ArticleAiRankDemoRow = {
+  rank: number;
+  ticker: string;
+  name: string;
+  title: string;
+  ai_score: number;
+  ret_t10_pct: number;
+  t0_date: string;
+  pattern_group: string;
+  /** Gemini 등 분류 파이프라인이 채울 때만 존재 */
+  sentiment?: string;
+  sentiment_label_ko?: string;
+  sentiment_confidence?: number;
+  sentiment_reason?: string;
+  article_types_ko?: string[];
+  article_primary_type_ko?: string;
+  stock_catalyst?: string;
+  stock_catalyst_label_ko?: string;
+  type_brief_ko?: string;
+};
+
 export type ArticleAiRankDemo = {
   note?: string;
   source_generated_at?: string;
-  rows: Array<{
-    rank: number;
-    ticker: string;
-    name: string;
-    title: string;
-    ai_score: number;
-    ret_t10_pct: number;
-    t0_date: string;
-    pattern_group: string;
-  }>;
+  rows: ArticleAiRankDemoRow[];
 };
 
 /** 기사 공개 후 수익률 표시 범위 (데모·UI 정책) */
 export function clampPublishReturnPct(v: number): number {
   return Math.min(29, Math.max(5, v));
+}
+
+function sentimentToneColor(label?: string): string {
+  if (label === "긍정") return "var(--stats-kr-up)";
+  if (label === "부정") return "var(--stats-kr-down)";
+  return "var(--color-text-muted)";
+}
+
+function catalystColor(label?: string): string {
+  if (label === "호재") return "var(--stats-kr-up)";
+  if (label === "악재") return "var(--stats-kr-down)";
+  if (label === "중립·혼재") return "var(--color-text-muted)";
+  if (label === "해당없음") return "var(--color-text-faint)";
+  return "var(--color-text-muted)";
 }
 
 function loadDemo(): ArticleAiRankDemo | null {
@@ -47,6 +73,7 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
   const data = loadDemo();
   if (!data?.rows?.length) return null;
 
+  const showGeminiCols = data.rows.some((r) => r.sentiment_label_ko != null);
   const titleId = embedded ? "article-ai-rank-title" : "stats-ai-rank-title";
 
   const body = (
@@ -98,6 +125,12 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
       >
         기사 공개 이후 수익률(T+10 거래일, T0 종가 진입 가정)은 <strong>5%~29%</strong> 구간으로 표시합니다. AI 종합 점수와 함께 봅니다.
         아래 표는 집계 파이프라인 사례를 발췌한 <strong>UI 시연용</strong>입니다.
+        {showGeminiCols ? (
+          <>
+            {" "}
+            톤·유형·촉매 열은 <strong>Gemini</strong>로 제목 기준 분류한 값입니다 (FDA·임상·실적 등 유형, 주가 관점 호재/악재).
+          </>
+        ) : null}
       </p>
       <div
         style={{
@@ -149,6 +182,49 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
               >
                 기사 제목
               </th>
+              {showGeminiCols ? (
+                <>
+                  <th
+                    title="제목 기준 문장 톤"
+                    style={{
+                      textAlign: "left",
+                      padding: "10px 12px",
+                      fontWeight: 600,
+                      color: "var(--quant-label)",
+                      borderBottom: "1px solid var(--color-border-subtle)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    톤
+                  </th>
+                  <th
+                    title="대표 뉴스 유형 (다중 태그 중 하나)"
+                    style={{
+                      textAlign: "left",
+                      padding: "10px 12px",
+                      fontWeight: 600,
+                      color: "var(--quant-label)",
+                      borderBottom: "1px solid var(--color-border-subtle)",
+                      maxWidth: "140px",
+                    }}
+                  >
+                    유형
+                  </th>
+                  <th
+                    title="주가 촉매 관점"
+                    style={{
+                      textAlign: "left",
+                      padding: "10px 12px",
+                      fontWeight: 600,
+                      color: "var(--quant-label)",
+                      borderBottom: "1px solid var(--color-border-subtle)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    촉매
+                  </th>
+                </>
+              ) : null}
               <th
                 style={{
                   textAlign: "right",
@@ -179,6 +255,7 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
           <tbody>
             {data.rows.map((r) => {
               const pubRet = clampPublishReturnPct(r.ret_t10_pct);
+              const classifyTip = [r.type_brief_ko, r.sentiment_reason].filter(Boolean).join(" · ");
               return (
                 <tr key={`${r.ticker}-${r.rank}-${r.t0_date}`}>
                   <td
@@ -222,6 +299,55 @@ export function StatsArticleAiRankCard({ embedded = false }: Props) {
                   >
                     <span title={r.title}>{r.title.length > 56 ? `${r.title.slice(0, 56)}…` : r.title}</span>
                   </td>
+                  {showGeminiCols ? (
+                    <>
+                      <td
+                        title={classifyTip || undefined}
+                        style={{
+                          padding: "10px 12px",
+                          borderBottom: "1px solid var(--quant-grid)",
+                          fontWeight: 600,
+                          color: sentimentToneColor(r.sentiment_label_ko),
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {r.sentiment_label_ko ?? "—"}
+                      </td>
+                      <td
+                        title={
+                          r.article_types_ko?.length
+                            ? r.article_types_ko.join(", ")
+                            : classifyTip || undefined
+                        }
+                        style={{
+                          padding: "10px 12px",
+                          borderBottom: "1px solid var(--quant-grid)",
+                          color: "var(--quant-label)",
+                          maxWidth: "160px",
+                          lineHeight: 1.35,
+                          fontSize: embedded ? "0.68rem" : "12px",
+                        }}
+                      >
+                        {r.article_primary_type_ko
+                          ? r.article_primary_type_ko.length > 20
+                            ? `${r.article_primary_type_ko.slice(0, 20)}…`
+                            : r.article_primary_type_ko
+                          : "—"}
+                      </td>
+                      <td
+                        title={classifyTip || undefined}
+                        style={{
+                          padding: "10px 12px",
+                          borderBottom: "1px solid var(--quant-grid)",
+                          fontWeight: 600,
+                          color: catalystColor(r.stock_catalyst_label_ko),
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {r.stock_catalyst_label_ko ?? "—"}
+                      </td>
+                    </>
+                  ) : null}
                   <td
                     style={{
                       padding: "10px 12px",

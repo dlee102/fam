@@ -11,9 +11,10 @@ Entry:
 - C: T+1 거래일 장중 마지막 5분봉 종가
 - D: T+1 첫 5분봉 종가
 - E: T+1 두 번째 5분봉 시가
+- F: API published_at 이후(5분봉 종료 시각 기준) 첫 장중 5분봉 종가 (analyze_10m_return_path 앵커와 동일)
 
-Hold: 1,2,3,4,5,7,10 거래일 — 청산은 해당 거래일 장중 마지막 5분봉 종가
-(A는 진입일 기준 +h거래일, B~E는 T+1 기준 +h거래일 — 기존 일봉 정의와 동일)
+Hold: 1..30 거래일 — 청산은 해당 거래일 장중 마지막 5분봉 종가
+(A·F는 진입이 잡힌 거래일 기준 +h, B~E는 T+1 진입일 기준 +h)
 """
 
 from __future__ import annotations
@@ -37,9 +38,16 @@ from news_article_events import (
     iter_article_ticker_events,
     resolve_manifest_sources,
 )
+from analyze_10m_return_path import (
+    first_session_kst_date,
+    fivem_end_utc_naive,
+    group_by_date,
+    is_market_bar,
+    parse_publish_utc_naive,
+)
 
 HOLD_DAYS = list(range(1, 31))
-ATTR_HOLD_DAYS: set[int] = {1, 5, 10, 22}  # 티커별 귀속 분석 기준 거래일
+ATTR_HOLD_DAYS: set[int] = {1, 5, 10, 18, 22}  # 티커별 귀속 분석 기준 거래일 (18: 그리드 상위 조합용)
 
 
 @lru_cache(maxsize=1024)
@@ -122,6 +130,57 @@ def t1_first_close_second_open(all_bars: list, t1_date: str) -> tuple[float | No
     return d_px, e_px
 
 
+def eod_index_for_session_ymd(eod_bars: list, ymd: str) -> int | None:
+    """EOD `bars[k]['date']`가 세션일 ymd(YYYY-MM-DD)와 일치하는 첫 인덱스."""
+    for k, b in enumerate(eod_bars):
+        if str(b.get("date", ""))[:10] == ymd:
+            return k
+    return None
+
+
+def first_close_after_publish_on_calendar(
+    all_intra: list,
+    t0_d: date,
+    publish_utc_naive: datetime,
+) -> tuple[float, str] | None:
+    """
+    `published_at`(UTC naive) 이후에 **종료**되는 장중 5분봉 중 시간상 가장 이른 봉의 종가.
+    장 마감 뒤 공개면 다음 거래일 첫 유효 봉까지 진행 (analyze_10m_return_path 앵커와 동일).
+
+    Returns:
+        (종가, 세션일 키) — 세션일은 5분봉 `datetime[:10]` (한국장 EODHD 버킷에서 UTC일=세션일).
+    """
+    market_5m = [
+        b
+        for b in all_intra
+        if isinstance(b.get("datetime"), str) and is_market_bar(b["datetime"])
+    ]
+    if not market_5m:
+        return None
+    by_day = group_by_date(market_5m)
+    trading_days = sorted(by_day.keys())
+    event_idx = None
+    for i, dk in enumerate(trading_days):
+        sk = first_session_kst_date(dk, by_day)
+        if sk is not None and sk >= t0_d:
+            event_idx = i
+            break
+    if event_idx is None:
+        return None
+    for dk in trading_days[event_idx:]:
+        day_bars = sorted(by_day.get(dk, []), key=lambda x: x["datetime"])
+        for b in day_bars:
+            dt = b.get("datetime")
+            if not isinstance(dt, str) or not is_market_bar(dt):
+                continue
+            end = fivem_end_utc_naive(dt)
+            if end >= publish_utc_naive:
+                v = float(b.get("close") or b.get("open") or 0)
+                if v > 0:
+                    return v, dk
+    return None
+
+
 def valid_ticker(t: str) -> bool:
     return bool(t and len(t) == 6 and t.isdigit())
 
@@ -139,7 +198,7 @@ def run() -> None:
 
     returns_by_combo: dict[tuple[str, int], list[float]] = {}
     returns_by_ticker: dict[tuple[str, int], dict[str, list[float]]] = {}
-    for e in ["A", "B", "C", "D", "E"]:
+    for e in ["A", "B", "C", "D", "E", "F"]:
         for h in HOLD_DAYS:
             returns_by_combo[(e, h)] = []
             if h in ATTR_HOLD_DAYS:
@@ -190,6 +249,23 @@ def run() -> None:
         px_c = last_intraday_session_close(all_intra, t1_date)
         px_d, px_e = t1_first_close_second_open(all_intra, t1_date)
 
+        px_f: float | None = None
+        i_entry_f: int | None = None
+        pa = ev.get("published_at")
+        if isinstance(pa, str) and pa.strip():
+            try:
+                pu = parse_publish_utc_naive(pa.strip())
+            except (ValueError, TypeError):
+                pu = None
+            if pu is not None:
+                got = first_close_after_publish_on_calendar(all_intra, t0_d, pu)
+                if got:
+                    c_f, dk_f = got
+                    idx_f = eod_index_for_session_ymd(bars, dk_f)
+                    if idx_f is not None:
+                        px_f = c_f
+                        i_entry_f = idx_f
+
         def sell_px(sell_i: int) -> float | None:
             if sell_i >= len(bars):
                 return None
@@ -219,6 +295,16 @@ def run() -> None:
                         returns_by_ticker[(tag, h)].setdefault(ticker, []).append(r_t)
                     contributed = True
 
+            if px_f is not None and i_entry_f is not None:
+                si = i_entry_f + h
+                sp = sell_px(si)
+                if sp is not None:
+                    r_f = (sp - px_f) / px_f
+                    returns_by_combo[("F", h)].append(r_f)
+                    if h in ATTR_HOLD_DAYS:
+                        returns_by_ticker[("F", h)].setdefault(ticker, []).append(r_f)
+                    contributed = True
+
         if contributed:
             pairs_with_at_least_one_observation += 1
 
@@ -228,6 +314,7 @@ def run() -> None:
         "C": "T+1 장종 5분봉 종가",
         "D": "T+1 첫 5분봉 종가",
         "E": "T+1 두 번째 5분봉 시가",
+        "F": "공개 시각 직후 첫 장중 5분봉 종가",
     }
 
     rows: list[dict] = []
@@ -365,7 +452,8 @@ def run() -> None:
             "A: T0 장종 5분봉 종가 진입. "
             "B: T+1 첫 5분봉 시가. C: T+1 장종 5분봉 종가. "
             "D: T+1 첫 5분봉 종가. E: T+1 두 번째 5분봉 시가. "
-            "청산은 각 진입일로부터 N거래일 뒤 장종 5분봉 종가."
+            "F: API published_at 이후 종료되는 첫 장중 5분봉 종가(매매 가능 시점에 가장 가까운 봉 종가). "
+            "청산은 진입 거래일(A·F) 또는 T+1(B~E) 기준 N거래일 뒤 장종 5분봉 종가."
         ),
         "sample_summary": {
             "unit_note": "집계 단위: 기사 1건 × 종목 1코드 = 표본 1개.",

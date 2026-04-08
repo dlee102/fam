@@ -10,7 +10,19 @@
       "ai_score": 94,
       "ret_t10_pct": 29,
       "t0_date": "2026-01-16",
-      "pattern_group": "패턴없음"
+      "pattern_group": "패턴없음",
+      "sentiment": "positive",
+      "sentiment_label_ko": "긍정",
+      "sentiment_confidence": 0.95,
+      "sentiment_reason": "비알팜텍이 분자접착제 기술 이전 기대감으로 주가가 상승했으며, 다른 바이오 기업들도 함께 상승했다는 내용입니다.",
+      "article_types_ko": [
+        "기술이전·수출·라이선스",
+        "시황·테마·주가코멘터리"
+      ],
+      "article_primary_type_ko": "기술이전·수출·라이선스",
+      "stock_catalyst": "bullish",
+      "stock_catalyst_label_ko": "호재",
+      "type_brief_ko": "비알팜텍의 분자접착제 기술 이전 기대감으로 주가가 상승하여 호재성 기사입니다."
     },
     {
       "rank": 2,
@@ -20,7 +32,19 @@
       "ai_score": 91,
       "ret_t10_pct": 24,
       "t0_date": "2026-02-02",
-      "pattern_group": "패턴없음"
+      "pattern_group": "패턴없음",
+      "sentiment": "positive",
+      "sentiment_label_ko": "긍정",
+      "sentiment_confidence": 0.95,
+      "sentiment_reason": "넥스트바이오메디컬의 제품이 유럽에서 인공관절 수술 후 통증에 효과가 있다는 내용으로 긍정적입니다.",
+      "article_types_ko": [
+        "제품·상업화",
+        "해외진출·법인"
+      ],
+      "article_primary_type_ko": "제품·상업화",
+      "stock_catalyst": "bullish",
+      "stock_catalyst_label_ko": "호재",
+      "type_brief_ko": "넥스트바이오메디컬의 제품이 유럽에서 인공관절 수술 후 통증에 효과가 있다는 내용으로, 제품의 해외 상업화 및 시장 확장에 대한 호재입니다."
     },
     {
       "rank": 3,
@@ -30,7 +54,20 @@
       "ai_score": 88,
       "ret_t10_pct": 19,
       "t0_date": "2026-01-05",
-      "pattern_group": "추천"
+      "pattern_group": "추천",
+      "sentiment": "positive",
+      "sentiment_label_ko": "긍정",
+      "sentiment_confidence": 0.95,
+      "sentiment_reason": "글로벌 매출 전망에 대한 긍정적인 기대감으로 주가가 상승하고 있음을 나타냅니다.",
+      "article_types_ko": [
+        "시황·테마·주가코멘터리",
+        "해외진출·법인",
+        "실적·가이던스"
+      ],
+      "article_primary_type_ko": "시황·테마·주가코멘터리",
+      "stock_catalyst": "bullish",
+      "stock_catalyst_label_ko": "호재",
+      "type_brief_ko": "글로벌 매출 전망에 대한 기대로 주가가 상승(rally)하고 있다는 시황 코멘터리로, 주가에 긍정적인 영향을 미치는 호재입니다."
     },
     {
       "rank": 4,
@@ -40,7 +77,21 @@
       "ai_score": 86,
       "ret_t10_pct": 15,
       "t0_date": "2026-02-13",
-      "pattern_group": "패턴없음"
+      "pattern_group": "패턴없음",
+      "sentiment": "positive",
+      "sentiment_label_ko": "긍정",
+      "sentiment_confidence": 0.95,
+      "sentiment_reason": "아이센스는 유럽 시장 기대감으로, 파미셀은 호실적 발표로 주가가 상승했습니다.",
+      "article_types_ko": [
+        "시황·테마·주가코멘터리",
+        "해외진출·법인",
+        "실적·가이던스",
+        "제품·상업화"
+      ],
+      "article_primary_type_ko": "시황·테마·주가코멘터리",
+      "stock_catalyst": "bullish",
+      "stock_catalyst_label_ko": "호재",
+      "type_brief_ko": "아이센스의 CGM 유럽 시장 기대와 파미셀의 호실적 발표로 두 회사 모두 주가가 상승하여 호재입니다."
     },
     {
       "rank": 5,
@@ -50,7 +101,19 @@
       "ai_score": 82,
       "ret_t10_pct": 11,
       "t0_date": "2026-01-21",
-      "pattern_group": "패턴없음"
+      "pattern_group": "패턴없음",
+      "sentiment": "positive",
+      "sentiment_label_ko": "긍정",
+      "sentiment_confidence": 0.9,
+      "sentiment_reason": "회사의 오랜 노하우와 세계 최초 제품 개발을 강조하며 긍정적인 면을 부각합니다.",
+      "article_types_ko": [
+        "제품·상업화",
+        "순위·기획·연재"
+      ],
+      "article_primary_type_ko": "제품·상업화",
+      "stock_catalyst": "not_applicable",
+      "stock_catalyst_label_ko": "해당없음",
+      "type_brief_ko": "회사의 기술력과 세계 최초 제품을 소개하는 기획 기사로, 직접적인 주가 촉매는 아닙니다."
     },
     {
       "rank": 6,
@@ -60,7 +123,22 @@
       "ai_score": 79,
       "ret_t10_pct": 5,
       "t0_date": "2026-01-20",
-      "pattern_group": "패턴없음"
+      "pattern_group": "패턴없음",
+      "sentiment": "neutral",
+      "sentiment_label_ko": "중립",
+      "sentiment_confidence": 0.9,
+      "sentiment_reason": "메디아나가 시장 경쟁에 자신감을 보였으나 실제 경쟁력에 대한 의문을 제기하는 중립적인 논조입니다.",
+      "article_types_ko": [
+        "제품·상업화",
+        "순위·기획·연재"
+      ],
+      "article_primary_type_ko": "제품·상업화",
+      "stock_catalyst": "neutral_mixed",
+      "stock_catalyst_label_ko": "중립·혼재",
+      "type_brief_ko": "메디아나의 환자 모니터링 시장 경쟁력에 대한 분석 기사로, 긍정적 자신감과 실제 경쟁력에 대한 의문이 혼재되어 중립적인 주가 영향을 예상합니다."
     }
-  ]
+  ],
+  "sentiment_enriched_at": "2026-04-08T05:46:00+00:00",
+  "sentiment_source": "gemini",
+  "news_classification_note": "Gemini: sentiment + article_types_ko + stock_catalyst (호재/악재 등)"
 }
