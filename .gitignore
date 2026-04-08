@@ -30,7 +30,7 @@ yarn-error.log*
 # local API dumps
 /data/somedaynews/
 /data/somedaynews_sentiment.jsonl
-/data/eodhd_news_windows/
+# data/eodhd_news_windows/ → Git LFS (.gitattributes)
 
 # python / local caches
 **/__pycache__/
