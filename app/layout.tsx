@@ -5,6 +5,9 @@ import { AppSidebar } from "./components/PrimaryNav";
 export const metadata: Metadata = {
   title: "FAM 뉴스",
   description: "뉴스 기사 사이트",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
