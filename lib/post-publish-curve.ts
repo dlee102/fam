@@ -1,7 +1,8 @@
 /**
- * 기사 발행 후 누적 수익률 (5분봉 종가, T0~T+2 장중).
- * 거래일 인덱스: 발행일(T0)=0, 익일=1, 그다음=2. T0는 published_at 이후에 끝난 봉만 포함.
- * 수익률 0%: 발행 직후 첫 5분봉 종가(그 봉에서 곡선 시작).
+ * 기사 발행 전후 누적 수익률 (5분봉 종가, T-3~T+4 장중).
+ * 거래일 인덱스: 발행일(T0)=0, 발행 전(-1~-3), 발행 후(1~4).
+ * T0는 published_at 이후에 끝난 봉만 포함(발행 전 봉은 전체 포함).
+ * 수익률 0%: 발행 직후 T0 첫 5분봉 종가(앵커).
  */
 
 import { loadEodBars, findManifestRow } from "@/lib/quant-engine/eod-loader";
@@ -37,7 +38,8 @@ export interface PostPublishSeries {
   points: PostPublishPoint[];
 }
 
-const TRADING_DAYS = 5;
+const PRE_DAYS = 3;   // 발행 전 포함 거래일 수 (T-3~T-1)
+const POST_DAYS = 5;  // 발행 후 포함 거래일 수 (T0~T+4)
 
 async function loadIntradayFile(
   article_id: string,
@@ -75,58 +77,64 @@ export async function buildPostPublishSeries(
   const i0 = bars.findIndex((b) => b.date >= t0_kst);
   if (i0 < 0) return null;
 
-  const slice = bars.slice(i0, i0 + TRADING_DAYS);
-  if (slice.length === 0) return null;
-  const sessionDays = slice.map((b) => b.date);
+  // 발행 전(T-3~T-1) + 발행 후(T0~T+4) 거래일 목록
+  const preSlice = bars.slice(Math.max(0, i0 - PRE_DAYS), i0);
+  const postSlice = bars.slice(i0, i0 + POST_DAYS);
+  if (postSlice.length === 0) return null;
+
+  // dayIdx: 발행 전은 음수(-3,-2,-1), 발행 후는 0~4
+  const sessionEntries: { date: string; dayIdx: number }[] = [
+    ...preSlice.map((b, idx) => ({ date: b.date, dayIdx: idx - preSlice.length })),
+    ...postSlice.map((b, idx) => ({ date: b.date, dayIdx: idx })),
+  ];
 
   const raw = await loadIntradayFile(articleId, ticker);
   if (!raw?.length) return null;
 
   const pubMs = published_at ? parsePublishUtcMs(published_at) : null;
-
   const market = raw.filter(
     (b) => typeof b.datetime === "string" && isMarketBar5m(b.datetime)
   );
 
-  const rawPoints: { d: string; bar: Raw5mBar; close: number }[] = [];
-  const t0d = sessionDays[0]!;
+  const rawPoints: { dayIdx: number; date: string; bar: Raw5mBar; close: number }[] = [];
 
-  for (const d of sessionDays) {
+  for (const { date: d, dayIdx } of sessionEntries) {
     let dayBars = market.filter((b) => kstSessionDateFromBarUtc(b.datetime) === d);
     dayBars.sort((a, b) => a.datetime.localeCompare(b.datetime));
 
-    if (d === t0d && pubMs !== null) {
+    // T0(발행일)는 발행 직후 봉만 포함
+    if (dayIdx === 0 && pubMs !== null) {
       dayBars = dayBars.filter((b) => fivemEndUtcMs(b.datetime) > pubMs);
     }
 
     for (const b of dayBars) {
       const c = b.close;
       if (!Number.isFinite(c) || c <= 0) continue;
-      rawPoints.push({ d, bar: b, close: c });
+      rawPoints.push({ dayIdx, date: d, bar: b, close: c });
     }
   }
 
   if (rawPoints.length === 0) return null;
 
-  const p0 = rawPoints[0]!.close;
+  // 앵커: T0의 첫 번째 봉 (없으면 전체 첫 봉)
+  const anchorIdx = rawPoints.findIndex((p) => p.dayIdx === 0) ?? 0;
+  if (anchorIdx < 0) return null;
+  const p0 = rawPoints[anchorIdx]!.close;
   if (!Number.isFinite(p0) || p0 <= 0) return null;
 
-  const points: PostPublishPoint[] = rawPoints.map(({ d, bar, close }, idx) => {
-    const dayIdx = sessionDays.indexOf(d);
-    return {
-      label: `${dayIdx}·${formatKstHm(bar.datetime)}`,
-      date: d,
-      bar_datetime: bar.datetime,
-      cum_ret_pct: idx === 0 ? 0 : ((close / p0) - 1) * 100,
-    };
-  });
+  const points: PostPublishPoint[] = rawPoints.map(({ dayIdx, date, bar, close }, idx) => ({
+    label: `${dayIdx}·${formatKstHm(bar.datetime)}`,
+    date,
+    bar_datetime: bar.datetime,
+    cum_ret_pct: idx === anchorIdx ? 0 : ((close / p0) - 1) * 100,
+  }));
 
   return {
     ticker,
     curve: "five_min_close",
     t0_kst,
     published_at,
-    anchor_date: rawPoints[0]!.d,
+    anchor_date: rawPoints[anchorIdx]!.date,
     anchor_price: p0,
     anchor_label: "발행 직후 첫 5분봉 종가 (0%)",
     points,

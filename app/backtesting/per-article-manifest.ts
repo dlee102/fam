@@ -39,6 +39,28 @@ function parseTime(s: string): number {
   return Number.isNaN(t) ? 0 : t;
 }
 
+const EMPTY_SUMMARY: PerArticleManifestSummary = {
+  total: 0,
+  eodOk: 0,
+  intradayOk: 0,
+  bothOk: 0,
+  missingEod: 0,
+  missingIntraday: 0,
+  publishedMin: null,
+  publishedMax: null,
+  distinctTickers: 0,
+  topTickers: [],
+  fileMtimeIso: null,
+};
+
+function emptyManifestLoad(): {
+  rows: PerArticleManifestRow[];
+  summary: PerArticleManifestSummary;
+  relativePath: string;
+} {
+  return { rows: [], summary: EMPTY_SUMMARY, relativePath: MANIFEST_REL };
+}
+
 export function loadPerArticleManifest(): {
   rows: PerArticleManifestRow[];
   summary: PerArticleManifestSummary;
@@ -46,27 +68,20 @@ export function loadPerArticleManifest(): {
 } {
   const full = path.join(process.cwd(), MANIFEST_REL);
   if (!fs.existsSync(full)) {
-    return {
-      rows: [],
-      summary: {
-        total: 0,
-        eodOk: 0,
-        intradayOk: 0,
-        bothOk: 0,
-        missingEod: 0,
-        missingIntraday: 0,
-        publishedMin: null,
-        publishedMax: null,
-        distinctTickers: 0,
-        topTickers: [],
-        fileMtimeIso: null,
-      },
-      relativePath: MANIFEST_REL,
-    };
+    return emptyManifestLoad();
   }
 
   const raw = fs.readFileSync(full, "utf-8");
-  const rows = JSON.parse(raw) as PerArticleManifestRow[];
+  let rows: PerArticleManifestRow[];
+  try {
+    rows = JSON.parse(raw) as PerArticleManifestRow[];
+  } catch {
+    // Git LFS pointer or other non-JSON (e.g. CI without `git lfs pull`).
+    return emptyManifestLoad();
+  }
+  if (!Array.isArray(rows)) {
+    return emptyManifestLoad();
+  }
 
   let eodOk = 0;
   let intradayOk = 0;

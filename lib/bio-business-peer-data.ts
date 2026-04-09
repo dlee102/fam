@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 
 import { labelForBioBusinessType } from "@/lib/bio-business-types";
+import { getKrxMarketCapMap } from "@/lib/yfinance-krx-marketcap-index";
 
 const DATA_FILE = path.join(process.cwd(), "data", "bio_business_type_by_ticker.json");
 
@@ -51,6 +52,29 @@ interface JsonRow {
   name?: string;
 }
 
+function resolveTypeId(row: JsonRow | undefined): string {
+  const id = row?.business_type_id;
+  return id && TYPE_COLOR[id] ? id : "unknown";
+}
+
+interface CohortMember {
+  code: string;
+  confidence: number;
+  mcap: number | null;
+}
+
+function sortCohortMembers(a: CohortMember, b: CohortMember, cohortHasAnyMcap: boolean): number {
+  if (cohortHasAnyMcap) {
+    const am = a.mcap;
+    const bm = b.mcap;
+    if (am != null && bm != null && am !== bm) return bm - am;
+    if (am != null && bm == null) return -1;
+    if (am == null && bm != null) return 1;
+  }
+  if (b.confidence !== a.confidence) return b.confidence - a.confidence;
+  return a.code.localeCompare(b.code);
+}
+
 interface JsonFile {
   by_ticker?: Record<string, JsonRow>;
 }
@@ -79,6 +103,11 @@ export interface BioPeerArticleRow {
   typeShort: string;
   typeLabel: string;
   color: string;
+  /** 동일 business_type_id 풀에서의 순위 (1=상위) */
+  cohortRank: number;
+  cohortTotal: number;
+  /** 시총 데이터가 풀에 하나라도 있으면 시총 우선 정렬, 아니면 분류 신뢰도 */
+  rankBasis: "mcap" | "confidence";
 }
 
 export interface BioPeerDistributionSeg {
@@ -120,17 +149,59 @@ export function buildArticleBioPeerMapModel(
 
   const articleSet = new Set(uniqueCodes);
   const byTicker = data.by_ticker;
+  const mcapMap = getKrxMarketCapMap();
+
+  const cohortMembersByType = new Map<string, CohortMember[]>();
+  for (const [code, row] of Object.entries(byTicker)) {
+    const t = normalizeTicker(code);
+    if (!/^\d{6}$/.test(t)) continue;
+    const typeId = resolveTypeId(row);
+    const conf =
+      typeof row.confidence === "number" && Number.isFinite(row.confidence) ? row.confidence : 0;
+    const mcap = mcapMap?.get(t) ?? null;
+    const m: CohortMember = { code: t, confidence: conf, mcap };
+    const list = cohortMembersByType.get(typeId);
+    if (list) list.push(m);
+    else cohortMembersByType.set(typeId, [m]);
+  }
+
+  for (const code of uniqueCodes) {
+    const row = byTicker[code];
+    const typeId = resolveTypeId(row);
+    let list = cohortMembersByType.get(typeId);
+    if (!list) {
+      list = [];
+      cohortMembersByType.set(typeId, list);
+    }
+    if (list.some((x) => x.code === code)) continue;
+    const conf =
+      typeof row?.confidence === "number" && Number.isFinite(row.confidence) ? row.confidence : 0;
+    list.push({ code, confidence: conf, mcap: mcapMap?.get(code) ?? null });
+  }
+
+  const cohortRankKey = new Map<string, { rank: number; total: number; basis: "mcap" | "confidence" }>();
+  for (const [typeId, members] of cohortMembersByType) {
+    const hasAnyMcap = members.some((x) => x.mcap != null);
+    const sorted = [...members].sort((a, b) => sortCohortMembers(a, b, hasAnyMcap));
+    const total = sorted.length;
+    const basis: "mcap" | "confidence" = hasAnyMcap ? "mcap" : "confidence";
+    sorted.forEach((mem, i) => {
+      cohortRankKey.set(`${typeId}\t${mem.code}`, { rank: i + 1, total, basis });
+    });
+  }
 
   const rows: BioPeerArticleRow[] = uniqueCodes.map((code) => {
     const row = byTicker[code];
-    const typeId =
-      row?.business_type_id && TYPE_COLOR[row.business_type_id]
-        ? row.business_type_id
-        : "unknown";
+    const typeId = resolveTypeId(row);
     const typeShort = TYPE_SHORT[typeId] ?? typeId;
     const typeLabel = labelForBioBusinessType(typeId) ?? "미분류";
     const color = TYPE_COLOR[typeId] ?? TYPE_COLOR.unknown;
     const name = row?.name?.trim() || tickerNames[code] || "";
+    const cr = cohortRankKey.get(`${typeId}\t${code}`) ?? {
+      rank: 1,
+      total: 1,
+      basis: "confidence" as const,
+    };
     return {
       code,
       name: name || "—",
@@ -138,6 +209,9 @@ export function buildArticleBioPeerMapModel(
       typeShort,
       typeLabel,
       color,
+      cohortRank: cr.rank,
+      cohortTotal: cr.total,
+      rankBasis: cr.basis,
     };
   });
 

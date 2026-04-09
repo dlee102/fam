@@ -8,7 +8,9 @@ export function ArticleBioPeerMap({ model }: { model: ArticleBioPeerMapModel }) 
     <aside className="article-bio-peer" aria-label="사업 유형 동류">
       <div className="article-bio-peer__panel">
         <p className="article-bio-peer__heading">동류 사업 유형</p>
-        <p className="article-bio-peer__sub">같은 묶음으로 분류된 종목 비율 · 유사 유형 표본</p>
+        <p className="article-bio-peer__sub">
+          같은 묶음 비율 · 유사 표본. 순위는 동종 풀 안에서 1위가 가장 앞선 값(시총 있으면 시총 우선).
+        </p>
 
         <ul className="article-bio-peer__chips" aria-label="이 기사 종목별 유형">
           {rows.map((r) => (
@@ -19,6 +21,14 @@ export function ArticleBioPeerMap({ model }: { model: ArticleBioPeerMapModel }) 
                 <span className="article-bio-peer__chip-code">{r.code}</span>
                 <span className="article-bio-peer__chip-type">{r.typeShort}</span>
               </span>
+              <p className="article-bio-peer__chip-rank">
+                <span className="article-bio-peer__chip-rank-main">
+                  동종 {r.cohortTotal}개 중 <strong>{r.cohortRank}위</strong>
+                </span>
+                <span className="article-bio-peer__chip-rank-basis">
+                  {r.rankBasis === "mcap" ? "시총 순" : "분류 신뢰도 순"}
+                </span>
+              </p>
             </li>
           ))}
         </ul>

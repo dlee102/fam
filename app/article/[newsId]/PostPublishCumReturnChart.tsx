@@ -42,7 +42,7 @@ interface DayRange {
   dayIdx: number;
   x1: string;
   x2: string;
-  tag: string; // "T0" | "T+1" | "T+2"
+  tag: string; // "T-3" | "T-2" | "T-1" | "T0" | "T+1" | ...
 }
 
 function seriesKey(s: SeriesPayload): string {
@@ -102,7 +102,7 @@ function getDayRanges(rows: MergedRow[]): DayRange[] {
       if (curDay !== "" && x1) {
         const prev = String(rows[i - 1].label ?? "");
         const n = parseInt(curDay);
-        ranges.push({ dayIdx: n, x1, x2: prev, tag: n === 0 ? "T0" : `T+${n}` });
+        ranges.push({ dayIdx: n, x1, x2: prev, tag: dayTag(n) });
       }
       curDay = dp;
       x1 = lbl;
@@ -111,9 +111,15 @@ function getDayRanges(rows: MergedRow[]): DayRange[] {
   if (curDay && x1) {
     const last = String(rows[rows.length - 1].label ?? "");
     const n = parseInt(curDay);
-    ranges.push({ dayIdx: n, x1, x2: last, tag: n === 0 ? "T0" : `T+${n}` });
+    ranges.push({ dayIdx: n, x1, x2: last, tag: dayTag(n) });
   }
   return ranges;
+}
+
+function dayTag(n: number): string {
+  if (n === 0) return "T0";
+  if (n > 0) return `T+${n}`;
+  return `T${n}`; // T-1, T-2, T-3
 }
 
 function legendLabel(s: SeriesPayload, tickerNames?: Record<string, string>): string {
@@ -207,7 +213,7 @@ export function PostPublishCumReturnChart({
   if (status === "loading") {
     return (
       <section className={wrapClass} aria-busy="true">
-        <h3 className="post-publish-chart__title">발행 후 누적 수익률 (5분봉 · T0~T+4)</h3>
+        <h3 className="post-publish-chart__title">발행 전후 누적 수익률 (5분봉 · T-3~T+4)</h3>
         <p className="post-publish-chart__desc muted-text">불러오는 중…</p>
       </section>
     );
@@ -216,7 +222,7 @@ export function PostPublishCumReturnChart({
   if (status === "empty" || !data?.series.length) {
     return (
       <section className={wrapClass}>
-        <h3 className="post-publish-chart__title">발행 후 누적 수익률 (5분봉 · T0~T+4)</h3>
+        <h3 className="post-publish-chart__title">발행 전후 누적 수익률 (5분봉 · T-3~T+4)</h3>
         <p className="post-publish-chart__desc muted-text">
           5분봉(또는 EOD 캘린더) 데이터가 없어 곡선을 표시할 수 없습니다.
         </p>
@@ -229,7 +235,7 @@ export function PostPublishCumReturnChart({
   return (
     <section className={wrapClass} aria-labelledby="post-publish-chart-heading">
       <h3 id="post-publish-chart-heading" className="post-publish-chart__title">
-        발행 후 누적 수익률 (5분봉 · T0~T+4)
+        발행 전후 누적 수익률 (5분봉 · T-3~T+4)
       </h3>
       <div
         className="post-publish-chart__plot"
@@ -254,39 +260,32 @@ export function PostPublishCumReturnChart({
                 ) : null
               )}
 
-              {/* 날짜 경계 수직선 + T+1 / T+2 레이블 */}
+              {/* 거래일별 경계 수직선 — 레이블 없음 (날짜는 X축, T0는 아래서 별도 강조) */}
               {dayRanges
-                .filter((r) => r.dayIdx > 0)
+                .filter((r) => r.dayIdx !== 0)
                 .map((r) => (
                   <ReferenceLine
                     key={`div-${r.tag}`}
                     x={r.x1}
                     stroke="var(--color-border-subtle)"
-                    strokeWidth={1.5}
-                    strokeDasharray="5 3"
-                    label={{
-                      value: r.tag,
-                      position: "insideTopLeft",
-                      fontSize: 9,
-                      fontWeight: 600,
-                      fill: "var(--color-text-muted)",
-                      dy: 2,
-                      dx: 3,
-                    }}
+                    strokeWidth={1}
+                    strokeDasharray="4 3"
                   />
                 ))}
 
-              {/* T0 레이블 — 맨 첫 봉 */}
-              {dayRanges[0] ? (
+              {/* T0 발행일 마커 — 더 굵고 색상 강조 */}
+              {dayRanges.find((r) => r.dayIdx === 0) ? (
                 <ReferenceLine
-                  x={dayRanges[0].x1}
-                  stroke="none"
+                  x={dayRanges.find((r) => r.dayIdx === 0)!.x1}
+                  stroke="var(--color-accent)"
+                  strokeWidth={2}
+                  strokeDasharray="6 3"
                   label={{
-                    value: "T0",
+                    value: "발행",
                     position: "insideTopLeft",
                     fontSize: 9,
-                    fontWeight: 600,
-                    fill: "var(--color-text-muted)",
+                    fontWeight: 700,
+                    fill: "var(--color-accent)",
                     dy: 2,
                     dx: 3,
                   }}
@@ -329,7 +328,7 @@ export function PostPublishCumReturnChart({
                   const parts = s.split("·");
                   const time = parts[1] ?? "";
                   const n = parseInt(parts[0] ?? "");
-                  const tag = n === 0 ? "T0" : `T+${n}`;
+                  const tag = dayTag(n);
                   const date = labelToDate.get(s);
                   if (date) {
                     const dp = date.split("-");
