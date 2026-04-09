@@ -28,15 +28,19 @@ export function buildTrendFilter(ind: Indicators): TrendFilter {
 
   let summary: string;
   if (contrarian_setup) {
-    summary = "MA20 위 + 단기 하락 — 역발상 최적 세팅";
+    summary =
+      "최근 20일 평균 주가보다는 위인데, 직전 약 10일 동안은 잠깐 내렸습니다.";
   } else if (above_ma20 && momentum_direction === "RISING") {
-    summary = "MA20 위 + 상승 추세 — 재료 소멸 주의";
+    summary =
+      "평균보다 위에서 최근에도 오름세가 이어지고 있습니다. 이미 많이 올랐을 수 있어 무리한 추격은 주의하세요.";
   } else if (!above_ma20 && momentum_direction === "FALLING") {
-    summary = "MA20 아래 + 하락 — 진입 비권고";
+    summary =
+      "평균보다 아래이고 최근 흐름도 내려가는 편이라, 새로 들어가기엔 부담이 큽니다.";
   } else if (above_ma20) {
-    summary = "MA20 위 — 시장 조건 양호";
+    summary = "최근 20일 평균 주가보다는 위에 있습니다. 큰 흐름만 보면 상대적으로 나은 편입니다.";
   } else {
-    summary = "MA20 아래 — 추가 확인 필요";
+    summary =
+      "최근 20일 평균 주가보다는 아래에 있습니다. 아직 약한 편이라 뉴스·재무 등 다른 정보도 함께 보는 것이 좋습니다.";
   }
 
   return { above_ma20, momentum_direction, contrarian_setup, summary };

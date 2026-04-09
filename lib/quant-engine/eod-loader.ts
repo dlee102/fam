@@ -1,15 +1,13 @@
 /**
  * per_article EOD bars 로더
  * data/eodhd_news_windows/per_article/manifest_per_article.json 기반
+ * 로컬에 없으면 Firebase Realtime Database(FIREBASE_EODHD_RTD_ROOT)에서 조회
  */
 
-import fs from "fs";
 import path from "path";
 import type { OhlcBar } from "./types";
 import { dailyOhlcFrom5mForInsight, type Raw5mBar } from "./intraday-5m-daily";
-
-const BASE = path.join(process.cwd(), "data", "eodhd_news_windows");
-const MANIFEST_PATH = path.join(BASE, "per_article", "manifest_per_article.json");
+import { readEodhdJson } from "@/lib/eodhd-json-source";
 
 interface ManifestRow {
   article_idx: number;
@@ -22,6 +20,22 @@ interface ManifestRow {
   eod_rows: number;
   intraday_ok?: boolean;
   intraday_path?: string;
+}
+
+/** 앱에서 사용하는 행: 일봉(EOD) + 5분봉 경로가 매니페스트상 완비된 경우만 */
+function isManifestRowWithIntraday(r: ManifestRow): boolean {
+  return Boolean(
+    r.eod_ok &&
+      r.article_id &&
+      r.intraday_ok === true &&
+      typeof r.intraday_path === "string" &&
+      r.intraday_path.length > 0
+  );
+}
+
+function publishedAtMs(iso: string): number {
+  const t = Date.parse(iso.replace(" ", "T"));
+  return Number.isFinite(t) ? t : 0;
 }
 
 interface EodFile {
@@ -38,75 +52,88 @@ interface EodFile {
   t0_kst?: string;
 }
 
-let _manifest: ManifestRow[] | null = null;
-let _articleIdsWithEodOk: Set<string> | null = null;
+let _manifestPromise: Promise<ManifestRow[]> | null = null;
 
-function loadManifest(): ManifestRow[] {
-  if (_manifest) return _manifest;
-  if (!fs.existsSync(MANIFEST_PATH)) {
-    _manifest = [];
-    return _manifest;
+async function loadManifest(): Promise<ManifestRow[]> {
+  if (!_manifestPromise) {
+    _manifestPromise = readEodhdJson<ManifestRow[]>(
+      "per_article/manifest_per_article.json"
+    ).then((rows) => (Array.isArray(rows) ? rows : []));
   }
-  try {
-    const raw = fs.readFileSync(MANIFEST_PATH, "utf8");
-    _manifest = JSON.parse(raw) as ManifestRow[];
-  } catch {
-    _manifest = [];
-  }
-  return _manifest;
+  return _manifestPromise;
 }
 
-/** 매니페스트에서 첫 번째 매칭 row 조회 */
-export function findManifestRow(
+/** 매니페스트에서 첫 번째 매칭 row 조회 (EOD+5분 매니페스트 완비 행만) */
+export async function findManifestRow(
   article_id: string,
   ticker: string
-): ManifestRow | null {
-  const manifest = loadManifest();
+): Promise<ManifestRow | null> {
+  const manifest = await loadManifest();
   return (
     manifest.find(
-      (r) => r.article_id === article_id && r.ticker === ticker && r.eod_ok
+      (r) =>
+        r.article_id === article_id &&
+        r.ticker === ticker &&
+        isManifestRowWithIntraday(r)
     ) ?? null
   );
 }
 
-/** article_id 기준 ticker 목록 조회 */
-export function getTickersForArticle(article_id: string): string[] {
-  const manifest = loadManifest();
+/** article_id 기준 ticker 목록 조회 (5분봉 연동 행만) */
+export async function getTickersForArticle(
+  article_id: string
+): Promise<string[]> {
+  const manifest = await loadManifest();
   const tickers = manifest
-    .filter((r) => r.article_id === article_id && r.eod_ok)
+    .filter((r) => r.article_id === article_id && isManifestRowWithIntraday(r))
     .map((r) => r.ticker);
   return [...new Set(tickers)];
 }
 
-/** 매니페스트에 eod_ok 행이 하나라도 있는 article_id (피드 노출용) */
-export function getArticleIdsWithEodOk(): ReadonlySet<string> {
-  if (_articleIdsWithEodOk) return _articleIdsWithEodOk;
-  const manifest = loadManifest();
+/**
+ * 매니페스트에 EOD+5분 행이 하나라도 있는 article_id.
+ * 일봉만 있는 기사는 앱 데이터 원천에서 제외한다.
+ */
+export async function getArticleIdsWithEodOk(): Promise<ReadonlySet<string>> {
+  return getArticleIdsWithIntradayManifestOk();
+}
+
+/**
+ * 매니페스트에 eod_ok + intraday_ok(5분 파일 경로) 행이 하나라도 있는 article_id.
+ * `buildPostPublishSeries`·퀀트 인사이트·피드 필터에 공통 사용.
+ */
+export async function getArticleIdsWithIntradayManifestOk(): Promise<ReadonlySet<string>> {
+  const manifest = await loadManifest();
   const ids = new Set<string>();
   for (const r of manifest) {
-    if (r.eod_ok && r.article_id) ids.add(r.article_id);
+    if (isManifestRowWithIntraday(r)) ids.add(r.article_id);
   }
-  _articleIdsWithEodOk = ids;
-  return _articleIdsWithEodOk;
+  return ids;
 }
 
 /**
  * EOD bars 로드
  * @returns 전체 bars (뉴스 발행 전 이력 포함) + 발행일(t0_kst)
  */
-export function loadEodBars(
+export async function loadEodBars(
   article_id: string,
   ticker: string
-): { bars: OhlcBar[]; t0_kst: string | null; published_at: string | null } | null {
-  const row = findManifestRow(article_id, ticker);
+): Promise<{
+  bars: OhlcBar[];
+  t0_kst: string | null;
+  published_at: string | null;
+} | null> {
+  const row = await findManifestRow(article_id, ticker);
   if (!row) return null;
 
-  const eodPath = path.join(BASE, "per_article", row.eod_path.replace(/^per_article\//, ""));
-  if (!fs.existsSync(eodPath)) return null;
+  const rel = row.eod_path.startsWith("per_article/")
+    ? row.eod_path
+    : path.join("per_article", row.eod_path).replace(/\\/g, "/");
+
+  const data = await readEodhdJson<EodFile>(rel);
+  if (!data?.bars) return null;
 
   try {
-    const raw = fs.readFileSync(eodPath, "utf8");
-    const data = JSON.parse(raw) as EodFile;
     const bars: OhlcBar[] = (data.bars ?? []).map((b) => ({
       date: b.date,
       open: b.open,
@@ -126,14 +153,53 @@ export function loadEodBars(
 }
 
 /**
+ * 매니페스트에 등록된 해당 티커 EOD 중, 가장 최근 기사 행의 일봉 파일 말미 2봉으로
+ * 전일 대비 등락을 계산 (실시간 시세 아님 · 데이터 없으면 null).
+ */
+export async function getLatestDailySnapshotForTicker(ticker: string): Promise<{
+  close: number;
+  prevClose: number;
+  change: number;
+  changePct: number;
+  volume: number;
+  date: string;
+  prevDate: string;
+} | null> {
+  const manifest = await loadManifest();
+  const rows = manifest.filter(
+    (r) => r.ticker === ticker && isManifestRowWithIntraday(r)
+  );
+  if (!rows.length) return null;
+  rows.sort((a, b) => publishedAtMs(b.published_at) - publishedAtMs(a.published_at));
+  const row = rows[0]!;
+  const loaded = await loadEodBars(row.article_id, ticker);
+  if (!loaded?.bars.length) return null;
+  const sorted = [...loaded.bars].sort((a, b) => a.date.localeCompare(b.date));
+  if (sorted.length < 2) return null;
+  const last = sorted[sorted.length - 1]!;
+  const prev = sorted[sorted.length - 2]!;
+  const change = last.close - prev.close;
+  const changePct = prev.close !== 0 ? (change / prev.close) * 100 : 0;
+  return {
+    close: last.close,
+    prevClose: prev.close,
+    change,
+    changePct,
+    volume: last.volume,
+    date: last.date,
+    prevDate: prev.date,
+  };
+}
+
+/**
  * 분석용 bars: 발행일(t0) 캘린더 기준으로 포함 가능한 가장 최근 일봉까지.
  * `b.date <= t0_kst` — 발행일이 거래일이면 해당일 종가 봉 포함(일봉 해상도에서 발행 시각에 가장 가까운 값).
  */
-export function getBarsThroughPublishDate(
+export async function getBarsThroughPublishDate(
   article_id: string,
   ticker: string
-): { bars: OhlcBar[]; t0_kst: string | null } | null {
-  const result = loadEodBars(article_id, ticker);
+): Promise<{ bars: OhlcBar[]; t0_kst: string | null } | null> {
+  const result = await loadEodBars(article_id, ticker);
   if (!result) return null;
   const { bars, t0_kst } = result;
   if (!t0_kst) return result;
@@ -145,30 +211,28 @@ export function getBarsThroughPublishDate(
 /** @deprecated Prefer {@link getBarsThroughPublishDate} (발행일 당일 봉 포함) */
 export const getPreNewsBars = getBarsThroughPublishDate;
 
-export type QuantInsightBarSource = "5m_agg" | "eod_daily";
+export type QuantInsightBarSource = "5m_agg";
 
 /**
- * 퀀트 인사이트용 일봉 시계열.
- * - 매니페스트에 5분봉이 있으면: 장중 5분봉을 거래일별로 집계하고, 발행일은 `published_at` 직전까지의 봉만 반영.
- * - 없으면: EOD 일봉 파일(`getBarsThroughPublishDate`) 사용.
+ * 퀀트 인사이트용 일봉 시계열: 5분봉만 사용(거래일별 집계, 발행일은 `published_at` 직전까지).
+ * 매니페스트에 5분 경로가 없거나 파일·집계가 비면 null.
  */
-export function getBarsForQuantInsight(
+export async function getBarsForQuantInsight(
   article_id: string,
   ticker: string
-): {
+): Promise<{
   bars: OhlcBar[];
   t0_kst: string | null;
   published_at: string | null;
   bar_source: QuantInsightBarSource;
-} | null {
-  const row = findManifestRow(article_id, ticker);
-  const eod = loadEodBars(article_id, ticker);
-  if (!eod?.t0_kst) return null;
+} | null> {
+  const row = await findManifestRow(article_id, ticker);
+  const eod = await loadEodBars(article_id, ticker);
+  if (!row || !eod?.t0_kst) return null;
 
   const { t0_kst, published_at } = eod;
-  const pub = published_at ?? row?.published_at ?? "";
-  const throughEod = getBarsThroughPublishDate(article_id, ticker);
-  if (!throughEod) return null;
+  const pub = published_at ?? row.published_at ?? "";
+  if (!pub.length) return null;
 
   const fallbackMap = new Map(
     eod.bars.filter((b) => b.date <= t0_kst).map((b) => [b.date, b] as const)
@@ -178,44 +242,20 @@ export function getBarsForQuantInsight(
     .filter((d) => d <= t0_kst)
     .sort();
 
-  const useIntra =
-    row?.intraday_ok &&
-    row.intraday_path &&
-    pub.length > 0;
+  const intraRel = row.intraday_path!.startsWith("per_article/")
+    ? row.intraday_path!
+    : path.join("per_article", row.intraday_path!).replace(/\\/g, "/");
 
-  if (!useIntra) {
-    return {
-      bars: throughEod.bars,
-      t0_kst,
-      published_at: published_at ?? row?.published_at ?? null,
-      bar_source: "eod_daily",
-    };
-  }
+  const data = await readEodhdJson<{ bars?: Raw5mBar[]; published_at?: string }>(
+    intraRel
+  );
 
-  const intraRel = row!.intraday_path!.replace(/^per_article\//, "");
-  const intraPath = path.join(BASE, "per_article", intraRel);
-  if (!fs.existsSync(intraPath)) {
-    return {
-      bars: throughEod.bars,
-      t0_kst,
-      published_at: published_at ?? row?.published_at ?? null,
-      bar_source: "eod_daily",
-    };
-  }
+  if (!data?.bars?.length) return null;
 
   try {
-    const raw = fs.readFileSync(intraPath, "utf8");
-    const data = JSON.parse(raw) as { bars?: Raw5mBar[]; published_at?: string };
     const rawBars = data.bars ?? [];
     const pubAt = data.published_at ?? pub;
-    if (!pubAt) {
-      return {
-        bars: throughEod.bars,
-        t0_kst,
-        published_at: published_at ?? null,
-        bar_source: "eod_daily",
-      };
-    }
+    if (!pubAt) return null;
 
     const daily = dailyOhlcFrom5mForInsight(
       rawBars,
@@ -225,14 +265,7 @@ export function getBarsForQuantInsight(
       fallbackMap
     );
 
-    if (daily.length === 0) {
-      return {
-        bars: throughEod.bars,
-        t0_kst,
-        published_at: published_at ?? row?.published_at ?? null,
-        bar_source: "eod_daily",
-      };
-    }
+    if (daily.length === 0) return null;
 
     return {
       bars: daily,
@@ -241,11 +274,6 @@ export function getBarsForQuantInsight(
       bar_source: "5m_agg",
     };
   } catch {
-    return {
-      bars: throughEod.bars,
-      t0_kst,
-      published_at: published_at ?? row?.published_at ?? null,
-      bar_source: "eod_daily",
-    };
+    return null;
   }
 }

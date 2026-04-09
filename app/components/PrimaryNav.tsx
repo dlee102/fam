@@ -74,7 +74,11 @@ function SidebarNav({ pathname }: { pathname: string }) {
                   <Link
                     href={item.href}
                     data-active={isActive}
-                    className="app-sidebar__row"
+                    className={
+                      item.variant === "premium"
+                        ? "app-sidebar__row app-sidebar__row--premium"
+                        : "app-sidebar__row"
+                    }
                     title={item.label}
                   >
                     <span className="app-sidebar__row-icon">

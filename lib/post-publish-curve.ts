@@ -4,8 +4,6 @@
  * 수익률 0%: 발행 직후 첫 5분봉 종가(그 봉에서 곡선 시작).
  */
 
-import fs from "fs";
-import path from "path";
 import { loadEodBars, findManifestRow } from "@/lib/quant-engine/eod-loader";
 import {
   fivemEndUtcMs,
@@ -14,8 +12,7 @@ import {
   parsePublishUtcMs,
   type Raw5mBar,
 } from "@/lib/quant-engine/intraday-5m-daily";
-
-const BASE = path.join(process.cwd(), "data", "eodhd_news_windows");
+import { readEodhdJson } from "@/lib/eodhd-json-source";
 
 export type PostPublishCurveKind = "five_min_close";
 
@@ -40,20 +37,20 @@ export interface PostPublishSeries {
   points: PostPublishPoint[];
 }
 
-const TRADING_DAYS = 3;
+const TRADING_DAYS = 5;
 
-function loadIntradayFile(article_id: string, ticker: string): Raw5mBar[] | null {
-  const row = findManifestRow(article_id, ticker);
+async function loadIntradayFile(
+  article_id: string,
+  ticker: string
+): Promise<Raw5mBar[] | null> {
+  const row = await findManifestRow(article_id, ticker);
   if (!row?.intraday_ok || !row.intraday_path) return null;
-  const intraRel = row.intraday_path.replace(/^per_article\//, "");
-  const intraPath = path.join(BASE, "per_article", intraRel);
-  if (!fs.existsSync(intraPath)) return null;
-  try {
-    const data = JSON.parse(fs.readFileSync(intraPath, "utf8")) as { bars?: Raw5mBar[] };
-    return data.bars ?? [];
-  } catch {
-    return null;
-  }
+  const intraRel = row.intraday_path.startsWith("per_article/")
+    ? row.intraday_path
+    : `per_article/${row.intraday_path.replace(/^per_article\//, "")}`;
+  const data = await readEodhdJson<{ bars?: Raw5mBar[] }>(intraRel);
+  if (!data) return null;
+  return data.bars ?? [];
 }
 
 /** KST 시·분만 (축 라벨: "0·09:15" 형태의 앞자리는 거래일 오프셋) */
@@ -67,11 +64,11 @@ function formatKstHm(dtStr: string): string {
   }).format(new Date(ms));
 }
 
-export function buildPostPublishSeries(
+export async function buildPostPublishSeries(
   articleId: string,
   ticker: string
-): PostPublishSeries | null {
-  const loaded = loadEodBars(articleId, ticker);
+): Promise<PostPublishSeries | null> {
+  const loaded = await loadEodBars(articleId, ticker);
   if (!loaded?.t0_kst) return null;
   const { bars, t0_kst, published_at } = loaded;
 
@@ -79,10 +76,10 @@ export function buildPostPublishSeries(
   if (i0 < 0) return null;
 
   const slice = bars.slice(i0, i0 + TRADING_DAYS);
-  if (slice.length < TRADING_DAYS) return null;
+  if (slice.length === 0) return null;
   const sessionDays = slice.map((b) => b.date);
 
-  const raw = loadIntradayFile(articleId, ticker);
+  const raw = await loadIntradayFile(articleId, ticker);
   if (!raw?.length) return null;
 
   const pubMs = published_at ? parsePublishUtcMs(published_at) : null;
@@ -136,10 +133,10 @@ export function buildPostPublishSeries(
   };
 }
 
-export function buildAllPostPublishSeries(
+export async function buildAllPostPublishSeries(
   articleId: string,
   ticker: string
-): PostPublishSeries[] {
-  const s = buildPostPublishSeries(articleId, ticker);
+): Promise<PostPublishSeries[]> {
+  const s = await buildPostPublishSeries(articleId, ticker);
   return s ? [s] : [];
 }

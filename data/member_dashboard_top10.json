@@ -1,0 +1,210 @@
+{
+  "generated_at": "2026-04-09T04:22:54.092Z",
+  "sort": "cum_ret_pct_desc",
+  "limit": 10,
+  "pool_size": 220,
+  "rankings": [
+    {
+      "article_id": "02519046645322640",
+      "title": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+      "published_at": "2026-01-29T08:00:04+09:00",
+      "ticker": "065170",
+      "ticker_name": "비엘팜텍",
+      "score_total": 55,
+      "grade": "C",
+      "cum_ret_pct": 68.71609403254972,
+      "primary_label": "모멘텀 과열 (주의)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "02092646645350520",
+      "title": "뎅기열 '팬데믹' 직면한 베트남, K-바이오 ‘구원투수’ 될까",
+      "published_at": "2026-02-14T08:30:03+09:00",
+      "ticker": "048410",
+      "ticker_name": "현대바이오",
+      "score_total": 50,
+      "grade": "C",
+      "cum_ret_pct": 41.03174603174604,
+      "primary_label": "모멘텀 과열 (주의)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "02086086645381680",
+      "title": "전쟁통에 저평가주 재조명...우정바이오·지니너스↑ [바이오맥짚기]",
+      "published_at": "2026-03-09T08:00:04+09:00",
+      "ticker": "215380",
+      "ticker_name": "우정바이오",
+      "score_total": 59,
+      "grade": "C",
+      "cum_ret_pct": 39.726027397260275,
+      "primary_label": "모멘텀 과열 (주의)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "01561286645321000",
+      "title": "韓·日 빅마파 어나프라주 판매 러브콜 비보존...\"글로벌 기업들과 기술 이전 논의\"",
+      "published_at": "2026-01-24T08:10:02+09:00",
+      "ticker": "082800",
+      "ticker_name": "비보존 제약",
+      "score_total": 75,
+      "grade": "C",
+      "cum_ret_pct": 38.07106598984771,
+      "primary_label": "중립",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "03047126645354784",
+      "title": "반도체주 안 부럽다...인트론바이오·젠큐릭스 등 상한가 신고[바이오맥짚기]",
+      "published_at": "2026-02-27T08:00:05+09:00",
+      "ticker": "048530",
+      "ticker_name": "인트론바이오",
+      "score_total": 70,
+      "grade": "C",
+      "cum_ret_pct": 28.400000000000002,
+      "primary_label": "모멘텀 과열 (주의)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "01144726645383648",
+      "title": "HLB파나진, 연내 ‘IVDR’ 전 품목 인증 완료... 유럽 시장서 중국 따돌린다",
+      "published_at": "2026-03-15T08:10:03+09:00",
+      "ticker": "046210",
+      "ticker_name": "HLB파나진",
+      "score_total": 74,
+      "grade": "C",
+      "cum_ret_pct": 23.002421307506047,
+      "primary_label": "중립",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "01184086645381352",
+      "title": "전영협 웰리시스 대표 \"올해 미국 매출 140억 목표…연내 기술성 평가 신청\"",
+      "published_at": "2026-03-08T08:20:03+09:00",
+      "ticker": "458870",
+      "ticker_name": "씨어스테크놀로지",
+      "score_total": 76,
+      "grade": "B",
+      "cum_ret_pct": 21.34646962233169,
+      "primary_label": "역발상 (Contrarian)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "02614166645386928",
+      "title": "RNA·바이오시밀러·ADC…모멘텀 살아난 K바이오[바이오맥짚기]",
+      "published_at": "2026-03-25T08:00:08+09:00",
+      "ticker": "003000",
+      "ticker_name": "부광약품",
+      "score_total": 50,
+      "grade": "C",
+      "cum_ret_pct": 21.059268600252203,
+      "primary_label": "모멘텀 과열 (주의)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "02473126645320016",
+      "title": "한상열 인제니아 대표 “추가 기술수출·5년 누적 매출 8000억 기대”",
+      "published_at": "2026-01-21T08:00:03+09:00",
+      "ticker": "458870",
+      "ticker_name": "씨어스테크놀로지",
+      "score_total": 70,
+      "grade": "C",
+      "cum_ret_pct": 17.647058823529417,
+      "primary_label": "모멘텀 과열 (주의)",
+      "bar_source": "5m_agg"
+    },
+    {
+      "article_id": "03850726645380040",
+      "title": "현대바이오, 뎅기열 치료제 임상 2·3상 진입 초읽기...‘베트남 보건 실세 총출동’",
+      "published_at": "2026-03-04T12:00:07+09:00",
+      "ticker": "048410",
+      "ticker_name": "현대바이오",
+      "score_total": 70,
+      "grade": "C",
+      "cum_ret_pct": 17.217524980784017,
+      "primary_label": "중립",
+      "bar_source": "5m_agg"
+    }
+  ],
+  "alerts": [
+    {
+      "key": "02614166645386928-003000",
+      "severity": "high",
+      "headline": "RNA·바이오시밀러·ADC…모멘텀 살아난 K바이오[바이오맥짚기]",
+      "detail": "003000 · 모멘텀 과열 경고",
+      "article_id": "02614166645386928",
+      "ticker": "003000"
+    },
+    {
+      "key": "02086086645381680-215380",
+      "severity": "high",
+      "headline": "전쟁통에 저평가주 재조명...우정바이오·지니너스↑ [바이오맥짚기]",
+      "detail": "215380 · 모멘텀 과열 경고 · MA20 아래",
+      "article_id": "02086086645381680",
+      "ticker": "215380"
+    },
+    {
+      "key": "03047126645354784-048530",
+      "severity": "high",
+      "headline": "반도체주 안 부럽다...인트론바이오·젠큐릭스 등 상한가 신고[바이오맥짚기]",
+      "detail": "048530 · 모멘텀 과열 경고 · MA20 아래",
+      "article_id": "03047126645354784",
+      "ticker": "048530"
+    },
+    {
+      "key": "02092646645350520-048410",
+      "severity": "high",
+      "headline": "뎅기열 '팬데믹' 직면한 베트남, K-바이오 ‘구원투수’ 될까",
+      "detail": "048410 · 모멘텀 과열 경고",
+      "article_id": "02092646645350520",
+      "ticker": "048410"
+    },
+    {
+      "key": "02519046645322640-065170",
+      "severity": "high",
+      "headline": "비엘팜텍 5연상…젬백스도 상승세 지속[바이오맥짚기]",
+      "detail": "065170 · 모멘텀 과열 경고",
+      "article_id": "02519046645322640",
+      "ticker": "065170"
+    },
+    {
+      "key": "02473126645320016-458870",
+      "severity": "high",
+      "headline": "한상열 인제니아 대표 “추가 기술수출·5년 누적 매출 8000억 기대”",
+      "detail": "458870 · 모멘텀 과열 경고 · MA20 아래",
+      "article_id": "02473126645320016",
+      "ticker": "458870"
+    },
+    {
+      "key": "01144726645383648-046210",
+      "severity": "med",
+      "headline": "HLB파나진, 연내 ‘IVDR’ 전 품목 인증 완료... 유럽 시장서 중국 따돌린다",
+      "detail": "046210 · MA20 아래 · 단기 추세 하락",
+      "article_id": "01144726645383648",
+      "ticker": "046210"
+    },
+    {
+      "key": "01184086645381352-458870",
+      "severity": "med",
+      "headline": "전영협 웰리시스 대표 \"올해 미국 매출 140억 목표…연내 기술성 평가 신청\"",
+      "detail": "458870 · MA20 아래 · 단기 추세 하락",
+      "article_id": "01184086645381352",
+      "ticker": "458870"
+    },
+    {
+      "key": "03850726645380040-048410",
+      "severity": "med",
+      "headline": "현대바이오, 뎅기열 치료제 임상 2·3상 진입 초읽기...‘베트남 보건 실세 총출동’",
+      "detail": "048410 · MA20 아래",
+      "article_id": "03850726645380040",
+      "ticker": "048410"
+    },
+    {
+      "key": "01561286645321000-082800",
+      "severity": "med",
+      "headline": "韓·日 빅마파 어나프라주 판매 러브콜 비보존...\"글로벌 기업들과 기술 이전 논의\"",
+      "detail": "082800 · MA20 아래 · 단기 추세 하락",
+      "article_id": "01561286645321000",
+      "ticker": "082800"
+    }
+  ]
+}

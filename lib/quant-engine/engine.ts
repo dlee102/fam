@@ -12,25 +12,27 @@ import { buildTrendFilter, buildEntryRecommendation } from "./filters";
 function buildSummary(
   grade: QuantInsight["grade"],
   primary: QuantInsight["primary_signal"],
-  trend: QuantInsight["trend_filter"],
-  score: number
+  trend: QuantInsight["trend_filter"]
 ): string {
   if (grade === "D") {
-    return `종합 점수 ${score}점 (D등급). ${trend.summary}. 진입 비권고.`;
+    return trend.summary;
   }
 
   const signalDesc =
     primary.type === "AGGRESSIVE_CONTRARIAN"
-      ? "역발상(Contrarian) 시그널 포착."
+      ? "가격이 많이 내렸다가 매매가 다시 붙는 구간으로 보입니다."
       : primary.type === "VOLATILITY_SQUEEZE"
-        ? "변동성 응축(Squeeze) 상태."
+        ? "최근에는 주가가 크게 오르내리지 않고 좁은 범위에 머물러 있습니다."
         : primary.type === "OVERSOLD_REBOUND"
-          ? "과매도 반등 여건."
+          ? "단기로 너무 많이 빠진 뒤라, 조금 되돌릴 여지를 볼 수 있는 구간입니다."
           : primary.type === "MOMENTUM_WARNING"
-            ? "모멘텀 과열 주의."
-            : "특이 시그널 없음.";
+            ? "최근에 너무 빨리 올라, 추격 매수는 부담스러울 수 있는 구간입니다."
+            : primary.type === "NEUTRAL"
+              ? ""
+              : "눈에 띄는 패턴은 없고 무난한 상태에 가깝습니다.";
 
-  return `종합 점수 ${score}점 (${grade}등급). ${signalDesc} ${trend.summary}.`;
+  const parts = [signalDesc.trim(), trend.summary.trim()].filter(Boolean);
+  return parts.join(" ");
 }
 
 export function computeQuantInsight(
@@ -61,7 +63,7 @@ export function computeQuantInsight(
   const entry = buildEntryRecommendation(indicators, grade, bars);
 
   // 종합 코멘트
-  const summary = buildSummary(grade, primary_signal, trend_filter, score.total);
+  const summary = buildSummary(grade, primary_signal, trend_filter);
 
   return {
     ticker,

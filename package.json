@@ -10,10 +10,19 @@
     "lint": "next lint",
     "extract-tickers": "npx tsx scripts/extract-news-tickers.ts",
     "fetch-ticker-names": "python3 scripts/fetch_ticker_names.py",
-    "quant-signals": "python3 scripts/quant_signals.py"
+    "yfinance-fundamentals": "python3 scripts/fetch_yfinance_fundamentals.py",
+    "fundamentals-model-context": "npx tsx scripts/build-fundamentals-model-context.ts",
+    "quant-signals": "python3 scripts/quant_signals.py",
+    "sync-eodhd-firebase": "npx tsx scripts/sync-eodhd-to-firebase.ts",
+    "member-dashboard-top10": "npx tsx scripts/generate-member-dashboard-top10.ts",
+    "classify-bio-gemini": "npx tsx scripts/classify-bio-business-type-gemini.ts",
+    "vercel:push-firebase-env": "node scripts/push-vercel-firebase-env.mjs"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "cheerio": "^1.2.0",
+    "firebase": "^12.11.0",
+    "firebase-admin": "^13.7.0",
     "lightweight-charts": "^5.1.0",
     "lodash": "^4.17.23",
     "next": "15.0.5",
@@ -27,6 +36,7 @@
     "@types/node": "^20.17.6",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "dotenv": "^17.4.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.0.5",
     "typescript": "^5.6.3"

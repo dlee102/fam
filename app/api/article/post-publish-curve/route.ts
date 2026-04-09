@@ -19,7 +19,10 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const series = tickers.flatMap((t) => buildAllPostPublishSeries(article_id, t));
+  const seriesNested = await Promise.all(
+    tickers.map((t) => buildAllPostPublishSeries(article_id, t))
+  );
+  const series = seriesNested.flat();
 
   if (series.length === 0) {
     return NextResponse.json(

@@ -3,8 +3,11 @@ import { getSomedayNewsList } from "@/lib/somedaynews-articles";
 
 const LIST_LIMIT = 150;
 
-export default function Home() {
-  const { items: articles, total } = getSomedayNewsList({ limit: LIST_LIMIT });
+export default async function Home() {
+  const { items: articles, total } = await getSomedayNewsList({
+    limit: LIST_LIMIT,
+    requireIntradayOk: true,
+  });
 
   return (
     <main className="news-container">
@@ -18,8 +21,8 @@ export default function Home() {
         </h2>
         <p className="feed__meta muted-text" style={{ margin: "0 0 1rem", fontSize: "0.875rem" }}>
           {total === 0
-            ? "EODHD 일봉 매니페스트에 연결된 기사가 없거나, SomedayNews JSON에 기록이 없습니다."
-            : `EODHD 연결 기사 ${total.toLocaleString()}건 중 최신 ${articles.length.toLocaleString()}건`}
+            ? "EODHD 5분봉·일봉 매니페스트에 연결된 기사가 없거나, SomedayNews JSON에 기록이 없습니다."
+            : `5분봉 연동(EODHD) 기사 ${total.toLocaleString()}건 중 최신 ${articles.length.toLocaleString()}건`}
         </p>
         <ul className="feed__list">
           {articles.length === 0 ? (

@@ -6,6 +6,8 @@ import {
   Legend,
   Line,
   LineChart,
+  ReferenceArea,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -13,6 +15,9 @@ import {
 } from "recharts";
 
 const COLORS = ["#0d9488", "#0ea5e9", "#7c3aed", "#ea580c", "#db2777"];
+
+/** 홀수 일(T+1)에 깔리는 배경색 — 테마에서 분기 */
+const DAY_BAND_FILL = "rgba(128,128,128,0.06)";
 
 type CurveKind = "five_min_close";
 
@@ -31,11 +36,20 @@ interface ApiResponse {
   series: SeriesPayload[];
 }
 
+type MergedRow = Record<string, string | number | null>;
+
+interface DayRange {
+  dayIdx: number;
+  x1: string;
+  x2: string;
+  tag: string; // "T0" | "T+1" | "T+2"
+}
+
 function seriesKey(s: SeriesPayload): string {
   return `${s.ticker}__${s.curve}`;
 }
 
-function mergeRows(series: SeriesPayload[]): Record<string, string | number | null>[] {
+function mergeRows(series: SeriesPayload[]): MergedRow[] {
   if (series.length === 0) return [];
   const dtSet = new Set<string>();
   for (const s of series) {
@@ -57,7 +71,7 @@ function mergeRows(series: SeriesPayload[]): Record<string, string | number | nu
   });
 
   return sorted.map((dt) => {
-    const row: Record<string, string | number | null> = {
+    const row: MergedRow = {
       label: labelByDt.get(dt) ?? dt,
       bar_datetime: dt,
     };
@@ -67,6 +81,39 @@ function mergeRows(series: SeriesPayload[]): Record<string, string | number | nu
     }
     return row;
   });
+}
+
+/** label 의 day prefix ("0", "1", "2") 추출 */
+function dayPrefix(label: string): string {
+  return label.split("·")[0] ?? "";
+}
+
+/** T0 / T+1 / T+2 범위와 각 날짜의 첫 라벨을 반환 */
+function getDayRanges(rows: MergedRow[]): DayRange[] {
+  if (!rows.length) return [];
+  const ranges: DayRange[] = [];
+  let curDay = "";
+  let x1 = "";
+
+  for (let i = 0; i < rows.length; i++) {
+    const lbl = String(rows[i].label ?? "");
+    const dp = dayPrefix(lbl);
+    if (dp !== curDay) {
+      if (curDay !== "" && x1) {
+        const prev = String(rows[i - 1].label ?? "");
+        const n = parseInt(curDay);
+        ranges.push({ dayIdx: n, x1, x2: prev, tag: n === 0 ? "T0" : `T+${n}` });
+      }
+      curDay = dp;
+      x1 = lbl;
+    }
+  }
+  if (curDay && x1) {
+    const last = String(rows[rows.length - 1].label ?? "");
+    const n = parseInt(curDay);
+    ranges.push({ dayIdx: n, x1, x2: last, tag: n === 0 ? "T0" : `T+${n}` });
+  }
+  return ranges;
 }
 
 function legendLabel(s: SeriesPayload, tickerNames?: Record<string, string>): string {
@@ -122,11 +169,34 @@ export function PostPublishCumReturnChart({
   }, [articleId, valid.join(",")]);
 
   const chartRows = useMemo(() => (data ? mergeRows(data.series) : []), [data]);
+  const dayRanges = useMemo(() => getDayRanges(chartRows), [chartRows]);
   const seriesList = data?.series ?? [];
   const uniqueTickers = useMemo(
     () => [...new Set(seriesList.map((s) => s.ticker))],
     [seriesList]
   );
+
+  /** label → KST 날짜 "YYYY-MM-DD" */
+  const labelToDate = useMemo(() => {
+    const m = new Map<string, string>();
+    for (const s of seriesList) {
+      for (const p of s.points) {
+        if (!m.has(p.label)) m.set(p.label, p.date);
+      }
+    }
+    return m;
+  }, [seriesList]);
+
+  /** 각 거래일 중간 봉의 label — X축 틱으로 사용해 날짜 레이블을 중앙 정렬 */
+  const dayTicks = useMemo(() => {
+    if (!chartRows.length) return [];
+    return dayRanges.map((r) => {
+      const i1 = chartRows.findIndex((row) => row.label === r.x1);
+      const i2 = chartRows.findIndex((row) => row.label === r.x2);
+      const mid = i1 >= 0 && i2 >= i1 ? Math.floor((i1 + i2) / 2) : Math.max(0, i1);
+      return String(chartRows[mid]?.label ?? r.x1);
+    });
+  }, [dayRanges, chartRows]);
 
   if (valid.length === 0) return null;
 
@@ -137,7 +207,7 @@ export function PostPublishCumReturnChart({
   if (status === "loading") {
     return (
       <section className={wrapClass} aria-busy="true">
-        <h3 className="post-publish-chart__title">발행 후 누적 수익률 (5분봉 · T0~T+2)</h3>
+        <h3 className="post-publish-chart__title">발행 후 누적 수익률 (5분봉 · T0~T+4)</h3>
         <p className="post-publish-chart__desc muted-text">불러오는 중…</p>
       </section>
     );
@@ -146,7 +216,7 @@ export function PostPublishCumReturnChart({
   if (status === "empty" || !data?.series.length) {
     return (
       <section className={wrapClass}>
-        <h3 className="post-publish-chart__title">발행 후 누적 수익률 (5분봉 · T0~T+2)</h3>
+        <h3 className="post-publish-chart__title">발행 후 누적 수익률 (5분봉 · T0~T+4)</h3>
         <p className="post-publish-chart__desc muted-text">
           5분봉(또는 EOD 캘린더) 데이터가 없어 곡선을 표시할 수 없습니다.
         </p>
@@ -159,7 +229,7 @@ export function PostPublishCumReturnChart({
   return (
     <section className={wrapClass} aria-labelledby="post-publish-chart-heading">
       <h3 id="post-publish-chart-heading" className="post-publish-chart__title">
-        발행 후 누적 수익률 (5분봉 · T0~T+2)
+        발행 후 누적 수익률 (5분봉 · T0~T+4)
       </h3>
       <div
         className="post-publish-chart__plot"
@@ -167,17 +237,74 @@ export function PostPublishCumReturnChart({
       >
         {mounted ? (
           <ResponsiveContainer width="100%" height="100%" debounce={32}>
-            <LineChart data={chartRows} margin={{ top: 8, right: 4, left: 0, bottom: 28 }}>
+            <LineChart data={chartRows} margin={{ top: 8, right: 4, left: 0, bottom: 4 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border-subtle)" />
+
+              {/* 거래일별 배경 밴드 — 홀수 일만 채색 */}
+              {dayRanges.map((r) =>
+                r.dayIdx % 2 !== 0 ? (
+                  <ReferenceArea
+                    key={`band-${r.tag}`}
+                    x1={r.x1}
+                    x2={r.x2}
+                    fill={DAY_BAND_FILL}
+                    stroke="none"
+                    ifOverflow="visible"
+                  />
+                ) : null
+              )}
+
+              {/* 날짜 경계 수직선 + T+1 / T+2 레이블 */}
+              {dayRanges
+                .filter((r) => r.dayIdx > 0)
+                .map((r) => (
+                  <ReferenceLine
+                    key={`div-${r.tag}`}
+                    x={r.x1}
+                    stroke="var(--color-border-subtle)"
+                    strokeWidth={1.5}
+                    strokeDasharray="5 3"
+                    label={{
+                      value: r.tag,
+                      position: "insideTopLeft",
+                      fontSize: 9,
+                      fontWeight: 600,
+                      fill: "var(--color-text-muted)",
+                      dy: 2,
+                      dx: 3,
+                    }}
+                  />
+                ))}
+
+              {/* T0 레이블 — 맨 첫 봉 */}
+              {dayRanges[0] ? (
+                <ReferenceLine
+                  x={dayRanges[0].x1}
+                  stroke="none"
+                  label={{
+                    value: "T0",
+                    position: "insideTopLeft",
+                    fontSize: 9,
+                    fontWeight: 600,
+                    fill: "var(--color-text-muted)",
+                    dy: 2,
+                    dx: 3,
+                  }}
+                />
+              ) : null}
+
               <XAxis
                 dataKey="label"
-                tick={{ fontSize: 10, fill: "var(--color-text-muted)" }}
+                ticks={dayTicks}
+                tick={{ fontSize: 11, fill: "var(--color-text-muted)" }}
                 axisLine={{ stroke: "var(--color-border-subtle)" }}
-                interval="preserveStartEnd"
-                minTickGap={28}
-                angle={-35}
-                textAnchor="end"
-                height={52}
+                height={28}
+                tickFormatter={(lbl: string) => {
+                  const date = labelToDate.get(lbl);
+                  if (!date) return "";
+                  const parts = date.split("-");
+                  return `${parseInt(parts[1] ?? "0")}/${parseInt(parts[2] ?? "0")}`;
+                }}
               />
               <YAxis
                 tickFormatter={(v) => `${v}%`}
@@ -196,7 +323,21 @@ export function PostPublishCumReturnChart({
                   value !== undefined && Number.isFinite(value) ? `${value.toFixed(2)}%` : "—",
                   "",
                 ]}
-                labelFormatter={(label) => String(label)}
+                labelFormatter={(lbl) => {
+                  const s = typeof lbl === "string" ? lbl : String(lbl ?? "");
+                  // "0·09:05" → "3/24 09:05 (T0)"
+                  const parts = s.split("·");
+                  const time = parts[1] ?? "";
+                  const n = parseInt(parts[0] ?? "");
+                  const tag = n === 0 ? "T0" : `T+${n}`;
+                  const date = labelToDate.get(s);
+                  if (date) {
+                    const dp = date.split("-");
+                    const md = `${parseInt(dp[1] ?? "0")}/${parseInt(dp[2] ?? "0")}`;
+                    return `${md} ${time} (${tag})`;
+                  }
+                  return `${tag} · ${time}`;
+                }}
               />
               {seriesList.length > 1 ? <Legend wrapperStyle={{ fontSize: 11 }} /> : null}
               {seriesList.map((s) => {

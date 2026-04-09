@@ -7,7 +7,9 @@
  * 따라서:
  * 1) 부분점 꼬리는 다소 완화(최악 구간도 15~24대)
  * 2) `raw_weighted` 가중합 후 캘리브레이션 → 기사 AI 톤(긍정/부정)에 **소폭 가감** → 표시 `total`은 **최소 50**.
- * 3) 등급은 `raw_weighted` 기준. 표시 점수와 어긋나지 않게 raw≥18인 D는 C로 완화.
+ * 3) 등급은 표시 `total`(캘리브레이션·기사 톤 가감 반영) 기준으로 구간을 나눔.
+ *    (구 raw 73/53/34에 대응하는 구간은 cal=26+0.74·raw → 약 80/65/51)
+ * 4) 극단만 `raw_weighted`로 D 고정(high 경고·극저 raw).
  *
  * 가중치: atr 30, vol 25, spread 20, momentum 10, bb 10, rsi 5
  */
@@ -173,9 +175,9 @@ export function computeScore(
   };
 }
 
-// ── 등급 (표시 점수와 분리 — `raw_weighted`만 사용) ─────────────────────
+// ── 등급 (화면 총점 `total`과 동일 축 — 혼란 방지) ───────────────────────
 export function gradeFromScore(
-  _displayTotal: number,
+  displayTotal: number,
   signals: SignalResult[],
   raw_weighted?: number
 ): Grade {
@@ -187,18 +189,20 @@ export function gradeFromScore(
   const highWarning = signals.some(
     (s) => s.type === "MOMENTUM_WARNING" && s.confidence === "HIGH"
   );
-  const raw = raw_weighted ?? _displayTotal;
+  const raw = raw_weighted ?? displayTotal;
 
+  /** 구조적 극단만 raw로 D (표시 점수가 높아도 덮지 않음) */
   if (highWarning && raw < 12) return "D";
 
+  const t = displayTotal;
   let g: Grade;
-  if (raw >= 73 && hasPositive && !hasWarning) g = "A";
-  else if (raw >= 73 && hasPositive) g = "B";
-  else if (raw >= 53) g = "B";
-  else if (raw >= 34) g = "C";
+  /** 구 과제점 기준 raw≥73/53/34 → cal 약 80/65/51 에 맞춘 표시 총점 구간 */
+  if (t >= 80 && hasPositive && !hasWarning) g = "A";
+  else if (t >= 80 && hasPositive) g = "B";
+  else if (t >= 65) g = "B";
+  else if (t >= 51) g = "C";
   else g = "D";
 
-  /** 표시 점수가 중립 이상이면 등급도 최소 C (극단 raw<18 제외 시 D 완화) */
   if (g === "D" && raw >= 18) g = "C";
   return g;
 }

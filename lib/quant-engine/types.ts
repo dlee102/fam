@@ -164,7 +164,8 @@ export interface ScoreBreakdown {
 }
 
 /**
- * 등급 — `raw_weighted` 기준(표시 점수와 별개). 극단만 D 유지.
+ * 등급 — 표시 총점 `score.total` 구간 + 시그널 조합(과거 raw 73/53/34를 cal 기준으로 이식).
+ * 극단 D만 `raw_weighted`로 고정.
  */
 export type Grade = "A" | "B" | "C" | "D";
 
@@ -173,8 +174,8 @@ export interface QuantInsight {
   ticker: string;
   /** 분석 기준일 (마지막 일봉의 거래일; 5m 집계면 발행 시각 직전까지 반영된 날) */
   as_of_date: string;
-  /** GET /api/quant/insight 에서만: 5분봉→거래일 집계 vs EOD 일봉 파일 */
-  bar_source?: "5m_agg" | "eod_daily";
+  /** GET /api/quant/insight: 5분봉→거래일 집계만 사용 */
+  bar_source?: "5m_agg";
   indicators: Indicators;
   score: ScoreBreakdown;
   grade: Grade;

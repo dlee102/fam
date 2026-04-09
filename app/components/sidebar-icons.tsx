@@ -45,6 +45,23 @@ export function SidebarNavIcon({ name }: { name: NavIcon }) {
           <path d="M7.5 18h9" />
         </svg>
       );
+    case "premium":
+      return (
+        <svg {...common}>
+          <rect x="3" y="3" width="7" height="9" rx="1.25" />
+          <rect x="14" y="3" width="7" height="5" rx="1.25" />
+          <rect x="14" y="11" width="7" height="10" rx="1.25" />
+          <rect x="3" y="15" width="7" height="6" rx="1.25" />
+        </svg>
+      );
+    case "portfolio":
+      return (
+        <svg {...common}>
+          <path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7" />
+          <rect x="4" y="7" width="16" height="14" rx="2" />
+          <path d="M4 11h16" />
+        </svg>
+      );
     default:
       return (
         <svg {...common}>

@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { fetchArticleContent } from "@/lib/crawl-article";
+import { buildArticleExcerptForQuant } from "@/lib/article-excerpt-for-quant";
 import { getArticleByNewsId } from "@/lib/news-tickers";
-import { getArticleSentiment } from "@/lib/article-sentiment";
 import { getSomedayNewsByArticleId } from "@/lib/somedaynews-articles";
 import { getTickerName } from "@/lib/ticker-names";
+import { pickPrimaryQuantTicker } from "@/lib/pick-primary-quant-ticker";
 import { getTickersForArticle } from "@/lib/quant-engine";
+import { buildArticleBioPeerMapModel } from "@/lib/bio-business-peer-data";
 import { QuantSidebar } from "./QuantSidebar";
+import { ArticleBioPeerMap } from "./ArticleBioPeerMap";
 import { ArticleRiskWatchPanel } from "./ArticleRiskWatchPanel";
 
 function tickerNameMap(codes: string[]): Record<string, string> {
@@ -28,13 +31,16 @@ export default async function ArticlePage({
   const article = articleResult.status === "fulfilled" ? articleResult.value : null;
   const tickerEntry = tickerResult.status === "fulfilled" ? tickerResult.value : null;
   const apiNews = getSomedayNewsByArticleId(newsId);
-  const articleSentiment = getArticleSentiment(newsId);
-  // EOD 매니페스트에서 첫 번째 유효 티커 조회 (퀀트 사이드바용)
-  const quantTickers = getTickersForArticle(newsId);
-  const primaryQuantTicker = quantTickers[0] ?? apiNews?.stock_codes[0] ?? undefined;
+  const quantTickers = await getTickersForArticle(newsId);
 
   if (!article && apiNews) {
     const railTickers = apiNews.stock_codes;
+    const nameMap = tickerNameMap(railTickers);
+    const bioPeerModel = buildArticleBioPeerMapModel(railTickers, nameMap);
+    const primaryQuantTicker =
+      pickPrimaryQuantTicker(railTickers, quantTickers) ??
+      quantTickers[0] ??
+      railTickers.find((t) => /^\d{6}$/.test(String(t).trim()));
     return (
       <main className="article-page-layout">
         <Link href="/" className="back-link back-link--article">
@@ -58,15 +64,16 @@ export default async function ArticlePage({
               articleId={newsId}
               ticker={primaryQuantTicker}
               chartTickers={railTickers}
-              chartTickerNames={tickerNameMap(railTickers)}
-              articleSentiment={articleSentiment}
+              chartTickerNames={nameMap}
+              articleTitle={apiNews.title}
+              articleExcerpt=""
             />
+            {bioPeerModel ? <ArticleBioPeerMap model={bioPeerModel} /> : null}
             <ArticleRiskWatchPanel
               articleId={newsId}
               title={apiNews.title}
               tickers={railTickers}
-              tickerNames={tickerNameMap(railTickers)}
-              primaryTicker={primaryQuantTicker}
+              tickerNames={nameMap}
             />
           </div>
         </div>
@@ -86,6 +93,14 @@ export default async function ArticlePage({
   }
 
   const railTickers = tickerEntry?.tickers?.length ? tickerEntry.tickers : [];
+  const nameMap = tickerNameMap(railTickers);
+  const bioPeerModel = buildArticleBioPeerMapModel(railTickers, nameMap);
+  const primaryQuantTicker =
+    pickPrimaryQuantTicker(railTickers, quantTickers) ??
+    quantTickers[0] ??
+    railTickers.find((t) => /^\d{6}$/.test(String(t).trim()));
+
+  const quantArticleExcerpt = buildArticleExcerptForQuant(article);
 
   return (
     <main className="article-page-layout">
@@ -148,15 +163,16 @@ export default async function ArticlePage({
             articleId={newsId}
             ticker={primaryQuantTicker}
             chartTickers={railTickers}
-            chartTickerNames={tickerNameMap(railTickers)}
-            articleSentiment={articleSentiment}
+            chartTickerNames={nameMap}
+            articleTitle={article.title}
+            articleExcerpt={quantArticleExcerpt}
           />
+          {bioPeerModel ? <ArticleBioPeerMap model={bioPeerModel} /> : null}
           <ArticleRiskWatchPanel
             articleId={newsId}
             title={article.title}
             tickers={railTickers}
-            tickerNames={tickerNameMap(railTickers)}
-            primaryTicker={primaryQuantTicker}
+            tickerNames={nameMap}
           />
         </div>
       </div>

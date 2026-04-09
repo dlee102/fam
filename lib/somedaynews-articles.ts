@@ -6,7 +6,8 @@
 import fs from "fs";
 import path from "path";
 
-import { getArticleIdsWithEodOk } from "@/lib/quant-engine/eod-loader";
+import { decodeHtmlEntities } from "@/lib/decode-html-entities";
+import { getArticleIdsWithIntradayManifestOk } from "@/lib/quant-engine/eod-loader";
 
 interface SomedayNewsArticleRecord {
   date: string;
@@ -44,7 +45,7 @@ function dedupeAll(records: SomedayNewsArticleRecord[]): SomedayNewsListItem[] {
     if (!cur) {
       byId.set(row.article_id, {
         article_id: row.article_id,
-        title: row.title.trim(),
+        title: decodeHtmlEntities(row.title.trim()),
         published_at: row.published_at,
         stock_codes: [...codes],
       });
@@ -105,22 +106,33 @@ export function somedayNewsDateForChart(publishedAt: string): string {
 }
 
 /** 발행일 기준 최신순, 동일 기사(article_id)는 티커만 합친 한 줄 */
-export function getSomedayNewsList(options?: {
+export async function getSomedayNewsList(options?: {
   limit?: number;
-  /** false면 SomedayNews 전체(매니페스트 무관). 기본 true = EODHD 일봉 매니페스트 eod_ok 기사만 */
+  /**
+   * false면 SomedayNews 전체(매니페스트 무관).
+   * 기본 true = EODHD 매니페스트에서 EOD+5분 행이 있는 기사만(일봉만 있는 행은 제외).
+   */
   requireEodOk?: boolean;
-}): {
+  /** true면 requireEodOk와 동일 집합(호환용 별칭). */
+  requireIntradayOk?: boolean;
+}): Promise<{
   items: SomedayNewsListItem[];
   total: number;
-} {
+}> {
   const all = loadDeduped();
   const requireEod = options?.requireEodOk !== false;
-  const withEod = requireEod
-    ? all.filter((a) => getArticleIdsWithEodOk().has(a.article_id))
-    : all;
-  const limit = options?.limit ?? withEod.length;
+  const requireIntra = options?.requireIntradayOk === true;
+  const needManifest = requireIntra || requireEod;
+
+  let filtered = all;
+  if (needManifest) {
+    const ids = await getArticleIdsWithIntradayManifestOk();
+    filtered = all.filter((a) => ids.has(a.article_id));
+  }
+
+  const limit = options?.limit ?? filtered.length;
   return {
-    items: withEod.slice(0, Math.max(0, limit)),
-    total: withEod.length,
+    items: filtered.slice(0, Math.max(0, limit)),
+    total: filtered.length,
   };
 }

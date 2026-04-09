@@ -1,0 +1,2376 @@
+{
+  "generated_at": "2026-04-09T05:37:07.130Z",
+  "source": "gemini",
+  "model": "gemini-2.5-flash-lite",
+  "date_range": {
+    "from": "2025-01-01",
+    "to": "2026-12-31",
+    "note": "published_at 파싱값이 RANGE_FROM_MS 이상 RANGE_TO_MS 미만인 기사만 샘플 제목에 사용"
+  },
+  "input_file": "data/somedaynews_article_tickers.json",
+  "body_source": "/Users/qraft_deullee/Music/Documents/02. MX /fam/pharm_crawler/pharm_articles_sentiment_final.json",
+  "categories": [
+    {
+      "id": "rd_pipeline",
+      "label": "신약 R&D (파이프라인 중심)"
+    },
+    {
+      "id": "platform_licensing",
+      "label": "기술이전/라이선스 수익 비중 큰 플랫폼·바이오텍"
+    },
+    {
+      "id": "cdmo",
+      "label": "CMO/CDMO·위탁생산 (제조 인프라)"
+    },
+    {
+      "id": "cro",
+      "label": "CRO·비임상/임상 지원"
+    },
+    {
+      "id": "dx_ivd",
+      "label": "진단·IVD·장비"
+    },
+    {
+      "id": "upstream_supply",
+      "label": "원료/API·배지·시약 등 밸류체인 상류"
+    }
+  ],
+  "by_ticker": {
+    "102260": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "뉴스 제목에서 '제네웰'이라는 회사명이 언급되며 사업 다각화 및 수출 목표를 제시하고 있으나, 구체적인 사업 모델(R&D, 플랫폼, 제조 등)을 특정하기에는 정보가 부족함.",
+      "name": "동성케미컬",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "102460": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 '혁신신약 개발사' 및 '기술 이전 추진'이라는 표현을 통해 신약 파이프라인 개발 및 기술 이전을 주요 사업 모델로 추정할 수 있음.",
+      "name": "이연제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "102940": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "본문에서 'TG-C'라는 유전자치료제 파이프라인의 상업화 또는 기술 이전을 추진하고 있으며, 임상 3상 결과 발표 및 파트너링 전략을 언급하고 있어 신약 파이프라인 개발이 핵심 사업 모델임을 알 수 있음.",
+      "name": "코오롱생명과학",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "114450": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 'RGN-259 임상 3상 실패'라는 표현을 통해 신약 파이프라인 개발 및 임상 진행을 주요 사업으로 하고 있음을 알 수 있음.",
+      "name": "그린생명과학",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "115180": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "본문에서 '모카시클립', '텔라세벡' 등 신약 파이프라인의 임상 진행 및 기술 수출 가능성을 언급하고 있으며, '신약개발사'로서의 성장을 강조하고 있어 신약 파이프라인 개발이 핵심 사업 모델임을 알 수 있음.",
+      "name": "큐리언트",
+      "sample_title_count": 5,
+      "body_snippet_count": 1
+    },
+    "115450": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 'RGN-259 임상 3상 실패'라는 표현을 통해 신약 파이프라인 개발 및 임상 진행을 주요 사업으로 하고 있음을 알 수 있음.",
+      "name": "HLB테라퓨틱스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "128940": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "본문에서 '비만 치료제 유통 계약 체결', '혁신 비만약' 등 신약 개발 및 상업화 관련 내용을 다루고 있으며, 다른 뉴스 제목에서도 '비만약', '혁신신약' 등을 언급하고 있어 신약 파이프라인 개발이 주요 사업 모델임을 알 수 있음. (단, 일부 내용은 원격의료 플랫폼 관련 내용도 포함하나, 핵심은 신약 개발로 판단됨)",
+      "name": "한미약품",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "137310": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "체외진단 기업으로 다양한 진단 플랫폼을 보유하고 있으며, 코로나19 팬데믹 이후 비코로나 제품으로 사업 체질 개선을 통해 실적 반등을 노리고 있음.",
+      "name": "에스디바이오센서",
+      "sample_title_count": 9,
+      "body_snippet_count": 2
+    },
+    "138610": {
+      "business_type_id": "platform_licensing",
+      "confidence": 1,
+      "rationale_ko": "기술이전(L/O) 계약을 통해 수익을 창출하는 사업 모델을 가지고 있으며, 관련 뉴스가 다수 확인됨.",
+      "name": "나이벡",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "140410": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "폰탄 수술 환자를 대상으로 하는 치료제 유데나필을 개발 중이며, 임상 성공 시 우선심사바우처(PRV)를 통해 기업 가치 재평가를 기대하는 파이프라인 중심의 사업 모델을 가지고 있음.",
+      "name": "메지온",
+      "sample_title_count": 5,
+      "body_snippet_count": 2
+    },
+    "141080": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "퇴행성 뇌질환 치료제 후보물질 'NLY02'를 공동 개발하고 있으며, 기술 이전 가능성이 부각되는 등 파이프라인 중심의 사업 모델을 가지고 있음.",
+      "name": "리가켐바이오",
+      "sample_title_count": 8,
+      "body_snippet_count": 2
+    },
+    "145020": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "필러, 톡신 등 에스테틱 사업과 함께 전문의약품 위탁생산(CMO) 사업을 영위하고 있으나, 미용 의료기기 및 전문의약품 개발 파이프라인에 대한 언급이 많아 R&D 파이프라인 중심 사업으로 판단됨.",
+      "name": "휴젤",
+      "sample_title_count": 11,
+      "body_snippet_count": 1
+    },
+    "145720": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "임플란트 사업을 영위하며, 중국 VBP 정책 등 외부 요인에 영향을 받는 사업 모델을 가지고 있음. 진단기기 관련 뉴스는 확인되지 않음.",
+      "name": "덴티움",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "153710": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "아프리카돼지열병(ASF) 진단키트 등 동물 진단 사업을 주력으로 하고 있으며, 진단 수요 증가에 따른 실적 개선을 기대하는 사업 모델을 가지고 있음.",
+      "name": "옵티팜",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "156100": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "척추 임플란트 제품의 글로벌 유통 계약을 통해 사업을 확장하고 있으며, 의료기기 제조 및 판매를 중심으로 하는 사업 모델을 가지고 있음.",
+      "name": "엘앤케이바이오",
+      "sample_title_count": 5,
+      "body_snippet_count": 2
+    },
+    "166480": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "줄기세포 치료제 임상 2·3상 진행 및 FDA 허가 관련 뉴스는 파이프라인 중심의 R&D 사업 모델을 시사함.",
+      "name": "코아스템켐온",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "168330": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "과거 '가짜 백수오' 이슈와 관련된 뉴스는 현재 사업 모델을 명확히 파악하기 어려움.",
+      "name": "내츄럴엔도텍",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "170900": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "신약 개발, ADC, 기술이전, AI 임상 계약 등 R&D 및 파이프라인 관련 뉴스가 다수 포함되어 있음. 다만, 진단 사업(아이엠비디엑스) 관련 내용도 일부 있으나, 동아에스티 자체는 신약 개발이 주력으로 보임.",
+      "name": "동아에스티",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "174900": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "항체 신약 개발, 기술 이전, 임상 진행 등 파이프라인 중심의 R&D 사업 모델을 명확히 보여줌.",
+      "name": "앱클론",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "176750": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "PET-CT 진단제(뉴라체크, 비자밀) 생산 및 유통, 알츠하이머 치료제 관련 진단 사업은 진단/IVD 사업 모델에 해당함.",
+      "name": "듀켐바이오",
+      "sample_title_count": 5,
+      "body_snippet_count": 1
+    },
+    "179530": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "동물용 치료제, 신약 개발, 피부미용 소재 시장 진출 등 R&D 및 신규 사업 개발 관련 뉴스가 많아 파이프라인 중심의 사업 모델로 판단됨.",
+      "name": "애드바이오텍",
+      "sample_title_count": 11,
+      "body_snippet_count": 0
+    },
+    "180400": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "DXVX, 클리노믹스, 인트론바이오 등 여러 회사의 뉴스가 혼재되어 있어 특정 회사의 사업 모델을 명확히 분류하기 어려움. DXVX는 R&D, 클리노믹스는 진단/IVD, 인트론바이오도 R&D 관련으로 추정되나, 해당 종목의 사업 모델을 직접적으로 파악하기에는 정보가 부족함.",
+      "name": "코스닥",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "183490": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "대여금 문제 및 감사 의견 거절 관련 뉴스는 회사의 재무적 이슈를 보여주며, 핵심 사업 모델을 파악하기 위한 정보가 부족함.",
+      "name": "엔지켐생명과학",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "185490": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "항체 신약 개발 기업으로, 파이프라인(NN2802, NN3201)의 기술 이전 및 임상 개발을 통한 사업 모델을 가지고 있음.",
+      "name": "아이진",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "185750": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 기사에서 의료기기, 신약 개발, AI 사업 등 다양한 사업 영역을 언급하고 있어 특정 사업 모델로 분류하기 어려움. 본문 발췌 내용이 종근당 자체 사업 모델보다는 다른 기업(리브스메드, 로킷헬스케어, 삼천당제약)에 대한 언급이 주를 이룸.",
+      "name": "종근당",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "187220": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "주어진 정보만으로는 사업 모델을 명확히 파악하기 어려움.",
+      "name": "디티앤씨",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "187420": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "글로벌 소재 회사 도약 언급 및 자회사 상장 관련 내용으로, 회사의 핵심 사업 모델을 특정하기 어려움.",
+      "name": "HLB제넥스",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "188260": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "엠폭스 변이 관련 언급 및 유한양행과의 연관성으로 보아 신약 개발 파이프라인을 중심으로 사업을 영위할 가능성이 높음.",
+      "name": "세니젠",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "191420": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "줄기세포 치료제 개발 및 미국 임상 진행, 매출 목표 언급 등으로 보아 신약 R&D 파이프라인 중심의 사업 모델을 가지고 있음.",
+      "name": "테고사이언스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "195940": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "신약 후보물질(VRN10, VRN11 등)의 임상 개발 및 기술 이전, 플랫폼 기술 보유 등 신약 R&D 파이프라인 중심의 사업 모델을 가지고 있음.",
+      "name": "HK이노엔",
+      "sample_title_count": 7,
+      "body_snippet_count": 1
+    },
+    "196170": {
+      "business_type_id": "platform_licensing",
+      "confidence": 0.9,
+      "rationale_ko": "SC 제형 특허를 기반으로 한 기술 수출(라이선스 아웃) 및 파트너십을 통한 로열티 수익이 핵심 사업 모델로 보임. (예: MSD, AZ와의 계약)",
+      "name": "알테오젠",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "196300": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "산업·의약용 펩타이드 바이오소재와 혁신 신약을 개발하는 회사로, 신약 파이프라인 연구개발이 핵심 사업으로 판단됨.",
+      "name": "코스닥",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "199550": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.7,
+      "rationale_ko": "피부 미용 의료기기 사업을 영위하며, 관련 장비 및 기술 개발이 주력 사업으로 보임.",
+      "name": "레이저옵텍",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "199800": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "유전자가위 원천기술을 기반으로 신약 개발 및 기술이전을 추진하는 회사로, 파이프라인 중심의 R&D 사업 모델을 가지고 있음.",
+      "name": "툴젠",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "200670": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "필러, 톡신 등 미용 의료기기, 전문의약품 위탁생산(CMO), 기능성 화장품 등 다양한 사업을 영위하나, 신규 에스테틱 제품 도입 및 개발을 통한 사업 확장 및 파이프라인 강화에 집중하고 있음.",
+      "name": "휴메딕스",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "200780": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "DDS(약물전달시스템) 기술을 기반으로 신약 개발 및 제네릭 의약품 사업을 영위하며, 혁신형 제약기업으로 선정되는 등 R&D 역량을 바탕으로 사업을 확장하고 있음.",
+      "name": "비씨월드제약",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "203400": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "신약 개발 및 기술 수출을 주요 사업으로 영위하며, 파이프라인 중심의 R&D 역량을 바탕으로 사업을 추진하고 있음.",
+      "name": "에이비온",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "204840": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "안구건조증 신약 등 신약 개발을 주력으로 하며, 제제 기술 제공 및 신제품 출시를 통해 사업을 확장하고 있어 R&D 파이프라인 중심의 사업 모델을 가지고 있음.",
+      "name": "지엘팜텍",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "206640": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "체외진단기기 및 시약 개발·생산을 주력으로 하며, 신제품 출시 및 해외 시장 진출을 통해 사업을 확장하고 있어 진단기기 사업 모델로 판단됨.",
+      "name": "바디텍메드",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "206650": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "주요 사업 모델이 백신 개발 및 판매이며, 파이프라인 확장을 통한 매출 증대 목표를 가지고 있음.",
+      "name": "유바이오로직스",
+      "sample_title_count": 10,
+      "body_snippet_count": 0
+    },
+    "207940": {
+      "business_type_id": "cdmo",
+      "confidence": 0.9,
+      "rationale_ko": "글로벌 제약사들의 바이오 의약품 위탁 생산(CMO) 및 위탁 개발 생산(CDMO) 사업을 핵심으로 영위하고 있음.",
+      "name": "삼성바이오로직스",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "208370": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 투자사와의 사업 협력 논의가 언급되나 구체적인 사업 내용은 불분명.",
+      "name": "셀바스헬스케어",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "214150": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "미용 의료기기 개발 및 판매를 주력으로 하며, 특히 레이저 및 고주파 기반의 시술 기기 판매가 주요 매출원임.",
+      "name": "클래시스",
+      "sample_title_count": 12,
+      "body_snippet_count": 1
+    },
+    "214260": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "마이크로니들 패치 기술을 기반으로 의약품 및 화장품 개발을 진행하며, 특히 붙이는 비만 치료 패치 등 신약 파이프라인 개발에 집중하고 있음.",
+      "name": "라파스",
+      "sample_title_count": 10,
+      "body_snippet_count": 0
+    },
+    "214370": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "펩타이드 기반 신약 개발을 목표로 하며, 습성황반변성 치료제 CG-P5의 임상 개발 및 안과 파이프라인 확장에 집중하고 있음.",
+      "name": "케어젠",
+      "sample_title_count": 4,
+      "body_snippet_count": 1
+    },
+    "214390": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "백신 개발 및 판매를 주요 사업으로 하며, FDA 승인 기대감 등 파이프라인 관련 뉴스가 주로 언급됨.",
+      "name": "경보제약",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "214450": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "PDRN(폴리데옥시리보뉴클레오타이드) 기반의 스킨부스터 및 의료기기 개발·판매를 주력으로 하며, 리쥬란 제품이 핵심 매출원임.",
+      "name": "파마리서치",
+      "sample_title_count": 12,
+      "body_snippet_count": 1
+    },
+    "214680": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "자회사 성과와 벤더블 디텍터 공급 등 의료기기 사업 모델을 영위하는 것으로 판단됨.",
+      "name": "디알텍",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "215380": {
+      "business_type_id": "cro",
+      "confidence": 0.9,
+      "rationale_ko": "뉴스 제목에서 '비임상CRO' 언급이 있고, 동물실험 관련 사업을 영위하는 것으로 보아 CRO 사업 모델로 판단됨.",
+      "name": "우정바이오",
+      "sample_title_count": 9,
+      "body_snippet_count": 0
+    },
+    "215600": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "신약 개발 파이프라인(오가노이드 활용 신약개발, 항암 바이러스 등)을 중심으로 사업을 영위하는 것으로 판단됨.",
+      "name": "신라젠",
+      "sample_title_count": 6,
+      "body_snippet_count": 1
+    },
+    "216080": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "톡신(보툴리눔 톡신 등) 기술수출 및 필러 사업 등 신약 및 바이오의약품 개발 파이프라인을 중심으로 사업을 영위하는 것으로 판단됨.",
+      "name": "제테마",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "217330": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "액체생검, AI신약 등 신약개발 파이프라인 관련 사업을 영위하는 것으로 판단됨.",
+      "name": "싸이토젠",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "217730": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "신약 개발 R&D 투자가 필요한 사업 구조이며, 기술 기반 창업자와 재무적 투자자 간 이해관계가 맞물린 구조로 판단됨.",
+      "name": "강스템바이오텍",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "220100": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "방사선 치료제 개발 등 방사성의약품 사업을 영위하는 것으로 판단됨.",
+      "name": "퓨쳐켐",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "221800": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "위탁연구업(CRO) 및 바이오기술(BT) 사업을 영위하다가 진단 및 의료 IT 사업에 역량을 집중하는 것으로 보아 진단 및 의료 IT 사업 모델로 판단됨.",
+      "name": "유투바이오",
+      "sample_title_count": 3,
+      "body_snippet_count": 2
+    },
+    "223250": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움.",
+      "name": "드림씨아이에스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "226320": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움.",
+      "name": "잇츠한불",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "226330": {
+      "business_type_id": "cro",
+      "confidence": 0.8,
+      "rationale_ko": "AI 신약개발 관련 언급이 있으나, 비임상 CRO 서비스 제공에 대한 내용이 주를 이룸.",
+      "name": "신테카바이오",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "226400": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "의료기기(스포츠 메디신, 척추 임플란트) 관련 내용으로, 특정 사업 모델로 분류하기 어려움.",
+      "name": "오스테오닉",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "226950": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "기술 수출 및 신약 개발 파이프라인에 대한 언급이 주를 이룸.",
+      "name": "올릭스",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "228670": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "혁신 의료기기, 디지털 솔루션, 에스테틱 신사업 등 다양한 사업 영역을 언급하고 있어 특정 사업 모델로 분류하기 어려움.",
+      "name": "레이",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "228760": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "소변 기반 방광암 진단 키트(얼리텍-B)의 국내외 판매 및 상업화에 대한 내용이 주를 이룸.",
+      "name": "지노믹트리",
+      "sample_title_count": 7,
+      "body_snippet_count": 2
+    },
+    "229000": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "암 분자 진단 사업 및 디지털 PCR 기반 진단 포트폴리오 확대에 대한 언급이 있음.",
+      "name": "젠큐릭스",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "234690": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "건강기능식품에서 에스테틱으로 사업 전환을 시도하고 있으나, 명확한 사업 모델 분류가 어려움.",
+      "name": "녹십자웰빙",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "237690": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "mRNA 치료제 등 신약 파이프라인 개발 및 상업화에 집중하고 있으며, CDMO 사업도 병행하고 있으나 파이프라인 중심의 R&D가 핵심으로 판단됨.",
+      "name": "에스티팜",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "240550": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "한방 침구류 제조 및 판매 사업을 영위하고 있으나, 구체적인 사업 모델 분류가 어려움.",
+      "name": "동방메디컬",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "243070": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "안구건조증 신약 개발 등 R&D 파이프라인을 보유하고 있으며, 휴온스그룹의 다른 사업 부문(의료기기, 화장품 등)도 있으나 신약 개발이 주요 성장 동력으로 판단됨.",
+      "name": "휴온스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "244460": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "RNA 기반 신약 파이프라인 개발에 집중하고 있으며, 기술 이전 및 임상 개발이 주요 사업 모델로 판단됨.",
+      "name": "올리패스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "246250": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "비만 치료제 등 신약 파이프라인 개발에 집중하고 있으며, 관련 기술 개발 및 임상 진행이 주요 사업 모델로 판단됨.",
+      "name": "에스엘에스바이오",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "246710": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "조직 재생 및 항암 분야 신약 파이프라인 개발에 집중하고 있으며, 기술 이전 및 임상 개발이 주요 사업 모델로 판단됨.",
+      "name": "티앤알바이오팹",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "249420": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "비만 치료제 등 신약 파이프라인 개발에 집중하고 있으며, 임상 개발 및 상업화가 주요 사업 모델로 판단됨.",
+      "name": "일동제약",
+      "sample_title_count": 5,
+      "body_snippet_count": 1
+    },
+    "251120": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "화장품 OEM 사업과 식물 유래 PDRN 원료 사업을 영위하는 것으로 보이나, 사업 모델을 명확히 판단할 정보 부족",
+      "name": "바이오에프디엔씨",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "260660": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "의약품 유통 플랫폼 사업을 영위하는 것으로 보이나, 제공된 정보만으로는 사업 모델을 명확히 판단하기 어려움",
+      "name": "알리코제약",
+      "sample_title_count": 7,
+      "body_snippet_count": 1
+    },
+    "261200": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "임플란트 사업을 영위하는 것으로 보이나, 사업 모델을 명확히 판단할 정보 부족",
+      "name": "덴티스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "261780": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "백신 개발 및 CDMO 사업을 영위하는 것으로 보이나, 뉴스 제목만으로는 R&D 파이프라인 중심인지 CDMO 중심인지 불분명하여 R&D 파이프라인으로 잠정 판단",
+      "name": "차백신연구소",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "263050": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "CAR-T 치료제 등 신약 파이프라인 개발에 집중하는 것으로 보임",
+      "name": "유틸렉스",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "267250": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "ADC 사업에 대한 언급이 있으나, 사업 모델을 명확히 판단할 정보 부족",
+      "name": "HD현대",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "268600": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "신약 개발 기업으로, 반복적인 자금 조달 및 지분 희석 이슈가 언급되는 것으로 보아 R&D 파이프라인 중심 사업 모델로 판단",
+      "name": "268600",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "270870": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "콜라겐 등 건강기능식품 사업을 영위하는 것으로 보이나, 원료 사업과 완제품 수출 확대 등 구체적인 사업 모델 판단에 정보 부족",
+      "name": "뉴트리",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "271980": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "국산 신약 '자큐보' 관련 뉴스가 다수이며, 신약 개발 및 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "제일약품",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "278650": {
+      "business_type_id": "cro",
+      "confidence": 1,
+      "rationale_ko": "동물실험, 비임상 CRO 사업을 명확히 언급하고 있으며, 대표가 비임상 CRO 사업을 강조하고 있음.",
+      "name": "HLB바이오스텝",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "284620": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "관리종목 지정 위기, 투자 유치 등 재무적 이슈가 주로 언급되나, 신약 개발 바이오텍의 특성을 고려하여 R&D 파이프라인 중심으로 판단.",
+      "name": "카이노스메드",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "285130": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "제약 사업 관련 뉴스가 있으나, 신약 파이프라인 개발 및 상업화에 대한 언급이 더 중심적인 것으로 판단됨.",
+      "name": "SK케미칼",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "287410": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "신제품 개발 및 인허가 관련 언급으로 보아 신약 개발 파이프라인 중심 사업 모델로 판단.",
+      "name": "287410",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "287840": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "넥사테칸 특허 이슈, 기술이전 가능성 등 신약 파이프라인 및 기술 이전 관련 뉴스가 주를 이룸.",
+      "name": "인투셀",
+      "sample_title_count": 9,
+      "body_snippet_count": 1
+    },
+    "288330": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "임상 이슈, 기술수출 가능성 등 신약 개발 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "파라택시스코리아",
+      "sample_title_count": 12,
+      "body_snippet_count": 0
+    },
+    "290650": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "스킨부스터(리투오) 관련 매출 및 시장 공략 뉴스가 다수이며, 미용 의료기기 및 관련 제품 판매 사업으로 판단.",
+      "name": "엘앤씨바이오",
+      "sample_title_count": 11,
+      "body_snippet_count": 2
+    },
+    "290660": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 '머리에 쓰는 우울증약' 언급은 있으나, 구체적인 사업 모델이나 수익 구조에 대한 정보가 부족하여 unknown으로 분류함.",
+      "name": "네오펙트",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "290690": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 신약 후보물질(AR1001)의 임상 진행 및 기술 수출 협상에 대한 언급이 있어 신약 R&D 파이프라인 중심 사업으로 판단.",
+      "name": "소룩스",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "291650": {
+      "business_type_id": "cro",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에 'CRO 신사업' 언급이 있고, 매출 및 시총 기준 미달로 퇴출 위기라는 점은 사업 모델의 핵심이 CRO 서비스임을 시사함.",
+      "name": "압타머사이언스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "293780": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "뉴스 제목과 본문 발췌 모두 신약 파이프라인(혁신신약, 계열 내 최초 치료제 등) 개발 및 기술 수출에 대한 내용이 주를 이루어 신약 R&D 파이프라인 중심 사업으로 판단.",
+      "name": "압타바이오",
+      "sample_title_count": 12,
+      "body_snippet_count": 0
+    },
+    "294090": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 법적 분쟁 및 경영진의 의지에 대한 언급은 있으나, 회사의 핵심 사업 모델이나 수익 구조에 대한 정보가 부족하여 unknown으로 분류함.",
+      "name": "이오플로우",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "298060": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에 '주요 임상 좌초' 및 '관리종목 지정 위기' 언급은 있으나, 이는 신약 R&D 파이프라인의 성과와 관련된 문제로 보이며, 회사의 본질적인 사업 모델은 신약 R&D로 판단.",
+      "name": "에스씨엠생명과학",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "298380": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "뉴스 본문에서 사노피에 기술이전한 신약 후보물질(ABL301)의 개발 우선순위 조정으로 인한 가치 재산정 압박 등 신약 파이프라인 개발 및 기술이전 관련 내용이 주를 이루어 신약 R&D 파이프라인 중심 사업으로 판단.",
+      "name": "에이비엘바이오",
+      "sample_title_count": 6,
+      "body_snippet_count": 1
+    },
+    "299170": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "뉴스 제목에 '수술용 로봇·제약 신사업' 언급이 있으나, 본문에서는 JP모건 헬스케어 콘퍼런스 참가 및 의료로봇 '유봇' 인허가에 대한 내용이 주를 이룸. 사업 모델이 명확히 분류되지 않아 unknown으로 판단.",
+      "name": "더블유에스아이",
+      "sample_title_count": 5,
+      "body_snippet_count": 1
+    },
+    "299660": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "셀리드는 신약 R&D 파이프라인을 중심으로 사업을 영위하는 것으로 판단됨.",
+      "name": "셀리드",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "302440": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "SK바이오사이언스는 백신 및 치료제 개발 파이프라인을 중심으로 사업을 영위하는 것으로 판단됨.",
+      "name": "SK바이오사이언스",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "302550": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "미용 의료기기 시장 출사표를 던졌다는 내용만으로는 사업 모델을 명확히 분류하기 어려움.",
+      "name": "리메드",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "303360": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "알레르기 진단 및 면역관리 솔루션 제공을 핵심 사업으로 영위하는 것으로 판단됨.",
+      "name": "프로티아",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "303810": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "MRI 조영제 및 ADC 신약 개발 파이프라인을 중심으로 사업을 영위하는 것으로 판단됨.",
+      "name": "동국생명과학",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "304360": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "파킨슨 치료제 개발 파이프라인을 중심으로 사업을 영위하는 것으로 판단됨.",
+      "name": "에스바이오메딕스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "304840": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "혈액 기반 치매 진단 기술을 핵심 사업으로 영위하는 것으로 판단됨.",
+      "name": "피플바이오",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "305090": {
+      "business_type_id": "upstream_supply",
+      "confidence": 0.8,
+      "rationale_ko": "바이오 소재·부품·장비 대표기업으로, 일회용 세포배양기(바이오리액터) 등 바이오의약품 생산에 필요한 핵심 장비 및 소모품을 공급하는 것으로 판단됨.",
+      "name": "마이크로디지탈",
+      "sample_title_count": 7,
+      "body_snippet_count": 2
+    },
+    "307750": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "주요 사업은 원료의약품 제조이나, 최근 반도체 소재 사업으로 신사업을 확장하며 매출 비중이 6%에 불과하여 아직 사업 모델이 명확히 분류되지 않음.",
+      "name": "국전약품",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "308080": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "희귀 림프종 신약 등 파이프라인 개발에 집중하고 있으며, 의료 장비 도매업 및 CMO 사업은 부가적인 사업으로 보임.",
+      "name": "바이젠셀",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "308430": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "전립선암 치료제 등 방사성의약품 신약 개발 및 상용화에 집중하고 있으며, 자체 생산 인프라를 구축하고 있음.",
+      "name": "셀비온",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "310210": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "고형암 치료제 후보물질 개발에 집중하고 있으며, 기술이전 및 임상개발을 통한 밸류업 사업개발 활동을 하고 있음.",
+      "name": "보로노이",
+      "sample_title_count": 7,
+      "body_snippet_count": 1
+    },
+    "314130": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "항체약물접합체(ADC) 신약 개발에 집중하고 있으며, 전임상 단계에서 기술 이전을 추진하고 있음. 마이크로바이옴 사업은 건강기능식품으로 개발 중.",
+      "name": "지놈앤컴퍼니",
+      "sample_title_count": 10,
+      "body_snippet_count": 2
+    },
+    "314140": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "연질캡슐 의약품 및 젤리약 개발·생산 사업을 영위하고 있으나, 구체적인 사업 모델 분류가 어려움.",
+      "name": "알피바이오",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "314930": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "자궁경부암 자가 채취 진단키트 등 체외진단기기(IVD) 개발 및 판매 사업을 영위하고 있음.",
+      "name": "바이오다인",
+      "sample_title_count": 6,
+      "body_snippet_count": 0
+    },
+    "315640": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "의료 AI 솔루션 개발 사업을 영위하고 있으나, 구체적인 수익 모델이 명확하지 않아 'unknown'으로 분류.",
+      "name": "딥노이드",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "317450": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "명인제약은 의약품 제조 및 판매를 영위하는 회사로, 사업 모델이 명확히 드러나는 정보가 부족하여 unknown으로 분류함.",
+      "name": "명인제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "317690": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "퀀타매트릭스는 AI 신약개발 플랫폼 회사로 언급되나, 구체적인 사업 모델(기술이전, 라이선스 수익 비중 등)에 대한 정보가 부족하여 unknown으로 분류함.",
+      "name": "퀀타매트릭스",
+      "sample_title_count": 7,
+      "body_snippet_count": 1
+    },
+    "318060": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "그래피는 3D 프린팅 기반 치과용 소재 및 장치 개발·판매를 영위하는 회사로, 기술 기반 제품 판매가 주된 사업 모델로 보이나 명확한 사업 분류 id에 해당하지 않아 unknown으로 분류함.",
+      "name": "그래피",
+      "sample_title_count": 3,
+      "body_snippet_count": 2
+    },
+    "321550": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "티움바이오는 신약 파이프라인 개발을 주요 사업으로 영위하는 회사로 판단됨.",
+      "name": "티움바이오",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "322510": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "제이엘케이는 의료 인공지능(AI) 솔루션 개발 및 판매를 주요 사업으로 영위하며, 특히 뇌졸중 진단 AI 솔루션에 대한 언급이 많아 진단(dx) 분야로 분류함.",
+      "name": "제이엘케이",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "326030": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "SK바이오팜은 뇌전증 치료제 등 신약 개발 및 판매를 주요 사업으로 영위하는 회사로, 파이프라인 중심의 사업 모델을 가지고 있음.",
+      "name": "에스케이바이오팜",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "328130": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "루닛은 의료 인공지능(AI) 기반 영상진단 솔루션 개발 및 판매를 주요 사업으로 영위하며, 특히 암 진단 및 동반진단 사업에 집중하고 있어 진단(dx) 분야로 분류함.",
+      "name": "루닛",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "331920": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "셀레믹스는 NGS 기반 유전자 분석 업체로, 타겟 캡쳐 키트 등을 주요 매출원으로 하나, 명확한 사업 분류 id에 해당하지 않아 unknown으로 분류함.",
+      "name": "셀레믹스",
+      "sample_title_count": 1,
+      "body_snippet_count": 2
+    },
+    "334970": {
+      "business_type_id": "cdmo",
+      "confidence": 0.9,
+      "rationale_ko": "뉴스 제목과 본문 모두 위탁생산(CMO) 계약 언급하며 CDMO 사업 모델을 명확히 하고 있음.",
+      "name": "프레스티지바이오로직스",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "335810": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 '콤보 키트 FDA 승인'을 언급하며 진단기기(IVD) 사업 모델을 나타냄.",
+      "name": "프리시젼바이오",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "335890": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에서 '미용의료기기'를 언급하지만, 구체적인 사업 모델을 판단하기에는 정보가 부족함.",
+      "name": "335890",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "336570": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에서 '의료미용기기'를 언급하지만, 구체적인 사업 모델을 판단하기에는 정보가 부족함.",
+      "name": "원텍",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "338220": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 본문에서 'AI 의료기기', '부정맥 진단', '신약 모달리티' 등 R&D 파이프라인 중심의 사업 모델을 설명하고 있음.",
+      "name": "뷰노",
+      "sample_title_count": 9,
+      "body_snippet_count": 1
+    },
+    "338840": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 '기술이전 기대', '삼중항체' 등을 언급하며 신약 R&D 파이프라인 중심의 사업 모델을 나타냄.",
+      "name": "와이바이오로직스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "340570": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "뉴스 제목에서 'C&D 유통망 확장', 'ODM'을 언급하지만, 주력 사업 모델을 명확히 판단하기에는 정보가 부족함.",
+      "name": "티앤엘",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "344860": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 '탈모 솔루션', '항노화', 'B2B→B2C 사업 확장' 등을 언급하지만, 구체적인 사업 모델을 판단하기에는 정보가 부족함.",
+      "name": "이노진",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "347700": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 '라이프시맨틱스', '올리패스' 등 다른 바이오 기업명이 함께 언급되어 해당 기업의 사업 모델을 명확히 파악하기 어려움.",
+      "name": "스피어",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "347850": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "회사의 주요 사업 모델이 신약 파이프라인(경구용 비만약, 지방간염 치료제 등) 개발 및 기술이전에 집중되어 있음.",
+      "name": "디앤디파마텍",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "348080": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 '큐라티스', '자이글' 등 다른 기업명이 함께 언급되어 해당 기업의 사업 모델을 명확히 파악하기 어려움.",
+      "name": "큐라티스",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "348150": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 '셀트리온', '고바이오랩'이 함께 언급되었고, 'ECM 스킨부스터'라는 특정 제품만 언급되어 사업 모델을 명확히 파악하기 어려움.",
+      "name": "고바이오랩",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "352770": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 '클리노믹스', '비엘팜텍', '광동헬스바이오' 등 다른 기업명이 함께 언급되어 해당 기업의 사업 모델을 명확히 파악하기 어려움.",
+      "name": "셀레스트라",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "354200": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "AI 의료 데이터 기업으로 도약하며 NGS 역량에 AI 병리 분석 기술을 결합하고, 디지털의료기기 인허가 및 상용화를 목표로 하는 등 진단 및 데이터 분석 사업 모델이 핵심으로 보임.",
+      "name": "엔젠바이오",
+      "sample_title_count": 8,
+      "body_snippet_count": 2
+    },
+    "358570": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "회사의 주요 사업 모델이 면역항암제 후보물질(GI-102)의 임상 개발 및 기술이전에 집중되어 있음.",
+      "name": "지아이이노베이션",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "359090": {
+      "business_type_id": "cro",
+      "confidence": 1,
+      "rationale_ko": "뉴스에서 '이미징CRO', '비임상CRO' 분야에서의 경쟁력과 FDA 정책 변경에 따른 호재를 언급하며 비임상 CRO 사업 모델이 핵심임을 시사함.",
+      "name": "씨엔알리서치",
+      "sample_title_count": 6,
+      "body_snippet_count": 0
+    },
+    "365270": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "당뇨병성 신증 치료제 후보물질 'CU01'의 임상 2b상 결과를 발표하며 신약 파이프라인 개발 및 임상 진행에 대한 기대감이 높음.",
+      "name": "큐라클",
+      "sample_title_count": 7,
+      "body_snippet_count": 2
+    },
+    "372320": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "카티(CAR-T) 관련 기술을 보유한 것으로 보이나, 구체적인 사업 모델 및 수익 구조에 대한 정보가 부족하여 unknown으로 판단.",
+      "name": "큐로셀",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "373110": {
+      "business_type_id": "upstream_supply",
+      "confidence": 0.8,
+      "rationale_ko": "세포 배양 배지 개발 및 생산을 주요 사업으로 영위하며, 중국 블루메이지 등과의 계약을 통해 매출 발생을 기대하고 있어 upstream_supply로 분류.",
+      "name": "엑셀세라퓨틱스",
+      "sample_title_count": 6,
+      "body_snippet_count": 0
+    },
+    "376900": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "3D 바이오 프린팅 기술을 활용한 재생 치료제 개발 및 임상 진행에 대한 내용이 주로 언급되어 신약 파이프라인 개발 중심으로 판단.",
+      "name": "로킷헬스케어",
+      "sample_title_count": 9,
+      "body_snippet_count": 0
+    },
+    "376930": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "현장진단(POCT) 기기 및 관련 시약 개발·판매를 주요 사업으로 하며, 유럽 공급 계약 등 제품 판매 및 사업 확장에 대한 내용이 주를 이룸.",
+      "name": "노을",
+      "sample_title_count": 9,
+      "body_snippet_count": 0
+    },
+    "377220": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "탈모 치료제 등 신약 파이프라인 개발 및 임상 진행에 대한 내용이 언급되어 신약 개발 중심으로 판단.",
+      "name": "프롬바이오",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "377740": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "항체-약물 접합체(ADC) 플랫폼 기술을 기반으로 신약 파이프라인을 개발하고 있으며, 삼성바이오에피스와의 공동 연구 및 기술이전 가능성이 언급됨.",
+      "name": "바이오노트",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "378800": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "탈모 치료제 등 신약 파이프라인 개발 및 임상 진행에 대한 내용이 언급되어 신약 개발 중심으로 판단.",
+      "name": "샤페론",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "380550": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "AI 기반 뇌 영상 진단 솔루션을 개발하고 있으며, 알츠하이머 치료제 분석 및 FDA 동반 진단 승인을 목표로 하고 있어 진단(DX) 및 체외진단(IVD) 분야로 판단됨.",
+      "name": "뉴로핏",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "382150": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "AI 기반 액체생검 암 진단 신사업을 추진하고 있으며, 데이터 공개를 앞두고 있어 진단(DX) 분야로 판단됨.",
+      "name": "온코크로스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "383930": {
+      "business_type_id": "cro",
+      "confidence": 1,
+      "rationale_ko": "임상시험수탁(CRO) 기업으로 비임상, 임상 1~4상, 컨설팅 등 전주기 서비스를 제공하며, GLP 인증을 받은 PD·PK센터를 운영하고 있어 CRO 사업 모델에 해당함.",
+      "name": "디티앤씨알오",
+      "sample_title_count": 5,
+      "body_snippet_count": 1
+    },
+    "384470": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "폐결절, 폐기종, 관상동맥석회화 자동 검출 및 분석 솔루션을 개발하고 있으며, 의료 현장에서 진단 보조 목적으로 활용되고 있어 진단(DX) 분야로 판단됨.",
+      "name": "코어라인소프트",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "387570": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "내시경용 지혈 시술 기구를 개발하고 있으나, 구체적인 사업 모델 분류가 어려워 unknown으로 판단함.",
+      "name": "파인메딕스",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "388870": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "AI 신약개발 플랫폼을 통해 희귀·난치성 질환 혁신신약을 연구개발하고 있으며, 핵심 파이프라인의 희귀의약품 지정 승인 등 파이프라인 중심의 사업 모델을 가지고 있어 R&D 파이프라인으로 판단됨.",
+      "name": "파로스아이바이오",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "389030": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "공간전사체 분석 서비스 및 AI 기반 정밀의료 솔루션을 제공하며, 세포 단위 정밀진단을 통해 신약 검증 기간 단축 등에 활용되고 있어 진단(DX) 분야로 판단됨.",
+      "name": "지니너스",
+      "sample_title_count": 12,
+      "body_snippet_count": 0
+    },
+    "389470": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "장기지속형 주사제 플랫폼 기술을 개발하고 있으며, 이를 활용한 비만 치료제, 중독 치료제 등 다양한 파이프라인 개발 및 기술이전을 추진하고 있어 R&D 파이프라인으로 판단됨.",
+      "name": "인벤티지랩",
+      "sample_title_count": 12,
+      "body_snippet_count": 1
+    },
+    "389650": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목과 본문에서 신약 파이프라인 개발 및 임상 진행, 기술 수출 등을 중심으로 다루고 있어 신약 R&D 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "넥스트바이오메디컬",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "394800": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "AI 기반 신약 개발 플랫폼을 통해 혁신 신약 후보군을 확보하고 글로벌 제약사와 공동 연구 및 기술 이전을 추진하는 등 신약 R&D 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "쓰리빌리언",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "397030": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "아토피 치료제 등 신약 파이프라인의 임상 진행 및 결과 발표, 기술 수출 등을 중심으로 다루고 있어 신약 R&D 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "에이프릴바이오",
+      "sample_title_count": 7,
+      "body_snippet_count": 2
+    },
+    "398120": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 '신제품 출시', '생산능력 확대', '실적 반등' 등을 언급하며 의료기기 제조 및 판매 사업을 영위하는 것으로 보이며, '진단 전성시대' 관련 기사에서 삼성메디슨과 함께 언급되는 점을 고려하여 진단/의료기기 사업으로 판단됨.",
+      "name": "에스지헬스케어",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "424870": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "면역항암제 임상 데이터 및 특허 분쟁 해결 기대감, 유상증자 추진 소식 등을 다루고 있어 신약 R&D 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "이뮨온시아",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "432980": {
+      "business_type_id": "upstream_supply",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 '원료의약품', '수출 확대', '신규 사업' 등을 언급하며 원료의약품 제조 및 판매 사업을 중심으로 하는 것으로 판단됨.",
+      "name": "엠에프씨",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "439580": {
+      "business_type_id": "upstream_supply",
+      "confidence": 0.9,
+      "rationale_ko": "의약품 유통 플랫폼 사업을 영위하며, 특히 비만약(위고비, 마운자로) 유통 효과를 언급하고 있어 의약품 유통 및 관련 공급망 사업으로 판단됨.",
+      "name": "블루엠텍",
+      "sample_title_count": 5,
+      "body_snippet_count": 2
+    },
+    "445680": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "세포 세척 공정 기술을 활용한 연구 및 글로벌 빅파마와의 협력, 신약 개발 관련 연구 기여 등을 다루고 있어 R&D 파이프라인 및 관련 기술 개발 사업으로 판단됨.",
+      "name": "큐리옥스바이오시스템즈",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "450330": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 임플란트 크라운 블록 신제품 언급은 있으나, 사업 모델의 핵심을 나타내지는 않음.",
+      "name": "하스",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "450950": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "미용 의료기기 신제품 판매 및 FDA 인허가 소식이 주된 내용으로, 진단 및 의료기기 사업 모델로 판단됨.",
+      "name": "아스테라시스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "456070": {
+      "business_type_id": "cdmo",
+      "confidence": 1,
+      "rationale_ko": "CGT CDMO 강자임을 명시하고 있으며, 글로벌 빅파마와의 협력 및 CDMO 1위 유지 언급은 CDMO 사업 모델에 대한 확신을 줌.",
+      "name": "이엔셀",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "456160": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "장기지속형 주사제 플랫폼 기술 개발 및 임상 결과 언급은 신약 파이프라인 개발 및 기술력을 바탕으로 한 사업 모델을 시사함. 다만, 기술수출 등 라이선스 관련 내용도 있어 플랫폼 기술의 중요성도 간과할 수 없음.",
+      "name": "지투지바이오",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "458870": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "원격 환자 모니터링 시장 개척, 심전도 보험수가 획득, 의료 AI 기업 최초 흑자 전환 등은 진단 및 의료기기, AI 기반 솔루션 사업 모델에 해당함.",
+      "name": "씨어스테크놀로지",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "461030": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "다중암 조기진단(MCED) 선두주자로서 액체생검 기술을 활용한 사업 모델을 영위하고 있으며, 임상 결과 및 시장 진출 전략이 주요 내용임.",
+      "name": "아이엠비디엑스",
+      "sample_title_count": 8,
+      "body_snippet_count": 1
+    },
+    "462510": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.8,
+      "rationale_ko": "레이저 미용기기, 초소형 레이저 모듈, 인체조직은행 운영 등은 의료기기 및 관련 사업 모델로 판단됨.",
+      "name": "라메디텍",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "464490": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "GSK와 공동 연구 결과가 학술지에 등재된 것은 신약 개발 파이프라인의 연구 성과를 나타내며, 백신 마이크로니들 기술 등은 R&D 중심 사업 모델로 볼 수 있음. 다만, 진단 관련 내용도 일부 있어 dx_ivd 가능성도 존재함.",
+      "name": "쿼드메디슨",
+      "sample_title_count": 1,
+      "body_snippet_count": 2
+    },
+    "468530": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "AI 신약 개발 및 바이오베터 관련 뉴스 제목으로 보아 신약 파이프라인 개발이 핵심 사업으로 판단됨.",
+      "name": "프로티나",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "475830": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "ADC, DAC 등 신약 파이프라인 개발 및 기술 이전에 대한 언급이 주를 이루어 신약 파이프라인 개발이 핵심 사업으로 판단됨.",
+      "name": "오름테라퓨틱",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "475960": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "홀로토모그래피 기술을 활용한 세포 분석 장비 및 AI 분석 모듈 개발, 오가노이드 분석 솔루션 사업을 영위하며 신약 개발 및 연구 지원에 활용되는 기술을 개발하고 있어 신약 파이프라인 개발 및 관련 기술 개발로 판단됨.",
+      "name": "토모큐브",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "476040": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "오가노이드 기술을 활용한 신약 개발 및 동물 대체 실험 관련 사업을 영위하며, 자회사 설립 및 매출 본격화 언급으로 보아 신약 파이프라인 개발이 핵심 사업으로 판단됨.",
+      "name": "오가노이드사이언스",
+      "sample_title_count": 6,
+      "body_snippet_count": 0
+    },
+    "476060": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "표적항암제 임상 유효성 입증 및 매출/영업익 성장 자신감 언급으로 보아 신약 파이프라인 개발이 핵심 사업으로 판단됨.",
+      "name": "온코닉테라퓨틱스",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "476830": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "기술 이전을 통한 혁신 신약 개발 기업으로 언급되며, 신경질환·항암·비만 등 다양한 분야의 신약 개발 파이프라인을 보유하고 있어 신약 파이프라인 개발이 핵심 사업으로 판단됨.",
+      "name": "알지노믹스",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "489460": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "ECM 스킨부스터 시장 확장 및 사상 최대 실적 예고 언급으로 보아, 피부 관련 신약 또는 치료제 개발 파이프라인을 보유하고 있을 것으로 판단됨.",
+      "name": "바이오비쥬",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "494120": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목만으로는 구체적인 사업 모델 파악이 어려우나, 바이오맥짚기 섹션에 포함되어 있어 신약 파이프라인 개발 관련 기업으로 추정됨.",
+      "name": "큐리오시스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "950160": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "무릎 골관절염 치료제 'TG-C'의 미국 임상 3상 결과 발표 및 FDA 허가, 자체 상업화 또는 기술 이전 전략을 중심으로 사업을 전개하고 있어 신약 R&D 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "코오롱티슈진",
+      "sample_title_count": 8,
+      "body_snippet_count": 2
+    },
+    "950200": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "차세대 염기서열 분석(NGS) 사업의 고성장과 일본 DTC 유전체 서비스의 폭발적인 성장을 통해 최대 실적을 기록하며 흑자 성장 국면에 진입함. 유전체 분석 및 서비스 제공이 핵심 사업 모델임.",
+      "name": "소마젠",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "950210": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "RNA, 바이오시밀러, ADC 등 신약 개발 파이프라인을 보유하고 있으며, 향후 흑자 전환 및 후속 제품 상용화를 목표로 하고 있어 신약 R&D 파이프라인 중심 사업 모델로 판단됨.",
+      "name": "프레스티지바이오파마",
+      "sample_title_count": 4,
+      "body_snippet_count": 1
+    },
+    "950220": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "ARS 치료제의 미국 상용화를 목표로 하고 있으며, 내년 미국 허가를 기대하고 있음. 신약 파이프라인 개발 및 상용화가 핵심 사업 모델임.",
+      "name": "네오이뮨텍",
+      "sample_title_count": 4,
+      "body_snippet_count": 1
+    },
+    "000020": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "신약 개발 승부수, 돌파구 모색 등 파이프라인 중심의 R&D 활동이 언급됨.",
+      "name": "동화약품",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "000070": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "신약 개발 기대감에 힘입어 강세를 보였다는 내용으로 보아 파이프라인 중심의 R&D가 주요 사업 모델로 추정됨.",
+      "name": "삼양홀딩스",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "000100": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "렉라자 등 신약 개발 및 임상, FDA 허가 신청 등 R&D 파이프라인 중심의 사업 활동이 명확하게 드러남.",
+      "name": "유한양행",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "000220": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "동물의약품 사업에 승부수를 던졌다는 점에서 신규 파이프라인 개발 및 사업화에 집중하는 것으로 보임.",
+      "name": "유유제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "000250": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "신약 임상 데이터, 비만치료제 BE Study 등 R&D 파이프라인 중심의 사업 활동이 명확하게 드러남.",
+      "name": "삼천당제약",
+      "sample_title_count": 4,
+      "body_snippet_count": 1
+    },
+    "000520": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "로어시비빈트 등 신약 개발 및 CMO 사업이 언급되나, 신약 자체의 가치와 기대감이 부각되는 점을 고려하여 R&D 파이프라인으로 분류.",
+      "name": "삼일제약",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "000640": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "ADC 관련 언급이 있으나, 사업 모델을 명확히 판단하기에는 정보가 부족함.",
+      "name": "동아쏘시오홀딩스",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "001060": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "탈모 치료제 후보물질 JW0061 개발, 모낭 재생 기전 연구 등 R&D 파이프라인 중심의 사업 활동이 명확하게 드러남.",
+      "name": "JW중외제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "001360": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 'GV1001 조건부 허가 승부수' 언급은 신약 파이프라인 개발 및 허가 관련 사업 모델을 시사함.",
+      "name": "삼성제약",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "002020": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "뉴스 제목에서 '상장예정 바이오텍 15개사, 핵심은 ‘자금창출력’' 언급은 회사의 구체적인 사업 모델보다는 일반적인 바이오텍의 재무적 측면을 다루고 있어 사업 모델 분류가 어려움.",
+      "name": "코오롱",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "002210": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 본문에서 '항암신약 포노젠 임상 3상 진행 추진' 언급은 신약 파이프라인 개발이 주요 사업 모델임을 나타냄. 또한 '정로환을 비롯한 일반의약품(OTC)과 세븐에이트와 미녹시딜의 헤어케어 분야' 언급은 일반의약품 사업도 영위함을 보여주나, 신약 개발이 미래 성장 동력으로 강조됨.",
+      "name": "동성제약",
+      "sample_title_count": 4,
+      "body_snippet_count": 1
+    },
+    "002390": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 제목에서 '항암시장 후발주자 한독, 희귀암 치료제 개발에 '올인'' 및 '혁신 신약 줄줄이 상용화 눈앞' 언급은 신약 파이프라인 개발 및 상용화에 집중하는 사업 모델을 시사함.",
+      "name": "한독",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "002630": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "뉴스 제목에서 '이재명 테마주' 및 '현금난 우려 헬스케어주’ 약세' 언급은 회사의 구체적인 사업 모델보다는 정치 테마 및 재무적 이슈에 초점을 맞추고 있어 사업 모델 분류가 어려움.",
+      "name": "오리엔트바이오",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "003000": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 본문에서 '신약 개발은 10년 이상 장기간 연구개발(R&D) 투자가 필요하고 실패 확률도 높아 상용화 전까지 안정적인 현금흐름을 기대하기 어렵다'는 설명은 신약 개발 파이프라인 중심의 사업 모델을 시사함. 또한 'RNA·바이오시밀러·ADC…모멘텀 살아난 K바이오' 언급도 신약 개발 관련 사업을 나타냄.",
+      "name": "부광약품",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "003220": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 '짜먹는 약’ 부스터 달고 OTC사업 고속성장' 언급은 일반의약품(OTC) 사업을 나타내지만, '에스디생명공학 내달 상장폐지 분수령... 대원제약 영향은'과 같이 다른 회사의 이슈와 연관된 내용도 있어 사업 모델을 명확히 판단하기 어려움. OTC 사업이 주력이라면 'upstream_supply' 또는 'rd_pipeline'과 연관될 수 있으나, 본문 정보 부족으로 'unknown'으로 분류.",
+      "name": "대원제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "003550": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 '의료AI 이어 AI신약개발사에도 훈풍 불까…“성과 도출이 우선”' 및 'AI영상진단·수술 로봇 모두 갖춘 의료AI계 다크호스' 언급은 AI 기반 신약 개발 또는 의료 AI 사업을 시사하나, 회사의 구체적인 사업 모델 및 수익 구조에 대한 정보가 부족하여 'unknown'으로 분류.",
+      "name": "유가",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "003850": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "보령은 항암제 등 신약 파이프라인 개발 및 사업 확장을 지속적으로 추진하고 있으며, 뉴스에서도 신사업 및 파이프라인 관련 내용이 주로 언급됨.",
+      "name": "보령",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "004310": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "현대약품은 탈모 치료제 등 신약 파이프라인 개발에 집중하고 있으며, 관련 뉴스가 주로 보도됨.",
+      "name": "현대약품",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "004990": {
+      "business_type_id": "cdmo",
+      "confidence": 0.9,
+      "rationale_ko": "롯데바이오로직스는 송도 공장 가동을 앞두고 있으며, 이는 위탁개발생산(CDMO) 사업의 핵심 인프라 구축으로 볼 수 있음.",
+      "name": "롯데지주",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "005257": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "주어진 정보만으로는 명확한 사업 모델을 판단하기 어려움. '녹십자홀딩스2우'는 지주회사의 우선주로, 사업 내용 파악이 제한적임.",
+      "name": "005257",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "005500": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "삼진제약은 항혈전제 등 신약 파이프라인 개발에 집중하고 있으며, 관련 뉴스가 주로 보도됨.",
+      "name": "삼진제약",
+      "sample_title_count": 1,
+      "body_snippet_count": 2
+    },
+    "005690": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "파미셀은 줄기세포 치료제 개발을 주요 사업으로 영위하고 있으며, 관련 뉴스가 주로 보도됨.",
+      "name": "파미셀",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "005930": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.7,
+      "rationale_ko": "삼성전자는 다중암 조기진단(MCED) 분야에 투자하고 있으며, 이는 진단 기술(DX) 및 체외진단(IVD)과 관련성이 높음.",
+      "name": "삼성전자",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "006280": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "녹십자는 항체 신약 개발 기업 노벨티노빌리티에 투자하고 있으며, 이는 신약 R&D 파이프라인 중심 사업 모델과 부합함.",
+      "name": "녹십자",
+      "sample_title_count": 9,
+      "body_snippet_count": 2
+    },
+    "006620": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. '바이오벤처 투자' 언급은 있으나 주력 사업으로 보기에는 정보 부족.",
+      "name": "동구바이오제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "007390": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "뉴스 제목에서 'DXVX 첫 기술수출·네이처셀 기대감' 언급은 파이프라인 및 기술 관련 사업 가능성을 시사함.",
+      "name": "네이처셀",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "007460": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 회사의 주력 사업 모델을 파악하기 어려움. 다른 바이오 기업들의 상장폐지, 기술이전 등과 함께 언급됨.",
+      "name": "에이프로젠",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "008930": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "지주회사로서 다양한 사업을 영위할 수 있어 뉴스 제목만으로는 특정 사업 모델을 분류하기 어려움.",
+      "name": "한미사이언스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "009290": {
+      "business_type_id": "cdmo",
+      "confidence": 0.7,
+      "rationale_ko": "본문 발췌에서 '안과 및 주사제 등 광동제약의 전문의약품 위탁생산(CMO) 사업도 확대한다'는 내용이 명시되어 있음.",
+      "name": "광동제약",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "009420": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "본문 발췌에서 '핵심 파이프라인 ‘바토클리맙’을 둘러싼 상용화 시계열이 흐려지고 있다', '바토클리맙 개발과 상업화에 대한 입장이 달라졌다' 등 신약 파이프라인 개발 및 상용화에 대한 내용이 주를 이룸.",
+      "name": "한올바이오파마",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "011000": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에서 '힘빠진 코로나주', 'VGXI 설비 검증' 등 언급은 있으나, 회사의 주력 사업 모델을 명확히 파악하기에는 정보가 부족함.",
+      "name": "진원생명과학",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "011690": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "본문 발췌에서 '미국 합작법인 룩사가 개발 중인 건성 황반변성 치료제 ‘RPESC-RPE-4W’가 가세해 성장이 가속할 것', '임상 1/2a상이 매우 순조롭게 진행되고 있다' 등 신약 파이프라인 개발 및 임상 진행에 대한 내용이 주를 이룸.",
+      "name": "와이투솔루션",
+      "sample_title_count": 7,
+      "body_snippet_count": 2
+    },
+    "014950": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "장기지속형 주사제 플랫폼 기술 개발 및 파이프라인 확장을 목표로 하고 있으며, 이는 신약 R&D 파이프라인 중심의 사업 모델에 해당함.",
+      "name": "삼익제약",
+      "sample_title_count": 3,
+      "body_snippet_count": 2
+    },
+    "016100": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움.",
+      "name": "리더스코스메틱",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "016580": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움.",
+      "name": "환인제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "019170": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "피라맥스 등 신약 파이프라인의 임상 개발 및 유럽 특허 획득 등 R&D 활동이 주요 내용으로 언급됨.",
+      "name": "신풍제약",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "028260": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "액체생검 관련 사업 언급이 있으나, 삼성물산의 주요 사업 모델로 보기에는 정보가 부족함.",
+      "name": "삼성물산",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "028300": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.7,
+      "rationale_ko": "AI 기반 알츠하이머 진단 및 분석 솔루션 개발 및 FDA 승인 준비 등 진단 기술 개발이 핵심 사업으로 보임.",
+      "name": "코스닥",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "032790": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "이종 반월상 연골판 상용화를 목표로 하는 기술 개발은 신약 R&D 파이프라인에 해당함.",
+      "name": "엠젠솔루션",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "032940": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움.",
+      "name": "원익",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "033270": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "개량 신약 개발 및 자체 개발 신약에 대한 언급이 있어 R&D 파이프라인 중심 사업으로 판단됨.",
+      "name": "유나이티드",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "034730": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 빅딜 관련 언급은 있으나 회사의 주력 사업을 알 수 없음.",
+      "name": "유가",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "036220": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "콤보키트, CGM 등 진단기기 및 관련 시장 매출에 대한 언급이 주를 이루어 진단/IVD 사업으로 판단됨.",
+      "name": "오상헬스케어",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "038290": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "본문에서 차세대 염기서열 분석(NGS) 사업의 고성장, 유전체 분석 프로젝트 수주, DTC 유전체 서비스 확장 등 R&D 및 분석 서비스 관련 내용이 언급됨. 다만, 소마젠의 실적 관련 내용이 주를 이루어 직접적인 사업 모델 판단에는 한계가 있으나, 마크로젠의 사업 영역과 연관성이 높아 R&D 파이프라인으로 분류.",
+      "name": "마크로젠",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "039200": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "렉라자 등 신약 개발 및 품목허가, 항암제 개발, 파이프라인 관련 언급이 주를 이루어 R&D 파이프라인 중심 사업으로 판단됨.",
+      "name": "오스코텍",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "039840": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "임플란트, 디지털 임플란트 등 치과 관련 사업 언급이 있으나, 구체적인 사업 모델 분류(제조, 유통, 서비스 등)를 특정하기 어려워 unknown으로 분류.",
+      "name": "디오",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "039860": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "로레알 모멘텀, 전염병 확산에 따른 언급은 있으나, 회사의 핵심 사업 모델을 명확히 알 수 없음. 다만 바이오맥짚기 섹션에 포함되어 R&D 파이프라인 관련 가능성이 있음.",
+      "name": "나노엔텍",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "041830": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 운동 효과, 근손실 예방 등 건강 관련 서비스 언급은 있으나 회사의 주력 사업을 알 수 없음.",
+      "name": "인바디",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "041920": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "제공된 뉴스 제목과 본문 발췌 내용만으로는 회사의 주력 사업 모델을 명확히 파악하기 어렵습니다. 환자 모니터링 시장 경쟁, 기술 이전 및 상업화 기대감 등 다양한 내용이 언급되나, 지속적인 수익 모델을 특정하기 어렵습니다.",
+      "name": "메디아나",
+      "sample_title_count": 2,
+      "body_snippet_count": 2
+    },
+    "041960": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 아프리카돼지열병 관련 내용이 언급되나, 회사의 주력 사업 모델을 명확히 파악하기에는 정보가 부족합니다.",
+      "name": "코미팜",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "042520": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "본문 발췌에서 '인체조직 수요 맞춰 생산능력 2배↑', 'ECM 기반 스킨부스터', '의료기기' 등의 언급으로 보아 의료기기 제조 및 판매 사업으로 추정되나, 명확한 사업 분류 ID에 해당하는 정보가 부족합니다.",
+      "name": "한스바이오메드",
+      "sample_title_count": 6,
+      "body_snippet_count": 1
+    },
+    "046210": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "뉴스 제목에 'PNA', 'IVDR 인증', '유럽 시장' 등이 언급되어 있으나, 회사의 주력 사업 모델을 명확히 파악하기에는 정보가 부족합니다.",
+      "name": "HLB파나진",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "047920": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 '리보세라닙 국내 생산'이 언급되나, 회사의 주력 사업 모델을 명확히 파악하기에는 정보가 부족합니다.",
+      "name": "HLB제약",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "048260": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에 'IT 기술 기반 경소단박 차별화'가 언급되나, 회사의 주력 사업 모델을 명확히 파악하기에는 정보가 부족합니다.",
+      "name": "048260",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "048410": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 본문에서 '뎅기열 치료제 임상 2·3상 진입', '페니트리움 신약 개발 기대', '플랫폼형 신약 후보물질' 등 신약 개발 및 임상 파이프라인 관련 내용이 지속적으로 언급되어 'rd_pipeline'으로 판단합니다.",
+      "name": "현대바이오",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "048530": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "뉴스 본문에서 '핵심 파이프라인 SAL200', '박테리오파지에서 유래한 엔도리신 단백질 신약', '임상 2b상 진입', '기술 수출(L/O)' 등 신약 개발 및 파이프라인 관련 내용이 주를 이루어 'rd_pipeline'으로 판단합니다.",
+      "name": "인트론바이오",
+      "sample_title_count": 3,
+      "body_snippet_count": 1
+    },
+    "048870": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에서 '기술수출' 언급이 있으나, 구체적인 사업 모델보다는 일회성 이벤트에 가까워 보이며 추가 정보 부족으로 unknown 처리.",
+      "name": "시너지이노베이션",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "049180": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "경영권 매각, 유상증자 등 재무적 이슈가 주가에 영향을 미치고 있으며, AI 영상 진단 SW 및 수술 로봇 상용화 언급이 있으나 사업 모델의 핵심이 불명확하여 unknown 처리.",
+      "name": "셀루메드",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "049960": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "유산균 수출 1위라는 언급은 있으나, 구체적인 사업 모델(원료, 완제품 등) 및 매출 구조에 대한 정보가 부족하여 unknown 처리.",
+      "name": "쎌바이오텍",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "051910": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "항암제 사업에 집중하고 있으며, 신약 파이프라인 개발 및 3상 진입 등 R&D 중심의 사업 모델을 영위하는 것으로 판단됨.",
+      "name": "LG화학",
+      "sample_title_count": 10,
+      "body_snippet_count": 0
+    },
+    "052020": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "대장암 신약 효과 및 암세포 관련 연구자 임상 결과 언급 등 신약 R&D 파이프라인 중심의 사업 모델을 영위하는 것으로 판단됨.",
+      "name": "에스티큐브",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "052670": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "동물용 의약품 제조 기업으로 상장폐지 절차 진행 중이며, 주가 급등은 구조적 착시효과로 분석되어 정상적인 사업 모델 판단이 어려워 unknown 처리.",
+      "name": "052670",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "053030": {
+      "business_type_id": "cdmo",
+      "confidence": 0.8,
+      "rationale_ko": "셀트리온, 삼성바이오 등과의 협력을 통한 매출 증대 언급은 CDMO 사업 모델의 가능성을 시사하며, 위탁생산 및 제조 역량이 핵심일 것으로 판단됨.",
+      "name": "바이넥스",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "053950": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "주식 병합, 실적 부진, 경영권 교체 등 재무 및 경영 이슈가 부각되고 있으며, 신약 파이프라인 관련 언급은 있으나 사업 모델의 핵심이 불명확하여 unknown 처리.",
+      "name": "경남제약",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "054620": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "무인 바이오공장 도전이라는 뉴스 제목만으로는 사업 모델을 명확히 판단하기 어려움.",
+      "name": "코스닥",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "054670": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "개량신약 및 웰빙주사제 개발 및 판매를 통해 실적을 경신하고 있다는 점에서 신약 R&D 파이프라인 중심 사업으로 판단됨.",
+      "name": "대한뉴팜",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "054950": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "글로벌 시장 확장 및 영업이익률 증대에 대한 언급은 있으나, 구체적인 사업 모델을 파악하기에는 정보가 부족함.",
+      "name": "제이브이엠",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "056090": {
+      "business_type_id": "cdmo",
+      "confidence": 0.8,
+      "rationale_ko": "임플란트 CDMO 사업을 통해 폭주하고 있다는 점에서 위탁생산(CDMO) 사업 모델로 판단됨.",
+      "name": "시지메드텍",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "058820": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "필름형 제제 기술을 활용한 개량신약 개발 및 미국 시장 안착을 목표로 하고 있어 신약 R&D 파이프라인 중심 사업으로 판단됨.",
+      "name": "CMG제약",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "059090": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.7,
+      "rationale_ko": "신속 항생제 솔루션 언급은 진단 관련 사업일 가능성을 시사하나, 명확한 사업 모델 판단에는 정보가 부족함.",
+      "name": "미코",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "059210": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "실적 개선 및 저평가주 약진이라는 뉴스 제목만으로는 구체적인 사업 모델을 판단하기 어려움.",
+      "name": "메타바이오메드",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "060280": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "의료 로봇 사업에 대한 언급은 있으나, 구체적인 사업 모델(R&D, 제조, 서비스 등)을 명확히 판단하기에는 정보가 부족함.",
+      "name": "큐렉소",
+      "sample_title_count": 8,
+      "body_snippet_count": 0
+    },
+    "060590": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "의료용 대마, 반려견 헬시에이징 치료제 등 신약 파이프라인 개발 및 상용화에 대한 뉴스가 다수 포함되어 있어 R&D 중심 사업 모델로 판단됨.",
+      "name": "씨티씨바이오",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "063160": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 종근당바이오의 주력 사업은 원료의약품 생산이지만, 해당 뉴스는 랩지노믹스, 엔젠바이오와 함께 언급되어 사업 모델을 특정하기 어려움.",
+      "name": "종근당바이오",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "064550": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "탈모 치료제 개발, 코스메르나 등 혁신 신약 파이프라인 개발에 대한 언급이 주를 이루며, 유산균 사업도 신약 개발과 연관된 것으로 보임.",
+      "name": "바이오니아",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "065170": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "분자접착제 플랫폼 기술을 활용한 항암제 개발 및 기술이전 논의에 대한 내용이 상세히 언급되어 신약 파이프라인 개발이 핵심 사업 모델로 판단됨.",
+      "name": "비엘팜텍",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "065510": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "디지털 덴티스트리 사업과 광학 기술을 활용한 사업 확장에 대한 언급이 있으나, 명확한 사업 모델 분류가 어려움. 기존 사업 모델과 신사업 간의 비중 파악이 필요함.",
+      "name": "휴비츠",
+      "sample_title_count": 4,
+      "body_snippet_count": 1
+    },
+    "065650": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "시니어 사업을 캐쉬카우로 바이오 사업에 속도를 낸다는 언급만으로는 구체적인 사업 모델을 파악하기 어려움.",
+      "name": "하이퍼코퍼레이션",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "065660": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "기술수출 및 일본 품목허가 임박 등 신약 파이프라인의 상용화 및 기술 이전과 관련된 뉴스가 주를 이루어 R&D 중심 사업 모델로 판단됨.",
+      "name": "안트로젠",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "066570": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 LG전자의 사업 모델을 명확히 파악하기 어려움. 의료기기, AI 등 다양한 사업 분야를 영위하고 있어 특정하기 어려움.",
+      "name": "LG전자",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "067080": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "마시는 항암제 등 신약 파이프라인 개발 및 중국 시장 진출을 주요 사업으로 영위하고 있음.",
+      "name": "대화제약",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "067630": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 주사기 관련 언급이 있으나 사업의 핵심인지 불분명.",
+      "name": "HLB생명과학",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "068270": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "바이오시밀러, ADC 항암제 등 다양한 신약 파이프라인 개발 및 글로벌 시장 진출을 주요 사업으로 하고 있음. 기술이전, 라이선스 아웃 등도 포함되나 파이프라인 개발이 중심.",
+      "name": "셀트리온",
+      "sample_title_count": 12,
+      "body_snippet_count": 2
+    },
+    "068790": {
+      "business_type_id": "unknown",
+      "confidence": 0,
+      "rationale_ko": "모델 응답에 해당 티커가 없음",
+      "name": "코스닥",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "069620": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "카티스템 등 세포치료제 및 신약 파이프라인 개발을 주요 사업으로 하고 있으며, 미국 임상 3상 진행 등 R&D 중심의 사업 모델을 가지고 있음.",
+      "name": "대웅제약",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "071200": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 거버넌스 관련 내용이 주를 이룸.",
+      "name": "인피니트헬스케어",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "071950": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.9,
+      "rationale_ko": "항체 신약 개발 기업으로, 신규 글로벌 기술이전 성과를 바탕으로 상장에 재도전하는 등 신약 파이프라인 개발 및 기술이전을 주요 사업으로 하고 있음.",
+      "name": "코아스",
+      "sample_title_count": 2,
+      "body_snippet_count": 1
+    },
+    "072520": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. 이종장기 사업 관련 언급이 있으나 구체적인 사업 모델 파악에 한계.",
+      "name": "072520",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "078160": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "주요 파이프라인인 '카티스템'의 일본 진출 및 임상 3상 진행, 미국 임상 3상 개시 예정 등 신약 R&D 파이프라인 중심의 사업 모델을 영위하고 있음.",
+      "name": "메디포스트",
+      "sample_title_count": 8,
+      "body_snippet_count": 1
+    },
+    "082270": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "진행성 핵상마비 치료제 후보물질(GV1001)의 임상 2상 성공 및 조건부 허가 신청 등 신약 R&D 파이프라인 중심의 사업 모델을 영위하고 있음.",
+      "name": "젬백스",
+      "sample_title_count": 5,
+      "body_snippet_count": 1
+    },
+    "082800": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "비마약성 진통제 등 혁신 신약 개발을 주요 사업으로 영위하고 있으며, 글로벌 기업들과 기술 이전 논의를 진행 중임.",
+      "name": "비보존 제약",
+      "sample_title_count": 3,
+      "body_snippet_count": 0
+    },
+    "083790": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "최대주주의 병원 인수 계약 관련 뉴스가 있으나, 회사의 주력 사업 모델을 명확히 판단하기 어려움.",
+      "name": "CG인바이츠",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "084650": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "아토피 치료제 등 신약 파이프라인의 임상 개발 및 기술 이전을 주요 사업으로 영위하고 있음.",
+      "name": "랩지노믹스",
+      "sample_title_count": 1,
+      "body_snippet_count": 1
+    },
+    "084990": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 1,
+      "rationale_ko": "엔젠시스 등 신약 파이프라인의 임상 개발 및 상용화를 주요 사업으로 영위하고 있으며, 반복적인 자금 조달 및 지분 희석 이슈가 있으나 R&D 파이프라인이 핵심임.",
+      "name": "헬릭스미스",
+      "sample_title_count": 4,
+      "body_snippet_count": 2
+    },
+    "085370": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.7,
+      "rationale_ko": "의료기기 관련 뉴스가 있으나, 구체적인 사업 모델을 명확히 판단하기 어려워 'dx_ivd'로 잠정 분류함.",
+      "name": "085370",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "085660": {
+      "business_type_id": "cdmo",
+      "confidence": 0.8,
+      "rationale_ko": "첨단재생바이오법(첨생법) 수혜 및 CDMO 등 세포유전자치료제 사업 본격화 관련 뉴스가 있어 CDMO 사업 모델로 판단됨.",
+      "name": "차바이오텍",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "086040": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목에서 유상증자, 경영권 분쟁 등 재무적 이슈가 부각되나 구체적인 사업 모델을 파악하기 어려움.",
+      "name": "바이오톡스텍",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "086450": {
+      "business_type_id": "unknown",
+      "confidence": 0.7,
+      "rationale_ko": "동국제약은 더마코스메틱, 조영제 등 다양한 사업을 영위하나, 제공된 기사에서는 주로 투자 및 파트너십 관련 내용으로 사업 모델을 특정하기 어려움.",
+      "name": "동국제약",
+      "sample_title_count": 6,
+      "body_snippet_count": 2
+    },
+    "086820": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "골관절염 치료제 '카티라이프'의 임상 결과 및 해외 진출 관련 내용이 주를 이루어 신약 파이프라인 중심의 사업 모델로 판단됨.",
+      "name": "바이오솔루션",
+      "sample_title_count": 12,
+      "body_snippet_count": 0
+    },
+    "086890": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "수출 확대 및 신약 개발사 변신 관련 내용이 언급되어 파이프라인 중심의 사업 모델로 추정됨.",
+      "name": "이수앱지스",
+      "sample_title_count": 4,
+      "body_snippet_count": 0
+    },
+    "086900": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.7,
+      "rationale_ko": "치매 치료제 관련 디지털 치료기기 및 병용 요법에 대한 내용이 언급되어 신약 파이프라인 중심의 사업 모델로 판단됨.",
+      "name": "메디톡스",
+      "sample_title_count": 3,
+      "body_snippet_count": 2
+    },
+    "087010": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "장기지속형 주사제 플랫폼 기술 및 관련 파이프라인 개발에 대한 내용이 주를 이루어 신약 파이프라인 중심의 사업 모델로 판단됨.",
+      "name": "펩트론",
+      "sample_title_count": 12,
+      "body_snippet_count": 1
+    },
+    "089140": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "동물 약 및 진단 관련 내용이 언급되었으나, 사업 모델을 명확히 파악하기에는 정보가 부족함.",
+      "name": "넥스턴앤롤코리아",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "092040": {
+      "business_type_id": "upstream_supply",
+      "confidence": 0.8,
+      "rationale_ko": "배지 및 레진 사업 진출, 관련 매출 발생 및 수주 계약 관련 내용이 주를 이루어 밸류체인 상류 공급 사업으로 판단됨.",
+      "name": "아미코젠",
+      "sample_title_count": 5,
+      "body_snippet_count": 2
+    },
+    "094170": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "침 혈당 측정기라는 의료기기 개발 및 상용화를 추진하고 있으며, 이는 진단기기 사업 모델에 해당함.",
+      "name": "동운아나텍",
+      "sample_title_count": 3,
+      "body_snippet_count": 2
+    },
+    "095700": {
+      "business_type_id": "rd_pipeline",
+      "confidence": 0.8,
+      "rationale_ko": "신약 개발 지연, 기술수출, 국제소송 등 파이프라인 중심의 사업 모델을 영위하고 있음.",
+      "name": "제넥신",
+      "sample_title_count": 6,
+      "body_snippet_count": 0
+    },
+    "096530": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "분자진단 검사 자동화 및 관련 기술을 통해 실적 성장을 추구하고 있으며, 이는 진단기기 사업 모델에 해당함.",
+      "name": "씨젠",
+      "sample_title_count": 3,
+      "body_snippet_count": 2
+    },
+    "096770": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려우나, '국가 인프라에 기술 제공'이라는 언급으로 보아 특정 기술 기반 사업일 가능성이 있음.",
+      "name": "SK이노베이션",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    },
+    "097950": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "건기식 원료 공급 및 헬시뷰티 기업 도약, 진단기기 사업 등 다양한 사업 모델이 언급되어 명확한 분류가 어려움.",
+      "name": "CJ제일제당",
+      "sample_title_count": 2,
+      "body_snippet_count": 0
+    },
+    "098460": {
+      "business_type_id": "dx_ivd",
+      "confidence": 0.9,
+      "rationale_ko": "뇌수술 로봇 등 의료 로봇 사업을 영위하고 있으며, 이는 의료기기 및 진단기기 사업 모델에 해당함.",
+      "name": "고영",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "099190": {
+      "business_type_id": "dx_ivd",
+      "confidence": 1,
+      "rationale_ko": "연속혈당측정기(CGM) 개발 및 유통 사업을 핵심으로 하고 있으며, 이는 진단기기 사업 모델에 해당함.",
+      "name": "아이센스",
+      "sample_title_count": 7,
+      "body_snippet_count": 1
+    },
+    "099430": {
+      "business_type_id": "unknown",
+      "confidence": 0.6,
+      "rationale_ko": "DSV 가교제 활용, 유전자 재조합 기술, 비만/당뇨 치료제 개발 등 다양한 사업이 언급되어 명확한 분류가 어려움. BMC 기업을 지향하는 것으로 보아 바이오 소재 또는 의료기기 관련 사업일 가능성이 있음.",
+      "name": "바이오플러스",
+      "sample_title_count": 5,
+      "body_snippet_count": 0
+    },
+    "099750": {
+      "business_type_id": "unknown",
+      "confidence": 0.5,
+      "rationale_ko": "뉴스 제목만으로는 사업 모델을 명확히 파악하기 어려움. '바이넥스'와의 관계가 명시되지 않아 추가 정보 필요.",
+      "name": "이지케어텍",
+      "sample_title_count": 1,
+      "body_snippet_count": 0
+    }
+  }
+}

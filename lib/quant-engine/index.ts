@@ -3,7 +3,8 @@
  *
  * 사용 예)
  *   import { computeQuantInsight, getBarsThroughPublishDate } from "@/lib/quant-engine";
- *   const { bars, t0_kst } = getBarsThroughPublishDate(article_id, ticker) ?? { bars: [], t0_kst: null };
+ *   const r = await getBarsThroughPublishDate(article_id, ticker);
+ *   const { bars, t0_kst } = r ?? { bars: [], t0_kst: null };
  *   const insight = computeQuantInsight(bars, ticker, bars[bars.length - 1]?.date);
  */
 
@@ -33,5 +34,8 @@ export {
   getPreNewsBars,
   getTickersForArticle,
   findManifestRow,
+  getLatestDailySnapshotForTicker,
+  getArticleIdsWithEodOk,
+  getArticleIdsWithIntradayManifestOk,
 } from "./eod-loader";
 export type { QuantInsightBarSource } from "./eod-loader";

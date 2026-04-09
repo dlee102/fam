@@ -67,7 +67,7 @@ function detectContrarian(ind: Indicators): SignalResult | null {
   if (score < 50) return null;
 
   const conf = rsi14 < 35 && vol_ratio20 !== null && vol_ratio20 > 1.2 ? "HIGH" : "MED";
-  return sig("AGGRESSIVE_CONTRARIAN", "역발상 (Contrarian)", score, conf, 1.55, 1.27, factors);
+  return sig("AGGRESSIVE_CONTRARIAN", "많이 빠진 뒤 반등을 노릴 만한 구간", score, conf, 1.55, 1.27, factors);
 }
 
 // ── Volatility Squeeze ──────────────────────────────────────────────────
@@ -112,7 +112,7 @@ function detectSqueeze(ind: Indicators): SignalResult | null {
   if (score < 40) return null;
 
   const conf = bb_width < 15 && (atr_ratio ?? 99) < 5.0 ? "HIGH" : "MED";
-  return sig("VOLATILITY_SQUEEZE", "변동성 응축 (Squeeze)", score, conf, 1.03, 1.56, factors);
+  return sig("VOLATILITY_SQUEEZE", "주가가 잠깐 조용해진 구간(폭발 전 잔잔함)", score, conf, 1.03, 1.56, factors);
 }
 
 // ── Oversold Rebound ────────────────────────────────────────────────────
@@ -154,7 +154,7 @@ function detectOversoldRebound(ind: Indicators): SignalResult | null {
   if (score < 40) return null;
 
   const conf = bb_pct_b < 0.2 && rsi14 < 40 ? "HIGH" : "MED";
-  return sig("OVERSOLD_REBOUND", "과매도 반등", score, conf, 1.01, 1.23, factors);
+  return sig("OVERSOLD_REBOUND", "너무 많이 빠진 뒤 소폭 반등을 기대할 수 있는 구간", score, conf, 1.01, 1.23, factors);
 }
 
 // ── Momentum Warning ────────────────────────────────────────────────────
@@ -197,7 +197,7 @@ function detectMomentumWarning(ind: Indicators): SignalResult | null {
   if (score < 35) return null;
 
   const conf = score >= 70 ? "HIGH" : score >= 50 ? "MED" : "LOW";
-  return sig("MOMENTUM_WARNING", "모멘텀 과열 (주의)", score, conf, -0.35, null, factors);
+  return sig("MOMENTUM_WARNING", "단기 급등·과열(무리한 추격 주의)", score, conf, -0.35, null, factors);
 }
 
 // ── 전체 시그널 탐지 ────────────────────────────────────────────────────
@@ -216,7 +216,7 @@ export function detectSignals(ind: Indicators): SignalResult[] {
 
 export const NEUTRAL_SIGNAL: SignalResult = {
   type: "NEUTRAL",
-  label: "중립",
+  label: "특별히 두드러진 패턴 없음",
   strength: 30,
   confidence: "LOW",
   expected_return_pct: null,

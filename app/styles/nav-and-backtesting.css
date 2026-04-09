@@ -1,0 +1,125 @@
+/* 상단 2행 내비: 본문·오버레이보다 위에서 클릭이 먹도록 */
+.site-header-nav {
+  isolation: isolate;
+}
+
+/* 백테스팅 하위 탭 (layout) */
+.backtesting-layout {
+  width: 100%;
+  padding-top: 0.35rem;
+}
+
+.backtesting-tabs-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 24px 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.backtesting-tabs.nav-tabs {
+  gap: 0.5rem;
+}
+
+.backtesting-tabs .nav-tab {
+  padding: 0.4rem 1rem;
+}
+
+/* 상단 탭 — Apple nav 스타일: 무배경, 순수 텍스트 */
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-tabs__divider {
+  width: 1px;
+  height: 0.9rem;
+  margin: 0 0.15rem;
+  background: var(--color-border-strong);
+  flex-shrink: 0;
+  opacity: 0.65;
+}
+
+.nav-tab {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 0.25rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  border-radius: 0;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tab[data-active="true"] {
+  color: var(--color-text);
+  font-weight: 300;
+}
+
+@media (hover: hover) {
+  .nav-tab:hover:not([data-active="true"]) {
+    color: var(--color-text);
+  }
+}
+
+/* 모든 variant 동일 — 무채색 텍스트만 */
+.nav-tab--default[data-active="true"],
+.nav-tab--news[data-active="true"],
+.nav-tab--backtest[data-active="true"],
+.nav-tab--premium[data-active="true"] {
+  color: var(--color-text);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.nav-tab--default:hover:not([data-active="true"]),
+.nav-tab--news:hover:not([data-active="true"]),
+.nav-tab--backtest:hover:not([data-active="true"]),
+.nav-tab--premium:hover:not([data-active="true"]) {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.nav-tab--default[data-active="true"]:hover,
+.nav-tab--news[data-active="true"]:hover,
+.nav-tab--backtest[data-active="true"]:hover,
+.nav-tab--premium[data-active="true"]:hover {
+  color: var(--color-text);
+  background-color: transparent;
+}
+
+.logo-link:hover {
+  color: var(--color-text-muted) !important;
+  transition: color 0.15s ease;
+}
+
+.article-link:hover .feed__title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.kiwoom-card-title-link:hover {
+  color: var(--color-accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.kiwoom-article-title:hover {
+  color: var(--color-accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

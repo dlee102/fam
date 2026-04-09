@@ -1,0 +1,216 @@
+/* ── 기사 페이지 레이아웃 ──────────────────────────────────────────── */
+.article-page-layout {
+  box-sizing: border-box;
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--page-pad-y-top) var(--page-pad-x) var(--page-pad-y-bottom);
+}
+
+/* 본문: 기사 + 우측 열(퀀트 지표 → 리스크·관심) */
+.article-page-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "main"
+    "right";
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .article-page-body {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    grid-template-areas: "main right";
+    gap: 2rem 2.5rem;
+  }
+}
+
+.article-page-body__main {
+  grid-area: main;
+}
+
+/* 우측: 퀀트 사이드바 + 리스크·관심 스택 (페이지 스크롤로 전체 노출) */
+.article-page-body__right-col {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-self: start;
+  min-width: 0;
+}
+
+.article-page-article {
+  min-width: 0;
+}
+
+/* ── 퀀트 아래: 리스크 · 관심종목 ─────────────────────────────────── */
+.article-risk-watch {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.article-risk-watch__panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.125rem 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.article-risk-watch__heading {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.article-risk-watch__btn-main {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.article-risk-watch__btn-main:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 6%, var(--color-bg));
+}
+
+.article-risk-watch__btn-main--active {
+  color: var(--color-accent-hover);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+}
+
+.article-risk-watch__btn-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.article-risk-watch__toast {
+  margin: 0.5rem 0 0;
+  font-size: 0.6875rem;
+  color: var(--color-accent-hover);
+  text-align: center;
+}
+
+.article-risk-watch__ticker-list {
+  list-style: none;
+  margin: 0.875rem 0 0;
+  padding: 0;
+}
+
+.article-risk-watch__ticker-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.article-risk-watch__ticker-row:first-of-type {
+  border-top: none;
+  padding-top: 0.25rem;
+}
+
+.article-risk-watch__ticker-code {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.article-risk-watch__ticker-name {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+.article-risk-watch__hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.article-risk-watch__footer {
+  margin: 1rem 0 0;
+  font-size: 0.625rem;
+  color: var(--color-text-faint);
+  line-height: 1.45;
+}
+
+/* 기사: 발행 후 누적 수익률 차트 */
+.post-publish-chart {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.post-publish-chart__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.post-publish-chart__desc {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+}
+
+.post-publish-chart__plot {
+  width: 100%;
+  min-height: 240px;
+}
+
+/* 퀀트 사이드바 카드 안: 이중 테두리 방지 */
+.post-publish-chart--embedded {
+  margin-top: 0;
+  padding: 1rem 0 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.post-publish-chart--embedded .post-publish-chart__plot {
+  min-height: 0;
+}
+
+.article-page-article__title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 1rem;
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .article-page-layout {
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+}

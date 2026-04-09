@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppSidebar } from "./components/PrimaryNav";
+import { FirebaseAnalyticsInit } from "./components/FirebaseAnalyticsInit";
 
 export const metadata: Metadata = {
   title: "FAM 뉴스",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="ko" data-theme="dark" suppressHydrationWarning>
       <body>
+        <FirebaseAnalyticsInit />
         <div className="site-root">
           <div className="site-header-sticky">
             <header className="site-header site-header--brand">

@@ -27,12 +27,15 @@ yarn-error.log*
 .env
 .env*.local
 
-# local API dumps
+# local API dumps (대용량 yfinance 원본 제외, 모델용 경량만 커밋 가능)
+/data/yfinance_fundamentals/*
+!/data/yfinance_fundamentals/fundamentals_model_context.json
 /data/somedaynews/
 /data/somedaynews_sentiment.jsonl
 # data/eodhd_news_windows/ → Git LFS (.gitattributes)
 
 # python / local caches
+.venv/
 **/__pycache__/
 *.pyc
 data/.cache/

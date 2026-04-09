@@ -1,0 +1,344 @@
+/* 콘텐츠 폭 · 좌우 패딩 통일 */
+.layout-center {
+  width: 100%;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding-left: var(--page-pad-x);
+  padding-right: var(--page-pad-x);
+}
+
+.news-container {
+  box-sizing: border-box;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--page-pad-y-top) var(--page-pad-x) var(--page-pad-y-bottom);
+}
+
+.news-container--portfolio {
+  max-width: min(72rem, 100%);
+}
+
+@media (min-width: 768px) {
+  .layout-center {
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+
+  .news-container {
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+}
+
+/* 전역 셸: 풀블리드 헤더 + 본문 */
+.site-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+}
+
+.site-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .site-header-sticky {
+    background: var(--color-surface);
+  }
+}
+
+.site-header {
+  width: 100%;
+}
+
+/* 상단 바: 로고·토글은 뷰포트 가장자리 (레퍼런스의 Back 링크 위치와 동일한 역할) */
+.site-header__edge {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.75rem var(--page-pad-x) 0.65rem;
+}
+
+.site-header__edge--split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-header--nav .site-header__edge {
+  padding-top: 0.45rem;
+  padding-bottom: 0.55rem;
+}
+
+@media (min-width: 768px) {
+  .site-header__edge {
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+  }
+}
+
+/* 헤더 아래: 사이드바 + 간격 + 본문 열만 가운데 묶음 */
+.site-body {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  min-height: 0;
+  width: 100%;
+  max-width: calc(
+    var(--layout-max) + var(--app-sidebar-w) + var(--app-shell-gap) + 2 * var(--page-pad-x)
+  );
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: var(--app-shell-pad-top);
+  padding-left: var(--page-pad-x);
+  padding-right: var(--page-pad-x);
+  gap: var(--app-shell-gap);
+}
+
+.site-main-wrap {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--layout-max);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 사이드바 — 프로필 + 아이콘 네비 + 하단 CTA */
+.app-sidebar {
+  flex-shrink: 0;
+  width: var(--app-sidebar-w);
+  padding: 0.5rem 0 1.75rem 0;
+  background: transparent;
+}
+
+.app-sidebar__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app-sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.25rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.65rem 0.65rem 0.45rem;
+}
+
+.app-sidebar__avatar {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: var(--app-sidebar-avatar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-sidebar__avatar-letter {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+
+.app-sidebar__profile-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.app-sidebar__profile-title {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-sidebar__profile-sub {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-sidebar__nav--tree {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+}
+
+.app-sidebar__nav-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.app-sidebar__nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.app-sidebar__nav-sep {
+  flex-shrink: 0;
+  padding: 0.55rem 0.75rem;
+}
+
+.app-sidebar__nav-sep::before {
+  content: "";
+  display: block;
+  border-top: 1px solid var(--color-border-subtle);
+  opacity: 0.4;
+}
+
+.app-sidebar__row-wrap {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-sidebar__row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.125rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.app-sidebar__row-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-faint);
+}
+
+.app-sidebar__row[data-active="true"] .app-sidebar__row-icon {
+  color: var(--color-text-muted);
+}
+
+.app-sidebar__row-label {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-sidebar__row[data-active="true"] {
+  background-color: var(--app-sidebar-active-bg);
+}
+
+.app-sidebar__row--premium .app-sidebar__row-icon {
+  color: color-mix(in srgb, #fbbf24 70%, var(--color-text-muted));
+}
+
+.app-sidebar__row--premium .app-sidebar__row-label {
+  white-space: normal;
+  line-height: 1.3;
+  font-size: 0.8125rem;
+}
+
+@media (hover: hover) {
+  .app-sidebar__row:hover:not([data-active="true"]) {
+    background-color: color-mix(in srgb, var(--app-sidebar-active-bg) 55%, transparent);
+  }
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .site-body {
+    flex-direction: column;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    padding: 0.5rem 0 0.65rem;
+  }
+
+  .app-sidebar__profile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .site-body {
+    padding-top: 2.35rem;
+    padding-left: var(--page-pad-x-lg);
+    padding-right: var(--page-pad-x-lg);
+    max-width: calc(
+      var(--layout-max) + var(--app-sidebar-w) + var(--app-shell-gap) + 2 * var(--page-pad-x-lg)
+    );
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --app-shell-gap: 3.25rem;
+    --app-shell-pad-top: 2.75rem;
+  }
+
+  .site-body {
+    padding-top: var(--app-shell-pad-top);
+  }
+}
+
+.site-logo {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.2;
+}
