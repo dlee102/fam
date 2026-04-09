@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "Per-article EODHD 뉴스 윈도 매니페스트 및 캐시 적재 현황",
 };
 
-export default function BacktestingManifestPage() {
-  const { rows, summary, relativePath } = loadPerArticleManifest();
+export default async function BacktestingManifestPage() {
+  const { rows, summary, relativePath } = await loadPerArticleManifest();
 
   return (
     <BacktestingPageShell

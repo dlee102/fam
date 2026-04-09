@@ -1,7 +1,20 @@
 import fs from "fs";
 import path from "path";
 
+import { readEodhdJson } from "@/lib/eodhd-json-source";
+
 const MANIFEST_REL = "data/eodhd_news_windows/per_article/manifest_per_article.json";
+
+function localManifestFileMtimeIso(): string | null {
+  const full = path.join(process.cwd(), MANIFEST_REL);
+  if (!fs.existsSync(full)) return null;
+  try {
+    JSON.parse(fs.readFileSync(full, "utf-8"));
+    return new Date(fs.statSync(full).mtimeMs).toISOString();
+  } catch {
+    return null;
+  }
+}
 
 export type PerArticleManifestRow = {
   article_idx: number;
@@ -61,25 +74,16 @@ function emptyManifestLoad(): {
   return { rows: [], summary: EMPTY_SUMMARY, relativePath: MANIFEST_REL };
 }
 
-export function loadPerArticleManifest(): {
+export async function loadPerArticleManifest(): Promise<{
   rows: PerArticleManifestRow[];
   summary: PerArticleManifestSummary;
   relativePath: string;
-} {
-  const full = path.join(process.cwd(), MANIFEST_REL);
-  if (!fs.existsSync(full)) {
-    return emptyManifestLoad();
-  }
-
-  const raw = fs.readFileSync(full, "utf-8");
-  let rows: PerArticleManifestRow[];
-  try {
-    rows = JSON.parse(raw) as PerArticleManifestRow[];
-  } catch {
-    // Git LFS pointer or other non-JSON (e.g. CI without `git lfs pull`).
-    return emptyManifestLoad();
-  }
-  if (!Array.isArray(rows)) {
+}> {
+  const raw = await readEodhdJson<PerArticleManifestRow[]>(
+    "per_article/manifest_per_article.json"
+  );
+  const rows = Array.isArray(raw) ? raw : [];
+  if (rows.length === 0) {
     return emptyManifestLoad();
   }
 
@@ -117,12 +121,7 @@ export function loadPerArticleManifest(): {
 
   const sorted = [...rows].sort((a, b) => parseTime(b.published_at) - parseTime(a.published_at));
 
-  let mtime: string | null = null;
-  try {
-    mtime = new Date(fs.statSync(full).mtimeMs).toISOString();
-  } catch {
-    mtime = null;
-  }
+  const mtime = localManifestFileMtimeIso();
 
   const total = rows.length;
   const summary: PerArticleManifestSummary = {
