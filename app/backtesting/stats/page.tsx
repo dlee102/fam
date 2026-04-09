@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   description: "발행일(T0) 이후 거래일 N일 보유 시 표본 평균 수익률",
 };
 
-export default function BacktestingStatsPage() {
+export default async function BacktestingStatsPage() {
   const data = loadPublishHorizon();
   const hasData = hasPublishHorizonData(data);
-  const sourceCounts = loadBacktestingSourceCounts();
+  const sourceCounts = await loadBacktestingSourceCounts();
 
   return (
     <BacktestingPageShell

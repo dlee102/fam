@@ -1,20 +1,19 @@
 import fs from "fs";
 import path from "path";
+
+import { loadSomedaynewsArticleTickersRecords } from "@/lib/somedaynews-json-source";
+
 import type { BacktestingSourceCounts } from "./backtesting-source-counts.types";
 
-const ARTICLES_REL = path.join("data", "somedaynews_article_tickers.json");
 const MANIFEST_REL = path.join("data", "eodhd_news_windows", "per_article", "manifest_per_article.json");
 
-export function loadBacktestingSourceCounts(rootDir = process.cwd()): BacktestingSourceCounts {
+export async function loadBacktestingSourceCounts(rootDir = process.cwd()): Promise<BacktestingSourceCounts> {
   let articleTickerRecords: number | null = null;
-  const artPath = path.join(rootDir, ARTICLES_REL);
-  if (fs.existsSync(artPath)) {
-    try {
-      const raw = JSON.parse(fs.readFileSync(artPath, "utf-8"));
-      articleTickerRecords = Array.isArray(raw) ? raw.length : null;
-    } catch {
-      articleTickerRecords = null;
-    }
+  try {
+    const records = await loadSomedaynewsArticleTickersRecords();
+    articleTickerRecords = records.length;
+  } catch {
+    articleTickerRecords = null;
   }
 
   let manifestRows: number | null = null;

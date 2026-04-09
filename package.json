@@ -15,6 +15,7 @@
     "fundamentals-model-context": "npx tsx scripts/build-fundamentals-model-context.ts",
     "quant-signals": "python3 scripts/quant_signals.py",
     "sync-eodhd-firebase": "npx tsx scripts/sync-eodhd-to-firebase.ts",
+    "sync-somedaynews-firebase": "npx tsx scripts/sync-somedaynews-to-firebase.ts",
     "member-dashboard-top10": "npx tsx scripts/generate-member-dashboard-top10.ts",
     "classify-bio-gemini": "npx tsx scripts/classify-bio-business-type-gemini.ts",
     "vercel:push-firebase-env": "node scripts/push-vercel-firebase-env.mjs"

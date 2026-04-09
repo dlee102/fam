@@ -30,6 +30,9 @@ yarn-error.log*
 .env
 .env*.local
 
+# Firebase Admin 서비스 계정 키 (절대 커밋 금지)
+*firebase-adminsdk*.json
+
 # local API dumps (대용량 yfinance 원본 제외, 모델용 경량만 커밋 가능)
 /data/yfinance_fundamentals/*
 !/data/yfinance_fundamentals/fundamentals_model_context.json

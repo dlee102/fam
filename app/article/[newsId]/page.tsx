@@ -30,7 +30,7 @@ export default async function ArticlePage({
   ]);
   const article = articleResult.status === "fulfilled" ? articleResult.value : null;
   const tickerEntry = tickerResult.status === "fulfilled" ? tickerResult.value : null;
-  const apiNews = getSomedayNewsByArticleId(newsId);
+  const apiNews = await getSomedayNewsByArticleId(newsId);
   const quantTickers = await getTickersForArticle(newsId);
 
   if (!article && apiNews) {

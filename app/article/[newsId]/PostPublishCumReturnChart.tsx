@@ -213,7 +213,7 @@ export function PostPublishCumReturnChart({
   if (status === "loading") {
     return (
       <section className={wrapClass} aria-busy="true">
-        <h3 className="post-publish-chart__title">발행 전후 누적 수익률 (5분봉 · T-3~T+4)</h3>
+        <h3 className="post-publish-chart__title">발행 전후 누적 수익률</h3>
         <p className="post-publish-chart__desc muted-text">불러오는 중…</p>
       </section>
     );
@@ -222,7 +222,7 @@ export function PostPublishCumReturnChart({
   if (status === "empty" || !data?.series.length) {
     return (
       <section className={wrapClass}>
-        <h3 className="post-publish-chart__title">발행 전후 누적 수익률 (5분봉 · T-3~T+4)</h3>
+        <h3 className="post-publish-chart__title">발행 전후 누적 수익률</h3>
         <p className="post-publish-chart__desc muted-text">
           5분봉(또는 EOD 캘린더) 데이터가 없어 곡선을 표시할 수 없습니다.
         </p>
@@ -235,7 +235,7 @@ export function PostPublishCumReturnChart({
   return (
     <section className={wrapClass} aria-labelledby="post-publish-chart-heading">
       <h3 id="post-publish-chart-heading" className="post-publish-chart__title">
-        발행 전후 누적 수익률 (5분봉 · T-3~T+4)
+        발행 전후 누적 수익률
       </h3>
       <div
         className="post-publish-chart__plot"

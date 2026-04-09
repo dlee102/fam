@@ -1,22 +1,18 @@
 /**
  * SomedayNews API로 적재된 뉴스 메타데이터
- * data/somedaynews_article_tickers.json
+ * — 소스: Firebase RTDB만 (로컬 JSON 미사용)
  */
 
-import fs from "fs";
-import path from "path";
-
+import { isFirebaseRtdbConfigured } from "@/lib/firebase/admin-app";
+import { getSomedaynewsRtdbRoot } from "@/lib/firebase/rtdb-somedaynews";
 import { decodeHtmlEntities } from "@/lib/decode-html-entities";
 import { getArticleIdsWithIntradayManifestOk } from "@/lib/quant-engine/eod-loader";
+import {
+  loadSomedaynewsArticleTickersRecords,
+  type SomedayNewsArticleRecord,
+} from "@/lib/somedaynews-json-source";
 
-interface SomedayNewsArticleRecord {
-  date: string;
-  published_at: string;
-  article_id: string;
-  title: string;
-  stock_codes: string[];
-  registered_date: string;
-}
+export type { SomedayNewsArticleRecord };
 
 export interface SomedayNewsListItem {
   article_id: string;
@@ -25,10 +21,9 @@ export interface SomedayNewsListItem {
   stock_codes: string[];
 }
 
-const DATA_REL = path.join("data", "somedaynews_article_tickers.json");
-
 let _deduped: SomedayNewsListItem[] | null = null;
 let _byArticleId: Map<string, SomedayNewsListItem> | null = null;
+let _loadPromise: Promise<SomedayNewsListItem[]> | null = null;
 
 function parsePublishedAt(iso: string): number {
   const t = Date.parse(iso);
@@ -61,35 +56,24 @@ function dedupeAll(records: SomedayNewsArticleRecord[]): SomedayNewsListItem[] {
   return [...byId.values()].sort((a, b) => parsePublishedAt(b.published_at) - parsePublishedAt(a.published_at));
 }
 
-function loadDeduped(): SomedayNewsListItem[] {
+async function loadDedupedAsync(): Promise<SomedayNewsListItem[]> {
   if (_deduped) return _deduped;
-  const filePath = path.join(process.cwd(), DATA_REL);
-  if (!fs.existsSync(filePath)) {
-    _deduped = [];
-    _byArticleId = null;
-    return _deduped;
+  if (!_loadPromise) {
+    _loadPromise = (async () => {
+      const records = await loadSomedaynewsArticleTickersRecords();
+      const list = dedupeAll(records);
+      _deduped = list;
+      _byArticleId = new Map(list.map((a) => [a.article_id, a]));
+      return list;
+    })();
   }
-  try {
-    const raw = fs.readFileSync(filePath, "utf8");
-    const records = JSON.parse(raw) as SomedayNewsArticleRecord[];
-    _deduped = Array.isArray(records) ? dedupeAll(records) : [];
-  } catch {
-    _deduped = [];
-  }
-  _byArticleId = null;
-  return _deduped;
+  return _loadPromise;
 }
 
-function getByArticleIdMap(): Map<string, SomedayNewsListItem> {
-  if (_byArticleId) return _byArticleId;
-  const list = loadDeduped();
-  _byArticleId = new Map(list.map((a) => [a.article_id, a]));
-  return _byArticleId;
-}
-
-export function getSomedayNewsByArticleId(articleId: string): SomedayNewsListItem | null {
+export async function getSomedayNewsByArticleId(articleId: string): Promise<SomedayNewsListItem | null> {
   if (!articleId) return null;
-  return getByArticleIdMap().get(articleId) ?? null;
+  await loadDedupedAsync();
+  return _byArticleId?.get(articleId) ?? null;
 }
 
 /** 차트 API용 YYYY-MM-DD (ISO 문자열에서 날짜만) */
@@ -119,7 +103,7 @@ export async function getSomedayNewsList(options?: {
   items: SomedayNewsListItem[];
   total: number;
 }> {
-  const all = loadDeduped();
+  const all = await loadDedupedAsync();
   const requireEod = options?.requireEodOk !== false;
   const requireIntra = options?.requireIntradayOk === true;
   const needManifest = requireIntra || requireEod;
@@ -134,5 +118,71 @@ export async function getSomedayNewsList(options?: {
   return {
     items: filtered.slice(0, Math.max(0, limit)),
     total: filtered.length,
+  };
+}
+
+/** `/` 홈 피드 원인 파악용 (로컬·터미널 디버그) */
+export interface SomedayNewsFeedDebugSnapshot {
+  /** SomedayNews 원천 */
+  somedaySource: "firebase_rtdb" | "unconfigured";
+  /** RTDB 노드 (Firebase일 때) */
+  somedaynewsRtdbPath: string | null;
+  /** 원본 레코드 수(중복 행 포함) */
+  rawRecordCount: number;
+  /** article_id 기준 dedupe 후 기사 수 */
+  dedupedArticleCount: number;
+  /** 매니페스트에 EOD+5분 연동된 article_id 개수 */
+  manifestIntradayArticleIdCount: number;
+  /** 매니페스트 필터 후(슬라이스 전) 건수 */
+  afterFilterTotal: number;
+  /** 화면에 실제 그리는 건수( limit 적용 후 ) */
+  listedItemCount: number;
+  listLimit: number;
+  /** `getSomedayNewsList`와 동일: 매니페스트로 한 번 더 걸렀는지 */
+  needManifestFilter: boolean;
+  requireIntradayOk: boolean;
+}
+
+export async function getSomedayNewsFeedDebugSnapshot(options?: {
+  limit?: number;
+  requireEodOk?: boolean;
+  requireIntradayOk?: boolean;
+}): Promise<SomedayNewsFeedDebugSnapshot> {
+  const listLimit = options?.limit ?? 150;
+  const requireEod = options?.requireEodOk !== false;
+  const requireIntra = options?.requireIntradayOk === true;
+  const needManifest = requireIntra || requireEod;
+  const useFirebase = isFirebaseRtdbConfigured();
+
+  const records = await loadSomedaynewsArticleTickersRecords();
+  const rawRecordCount = records.length;
+
+  const all = await loadDedupedAsync();
+  const dedupedArticleCount = all.length;
+
+  const manifestIds = await getArticleIdsWithIntradayManifestOk();
+  const manifestIntradayArticleIdCount = manifestIds.size;
+
+  let filtered = all;
+  if (needManifest) {
+    filtered = all.filter((a) => manifestIds.has(a.article_id));
+  }
+
+  const afterFilterTotal = filtered.length;
+  const listedItemCount = filtered.slice(0, Math.max(0, listLimit)).length;
+
+  return {
+    somedaySource: useFirebase ? "firebase_rtdb" : "unconfigured",
+    somedaynewsRtdbPath: useFirebase
+      ? `${getSomedaynewsRtdbRoot().replace(/^\/+|\/+$/g, "")}/somedaynews_article_tickers`
+      : null,
+    rawRecordCount,
+    dedupedArticleCount,
+    manifestIntradayArticleIdCount,
+    afterFilterTotal,
+    listedItemCount,
+    listLimit,
+    needManifestFilter: needManifest,
+    requireIntradayOk: requireIntra,
   };
 }

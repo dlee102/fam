@@ -91,9 +91,11 @@ function addSensitiveStdin(name, rawBody, targetEnv) {
 function loadServiceAccountJson() {
   const inline = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
   if (inline?.trim()) return inline.trim();
-  const p = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-  if (p && fs.existsSync(p)) {
-    return fs.readFileSync(p, "utf8");
+  const p = process.env.GOOGLE_APPLICATION_CREDENTIALS?.trim();
+  if (!p) return null;
+  const abs = path.isAbsolute(p) ? p : path.join(root, p.replace(/^\.\//, ""));
+  if (fs.existsSync(abs)) {
+    return fs.readFileSync(abs, "utf8");
   }
   return null;
 }
@@ -148,6 +150,12 @@ function main() {
     if (rtdRoot) {
       if (!addPlain("FIREBASE_EODHD_RTD_ROOT", rtdRoot, envName)) process.exit(1);
       console.log("  ✓ FIREBASE_EODHD_RTD_ROOT");
+    }
+
+    const somedayRoot = process.env.FIREBASE_SOMEDAYNEWS_RTD_ROOT?.trim();
+    if (somedayRoot) {
+      if (!addPlain("FIREBASE_SOMEDAYNEWS_RTD_ROOT", somedayRoot, envName)) process.exit(1);
+      console.log("  ✓ FIREBASE_SOMEDAYNEWS_RTD_ROOT");
     }
 
     if (withClient) {
