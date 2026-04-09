@@ -18,7 +18,8 @@
     "sync-somedaynews-firebase": "npx tsx scripts/sync-somedaynews-to-firebase.ts",
     "member-dashboard-top10": "npx tsx scripts/generate-member-dashboard-top10.ts",
     "classify-bio-gemini": "npx tsx scripts/classify-bio-business-type-gemini.ts",
-    "vercel:push-firebase-env": "node scripts/push-vercel-firebase-env.mjs"
+    "vercel:push-firebase-env": "node scripts/push-vercel-firebase-env.mjs",
+    "print-firebase-vercel-env": "node scripts/print-firebase-service-account-for-vercel.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

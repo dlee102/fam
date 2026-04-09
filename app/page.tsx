@@ -10,7 +10,10 @@ const LIST_LIMIT = 150;
 /** 목록이 0일 때: SomedayNews는 RTDB만 사용 → 서비스 계정·노드 데이터·매니페스트 교집합 순으로 안내 */
 function homeFeedEmptyExplanation(d: SomedayNewsFeedDebugSnapshot): string {
   if (d.somedaySource === "unconfigured") {
-    return "서버(Admin)가 RTDB를 읽지 못했습니다. .env.local에 FIREBASE_SERVICE_ACCOUNT_JSON 또는 GOOGLE_APPLICATION_CREDENTIALS(서비스 계정 JSON 경로)를 설정하고 dev 서버를 재시작하세요. NEXT_PUBLIC_* 만으로는 서버에서 DB를 읽을 수 없습니다.";
+    if (process.env.VERCEL === "1") {
+      return "Vercel 서버에 Firebase Admin 환경 변수가 없습니다. 프로젝트 → Settings → Environment Variables에 FIREBASE_DATABASE_URL과 FIREBASE_SERVICE_ACCOUNT_JSON(서비스 계정 JSON 전체 문자열, Sensitive)을 production(및 필요 시 preview)에 넣고 재배포하세요. 파일 경로(GOOGLE_APPLICATION_CREDENTIALS)는 서버리스에서 쓸 수 없습니다.";
+    }
+    return "서버(Admin)가 RTDB를 읽지 못했습니다. .env.local에 FIREBASE_SERVICE_ACCOUNT_JSON 또는 GOOGLE_APPLICATION_CREDENTIALS(서비스 계정 JSON 경로)를 넣고 dev 서버를 재시작하세요. NEXT_PUBLIC_* 만으로는 서버에서 DB를 읽을 수 없습니다.";
   }
   if (d.rawRecordCount === 0) {
     return "Firebase RTDB의 SomedayNews 배열이 비어 있거나 없습니다. 노드 somedaynews/somedaynews_article_tickers 를 확인하거나, 로컬 JSON이 있다면 npm run sync-somedaynews-firebase 로 올리세요.";
