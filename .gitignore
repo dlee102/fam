@@ -14,6 +14,9 @@
 # production
 /build
 
+# generated at npm install (see scripts/copy-pretendard-fonts.mjs)
+public/fonts/*.woff2
+
 # misc
 .DS_Store
 *.pem
