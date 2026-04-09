@@ -6,8 +6,12 @@
  *
  * 사용:
  *   node scripts/push-vercel-firebase-env.mjs
- *   VERCEL_TARGET_ENVS=production,preview node scripts/push-vercel-firebase-env.mjs
+ *   VERCEL_TARGET_ENVS=production node scripts/push-vercel-firebase-env.mjs
+ *   (preview 는 최신 Vercel CLI가 Git 브랜치를 요구해 비대화형 푸시가 실패할 수 있음 → 대시보드에서 Preview로 복제)
  *   node scripts/push-vercel-firebase-env.mjs --with-client   # NEXT_PUBLIC_FIREBASE_* 도 함께
+ *
+ * .env.local 에 있으면 같이 푸시 (선택, Sensitive):
+ *   EODHD_API_TOKEN, GOOGLE_API_KEY
  *
  * 서버용 값 출처:
  *   FIREBASE_DATABASE_URL 또는 NEXT_PUBLIC_FIREBASE_DATABASE_URL
@@ -165,6 +169,17 @@ function main() {
         if (!addPlain(k, v, envName)) process.exit(1);
         console.log(`  ✓ ${k}`);
       }
+    }
+
+    const extraSensitive = ["EODHD_API_TOKEN", "GOOGLE_API_KEY"];
+    for (const name of extraSensitive) {
+      const v = process.env[name]?.trim();
+      if (!v) {
+        console.warn(`  건너뜀 (값 없음): ${name}`);
+        continue;
+      }
+      if (!addSensitiveStdin(name, v, envName)) process.exit(1);
+      console.log(`  ✓ ${name} (sensitive)`);
     }
   }
 
