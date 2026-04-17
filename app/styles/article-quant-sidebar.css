@@ -238,6 +238,50 @@
   margin: 0.5rem 0 0;
 }
 
+/* ── 종합 점수 하위 분해 (퀀트 기술 / 알고리즘) ─────────────────────── */
+.article-quant-sidebar__score-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.55rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid color-mix(in srgb, var(--quant-grid) 55%, transparent);
+}
+
+.article-quant-sidebar__score-breakdown-row {
+  display: grid;
+  grid-template-columns: 4.5rem 2.8rem 1fr;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.article-quant-sidebar__score-breakdown-label {
+  font-size: 0.65rem;
+  color: var(--quant-muted);
+  white-space: nowrap;
+}
+
+.article-quant-sidebar__score-breakdown-val {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--quant-text);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.article-quant-sidebar__score-breakdown-track {
+  height: 3px;
+  background: color-mix(in srgb, var(--quant-grid) 60%, transparent);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.article-quant-sidebar__score-breakdown-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
 .article-quant-sidebar__ai-opinion {
   margin-top: 0.65rem;
   padding-top: 0.55rem;

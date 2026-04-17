@@ -13,6 +13,7 @@ import {
   computeQuantInsight,
 } from "@/lib/quant-engine";
 import { getFundamentalSnapshotForTicker, computeFundamentalScore } from "@/lib/quant-fundamentals";
+import { getNewsSignalScore } from "@/lib/news-signal-score";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -62,10 +63,18 @@ export async function GET(req: NextRequest) {
     ? computeFundamentalScore(fundamentals_snapshot)
     : null;
 
+  let news_signal: Awaited<ReturnType<typeof getNewsSignalScore>> = null;
+  try {
+    news_signal = await getNewsSignalScore(article_id, ticker);
+  } catch {
+    news_signal = null;
+  }
+
   return NextResponse.json({
     article_id,
     t0_kst,
     bar_source,
+    news_signal,
     article_sentiment: sent
       ? {
           label_ko: sent.labelKo,

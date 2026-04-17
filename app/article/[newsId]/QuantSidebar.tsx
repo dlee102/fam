@@ -13,7 +13,9 @@ import {
   templateQuantOpinionKo,
 } from "@/lib/quant-opinion-shared";
 import {
-  AiScoreOrb,
+  algoSignalBarGradient,
+  compositeScoreGradient,
+  computeCompositeScore,
   quantStanceBarGradient,
   quantStanceBarPct,
 } from "./AiScoreOrb";
@@ -102,6 +104,12 @@ type QuantInsightApi = QuantInsight & {
   } | null;
   fundamentals_snapshot?: FundamentalSnapshotForModel | null;
   fundamental_score?: FundamentalScoreBreakdown | null;
+  /** scripts/article_news_score.py 배치 집계 (룩어헤드 없는 F 시그널) */
+  news_signal?: {
+    score_total: number;
+    breakdown: Record<string, number>;
+    flags: Record<string, boolean>;
+  } | null;
 };
 
 function formatKrwCompact(n: number): string {
@@ -358,12 +366,15 @@ function buildOpinionPayload(
   const sent = d.article_sentiment;
   const title = ctx.title?.trim();
   const excerpt = ctx.excerpt?.trim();
+  const algoTotal = d.news_signal?.score_total ?? null;
+  const composite = computeCompositeScore(d.score.total, algoTotal);
   return {
     ticker: d.ticker,
     as_of_date: d.as_of_date,
     bar_source: d.bar_source,
     grade: d.grade,
     score: { total: d.score.total },
+    composite_score: composite,
     summary: d.summary,
     primary_signal: {
       type: d.primary_signal.type,
@@ -544,17 +555,33 @@ export function QuantSidebar({
         </p>
       ) : null}
 
-      {/* 종합: 오브에 등급+태도 한 번만, 옆은 표시 점수·한 줄 설명 */}
+      {/* 종합 점수: 퀀트 60% + 알고리즘 40% */}
       <div className="article-quant-sidebar__section">
-        <span className="article-quant-sidebar__label">총점(참고)</span>
+        <span className="article-quant-sidebar__label">
+          {data.news_signal != null ? "종합 점수(퀀트+알고리즘)" : "총점(참고)"}
+        </span>
         <div className="article-quant-sidebar__score-card">
-          <AiScoreOrb grade={grade} />
           <div className="article-quant-sidebar__score-meta">
-            <div className="article-quant-sidebar__score-row">
-              <span className="article-quant-sidebar__score-num">{score.total}</span>
-              <span className="article-quant-sidebar__score-denom">점</span>
-            </div>
-            <MiniBar value={quantStanceBarPct(grade)} gradient={quantStanceBarGradient(grade)} />
+            {(() => {
+              const algoTotal = data.news_signal?.score_total ?? null;
+              const composite = computeCompositeScore(score.total, algoTotal);
+              return (
+                <>
+                  <div className="article-quant-sidebar__score-row">
+                    <span className="article-quant-sidebar__score-num">{composite}</span>
+                    <span className="article-quant-sidebar__score-denom">점</span>
+                  </div>
+                  <MiniBar
+                    value={composite}
+                    gradient={
+                      algoTotal !== null
+                        ? compositeScoreGradient(composite)
+                        : quantStanceBarGradient(grade)
+                    }
+                  />
+                </>
+              );
+            })()}
           </div>
         </div>
         {aiOpinionLoading ? (

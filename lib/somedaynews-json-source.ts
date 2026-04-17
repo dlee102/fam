@@ -13,6 +13,8 @@ export interface SomedayNewsArticleRecord {
   title: string;
   stock_codes: string[];
   registered_date: string;
+  /** SomeDayNews API 무료 전환 시각(ISO); 없으면 null 또는 생략 */
+  free_conversion_at?: string | null;
 }
 
 function normalizeRecordsFromRtdb(raw: unknown): SomedayNewsArticleRecord[] {

@@ -1,0 +1,142 @@
+{
+  "definition": "유료: 공개 후 첫 봉 진입, N거래일째까지(포함) KST일 중 FC 이전 마지막 봉 청산. 무료: 전환 후 첫 봉 진입, M거래일째 장 종가 청산.",
+  "grid_win_rate": {
+    "paid_1_free_1": {
+      "n": 1382,
+      "win_both": 285,
+      "win_rate_both": 0.2062,
+      "win_rate_paid_only": 0.4537,
+      "win_rate_free_only": 0.4631,
+      "mean_ret_paid": -0.0009,
+      "mean_ret_free": 0.0018,
+      "mean_ret_sum": 0.001
+    },
+    "paid_1_free_2": {
+      "n": 1325,
+      "win_both": 232,
+      "win_rate_both": 0.1751,
+      "win_rate_paid_only": 0.4574,
+      "win_rate_free_only": 0.4257,
+      "mean_ret_paid": -0.0006,
+      "mean_ret_free": 0.0003,
+      "mean_ret_sum": -0.0003
+    },
+    "paid_1_free_3": {
+      "n": 1321,
+      "win_both": 248,
+      "win_rate_both": 0.1877,
+      "win_rate_paid_only": 0.4595,
+      "win_rate_free_only": 0.4459,
+      "mean_ret_paid": -0.0005,
+      "mean_ret_free": 0.0013,
+      "mean_ret_sum": 0.0008
+    },
+    "paid_2_free_1": {
+      "n": 1382,
+      "win_both": 300,
+      "win_rate_both": 0.2171,
+      "win_rate_paid_only": 0.4645,
+      "win_rate_free_only": 0.4631,
+      "mean_ret_paid": 0.0007,
+      "mean_ret_free": 0.0018,
+      "mean_ret_sum": 0.0025
+    },
+    "paid_2_free_2": {
+      "n": 1325,
+      "win_both": 257,
+      "win_rate_both": 0.194,
+      "win_rate_paid_only": 0.4657,
+      "win_rate_free_only": 0.4257,
+      "mean_ret_paid": 0.0002,
+      "mean_ret_free": 0.0003,
+      "mean_ret_sum": 0.0005
+    },
+    "paid_2_free_3": {
+      "n": 1321,
+      "win_both": 275,
+      "win_rate_both": 0.2082,
+      "win_rate_paid_only": 0.4656,
+      "win_rate_free_only": 0.4459,
+      "mean_ret_paid": 0.0002,
+      "mean_ret_free": 0.0013,
+      "mean_ret_sum": 0.0014
+    },
+    "paid_3_free_1": {
+      "n": 1382,
+      "win_both": 301,
+      "win_rate_both": 0.2178,
+      "win_rate_paid_only": 0.4588,
+      "win_rate_free_only": 0.4631,
+      "mean_ret_paid": 0.0008,
+      "mean_ret_free": 0.0018,
+      "mean_ret_sum": 0.0026
+    },
+    "paid_3_free_2": {
+      "n": 1325,
+      "win_both": 250,
+      "win_rate_both": 0.1887,
+      "win_rate_paid_only": 0.4604,
+      "win_rate_free_only": 0.4257,
+      "mean_ret_paid": 0.0003,
+      "mean_ret_free": 0.0003,
+      "mean_ret_sum": 0.0006
+    },
+    "paid_3_free_3": {
+      "n": 1321,
+      "win_both": 276,
+      "win_rate_both": 0.2089,
+      "win_rate_paid_only": 0.4595,
+      "win_rate_free_only": 0.4459,
+      "mean_ret_paid": 0.0002,
+      "mean_ret_free": 0.0013,
+      "mean_ret_sum": 0.0015
+    }
+  },
+  "best_by_win_both": {
+    "paid_trading_days": 3,
+    "free_trading_days": 1,
+    "win_rate_both": 0.2178,
+    "detail": {
+      "n": 1382,
+      "win_both": 301,
+      "win_rate_both": 0.2178,
+      "win_rate_paid_only": 0.4588,
+      "win_rate_free_only": 0.4631,
+      "mean_ret_paid": 0.0008,
+      "mean_ret_free": 0.0018,
+      "mean_ret_sum": 0.0026
+    }
+  },
+  "best_by_mean_ret_sum": {
+    "paid_trading_days": 3,
+    "free_trading_days": 1,
+    "mean_ret_sum": 0.0026,
+    "detail": {
+      "n": 1382,
+      "win_both": 301,
+      "win_rate_both": 0.2178,
+      "win_rate_paid_only": 0.4588,
+      "win_rate_free_only": 0.4631,
+      "mean_ret_paid": 0.0008,
+      "mean_ret_free": 0.0018,
+      "mean_ret_sum": 0.0026
+    }
+  },
+  "skipped": {
+    "no_free_conversion_at": 2,
+    "parse_err": 0,
+    "no_pub_entry": 351,
+    "no_fc_entry": 34,
+    "no_trading_days": 0
+  },
+  "skip_paid_insufficient": {
+    "1": 188,
+    "2": 188,
+    "3": 188
+  },
+  "skip_free_insufficient": {
+    "1": 0,
+    "2": 146,
+    "3": 186
+  }
+}

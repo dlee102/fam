@@ -1,0 +1,4 @@
+# yfinance 대조 스크립트: scripts/yfinance_horizon_check.py
+# 사용: python3 -m venv .venv && .venv/bin/pip install -r requirements-yfinance.txt
+yfinance>=0.2.0
+pandas>=2.0

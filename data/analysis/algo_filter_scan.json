@@ -1,0 +1,77 @@
+{
+  "good_single_filters_hold18": [
+    {
+      "filter": "close_vs_ma20 <",
+      "threshold": -0.1,
+      "n": 51,
+      "win_rate": 0.6078431372549019,
+      "avg_return": -0.0308159396775654
+    },
+    {
+      "filter": "entry_in_range <",
+      "threshold": 0.2,
+      "n": 200,
+      "win_rate": 0.57,
+      "avg_return": 0.06702858251676012
+    }
+  ],
+  "best_combos_hold18": [],
+  "best_single_per_hold": {
+    "1": {
+      "h": 1,
+      "filter": "entry_in_range <",
+      "th": 0.2,
+      "n": 216,
+      "wr": 0.7592592592592593
+    },
+    "2": {
+      "h": 2,
+      "filter": "entry_in_range <",
+      "th": 0.2,
+      "n": 213,
+      "wr": 0.7464788732394366
+    },
+    "3": {
+      "h": 3,
+      "filter": "entry_in_range <",
+      "th": 0.2,
+      "n": 203,
+      "wr": 0.7142857142857143
+    },
+    "5": {
+      "h": 5,
+      "filter": "entry_in_range <",
+      "th": 0.2,
+      "n": 213,
+      "wr": 0.6572769953051644
+    },
+    "10": {
+      "h": 10,
+      "filter": "entry_in_range <",
+      "th": 0.2,
+      "n": 205,
+      "wr": 0.6390243902439025
+    },
+    "15": {
+      "h": 15,
+      "filter": "entry_in_range <",
+      "th": 0.2,
+      "n": 200,
+      "wr": 0.645
+    },
+    "18": {
+      "h": 18,
+      "filter": "close_vs_ma20 <",
+      "th": -0.1,
+      "n": 51,
+      "wr": 0.6078431372549019
+    },
+    "22": {
+      "h": 22,
+      "filter": "close_vs_ma20 <",
+      "th": -0.1,
+      "n": 51,
+      "wr": 0.5686274509803921
+    }
+  }
+}

@@ -193,9 +193,12 @@ def compute_score1(eod_snap: dict, pub_hour_kst: int | None, cfg: ScorerConfig) 
     # ── 모멘텀 (max 2점) ──
     rsi_v = eod_snap.get("rsi14")
     rsi_ok = rsi_v is not None and cfg.rsi_low < rsi_v < cfg.rsi_high
-    add("RSI 40~65", rsi_v,
-        1 if rsi_ok else 0, 1,
-        f"RSI {rsi_v:.1f} 적정 구간" if rsi_ok else f"RSI {rsi_v:.1f} 범위 밖")
+    rsi_reason = (
+        f"RSI {rsi_v:.1f} 적정 구간"
+        if rsi_ok
+        else (f"RSI {rsi_v:.1f} 범위 밖" if rsi_v is not None else "데이터 없음")
+    )
+    add("RSI 40~65", rsi_v, 1 if rsi_ok else 0, 1, rsi_reason)
 
     macd_ok = eod_snap.get("macd_above_signal")
     add("MACD > 시그널", macd_ok,
@@ -205,9 +208,16 @@ def compute_score1(eod_snap: dict, pub_hour_kst: int | None, cfg: ScorerConfig) 
     # ── 변동성·위치 (max 2점) ──
     bb_pct = eod_snap.get("bb_pct_b")
     bb_ok = bb_pct is not None and cfg.bb_pct_b_low < bb_pct < cfg.bb_pct_b_high
-    add("BB 위치", bb_pct,
-        1 if bb_ok else 0, 1,
-        f"BB pct_b={bb_pct:.2f} 중간대" if bb_ok else f"BB pct_b={bb_pct:.2f} 과열/과매도")
+    bb_reason = (
+        f"BB pct_b={bb_pct:.2f} 중간대"
+        if bb_ok
+        else (
+            f"BB pct_b={bb_pct:.2f} 과열/과매도"
+            if bb_pct is not None
+            else "데이터 없음"
+        )
+    )
+    add("BB 위치", bb_pct, 1 if bb_ok else 0, 1, bb_reason)
 
     ma60_gap = eod_snap.get("ma60_gap")
     gap_ok = ma60_gap is not None and ma60_gap >= cfg.ma60_gap_min

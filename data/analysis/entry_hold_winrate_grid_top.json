@@ -1,0 +1,167 @@
+{
+  "source": "/Users/qraft_deullee/Music/Documents/02. MX /fam/data/entry_hold_stats.json",
+  "source_generated_at": "2026-04-08T13:29:36.456493",
+  "min_count": 0,
+  "top_n": 15,
+  "methodology_note": "전 구간 EODHD 5분봉만으로 진입·청산 가격을 잡았습니다. 거래일 순서는 동일 윈도우의 EOD 일봉 `bars`의 `date` 열로만 사용했으며, 일봉 시가/종가 숫자는 사용하지 않습니다. 대상은 `somedaynews_article_tickers.json`에서 **유료 기사**에 붙은 종목을 한 건씩(중복 기사 레코드는 각각 유지; 빌드 기본), 해당 종목 manifest에 intraday_ok·eod_ok인 경우입니다. 이벤트일은 기사 date이며 주말·휴장이면 그 이후 첫 거래일로 맞춥니다.",
+  "best_unfiltered": {
+    "entry": "F",
+    "entry_label": "공개 시각 직후 첫 장중 5분봉 종가",
+    "hold_days": 22,
+    "win_rate": 0.5247933884297521,
+    "avg_return": 0.011015462066569157,
+    "count": 242
+  },
+  "ranked_by_win_rate": [
+    {
+      "rank": 1,
+      "entry": "F",
+      "entry_label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "hold_days": 22,
+      "win_rate": 0.524793,
+      "win_rate_pct": 52.48,
+      "avg_return_pct": 1.1015,
+      "count": 242
+    },
+    {
+      "rank": 2,
+      "entry": "F",
+      "entry_label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "hold_days": 19,
+      "win_rate": 0.512024,
+      "win_rate_pct": 51.2,
+      "avg_return_pct": 2.7632,
+      "count": 998
+    },
+    {
+      "rank": 3,
+      "entry": "A",
+      "entry_label": "T=0 장종 5분봉 종가",
+      "hold_days": 20,
+      "win_rate": 0.507246,
+      "win_rate_pct": 50.72,
+      "avg_return_pct": 1.9807,
+      "count": 828
+    },
+    {
+      "rank": 4,
+      "entry": "B",
+      "entry_label": "T+1 첫 5분봉 시가",
+      "hold_days": 18,
+      "win_rate": 0.506586,
+      "win_rate_pct": 50.66,
+      "avg_return_pct": 2.4572,
+      "count": 987
+    },
+    {
+      "rank": 5,
+      "entry": "D",
+      "entry_label": "T+1 첫 5분봉 종가",
+      "hold_days": 18,
+      "win_rate": 0.505572,
+      "win_rate_pct": 50.56,
+      "avg_return_pct": 2.6357,
+      "count": 987
+    },
+    {
+      "rank": 6,
+      "entry": "E",
+      "entry_label": "T+1 두 번째 5분봉 시가",
+      "hold_days": 18,
+      "win_rate": 0.503575,
+      "win_rate_pct": 50.36,
+      "avg_return_pct": 2.7945,
+      "count": 979
+    },
+    {
+      "rank": 7,
+      "entry": "A",
+      "entry_label": "T=0 장종 5분봉 종가",
+      "hold_days": 19,
+      "win_rate": 0.502503,
+      "win_rate_pct": 50.25,
+      "avg_return_pct": 2.6277,
+      "count": 999
+    },
+    {
+      "rank": 8,
+      "entry": "B",
+      "entry_label": "T+1 첫 5분봉 시가",
+      "hold_days": 19,
+      "win_rate": 0.502457,
+      "win_rate_pct": 50.25,
+      "avg_return_pct": 1.911,
+      "count": 814
+    },
+    {
+      "rank": 9,
+      "entry": "B",
+      "entry_label": "T+1 첫 5분봉 시가",
+      "hold_days": 20,
+      "win_rate": 0.501799,
+      "win_rate_pct": 50.18,
+      "avg_return_pct": 2.1892,
+      "count": 556
+    },
+    {
+      "rank": 10,
+      "entry": "F",
+      "entry_label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "hold_days": 21,
+      "win_rate": 0.501767,
+      "win_rate_pct": 50.18,
+      "avg_return_pct": 2.4134,
+      "count": 566
+    },
+    {
+      "rank": 11,
+      "entry": "C",
+      "entry_label": "T+1 장종 5분봉 종가",
+      "hold_days": 19,
+      "win_rate": 0.5,
+      "win_rate_pct": 50.0,
+      "avg_return_pct": 1.8964,
+      "count": 828
+    },
+    {
+      "rank": 12,
+      "entry": "F",
+      "entry_label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "hold_days": 20,
+      "win_rate": 0.499397,
+      "win_rate_pct": 49.94,
+      "avg_return_pct": 2.0839,
+      "count": 829
+    },
+    {
+      "rank": 13,
+      "entry": "D",
+      "entry_label": "T+1 첫 5분봉 종가",
+      "hold_days": 19,
+      "win_rate": 0.496314,
+      "win_rate_pct": 49.63,
+      "avg_return_pct": 2.0797,
+      "count": 814
+    },
+    {
+      "rank": 14,
+      "entry": "E",
+      "entry_label": "T+1 두 번째 5분봉 시가",
+      "hold_days": 19,
+      "win_rate": 0.494438,
+      "win_rate_pct": 49.44,
+      "avg_return_pct": 2.1104,
+      "count": 809
+    },
+    {
+      "rank": 15,
+      "entry": "D",
+      "entry_label": "T+1 첫 5분봉 종가",
+      "hold_days": 20,
+      "win_rate": 0.492806,
+      "win_rate_pct": 49.28,
+      "avg_return_pct": 2.2849,
+      "count": 556
+    }
+  ]
+}

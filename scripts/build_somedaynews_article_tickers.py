@@ -6,6 +6,7 @@
 - 종목(`stock_codes`에 6자리 숫자가 하나라도 있는 기사만). **기본: API 배열 순서상 첫 6자리 종목 1개만** (`--all-tickers`면 전부)
 - **유료만**: API `is_paid === true`인 기사만(무료 제외). 전체를 쓰려면 `--include-free`
 - `published_at`: API 필수(없으면 해당 기사는 건너뜀 — 보강 시각 없음)
+- `free_conversion_at`: API에 있으면 저장(무료 전환 시각; 없으면 null)
 - `date`: `published_at`의 KST 달력일
 - `--date-from` / `--date-to`: 위 KST 달력일 구간만 포함(양끝 포함). 비우면 전체 일별 JSON에서 집계
 
@@ -128,6 +129,11 @@ def main() -> None:
             }
             if isinstance(rd, str) and rd.strip():
                 rec["registered_date"] = rd.strip()
+            fca = a.get("free_conversion_at")
+            if isinstance(fca, str) and fca.strip():
+                rec["free_conversion_at"] = fca.strip()
+            elif "free_conversion_at" in a:
+                rec["free_conversion_at"] = None
             rows.append(rec)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)

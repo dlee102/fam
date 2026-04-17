@@ -8,6 +8,8 @@ export interface QuantOpinionRequestPayload {
   bar_source?: string;
   grade: Grade;
   score: { total: number };
+  /** 퀀트 기술(60%) + 알고리즘 시그널(40%) 합산. 알고리즘 없으면 quant total 그대로 */
+  composite_score?: number;
   summary: string;
   primary_signal: { type: string; label: string; strength: number };
   trend_filter: {
@@ -118,6 +120,53 @@ export function buildQuantOpinionLayout(
   };
 }
 
+function formatKrwInt(n: number): string {
+  return `${new Intl.NumberFormat("ko-KR").format(Math.round(n))}원`;
+}
+
+/** Gemini 미사용·실패 시에도 한 줄 정리가 가격·손절 기준으로 떨어지도록 */
+function templatePositionHintKo(p: QuantOpinionRequestPayload): string {
+  const ma20 = p.indicators.ma20;
+  const bbLower = p.indicators.bb_lower;
+  const stop = p.entry?.stop_loss_pct ?? null;
+  const mom10 = p.indicators.momentum10d;
+  const above = p.trend_filter.above_ma20;
+  const md = p.trend_filter.momentum_direction;
+
+  const chunks: string[] = [];
+  if (ma20 !== null) {
+    if (!above && md === "RISING") {
+      chunks.push(
+        `20일 평균 ${formatKrwInt(ma20)} 아래에서 반등 흐름이므로, 평균선 위·아래를 오가는지가 다음 구간의 기준`
+      );
+    } else if (!above && md === "FALLING") {
+      chunks.push(
+        `20일 평균 ${formatKrwInt(ma20)} 아래에서 모멘텀도 약해, 평균선 회복 전까지는 비중을 크게 두기 어렵다고 볼 수 있음`
+      );
+    } else if (!above) {
+      chunks.push(`20일 평균 ${formatKrwInt(ma20)} 아래에 머무는 구간으로, 평균가 대비 종가 위치가 갈림`);
+    } else {
+      chunks.push(`20일 평균 ${formatKrwInt(ma20)} 위를 유지하는지가 추세 유지의 핵심`);
+    }
+  }
+  if (bbLower !== null && !above) {
+    chunks.push(`볼린저 하단 ${formatKrwInt(bbLower)} 부근 반등·이탈 여부`);
+  }
+  if (stop !== null) {
+    chunks.push(`약 ${stop}% 손절 폭을 전제로 분할·비중 조절`);
+  }
+
+  if (chunks.length > 0) {
+    return `${chunks.join(" · ")}으로 해석할 수 있습니다.`;
+  }
+  if (mom10 !== null) {
+    return `최근 10일 모멘텀이 ${mom10 >= 0 ? "+" : ""}${mom10.toFixed(1)}%라, 다음 구간에서 변동이 커질 수 있다고 볼 수 있습니다.`;
+  }
+  return p.trend_filter.summary?.trim()
+    ? `${p.trend_filter.summary.trim()} 지표만으로는 한쪽으로 단정하긴 어렵다고 볼 수 있습니다.`
+    : "지표만으로는 한쪽으로 단정하긴 어렵습니다.";
+}
+
 function fundamentalsTemplateHint(p: QuantOpinionRequestPayload): string | null {
   const f = p.fundamentals_snapshot;
   if (!f || f.data_quality === "missing") return null;
@@ -136,20 +185,18 @@ function fundamentalsTemplateHint(p: QuantOpinionRequestPayload): string | null 
 }
 
 export function templateQuantOpinionKo(p: QuantOpinionRequestPayload): string[] {
-  const { grade, score, primary_signal } = p;
+  const { grade, score, primary_signal, composite_score } = p;
   const sig = primary_signal.label;
-  const tilt =
-    grade === "D"
-      ? "지표만 놓고 보면 지금은 새로 사 들이기보다 지켜보거나 손실부터 줄이는 쪽이 덜 부담스럽다고 볼 수 있습니다."
-      : primary_signal.type === "MOMENTUM_WARNING"
-        ? "단기로 너무 많이 올랐을 수 있어, 무작정 따라 붙기보다는 한 박자 쉬는 편이 나을 수 있습니다."
-        : grade === "A" || grade === "B"
-          ? "지표만 보면 상대적으로 나은 편에 가깝습니다. 그래도 소액·여러 번 나눠 보는 식으로 신중하게 접근하는 편이 좋습니다."
-          : "지표가 ‘무조건 사’ 또는 ‘무조건 팔’ 쪽으로만 쏠리지는 않아, 큰 한 방보다는 오르내림을 가정하는 편이 가깝습니다.";
-
-  const line1 = `총점 ${score.total}점 · 등급 ${grade}. 핵심 패턴: 「${sig}」`;
+  const displayScore = composite_score ?? score.total;
+  const scoreLabel = composite_score !== undefined ? `종합 ${displayScore}점` : `${score.total}점`;
+  const line1 = `${scoreLabel} · 등급 ${grade}. 핵심 패턴: 「${sig}」`;
   const fund = fundamentalsTemplateHint(p);
-  const line2 = fund ? `${tilt} ${fund}` : tilt;
+  const hint = templatePositionHintKo(p);
+  const dPrefix =
+    grade === "D"
+      ? "등급이 낮게 나와 신규 비중을 크게 두기 어렵다고 볼 수 있습니다. "
+      : "";
+  const line2 = fund ? `${dPrefix}${hint} ${fund}` : `${dPrefix}${hint}`;
   return [line1, line2];
 }
 

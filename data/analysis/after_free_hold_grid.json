@@ -1,0 +1,43 @@
+{
+  "hold_definitions_trading_days": "진입= 무료 전환 시각 이후 첫 장중 5분봉 종가. 청산= 진입이 속한 KST 거래일을 1일째로 두고, N거래일째 날 장중 마지막 5분봉 종가.",
+  "grid": {
+    "hold_1_trading_days": {
+      "name": "무료 전환 후 1거래일(그날 장 종가)",
+      "n": 1570,
+      "mean_pct": 0.1286,
+      "median_pct": 0.0,
+      "win_rate": 0.4102,
+      "min_pct": -28.3133,
+      "max_pct": 30.8612
+    },
+    "hold_2_trading_days": {
+      "name": "무료 전환 후 2거래일(그날 장 종가)",
+      "n": 1424,
+      "mean_pct": 0.1652,
+      "median_pct": -0.4338,
+      "win_rate": 0.4326,
+      "min_pct": -71.9863,
+      "max_pct": 60.1913
+    },
+    "hold_3_trading_days": {
+      "name": "무료 전환 후 3거래일(그날 장 종가)",
+      "n": 1384,
+      "mean_pct": 0.0593,
+      "median_pct": -0.5517,
+      "win_rate": 0.4465,
+      "min_pct": -70.8219,
+      "max_pct": 100.3175
+    }
+  },
+  "skipped": {
+    "no_free_conversion_at": 2,
+    "parse_err": 0,
+    "no_entry": 385,
+    "no_trading_days": 0
+  },
+  "skipped_insufficient_calendar_for_hold": {
+    "1": 0,
+    "2": 146,
+    "3": 186
+  }
+}

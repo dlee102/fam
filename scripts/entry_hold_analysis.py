@@ -138,17 +138,14 @@ def eod_index_for_session_ymd(eod_bars: list, ymd: str) -> int | None:
     return None
 
 
-def first_close_after_publish_on_calendar(
+def first_close_after_publish_bar_info(
     all_intra: list,
     t0_d: date,
     publish_utc_naive: datetime,
-) -> tuple[float, str] | None:
+) -> tuple[float, str, dict] | None:
     """
-    `published_at`(UTC naive) 이후에 **종료**되는 장중 5분봉 중 시간상 가장 이른 봉의 종가.
-    장 마감 뒤 공개면 다음 거래일 첫 유효 봉까지 진행 (analyze_10m_return_path 앵커와 동일).
-
-    Returns:
-        (종가, 세션일 키) — 세션일은 5분봉 `datetime[:10]` (한국장 EODHD 버킷에서 UTC일=세션일).
+    `published_at` 이후 종료되는 첫 장중 5분봉 — (종가, 세션일 키, 해당 봉 dict).
+    `first_close_after_publish_on_calendar`와 동일한 봉을 가리킨다.
     """
     market_5m = [
         b
@@ -177,8 +174,27 @@ def first_close_after_publish_on_calendar(
             if end >= publish_utc_naive:
                 v = float(b.get("close") or b.get("open") or 0)
                 if v > 0:
-                    return v, dk
+                    return v, dk, b
     return None
+
+
+def first_close_after_publish_on_calendar(
+    all_intra: list,
+    t0_d: date,
+    publish_utc_naive: datetime,
+) -> tuple[float, str] | None:
+    """
+    `published_at`(UTC naive) 이후에 **종료**되는 장중 5분봉 중 시간상 가장 이른 봉의 종가.
+    장 마감 뒤 공개면 다음 거래일 첫 유효 봉까지 진행 (analyze_10m_return_path 앵커와 동일).
+
+    Returns:
+        (종가, 세션일 키) — 세션일은 5분봉 `datetime[:10]` (한국장 EODHD 버킷에서 UTC일=세션일).
+    """
+    got = first_close_after_publish_bar_info(all_intra, t0_d, publish_utc_naive)
+    if got is None:
+        return None
+    v, dk, _ = got
+    return v, dk
 
 
 def valid_ticker(t: str) -> bool:

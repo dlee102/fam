@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-04-16T17:57:09.368116",
+  "methodology_note": "진입은 entry_hold_analysis.py와 동일. 청산: 진입 직후 다음 5분봉부터 최대 30거래일(포함)까지, 종가가 진입가를 처음으로 넘는 봉(양전)에서 청산. 해당 기간 양전이 없으면 호라이즌 종료일 장종 5분봉 종가로 청산. 호라이즌 종료일은 EOD가 짧으면 min(진입+30거래일, 데이터 마지막 거래일)로 클립.",
+  "sample_summary": {
+    "pairs_passed_t0_t1_calendar": 1918
+  },
+  "by_entry": [
+    {
+      "entry": "A",
+      "entry_label": "T=0 장종 5분봉 종가",
+      "count": 1349,
+      "win_rate": 0.9377316530763529,
+      "yangjeon_exit_rate": 0.9377316530763529,
+      "avg_return": 0.0015070672183227893,
+      "avg_return_if_yangjeon": 0.01457085308786512,
+      "avg_return_if_horizon_fallback": -0.19522732712657062
+    },
+    {
+      "entry": "B",
+      "entry_label": "T+1 첫 5분봉 시가",
+      "count": 1345,
+      "win_rate": 0.9211895910780669,
+      "yangjeon_exit_rate": 0.9211895910780669,
+      "avg_return": -0.004989739858991431,
+      "avg_return_if_yangjeon": 0.010692525578381313,
+      "avg_return_if_horizon_fallback": -0.18829471039582946
+    },
+    {
+      "entry": "C",
+      "entry_label": "T+1 장종 5분봉 종가",
+      "count": 1350,
+      "win_rate": 0.9496296296296296,
+      "yangjeon_exit_rate": 0.9496296296296296,
+      "avg_return": 0.0027237021585043287,
+      "avg_return_if_yangjeon": 0.01251968017983733,
+      "avg_return_if_horizon_fallback": -0.18195929524368548
+    },
+    {
+      "entry": "D",
+      "entry_label": "T+1 첫 5분봉 종가",
+      "count": 1336,
+      "win_rate": 0.9505988023952096,
+      "yangjeon_exit_rate": 0.9505988023952096,
+      "avg_return": -0.0009154825604644544,
+      "avg_return_if_yangjeon": 0.008402977196379042,
+      "avg_return_if_horizon_fallback": -0.18022523848760447
+    },
+    {
+      "entry": "E",
+      "entry_label": "T+1 두 번째 5분봉 시가",
+      "count": 1311,
+      "win_rate": 0.9519450800915332,
+      "yangjeon_exit_rate": 0.9519450800915332,
+      "avg_return": 0.00022716593040459537,
+      "avg_return_if_yangjeon": 0.007941004778106536,
+      "avg_return_if_horizon_fallback": -0.1525803083859767
+    },
+    {
+      "entry": "F",
+      "entry_label": "공개 시각 직후 첫 장중 5분봉 종가",
+      "count": 1462,
+      "win_rate": 0.9316005471956225,
+      "yangjeon_exit_rate": 0.9316005471956225,
+      "avg_return": 0.0008293007246428386,
+      "avg_return_if_yangjeon": 0.013732137404801741,
+      "avg_return_if_horizon_fallback": -0.17490733485912144
+    }
+  ]
+}

@@ -5,8 +5,9 @@
 - API 응답 구조(sync_time, article_count, articles) 검증
 
 사용법:
-  PHARM_API_URL=https://api.example.com/pharm/sync python3 scripts/test_pharm_api.py
-  python3 scripts/test_pharm_api.py --url https://api.example.com/pharm/sync
+  python3 scripts/test_pharm_api.py --date 20250320 --request-id ... --request-key ...
+  PHARM_REQUEST_ID=... PHARM_REQUEST_KEY=... python3 scripts/test_pharm_api.py --date 20250320
+  PHARM_API_URL=https://pharmdev.edaily.co.kr/api/somedaynews python3 scripts/test_pharm_api.py --date 20250320
 """
 
 import argparse
@@ -20,15 +21,27 @@ from urllib.error import HTTPError, URLError
 EXPECTED_KEYS = {"sync_time", "article_count", "articles"}
 
 
-def fetch_api(url: str, timeout: int = 30) -> dict:
-    """API URL로 GET 요청 후 JSON 파싱."""
+def fetch_api(
+    *,
+    url: str,
+    date: str,
+    request_id: str,
+    request_key: str,
+    timeout: int = 30,
+) -> dict:
+    """API URL로 POST 요청 후 JSON 파싱."""
+    payload = json.dumps({"date": date}).encode("utf-8")
     req = Request(
         url,
+        data=payload,
         headers={
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
             "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
+            "X-Request-Id": request_id,
+            "X-Request-Key": request_key,
         },
-        method="GET",
+        method="POST",
     )
     with urlopen(req, timeout=timeout) as resp:
         raw = resp.read().decode("utf-8")
@@ -53,8 +66,23 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="팜이데일리 API 테스트")
     parser.add_argument(
         "--url",
-        default=os.environ.get("PHARM_API_URL"),
+        default=os.environ.get("PHARM_API_URL", "https://pharmdev.edaily.co.kr/api/somedaynews"),
         help="API 엔드포인트 URL (또는 PHARM_API_URL 환경변수)",
+    )
+    parser.add_argument(
+        "--date",
+        default=os.environ.get("PHARM_DATE"),
+        help="조회 날짜 (yyyyMMdd). mock 모드에선 무시됨.",
+    )
+    parser.add_argument(
+        "--request-id",
+        default=os.environ.get("PHARM_REQUEST_ID"),
+        help="X-Request-Id (또는 PHARM_REQUEST_ID 환경변수)",
+    )
+    parser.add_argument(
+        "--request-key",
+        default=os.environ.get("PHARM_REQUEST_KEY"),
+        help="X-Request-Key (또는 PHARM_REQUEST_KEY 환경변수)",
     )
     parser.add_argument(
         "--mock",
@@ -76,31 +104,52 @@ def main() -> None:
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
     else:
-        url = args.url
-        if not url or not url.strip():
-            print("오류: API URL이 필요합니다.")
-            print("  PHARM_API_URL=https://... python3 scripts/test_pharm_api.py")
-            print("  python3 scripts/test_pharm_api.py --url https://...")
-            print("  python3 scripts/test_pharm_api.py --mock  # 샘플 JSON으로 검증 테스트")
+        url = (args.url or "").strip()
+        date = (args.date or "").strip()
+        request_id = (args.request_id or "").strip()
+        request_key = (args.request_key or "").strip()
+
+        missing = []
+        if not url:
+            missing.append("url")
+        if not date:
+            missing.append("date")
+        if not request_id:
+            missing.append("request-id")
+        if not request_key:
+            missing.append("request-key")
+        if missing:
+            print("오류: 필수 인자가 부족합니다:", ", ".join(missing))
+            print("예시:")
+            print("  python3 scripts/test_pharm_api.py --date 20250320 --request-id ... --request-key ...")
+            print("  PHARM_REQUEST_ID=... PHARM_REQUEST_KEY=... python3 scripts/test_pharm_api.py --date 20250320")
+            print("  python3 scripts/test_pharm_api.py --mock  # 샘플 JSON으로 구조 검증")
             sys.exit(1)
 
         print(f"요청 URL: {url}")
+        print(f"요청 date: {date}")
         print("-" * 50)
 
         try:
-            data = fetch_api(url, timeout=args.timeout)
+            data = fetch_api(
+                url=url,
+                date=date,
+                request_id=request_id,
+                request_key=request_key,
+                timeout=args.timeout,
+            )
         except HTTPError as e:
-        print(f"HTTP 오류: {e.code} {e.reason}")
-        if e.fp:
-            body = e.fp.read().decode("utf-8", errors="replace")[:500]
-            print(f"응답 본문: {body}")
-        sys.exit(1)
-    except URLError as e:
-        print(f"연결 오류: {e.reason}")
-        sys.exit(1)
-    except json.JSONDecodeError as e:
-        print(f"JSON 파싱 오류: {e}")
-        sys.exit(1)
+            print(f"HTTP 오류: {e.code} {e.reason}")
+            if e.fp:
+                body = e.fp.read().decode("utf-8", errors="replace")[:500]
+                print(f"응답 본문: {body}")
+            sys.exit(1)
+        except URLError as e:
+            print(f"연결 오류: {e.reason}")
+            sys.exit(1)
+        except json.JSONDecodeError as e:
+            print(f"JSON 파싱 오류: {e}")
+            sys.exit(1)
 
     ok, errs = validate_response(data)
     if not ok:

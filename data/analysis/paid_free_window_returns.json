@@ -1,0 +1,32 @@
+{
+  "paid_window": {
+    "name": "유료 구간 (공개→무료 전환 시각까지)",
+    "n": 1416,
+    "mean_pct": 0.2232,
+    "median_pct": 0.0,
+    "win_rate": 0.4746,
+    "min_pct": -51.0303,
+    "max_pct": 68.7161
+  },
+  "after_free_window": {
+    "name": "무료 전환 후 동일 길이 구간 (전환 직후→전환+Δt)",
+    "n": 1329,
+    "mean_pct": -0.1464,
+    "median_pct": -0.2911,
+    "win_rate": 0.4357,
+    "min_pct": -72.0819,
+    "max_pct": 88.1378
+  },
+  "after_free_window_unfiltered_n": 1331,
+  "after_free_extreme_excluded": 2,
+  "after_free_cap_abs": 1.0,
+  "skipped": {
+    "no_free_conversion_at": 2,
+    "bad_time_order": 0,
+    "no_anchor": 351,
+    "no_paid_exit": 188,
+    "no_post_entry": 63,
+    "no_post_exit": 22
+  },
+  "methodology": "앵커= published_at 이후 첫 장중 5분봉 종가. 유료 청산= 전환 시각 이전까지 끝난 마지막 봉 종가(앵커 이후). 무료 후 진입= 전환 시각 이후 첫 봉 종가, 청산= 전환+Δt 이전 마지막 봉 종가(Δt=무료전환−공개 시계열). intraday_ok 기사만. 무료 후 집계는 |수익률|≤100%(소수 1.0) 밖 극단값 제외."
+}

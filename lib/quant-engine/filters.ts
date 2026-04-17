@@ -36,11 +36,17 @@ export function buildTrendFilter(ind: Indicators): TrendFilter {
   } else if (!above_ma20 && momentum_direction === "FALLING") {
     summary =
       "평균보다 아래이고 최근 흐름도 내려가는 편이라, 새로 들어가기엔 부담이 큽니다.";
+  } else if (!above_ma20 && momentum_direction === "RISING") {
+    summary =
+      "평균보다 아래에 있지만 최근 흐름은 반등 쪽이라, 20일 평균가 부근·위로의 회복이 이어지는지가 관건입니다.";
+  } else if (!above_ma20 && momentum_direction === "FLAT") {
+    summary =
+      "평균보다 아래인데 단기 방향은 뚜렷하지 않아, 평균가 대비 종가가 어디에 붙는지가 다음 구간의 승부처로 보입니다.";
   } else if (above_ma20) {
     summary = "최근 20일 평균 주가보다는 위에 있습니다. 큰 흐름만 보면 상대적으로 나은 편입니다.";
   } else {
     summary =
-      "최근 20일 평균 주가보다는 아래에 있습니다. 아직 약한 편이라 뉴스·재무 등 다른 정보도 함께 보는 것이 좋습니다.";
+      "최근 20일 평균 주가보다는 아래에 있습니다. 평균가 회복 전까지는 변동 폭을 작게 잡는 편이 덜 부담스럽다고 볼 수 있습니다.";
   }
 
   return { above_ma20, momentum_direction, contrarian_setup, summary };

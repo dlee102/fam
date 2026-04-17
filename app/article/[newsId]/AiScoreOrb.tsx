@@ -79,6 +79,30 @@ export function quantStanceBarGradient(grade: string): string {
   return quantStanceTheme(grade).barGradient;
 }
 
+/** 알고리즘 시그널 0~100 점수용 게이지 색 (낮음→회색, 중간→황, 높음→록) */
+export function algoSignalBarGradient(score: number): string {
+  const s = Math.max(0, Math.min(100, score));
+  if (s >= 66) return STANCE_THEME.buy.barGradient;
+  if (s >= 33) return STANCE_THEME.neutral.barGradient;
+  return "linear-gradient(90deg, #57534e 0%, #78716c 50%, #a8a29e 100%)";
+}
+
+/** 종합 점수(퀀트+알고리즘 합산) 0~100 → 게이지 색 */
+export const compositeScoreGradient = algoSignalBarGradient;
+
+/**
+ * 퀀트 기술 점수 + 알고리즘 시그널 → 종합 점수
+ * - 퀀트 80% : 알고리즘 20%
+ * - 알고리즘 미수집 시 퀀트 단독 사용
+ */
+export function computeCompositeScore(
+  quantTotal: number,
+  algoTotal: number | null
+): number {
+  if (algoTotal === null) return quantTotal;
+  return Math.round(quantTotal * 0.8 + algoTotal * 0.2);
+}
+
 /**
  * 원형 오브 — 중앙 큰 글자: 등급(A–D), 아래 작은 글자: 태도(매수·매도·중립). 글로우 없음.
  */
