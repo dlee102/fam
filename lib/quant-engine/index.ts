@@ -37,5 +37,6 @@ export {
   getLatestDailySnapshotForTicker,
   getArticleIdsWithEodOk,
   getArticleIdsWithIntradayManifestOk,
+  hasRealIntradayData,
 } from "./eod-loader";
 export type { QuantInsightBarSource } from "./eod-loader";

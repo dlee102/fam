@@ -20,6 +20,7 @@ interface ManifestRow {
   eod_rows: number;
   intraday_ok?: boolean;
   intraday_path?: string;
+  intraday_rows?: number;
 }
 
 /** 앱에서 사용하는 행: 일봉(EOD) + 5분봉 경로가 매니페스트상 완비된 경우만 */
@@ -61,6 +62,37 @@ async function loadManifest(): Promise<ManifestRow[]> {
     ).then((rows) => (Array.isArray(rows) ? rows : []));
   }
   return _manifestPromise;
+}
+
+/**
+ * 매니페스트 행이 *실제* 5분봉 데이터를 갖고 있는지 판별.
+ * EODHD가 인트라데이를 지원하지 않는 종목은 일봉 간격 스텁만 반환하므로
+ * `intraday_rows ≈ eod_rows` → false.
+ */
+function hasRealBars(r: ManifestRow): boolean {
+  const ir = r.intraday_rows;
+  const er = r.eod_rows;
+  if (ir == null || er == null || er <= 0) return true;
+  return ir > er * 2;
+}
+
+/**
+ * article_id+ticker 조합에 대해 실제 5분봉 데이터가 존재하는지 확인.
+ * 매니페스트 `intraday_rows / eod_rows` 비율로 판별하므로 파일 I/O 없음.
+ */
+export async function hasRealIntradayData(
+  article_id: string,
+  ticker: string
+): Promise<boolean> {
+  const manifest = await loadManifest();
+  const row = manifest.find(
+    (r) =>
+      r.article_id === article_id &&
+      r.ticker === ticker &&
+      isManifestRowWithIntraday(r)
+  );
+  if (!row) return false;
+  return hasRealBars(row);
 }
 
 /** 매니페스트에서 첫 번째 매칭 row 조회 (EOD+5분 매니페스트 완비 행만) */

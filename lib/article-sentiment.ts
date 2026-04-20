@@ -12,6 +12,8 @@ export type ArticleSentimentSnapshot = {
   confidence?: number;
   primaryTypeKo?: string;
   catalystLabelKo?: string;
+  /** classified JSON `stock_catalyst` (e.g. bullish / bearish) */
+  stockCatalyst?: string;
 };
 
 const CLASSIFIED_REL = path.join("data", "somedaynews_article_tickers_classified.json");
@@ -42,6 +44,7 @@ function loadMap(): Map<string, ArticleSentimentSnapshot> {
           typeof r.article_primary_type_ko === "string" ? r.article_primary_type_ko : undefined,
         catalystLabelKo:
           typeof r.stock_catalyst_label_ko === "string" ? r.stock_catalyst_label_ko : undefined,
+        stockCatalyst: typeof r.stock_catalyst === "string" ? r.stock_catalyst : undefined,
       });
     }
   } catch {

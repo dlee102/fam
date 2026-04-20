@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { qLabel, sb } from "./sidebar-tokens";
 import { ROBO_DEMO } from "@/app/kiwoom-robo-market/demo";
 
@@ -36,13 +35,7 @@ export function RoboMarketInsightCard() {
           marginBottom: "0.85rem",
         }}
       >
-        <Link
-          href="/kiwoom-robo-market"
-          style={{ ...qLabel, marginBottom: 0, color: "inherit", textDecoration: "none" }}
-          className="kiwoom-card-title-link"
-        >
-          키움 로보마켓
-        </Link>
+        <span style={{ ...qLabel, marginBottom: 0, color: "inherit" }}>키움 로보마켓</span>
         <span
           style={{
             fontSize: "0.5625rem",

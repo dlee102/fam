@@ -1,11 +1,16 @@
 /**
- * 트렌드 필터 + 진입·손절 추천
+ * 트렌드 필터 + 진입·손절 추천 — 바이오 소형주 특화 v2
  *
  * 근거:
  * - 섹션 5: MA20 필터 — 상승 추세 +0.758%, 하락 -0.537%
  * - 섹션 8: 사전 10일 모멘텀 하락 → +1.03% (역발상), 상승 → -1.36%
- * - 섹션 6: 최적 진입 = 익일 두 번째 5분봉 시가, 17-18거래일 보유
- * - 섹션 5: ATR 손절(1.5×) 도입 시 수익률 +0.645%로 개선
+ * - 섹션 6: 최적 진입 = 익일 두 번째 5분봉 시가
+ *
+ * 바이오 소형주 보정:
+ * - 보유 기간: 18→12일 (이벤트 반응이 빠르고 변동성이 커 장기 보유 불리)
+ * - 손절: 1.5×ATR → 2.0×ATR (바이오 일상 변동이 커서 기존은 너무 타이트)
+ * - 표시 상한: 35% → 45% (바이오 소형주 ATR이 크므로 상한 여유 필요)
+ * - 모멘텀 기준: ±2% → ±4% (바이오 정상 모멘텀 범위가 넓음)
  */
 
 import type { Indicators, OhlcBar, TrendFilter, EntryRecommendation, Grade } from "./types";
@@ -19,8 +24,8 @@ export function buildTrendFilter(ind: Indicators): TrendFilter {
 
   let momentum_direction: TrendFilter["momentum_direction"] = "FLAT";
   if (momentum10d !== null) {
-    if (momentum10d < -2) momentum_direction = "FALLING";
-    else if (momentum10d > 2) momentum_direction = "RISING";
+    if (momentum10d < -4) momentum_direction = "FALLING";
+    else if (momentum10d > 4) momentum_direction = "RISING";
   }
 
   // 최적 세팅: MA20 위에 있지만 단기는 눌린 상태 (역발상 진입)
@@ -57,24 +62,24 @@ export function buildEntryRecommendation(
   grade: Grade,
   bars: OhlcBar[]
 ): EntryRecommendation {
-  // 보고서 섹션 6 최적 진입 (n≥500 기준 1위)
   const timing_label = "익일 두 번째 5분봉 시가";
 
-  // 등급별 보유 일수 조정
-  // A/B: 최적 18일, C: 14일 (n≥1200 기준), D: 추천하지 않음
+  // 바이오 소형주: 이벤트 반응이 빨라 보유 기간 단축
+  // A/B: 12거래일, C: 8거래일, D: 비추
   const hold_trading_days =
-    grade === "A" || grade === "B" ? 18
-    : grade === "C" ? 14
+    grade === "A" || grade === "B" ? 12
+    : grade === "C" ? 8
     : 0;
 
-  // ATR 손절: 1.5×ATR / 종가 (%). ATR≥종가 꼴이면 100% 넘는 값이 나옴(데이터·극변동) → 50% 초과는 신뢰 불가로 미표시, 그 외는 표시 상한 35%
+  // 바이오 소형주 ATR 손절: 2.0×ATR (기존 1.5×는 일상 변동에 너무 빈번히 걸림)
+  // 표시 상한 45% (바이오 ATR이 커서 35%로는 부족), 60% 초과 시 신뢰 불가
   let stop_loss_pct: number | null = null;
   if (ind.atr14 !== null && bars.length > 0) {
     const lastClose = bars[bars.length - 1].close;
     if (lastClose > 0) {
-      const raw = (1.5 * ind.atr14) / lastClose * 100;
-      if (Number.isFinite(raw) && raw > 0 && raw <= 50) {
-        stop_loss_pct = parseFloat(Math.min(35, raw).toFixed(2));
+      const raw = (2.0 * ind.atr14) / lastClose * 100;
+      if (Number.isFinite(raw) && raw > 0 && raw <= 60) {
+        stop_loss_pct = parseFloat(Math.min(45, raw).toFixed(2));
       }
     }
   }

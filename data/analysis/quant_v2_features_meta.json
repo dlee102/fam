@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-04-21T01:09:33.779916",
+  "n_rows": 853,
+  "n_positive_1d": 434,
+  "n_negative_1d": 419,
+  "base_rate_1d": 50.9,
+  "feature_cols": [
+    "ma5_20_spread",
+    "atr_ratio",
+    "bb_pct_b",
+    "bb_width",
+    "rsi14",
+    "momentum10d",
+    "vol_ratio20",
+    "vol_spike_ratio",
+    "pub_hour",
+    "pub_weekday",
+    "entry_vs_prev_close",
+    "entry_vs_prev_low",
+    "ret_1d_pre",
+    "close_vs_ma20",
+    "gap_open_pct",
+    "sentiment_positive",
+    "sentiment_negative",
+    "sentiment_confidence",
+    "catalyst_bullish",
+    "catalyst_bearish"
+  ],
+  "target_cols": [
+    "ret_1d",
+    "ret_1d_intra",
+    "ret_3d",
+    "ret_5d",
+    "ret_8d"
+  ],
+  "skip_reasons": {
+    "short_pre_bars": 839,
+    "excluded": 55,
+    "no_t0_or_short_history": 62,
+    "missing_event_features": 202,
+    "missing_tech_indicators": 3,
+    "missing_target": 8
+  }
+}

@@ -1,10 +1,9 @@
-export type NavTabVariant = "default" | "news" | "backtest" | "premium";
+export type NavTabVariant = "default" | "news" | "premium";
 
 export type NavIcon =
   | "home"
   | "chart"
   | "news"
-  | "flask"
   | "premium"
   | "portfolio";
 
@@ -13,16 +12,13 @@ export type NavItem =
   | { type: "divider" };
 
 export const navItems: NavItem[] = [
-  { type: "link", href: "/", label: "1번 ~ 4번", variant: "default", icon: "home" },
   {
     type: "link",
-    href: "/kiwoom-robo-market",
-    label: "키움 로보마켓",
+    href: "/",
+    label: "퀀트 인사이트",
     variant: "default",
-    icon: "chart",
+    icon: "home",
   },
-  { type: "divider" },
-  { type: "link", href: "/backtesting", label: "백테스팅", variant: "backtest", icon: "flask" },
   { type: "divider" },
   {
     type: "link",

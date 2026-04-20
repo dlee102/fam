@@ -37,6 +37,7 @@ yarn-error.log*
 /data/yfinance_fundamentals/*
 !/data/yfinance_fundamentals/fundamentals_model_context.json
 /data/somedaynews/
+/data/somedaynews_enrich_cache/
 /data/somedaynews_sentiment.jsonl
 # data/eodhd_news_windows/ → Git LFS (.gitattributes)
 

@@ -1,7 +1,60 @@
-import type { ArticleBioPeerMapModel } from "@/lib/bio-business-peer-data";
+import type { ArticleBioPeerMapModel, BioPeerValuationInsight } from "@/lib/bio-business-peer-data";
+
+const TAG_COLORS: Record<string, string> = {
+  up: "var(--quant-up, #15803d)",
+  down: "var(--quant-down, #b91c1c)",
+  neutral: "var(--color-text-muted, #737373)",
+};
+
+function PeerInsightCard({ insight }: { insight: BioPeerValuationInsight }) {
+  return (
+    <div className="article-bio-peer__insight-card">
+      <div className="article-bio-peer__insight-header">
+        <span className="article-bio-peer__insight-name">{insight.name}</span>
+        <span className="article-bio-peer__insight-pos">
+          {insight.typeShort} {insight.cohortTotal}개 중 {insight.cohortRank}위
+        </span>
+      </div>
+
+      <table className="article-bio-peer__insight-table" aria-label="동종 비교">
+        <thead>
+          <tr>
+            <th className="article-bio-peer__insight-th" />
+            <th className="article-bio-peer__insight-th article-bio-peer__insight-th--val">이 종목</th>
+            <th className="article-bio-peer__insight-th article-bio-peer__insight-th--val">동종 중간</th>
+            <th className="article-bio-peer__insight-th" />
+          </tr>
+        </thead>
+        <tbody>
+          {insight.comparisons.map((c) => (
+            <tr key={c.label} className="article-bio-peer__insight-tr">
+              <td className="article-bio-peer__insight-td article-bio-peer__insight-td--label">{c.label}</td>
+              <td className="article-bio-peer__insight-td article-bio-peer__insight-td--val">{c.tickerValue ?? "—"}</td>
+              <td className="article-bio-peer__insight-td article-bio-peer__insight-td--val article-bio-peer__insight-td--median">
+                {c.peerMedian ?? "—"}
+              </td>
+              <td className="article-bio-peer__insight-td article-bio-peer__insight-td--tag">
+                {c.tag ? (
+                  <span
+                    className="article-bio-peer__insight-tag"
+                    style={{ color: TAG_COLORS[c.tagColor] }}
+                  >
+                    {c.tag}
+                  </span>
+                ) : null}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p className="article-bio-peer__insight-line">{insight.insightLine}</p>
+    </div>
+  );
+}
 
 export function ArticleBioPeerMap({ model }: { model: ArticleBioPeerMapModel }) {
-  const { rows, distribution, peerGroups } = model;
+  const { rows, distribution, peerGroups, peerInsights } = model;
   const total = rows.length;
 
   return (
@@ -32,6 +85,15 @@ export function ArticleBioPeerMap({ model }: { model: ArticleBioPeerMapModel }) 
             </li>
           ))}
         </ul>
+
+        {peerInsights.length > 0 ? (
+          <div className="article-bio-peer__insights" aria-label="동종 비교 인사이트">
+            <p className="article-bio-peer__insights-kicker">동종 비교 인사이트</p>
+            {peerInsights.map((ins) => (
+              <PeerInsightCard key={ins.code} insight={ins} />
+            ))}
+          </div>
+        ) : null}
 
         {distribution.length > 0 ? (
           <>

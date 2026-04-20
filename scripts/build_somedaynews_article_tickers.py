@@ -7,7 +7,9 @@
 - **유료만**: API `is_paid === true`인 기사만(무료 제외). 전체를 쓰려면 `--include-free`
 - `published_at`: API 필수(없으면 해당 기사는 건너뜀 — 보강 시각 없음)
 - `free_conversion_at`: API에 있으면 저장(무료 전환 시각; 없으면 null)
+- `score`: API 팜이데일리 노출 점수(정수, **클수록 좋음**). 비어 있으면 `null`
 - `date`: `published_at`의 KST 달력일
+- 일별 파일 내 기사는 API `score` **내림차순**으로 처리
 - `--date-from` / `--date-to`: 위 KST 달력일 구간만 포함(양끝 포함). 비우면 전체 일별 JSON에서 집계
 
   python3 scripts/build_somedaynews_article_tickers.py
@@ -44,6 +46,33 @@ def norm_stock_codes(raw: object) -> list[str]:
         if is_six_digit_krx(code):
             out.append(code)
     return out
+
+
+def parse_article_score_val(raw: object) -> int | None:
+    if raw is None:
+        return None
+    t = str(raw).strip()
+    if not t:
+        return None
+    try:
+        return int(t)
+    except ValueError:
+        try:
+            return int(float(t))
+        except ValueError:
+            return None
+
+
+def sort_articles_by_score_desc(articles: list) -> list:
+    def key(a: object) -> tuple[int, str]:
+        if not isinstance(a, dict):
+            return (-1, "")
+        n = parse_article_score_val(a.get("score"))
+        iv = n if n is not None else -1
+        pub = str(a.get("published_at") or "")
+        return (iv, pub)
+
+    return sorted(articles, key=key, reverse=True)
 
 
 def main() -> None:
@@ -97,7 +126,7 @@ def main() -> None:
         arts = data.get("articles")
         if not isinstance(arts, list):
             continue
-        for a in arts:
+        for a in sort_articles_by_score_desc(arts):
             if not isinstance(a, dict):
                 continue
             if not args.include_free and a.get("is_paid") is not True:
@@ -126,6 +155,7 @@ def main() -> None:
                 "article_id": a.get("article_id"),
                 "title": (a.get("title") or "")[:500],
                 "stock_codes": codes,
+                "score": parse_article_score_val(a.get("score")),
             }
             if isinstance(rd, str) and rd.strip():
                 rec["registered_date"] = rd.strip()

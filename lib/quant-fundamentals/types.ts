@@ -32,15 +32,17 @@ export type FundamentalSnapshotForModel = {
   statement_highlights?: StatementPeriodHighlight[];
 };
 
-/** 바이오주 관점 펀더멘탈 서브스코어 (기술 총점과 독립) */
+/** 바이오 소형주 관점 펀더멘탈 서브스코어 (기술 총점과 독립) */
 export type FundamentalScoreBreakdown = {
-  /** 영업이익 방향·흑자여부 (가중치 35%) */
+  /** 영업이익 방향·흑자여부 (가중치 30%) */
   profit_direction_score: number | null;
-  /** 매출 성장 (가중치 25%) */
+  /** 매출 성장 (가중치 20%) */
   revenue_growth_score: number | null;
-  /** 재무 건전성 — currentRatio·현금·부채 (가중치 25%) */
+  /** 재무 건전성 — currentRatio·현금·부채 (가중치 20%) */
   cash_health_score: number | null;
-  /** 수익성 품질 — 영업마진·매출총이익마진 (가중치 15%) */
+  /** 캐시 런웨이 — 현금 대비 연간 소진율 (가중치 18%, 바이오 핵심) */
+  cash_runway_score: number | null;
+  /** 수익성 품질 — 영업마진·매출총이익마진 (가중치 12%) */
   margin_quality_score: number | null;
   /** 가중 합산 0~100 */
   total: number;

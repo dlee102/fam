@@ -37,14 +37,6 @@ export function SidebarNavIcon({ name }: { name: NavIcon }) {
           <path d="M15 17h-3" />
         </svg>
       );
-    case "flask":
-      return (
-        <svg {...common}>
-          <path d="M9 3h6" />
-          <path d="M10 9v8l-4 5h12l-4-5V9" />
-          <path d="M7.5 18h9" />
-        </svg>
-      );
     case "premium":
       return (
         <svg {...common}>

@@ -1,13 +1,15 @@
 /**
- * 퀀트 엔진 공통 타입
+ * 퀀트 엔진 공통 타입 — 바이오 소형주 특화 v2
  *
- * 가중치 근거 (scripts/redesign_quant_score.py — N=1,080 재검증):
- * - atr_ratio    : AUC 0.569 → 가장 유효. 낮을수록(응축) WIN.
- * - vol_ratio20  : AUC 0.418(역방향). 거래량 과대(>2×)가 가장 강한 악재. 추가.
- * - ma5_20_spread: AUC 0.529. WIN 중앙 1.54% vs LOSS 3.46%. 낮을수록 유리.
- * - momentum10d  : AUC 0.525. WIN 중앙 4.90% vs LOSS 6.19%. 역발상 방향 유지.
- * - bb_pct_b     : AUC 0.526. WIN=LOSS=0.70 (거의 동일). 가중치 대폭 축소.
- * - rsi14        : AUC 0.507. WIN 56.7 vs LOSS 58.9. 신호 거의 없음. 소폭 유지.
+ * 가중치 근거 (redesign_quant_score.py N=1,080 + 바이오 소형주 보정):
+ * - atr_ratio         : AUC 0.569. 바이오 소형은 ATR 6-10%가 정상 → 임계 상향.
+ * - vol_ratio20       : AUC 0.418(역). 바이오는 카탈리스트 거래 급증이 잦아 스파이크 분리 필요.
+ * - volume_spike_ratio: (신규) 5일 평균 대비 당일 거래량. 바이오 카탈리스트 탐지 핵심.
+ * - ma5_20_spread     : AUC 0.529. 바이오 이격 정상 범위가 넓어 임계 상향.
+ * - momentum10d       : AUC 0.525. 역발상 방향 유지, 가중치 상향.
+ * - gap_pct           : (신규) 갭 오픈 %. 바이오는 장전 뉴스·공시로 갭이 크고 방향성 강.
+ * - bb_pct_b          : AUC 0.526. WIN≈LOSS → 가중치 최소화.
+ * - rsi14             : AUC 0.507. 사실상 노이즈 → 독립 가중치 삭제, 시그널에서만 참조.
  */
 
 // ── 기초 데이터 ──────────────────────────────────────────────────────
@@ -68,6 +70,18 @@ export interface Indicators {
    * 음수 = 사전 하락 추세 → 역발상 효과 유리.
    */
   momentum10d: number | null;
+  /**
+   * 거래량 스파이크 비율 = 당일 거래량 / 5일 평균 거래량
+   * 바이오 소형주에서 카탈리스트(FDA·임상·공시) 발생 시
+   * 단기 거래량이 급증하는 패턴을 포착. > 3× 이면 유의미.
+   */
+  volume_spike_ratio: number | null;
+  /**
+   * 갭 오픈 (%) = (당일 시가 / 전일 종가 - 1) × 100
+   * 양수 = 갭업, 음수 = 갭다운.
+   * 바이오 소형주는 장전 뉴스로 ±5~20% 갭이 빈번하며 방향성이 강함.
+   */
+  gap_pct: number | null;
 }
 
 // ── 신호 ─────────────────────────────────────────────────────────────
@@ -77,6 +91,7 @@ export interface Indicators {
  * - VOLATILITY_SQUEEZE    : BB폭<20% → 평균 +1.03%, PF 1.56 (표본 841건, 가장 안정적)
  * - OVERSOLD_REBOUND      : %B<0.35, RSI<50 → +1.01%, 승률 45.8%
  * - MOMENTUM_WARNING      : 단기 과열 → 평균 -0.35% (회피 신호)
+ * - DILUTION_RISK          : 바이오 소형주 유상증자·전환사채 행사 패턴 — 거래량↑+가격↓ 동시
  * - NEUTRAL               : 해당 없음
  */
 export type SignalType =
@@ -84,6 +99,7 @@ export type SignalType =
   | "VOLATILITY_SQUEEZE"
   | "OVERSOLD_REBOUND"
   | "MOMENTUM_WARNING"
+  | "DILUTION_RISK"
   | "NEUTRAL";
 
 export type Confidence = "HIGH" | "MED" | "LOW";
@@ -140,18 +156,20 @@ export interface ArticleSentimentForScore {
 // ── 복합 점수 ─────────────────────────────────────────────────────────
 /** 가중 복합 점수 구성 요소 */
 export interface ScoreBreakdown {
-  /** atr_ratio 기여 (가중치 30) — AUC 0.569, 가장 유효 */
+  /** atr_ratio 기여 (가중치 20) — 바이오 소형주는 기본 ATR이 높아 분별력 약화 */
   atr_score: number;
-  /** vol_ratio20 기여 (가중치 25) — 거래량 과대=강한 악재 */
+  /** vol_ratio20 기여 (가중치 18) — 거래량 과대 경고, 바이오 카탈리스트 구분 */
   vol_score: number;
-  /** ma5_20_spread 기여 (가중치 20) — AUC 0.529 */
+  /** volume_spike_ratio 기여 (가중치 15) — 5일 대비 스파이크, 바이오 핵심 팩터 */
+  vol_spike_score: number;
+  /** ma5_20_spread 기여 (가중치 15) — 바이오 이격 정상 범위 넓음 반영 */
   spread_score: number;
-  /** momentum10d 기여 (가중치 10) — AUC 0.525 */
+  /** momentum10d 기여 (가중치 15) — 역발상, 가중치 상향 */
   momentum_score: number;
-  /** bb_pct_b 기여 (가중치 10) — AUC 0.526, WIN=LOSS 거의 동일 */
+  /** gap_pct 기여 (가중치 10) — 장전 갭, 바이오 뉴스 반응 핵심 */
+  gap_score: number;
+  /** bb_pct_b 기여 (가중치 7) — 극단만 유효, 대폭 축소 */
   bb_score: number;
-  /** rsi14 기여 (가중치 5) — AUC 0.507, 신호 미미 */
-  rsi_score: number;
   /**
    * 가중 직후 0~100 (캘리브레이션 전). AUC≈0.53 수준의 약한 신호에 맞게
    * `total`은 이 값을 완화 매핑한 표시 점수.
@@ -159,7 +177,7 @@ export interface ScoreBreakdown {
   raw_weighted: number;
   /** 기사 톤 반영 가감(정수). 캘리브 직후 값에 더한 뒤 `total` 클램프 */
   sentiment_nudge: number;
-  /** 표시용 종합 점수 50–100 (정책상 최소 50 = 중립, 톤 가감 후) */
+  /** 표시용 종합 점수 30–100 (바이오 소형주는 위험 구간을 드러내야 함, 최소 30) */
   total: number;
 }
 

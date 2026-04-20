@@ -29,11 +29,12 @@
 }
 
 .article-quant-sidebar__analysis-ticker {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: clamp(1.125rem, 2.8vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--color-text);
-  margin: -0.5rem 0 0.85rem;
-  line-height: 1.4;
+  margin: -0.35rem 0 0.9rem;
+  line-height: 1.2;
 }
 
 .article-quant-sidebar__section {

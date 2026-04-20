@@ -127,6 +127,133 @@
   text-transform: none;
 }
 
+/* ── 동종 비교 인사이트 ──────────────────────────────────────────── */
+
+.article-bio-peer__insights {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.article-bio-peer__insights-kicker {
+  margin: 0;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--quant-accent, #1c4d48);
+}
+
+.article-bio-peer__insight-card {
+  background: var(--quant-canvas, #f7f6f4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm, 4px);
+  padding: 0.55rem 0.6rem 0.65rem;
+}
+
+.article-bio-peer__insight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 0.45rem;
+}
+
+.article-bio-peer__insight-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.article-bio-peer__insight-pos {
+  font-size: 0.5625rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.article-bio-peer__insight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.625rem;
+  margin-bottom: 0.4rem;
+}
+
+.article-bio-peer__insight-th {
+  font-weight: 500;
+  color: var(--color-text-faint);
+  text-align: left;
+  padding: 0 0 0.2rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.article-bio-peer__insight-th--val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.article-bio-peer__insight-tr {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border-subtle) 50%, transparent);
+}
+
+.article-bio-peer__insight-tr:last-child {
+  border-bottom: none;
+}
+
+.article-bio-peer__insight-td {
+  padding: 0.2rem 0;
+  vertical-align: baseline;
+}
+
+.article-bio-peer__insight-td--label {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  padding-right: 0.3rem;
+}
+
+.article-bio-peer__insight-td--val {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  padding: 0.2rem 0.25rem;
+}
+
+.article-bio-peer__insight-td--median {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.article-bio-peer__insight-td--tag {
+  text-align: right;
+  padding-left: 0.15rem;
+  white-space: nowrap;
+}
+
+.article-bio-peer__insight-tag {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.article-bio-peer__insight-line {
+  margin: 0;
+  padding: 0.4rem 0.45rem;
+  background: color-mix(in srgb, var(--quant-accent, #1c4d48) 7%, transparent);
+  border-radius: 3px;
+  font-size: 0.625rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #4a4a4a);
+  font-weight: 500;
+}
+
 .article-bio-peer__bar {
   display: flex;
   margin-top: 0.65rem;

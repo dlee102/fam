@@ -3,10 +3,11 @@ import { fetchArticleContent } from "@/lib/crawl-article";
 import { buildArticleExcerptForQuant } from "@/lib/article-excerpt-for-quant";
 import { getArticleByNewsId } from "@/lib/news-tickers";
 import { getSomedayNewsByArticleId } from "@/lib/somedaynews-articles";
-import { getTickerName } from "@/lib/ticker-names";
+import { getTickerName, replaceTickerCodesWithNames } from "@/lib/ticker-names";
 import { pickPrimaryQuantTicker } from "@/lib/pick-primary-quant-ticker";
 import { getTickersForArticle } from "@/lib/quant-engine";
 import { buildArticleBioPeerMapModel } from "@/lib/bio-business-peer-data";
+import { getQuantV2ScoreForArticle } from "@/lib/quant-v2-prediction";
 import { QuantSidebar } from "./QuantSidebar";
 import { ArticleBioPeerMap } from "./ArticleBioPeerMap";
 import { ArticleRiskWatchPanel } from "./ArticleRiskWatchPanel";
@@ -15,6 +16,25 @@ function tickerNameMap(codes: string[]): Record<string, string> {
   return Object.fromEntries(
     codes.filter((t) => /^\d{6}$/.test(t)).map((t) => [t, getTickerName(t)])
   );
+}
+
+function mergeArticleTickerList(
+  entryTickers: string[] | undefined,
+  apiStockCodes: string[] | undefined,
+  quantTickers: string[]
+): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  const push = (t: unknown) => {
+    const s = String(t ?? "").trim();
+    if (!s || seen.has(s)) return;
+    seen.add(s);
+    out.push(s);
+  };
+  for (const t of entryTickers ?? []) push(t);
+  for (const t of apiStockCodes ?? []) push(t);
+  for (const t of quantTickers) push(t);
+  return out;
 }
 
 
@@ -34,13 +54,15 @@ export default async function ArticlePage({
   const quantTickers = await getTickersForArticle(newsId);
 
   if (!article && apiNews) {
-    const railTickers = apiNews.stock_codes;
+    const railTickers = mergeArticleTickerList(undefined, apiNews.stock_codes, quantTickers);
     const nameMap = tickerNameMap(railTickers);
     const bioPeerModel = buildArticleBioPeerMapModel(railTickers, nameMap);
     const primaryQuantTicker =
       pickPrimaryQuantTicker(railTickers, quantTickers) ??
       quantTickers[0] ??
       railTickers.find((t) => /^\d{6}$/.test(String(t).trim()));
+    const primaryTickerForScore = primaryQuantTicker ?? quantTickers[0] ?? undefined;
+    const predictionScore = await getQuantV2ScoreForArticle(newsId, primaryTickerForScore);
     return (
       <main className="article-page-layout">
         <Link href="/" className="back-link back-link--article">
@@ -48,7 +70,9 @@ export default async function ArticlePage({
         </Link>
         <div className="article-page-body">
           <article className="article-page-article article-page-body__main">
-            <h1 className="article-page-article__title">{apiNews.title}</h1>
+            <h1 className="article-page-article__title">
+              {replaceTickerCodesWithNames(apiNews.title, railTickers)}
+            </h1>
             <time
               dateTime={apiNews.published_at}
               style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", display: "block", marginBottom: "0.75rem" }}
@@ -65,13 +89,14 @@ export default async function ArticlePage({
               ticker={primaryQuantTicker}
               chartTickers={railTickers}
               chartTickerNames={nameMap}
-              articleTitle={apiNews.title}
+              articleTitle={replaceTickerCodesWithNames(apiNews.title, railTickers)}
               articleExcerpt=""
+              predictionScore={predictionScore}
             />
             {bioPeerModel ? <ArticleBioPeerMap model={bioPeerModel} /> : null}
             <ArticleRiskWatchPanel
               articleId={newsId}
-              title={apiNews.title}
+              title={replaceTickerCodesWithNames(apiNews.title, railTickers)}
               tickers={railTickers}
               tickerNames={nameMap}
             />
@@ -92,15 +117,20 @@ export default async function ArticlePage({
     );
   }
 
-  const railTickers = tickerEntry?.tickers?.length ? tickerEntry.tickers : [];
+  const railTickers = mergeArticleTickerList(tickerEntry?.tickers, apiNews?.stock_codes, quantTickers);
   const nameMap = tickerNameMap(railTickers);
   const bioPeerModel = buildArticleBioPeerMapModel(railTickers, nameMap);
   const primaryQuantTicker =
     pickPrimaryQuantTicker(railTickers, quantTickers) ??
     quantTickers[0] ??
     railTickers.find((t) => /^\d{6}$/.test(String(t).trim()));
+  const primaryTickerForScore2 = primaryQuantTicker ?? quantTickers[0] ?? undefined;
+  const predictionScore = await getQuantV2ScoreForArticle(newsId, primaryTickerForScore2);
 
-  const quantArticleExcerpt = buildArticleExcerptForQuant(article);
+  const quantArticleExcerpt = replaceTickerCodesWithNames(
+    buildArticleExcerptForQuant(article),
+    railTickers
+  );
 
   return (
     <main className="article-page-layout">
@@ -109,10 +139,12 @@ export default async function ArticlePage({
       </Link>
       <div className="article-page-body">
         <article className="article-page-article article-page-body__main">
-          <h1 className="article-page-article__title">{article.title}</h1>
+          <h1 className="article-page-article__title">
+            {replaceTickerCodesWithNames(article.title, railTickers)}
+          </h1>
           {article.subtitle && (
             <p style={{ fontSize: "1rem", color: "var(--color-text-muted)", marginBottom: "0.5rem", lineHeight: 1.55 }}>
-              {article.subtitle}
+              {replaceTickerCodesWithNames(article.subtitle, railTickers)}
             </p>
           )}
           {article.date && (
@@ -131,14 +163,14 @@ export default async function ArticlePage({
               block.type === "text"
                 ? block.content.split(/\n\n+/).filter((p) => p.trim()).map((para, j) => (
                     <p key={`${i}-${j}`} style={{ marginBottom: "1.5rem", marginTop: 0 }}>
-                      {para.trim()}
+                      {replaceTickerCodesWithNames(para.trim(), railTickers)}
                     </p>
                   ))
                 : [
                     <figure key={i} style={{ margin: "2rem 0", textAlign: "center" }}>
                       <img
                         src={block.image.src}
-                        alt={block.image.caption || ""}
+                        alt={replaceTickerCodesWithNames(block.image.caption || "", railTickers)}
                         style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
                       />
                       {block.image.caption && (
@@ -150,7 +182,7 @@ export default async function ArticlePage({
                             lineHeight: 1.5,
                           }}
                         >
-                          {block.image.caption}
+                          {replaceTickerCodesWithNames(block.image.caption, railTickers)}
                         </figcaption>
                       )}
                     </figure>,
@@ -164,13 +196,14 @@ export default async function ArticlePage({
             ticker={primaryQuantTicker}
             chartTickers={railTickers}
             chartTickerNames={nameMap}
-            articleTitle={article.title}
+            articleTitle={replaceTickerCodesWithNames(article.title, railTickers)}
             articleExcerpt={quantArticleExcerpt}
+            predictionScore={predictionScore}
           />
           {bioPeerModel ? <ArticleBioPeerMap model={bioPeerModel} /> : null}
           <ArticleRiskWatchPanel
             articleId={newsId}
-            title={article.title}
+            title={replaceTickerCodesWithNames(article.title, railTickers)}
             tickers={railTickers}
             tickerNames={nameMap}
           />

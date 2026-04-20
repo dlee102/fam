@@ -124,7 +124,7 @@ function dayTag(n: number): string {
 
 function legendLabel(s: SeriesPayload, tickerNames?: Record<string, string>): string {
   const nm = tickerNames?.[s.ticker];
-  return nm ? `${s.ticker} (${nm})` : s.ticker;
+  return nm && nm !== s.ticker ? nm : s.ticker;
 }
 
 export function PostPublishCumReturnChart({
@@ -338,7 +338,11 @@ export function PostPublishCumReturnChart({
                   return `${tag} · ${time}`;
                 }}
               />
-              {seriesList.length > 1 ? <Legend wrapperStyle={{ fontSize: 11 }} /> : null}
+              {seriesList.length > 1 ? (
+                <Legend
+                  wrapperStyle={{ fontSize: 13, fontWeight: 600, paddingTop: 8 }}
+                />
+              ) : null}
               {seriesList.map((s) => {
                 const k = seriesKey(s);
                 const ti = uniqueTickers.indexOf(s.ticker);

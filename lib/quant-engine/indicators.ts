@@ -104,6 +104,24 @@ export function calcMomentum(closes: number[], period = 10): number | null {
   return ((cur / past) - 1) * 100;
 }
 
+// ── 거래량 스파이크 비율 (5일 기준) ─────────────────────────────────────
+export function calcVolumeSpikeRatio(volumes: number[]): number | null {
+  if (volumes.length < 6) return null;
+  const recent5 = volumes.slice(-6, -1);
+  const avg5 = recent5.reduce((s, v) => s + v, 0) / 5;
+  if (avg5 === 0) return null;
+  return volumes[volumes.length - 1] / avg5;
+}
+
+// ── 갭 오픈 (%) ────────────────────────────────────────────────────────
+export function calcGapPct(bars: OhlcBar[]): number | null {
+  if (bars.length < 2) return null;
+  const prevClose = bars[bars.length - 2].close;
+  const todayOpen = bars[bars.length - 1].open;
+  if (prevClose === 0) return null;
+  return ((todayOpen / prevClose) - 1) * 100;
+}
+
 // ── 종합 지표 계산 ─────────────────────────────────────────────────────
 export function computeIndicators(bars: OhlcBar[]): Indicators {
   if (bars.length === 0) {
@@ -112,6 +130,7 @@ export function computeIndicators(bars: OhlcBar[]): Indicators {
       atr14: null, atr_ratio: null,
       bb_upper: null, bb_mid: null, bb_lower: null, bb_width: null, bb_pct_b: null,
       rsi14: null, vol_ratio20: null, momentum10d: null,
+      volume_spike_ratio: null, gap_pct: null,
     };
   }
 
@@ -135,6 +154,8 @@ export function computeIndicators(bars: OhlcBar[]): Indicators {
   const rsi14 = calcRSI(closes, 14);
   const vol_ratio20 = calcVolumeRatio(volumes, 20);
   const momentum10d = calcMomentum(closes, 10);
+  const volume_spike_ratio = calcVolumeSpikeRatio(volumes);
+  const gap_pct = calcGapPct(bars);
 
   return {
     ma5,
@@ -150,5 +171,7 @@ export function computeIndicators(bars: OhlcBar[]): Indicators {
     rsi14,
     vol_ratio20,
     momentum10d,
+    volume_spike_ratio,
+    gap_pct,
   };
 }

@@ -8,17 +8,8 @@ import type {
   QuantOpinionLayout,
   QuantOpinionRequestPayload,
 } from "@/lib/quant-opinion-shared";
-import {
-  buildQuantOpinionLayout,
-  templateQuantOpinionKo,
-} from "@/lib/quant-opinion-shared";
-import {
-  algoSignalBarGradient,
-  compositeScoreGradient,
-  computeCompositeScore,
-  quantStanceBarGradient,
-  quantStanceBarPct,
-} from "./AiScoreOrb";
+import { clampQuantV2ScorePoints } from "@/lib/quant-v2-score-cap";
+import { compositeScoreGradient } from "./AiScoreOrb";
 import { PostPublishCumReturnChart } from "./PostPublishCumReturnChart";
 
 function asideClass(base: string, extra?: string) {
@@ -94,6 +85,8 @@ interface Props {
   /** AI 해석용 — 크롤 본문 발췌(없으면 빈 문자열) */
   articleTitle?: string;
   articleExcerpt?: string;
+  /** V2 ML 퀀트스코어 (0~99). 양전확률 × (1-폭락위험) 조정값. */
+  predictionScore?: number | null;
 }
 
 type QuantInsightApi = QuantInsight & {
@@ -144,14 +137,16 @@ const AXIS_LABELS: Record<string, string> = {
   profit_direction_score: "영업이익 방향성",
   revenue_growth_score: "매출 성장",
   cash_health_score: "재무 건전성",
+  cash_runway_score: "캐시 런웨이",
   margin_quality_score: "수익성 품질",
 };
 
 const AXIS_WEIGHTS: Record<string, number> = {
-  profit_direction_score: 35,
-  revenue_growth_score: 25,
-  cash_health_score: 25,
-  margin_quality_score: 15,
+  profit_direction_score: 30,
+  revenue_growth_score: 20,
+  cash_health_score: 20,
+  cash_runway_score: 18,
+  margin_quality_score: 12,
 };
 
 type AxisKey = keyof typeof AXIS_LABELS;
@@ -160,6 +155,7 @@ const FSCORE_AXIS_KEYS = [
   "profit_direction_score",
   "revenue_growth_score",
   "cash_health_score",
+  "cash_runway_score",
   "margin_quality_score",
 ] as const satisfies readonly (keyof FundamentalScoreBreakdown)[];
 
@@ -213,7 +209,7 @@ function FundamentalScoreCard({ fscore }: { fscore: FundamentalScoreBreakdown })
           );
         })}
       </div>
-      {fscore.axes_available < 4 ? (
+      {fscore.axes_available < 5 ? (
         <p className="article-quant-sidebar__fscore-note">
           {fscore.axes_available}개 축 기반 산출 · 일부 지표 누락
         </p>
@@ -361,13 +357,15 @@ function resolveChartTickers(
 
 function buildOpinionPayload(
   d: QuantInsightApi,
-  ctx: { title?: string; excerpt?: string }
+  ctx: { title?: string; excerpt?: string; predictionScore?: number | null }
 ): QuantOpinionRequestPayload {
   const sent = d.article_sentiment;
   const title = ctx.title?.trim();
   const excerpt = ctx.excerpt?.trim();
-  const algoTotal = d.news_signal?.score_total ?? null;
-  const composite = computeCompositeScore(d.score.total, algoTotal);
+  const composite =
+    ctx.predictionScore != null
+      ? clampQuantV2ScorePoints(ctx.predictionScore)
+      : Math.round(d.score.total);
   return {
     ticker: d.ticker,
     as_of_date: d.as_of_date,
@@ -394,6 +392,7 @@ function buildOpinionPayload(
       momentum10d: d.indicators.momentum10d,
       bb_pct_b: d.indicators.bb_pct_b,
       rsi14: d.indicators.rsi14,
+      ma5: d.indicators.ma5,
       ma20: d.indicators.ma20,
       bb_lower: d.indicators.bb_lower,
     },
@@ -417,6 +416,7 @@ export function QuantSidebar({
   chartTickerNames,
   articleTitle,
   articleExcerpt,
+  predictionScore,
 }: Props) {
   const [data, setData] = useState<QuantInsightApi | null>(null);
   const [status, setStatus] = useState<"loading" | "ok" | "empty">("loading");
@@ -458,6 +458,7 @@ export function QuantSidebar({
     const payload = buildOpinionPayload(data, {
       title: articleTitle,
       excerpt: articleExcerpt,
+      predictionScore,
     });
     let cancelled = false;
     setAiOpinionLoading(true);
@@ -477,18 +478,9 @@ export function QuantSidebar({
           } | null
         ) => {
           if (cancelled || !j) return;
-          const source = j.source === "gemini" ? "gemini" : "template";
-          let lines = Array.isArray(j.lines) ? j.lines.slice(0, 2) : [];
-          if (lines.length < 2) {
-            lines = templateQuantOpinionKo(payload);
-          }
-          const layout =
-            j.layout && j.layout.bullets?.length
-              ? j.layout
-              : buildQuantOpinionLayout(payload, lines, source);
-          if (!layout.bullets?.length) return;
+          if (!j.layout?.bullets?.length) return;
           setAiOpinion({
-            layout,
+            layout: j.layout,
             source: j.source ?? "template",
           });
         }
@@ -502,7 +494,7 @@ export function QuantSidebar({
     return () => {
       cancelled = true;
     };
-  }, [status, data, articleTitle, articleExcerpt]);
+  }, [status, data, articleTitle, articleExcerpt, predictionScore]);
 
   const chartBlock =
     resolvedChartTickers.length > 0 ? (
@@ -538,7 +530,7 @@ export function QuantSidebar({
     );
   }
 
-  const { indicators: ind, score, grade, trend_filter } = data;
+  const { indicators: ind, trend_filter } = data;
 
   const fmt = (v: number | null, dec = 1) =>
     v !== null ? v.toFixed(dec) : "—";
@@ -547,43 +539,57 @@ export function QuantSidebar({
     <aside className={asideClass("article-quant-sidebar", className)} aria-label="퀀트 인사이트">
       <p className="article-quant-sidebar__heading">퀀트 인사이트</p>
       {data.ticker && /^\d{6}$/.test(data.ticker) ? (
-        <p className="article-quant-sidebar__analysis-ticker">
-          분석 종목 · {data.ticker}
-          {chartTickerNames?.[data.ticker]
-            ? ` · ${chartTickerNames[data.ticker]}`
-            : ""}
+        <p
+          className="article-quant-sidebar__analysis-ticker"
+          title={`종목코드 ${data.ticker}`}
+        >
+          {chartTickerNames?.[data.ticker] ?? data.ticker}
         </p>
       ) : null}
 
-      {/* 종합 점수: 퀀트 60% + 알고리즘 40% */}
+      {/* 퀀트스코어 (V2): 서버에서 번들 JSON 또는 로지스틱 런타임 */}
       <div className="article-quant-sidebar__section">
-        <span className="article-quant-sidebar__label">
-          {data.news_signal != null ? "종합 점수(퀀트+알고리즘)" : "총점(참고)"}
-        </span>
+        <span className="article-quant-sidebar__label">퀀트스코어(복합 우상향 확률)</span>
         <div className="article-quant-sidebar__score-card">
           <div className="article-quant-sidebar__score-meta">
-            {(() => {
-              const algoTotal = data.news_signal?.score_total ?? null;
-              const composite = computeCompositeScore(score.total, algoTotal);
-              return (
-                <>
-                  <div className="article-quant-sidebar__score-row">
-                    <span className="article-quant-sidebar__score-num">{composite}</span>
-                    <span className="article-quant-sidebar__score-denom">점</span>
-                  </div>
-                  <MiniBar
-                    value={composite}
-                    gradient={
-                      algoTotal !== null
-                        ? compositeScoreGradient(composite)
-                        : quantStanceBarGradient(grade)
-                    }
-                  />
-                </>
-              );
-            })()}
+            {predictionScore != null ? (
+              <>
+                <div className="article-quant-sidebar__score-row">
+                  <span className="article-quant-sidebar__score-num">
+                    {clampQuantV2ScorePoints(predictionScore)}
+                  </span>
+                  <span className="article-quant-sidebar__score-denom">점</span>
+                </div>
+                <MiniBar
+                  value={clampQuantV2ScorePoints(predictionScore)}
+                  gradient={compositeScoreGradient(clampQuantV2ScorePoints(predictionScore))}
+                />
+              </>
+            ) : (
+              <>
+                <div className="article-quant-sidebar__score-row">
+                  <span
+                    className="article-quant-sidebar__score-num"
+                    style={{ color: "var(--quant-muted)", fontSize: "1.25rem" }}
+                  >
+                    —
+                  </span>
+                </div>
+                <p
+                  style={{
+                    margin: "0.35rem 0 0",
+                    fontSize: "0.625rem",
+                    color: "var(--quant-muted)",
+                    lineHeight: 1.45,
+                  }}
+                >
+                  매니페스트·EOD·5분봉으로 산출할 수 없습니다.
+                </p>
+              </>
+            )}
           </div>
         </div>
+
         {aiOpinionLoading ? (
           <div className="article-quant-sidebar__ai-opinion" aria-busy="true">
             <div className="article-quant-sidebar__ai-opinion-card article-quant-sidebar__ai-opinion-card--skel">
@@ -605,7 +611,7 @@ export function QuantSidebar({
             <div className="article-quant-sidebar__ai-opinion-card">
               <div className="article-quant-sidebar__ai-opinion-head">
                 <span className="article-quant-sidebar__ai-opinion-kicker">
-                  핵심 패턴
+                  퀀트 해석
                 </span>
                 <p className="article-quant-sidebar__ai-opinion-title">
                   {aiOpinion.layout.signalLabel}

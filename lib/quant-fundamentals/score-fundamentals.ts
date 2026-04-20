@@ -1,11 +1,17 @@
 /**
- * 바이오/제약주 특화 펀더멘탈 서브스코어 (기술 총점과 완전 독립)
+ * 바이오 소형주 특화 펀더멘탈 서브스코어 v2 (기술 총점과 완전 독립)
  *
- * 4개 축:
- *  1. 영업이익 방향성  35% — 흑자여부 + 연속 개선/악화 추세
- *  2. 매출 성장       25% — YoY 매출 증감률
- *  3. 재무 건전성     25% — currentRatio, totalCash vs totalDebt
- *  4. 수익성 품질     15% — operatingMargins, grossMargins
+ * 5개 축:
+ *  1. 영업이익 방향성  30% — 흑자여부 + 연속 개선/악화 추세
+ *  2. 매출 성장       20% — YoY 매출 증감률
+ *  3. 재무 건전성     20% — currentRatio, totalCash vs totalDebt
+ *  4. 캐시 런웨이     18% — 현금/연간소진 = 생존 가능 개월 수 (바이오 핵심)
+ *  5. 수익성 품질     12% — operatingMargins, grossMargins
+ *
+ * 바이오 소형주 특성:
+ *  - 대부분 적자이므로 "적자 개선"도 가치가 있음
+ *  - 현금 소진율(cash runway)이 생존에 직결 — 12개월 미만이면 위험
+ *  - 매출이 없는 파이프라인 기업도 현금 런웨이로 평가 가능
  *
  * 데이터 없는 축은 null(무시). 유효 축이 2개 미만이면 null 반환.
  */
@@ -198,6 +204,53 @@ function marginQualityScore(metrics: Record<string, string | number | null>): nu
   return Math.round(gmScore * 0.45 + omScore * 0.55);
 }
 
+// ── 5. 캐시 런웨이 (18%) — 바이오 소형주 핵심 생존 지표 ──────────────────────
+
+/**
+ * 현금 / 연간 순소진(영업CF 적자) = 생존 가능 개월 수.
+ * 바이오 소형주는 매출이 없거나 적자가 일상 → 보유 현금으로 버틸 수 있는 기간이 핵심.
+ *
+ * 산식: totalCash / abs(영업손실_연환산) × 12
+ *       operatingCashflow가 있으면 그것으로, 없으면 operating_income으로 대체.
+ *
+ * 36개월 이상이면 우량, 12개월 미만이면 위험(유증 필요).
+ */
+function cashRunwayScore(
+  metrics: Record<string, string | number | null>,
+  stmt: StatementPeriodHighlight[]
+): number | null {
+  const cash = typeof metrics.totalCash === "number" ? metrics.totalCash : null;
+  if (cash === null || cash <= 0) return null;
+
+  let annualBurn: number | null = null;
+
+  const ocf = typeof metrics.operatingCashflow === "number" ? metrics.operatingCashflow : null;
+  if (ocf !== null && ocf < 0) {
+    annualBurn = Math.abs(ocf);
+  } else {
+    const sorted = [...stmt]
+      .filter((h) => h.operating_income !== null)
+      .sort((a, b) => (a.period_end < b.period_end ? 1 : -1));
+    if (sorted.length > 0 && sorted[0].operating_income! < 0) {
+      annualBurn = Math.abs(sorted[0].operating_income!);
+    }
+  }
+
+  if (annualBurn === null || annualBurn <= 0) {
+    return ocf !== null && ocf >= 0 ? 85 : null;
+  }
+
+  const runwayMonths = (cash / annualBurn) * 12;
+
+  if (runwayMonths >= 48) return 95;
+  if (runwayMonths >= 36) return 82;
+  if (runwayMonths >= 24) return 68;
+  if (runwayMonths >= 18) return 55;
+  if (runwayMonths >= 12) return 40;
+  if (runwayMonths >= 6)  return 22;
+  return 8;
+}
+
 // ── 종합 ────────────────────────────────────────────────────────────────────
 
 function gradeLabelFromTotal(total: number): string {
@@ -216,17 +269,19 @@ export function computeFundamentalScore(
   const m = snap.metrics;
   const stmt = snap.statement_highlights ?? [];
 
-  const w = { profit: 35, revenue: 25, cash: 25, margin: 15 };
+  const w = { profit: 30, revenue: 20, cash: 20, runway: 18, margin: 12 };
 
   const profit_direction_score = profitDirectionScore(stmt);
   const revenue_growth_score = revenueGrowthScore(m, stmt);
   const cash_health_score = cashHealthScore(m);
+  const cash_runway_score_val = cashRunwayScore(m, stmt);
   const margin_quality_score = marginQualityScore(m);
 
   const scores: Array<{ score: number; weight: number }> = [];
   if (profit_direction_score !== null) scores.push({ score: profit_direction_score, weight: w.profit });
   if (revenue_growth_score !== null) scores.push({ score: revenue_growth_score, weight: w.revenue });
   if (cash_health_score !== null) scores.push({ score: cash_health_score, weight: w.cash });
+  if (cash_runway_score_val !== null) scores.push({ score: cash_runway_score_val, weight: w.runway });
   if (margin_quality_score !== null) scores.push({ score: margin_quality_score, weight: w.margin });
 
   const axes_available = scores.length;
@@ -240,6 +295,7 @@ export function computeFundamentalScore(
     profit_direction_score,
     revenue_growth_score,
     cash_health_score,
+    cash_runway_score: cash_runway_score_val,
     margin_quality_score,
     total,
     grade_label: gradeLabelFromTotal(total),

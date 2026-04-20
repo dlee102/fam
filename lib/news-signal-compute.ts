@@ -269,13 +269,49 @@ function pubHourKst(publishedAt: string): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+/** Python `datetime.weekday()` 와 동일: 월=0 … 일=6 (KST 달력일) */
+function pubWeekdayKstMon0(publishedAt: string): number | null {
+  const ms = parsePublishUtcMs(publishedAt);
+  if (!Number.isFinite(ms)) return null;
+  const wd = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Seoul",
+    weekday: "long",
+  }).format(new Date(ms));
+  const map: Record<string, number> = {
+    Monday: 0,
+    Tuesday: 1,
+    Wednesday: 2,
+    Thursday: 3,
+    Friday: 4,
+    Saturday: 5,
+    Sunday: 6,
+  };
+  return map[wd] ?? null;
+}
+
+export type NewsSignalRawFeatures = {
+  pub_hour: number | null;
+  pub_weekday: number | null;
+  entry_vs_prev_close: number;
+  entry_vs_prev_low?: number;
+  ret_1d_pre?: number;
+  close_vs_ma20?: number;
+  gap_open_pct?: number;
+};
+
 /**
- * 매니페스트에 EOD+5분이 있고 피처 추출에 성공하면 점수 반환.
+ * 룩어헤드 없는 이벤트 피처 + EOD 인덱스 (Quant V2 로지스틱 등).
+ * 실패 시 null.
  */
-export async function computeNewsSignalScore(
+export async function extractNewsSignalFeatureRow(
   articleId: string,
   ticker: string
-): Promise<NewsSignalScorePayload | null> {
+): Promise<{
+  features: NewsSignalRawFeatures;
+  publishedAt: string;
+  i0: number;
+  eod: OhlcBar[];
+} | null> {
   if (!articleId?.trim() || !/^\d{6}$/.test(ticker)) return null;
 
   const row = await findManifestRow(articleId, ticker);
@@ -330,16 +366,11 @@ export async function computeNewsSignalScore(
   if (!cM1) return null;
 
   const ph = pubHourKst(publishedAt);
+  const pwd = pubWeekdayKstMon0(publishedAt);
 
-  const out: {
-    pub_hour: number | null;
-    entry_vs_prev_close: number;
-    entry_vs_prev_low?: number;
-    ret_1d_pre?: number;
-    close_vs_ma20?: number;
-    gap_open_pct?: number;
-  } = {
+  const out: NewsSignalRawFeatures = {
     pub_hour: ph,
+    pub_weekday: pwd,
     entry_vs_prev_close: pxF / cM1 - 1,
   };
   if (lM1 && lM1 > 0) {
@@ -374,5 +405,18 @@ export async function computeNewsSignalScore(
     out.gap_open_pct = dayOpen / prevClose - 1;
   }
 
-  return scoreFromFeatures(out);
+  return { features: out, publishedAt, i0, eod };
+}
+
+/**
+ * 매니페스트에 EOD+5분이 있고 피처 추출에 성공하면 점수 반환.
+ */
+export async function computeNewsSignalScore(
+  articleId: string,
+  ticker: string
+): Promise<NewsSignalScorePayload | null> {
+  const row = await extractNewsSignalFeatureRow(articleId, ticker);
+  if (!row) return null;
+  const { pub_weekday: _pw, ...forScore } = row.features;
+  return scoreFromFeatures(forScore);
 }

@@ -1,5 +1,5 @@
 /**
- * SomedayNews 메타 배열: Firebase RTDB만 사용. Admin 미설정 시 빈 배열(로컬 JSON 미사용).
+ * SomedayNews 메타 배열: Firebase RTDB만 사용. Admin 미설정 시 빈 배열.
  * 노드: `{FIREBASE_SOMEDAYNEWS_RTD_ROOT}/somedaynews_article_tickers`
  */
 
@@ -15,6 +15,10 @@ export interface SomedayNewsArticleRecord {
   registered_date: string;
   /** SomeDayNews API 무료 전환 시각(ISO); 없으면 null 또는 생략 */
   free_conversion_at?: string | null;
+  /**
+   * 팜이데일리 API 기사 노출 점수(정수 문자열에서 파싱). 클수록 좋음. 미부여·빈 값은 null.
+   */
+  score?: number | null;
 }
 
 function normalizeRecordsFromRtdb(raw: unknown): SomedayNewsArticleRecord[] {

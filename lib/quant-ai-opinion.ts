@@ -5,8 +5,9 @@ import {
 } from "@/lib/gemini-model-order";
 import {
   buildQuantOpinionLayout,
+  emptyQuantOpinionLayout,
   isQuantOpinionPayload,
-  templateQuantOpinionKo,
+  quantScorePlainKo,
   type QuantOpinionLayout,
   type QuantOpinionRequestPayload,
 } from "@/lib/quant-opinion-shared";
@@ -14,9 +15,73 @@ import {
 export type { QuantOpinionLayout, QuantOpinionRequestPayload } from "@/lib/quant-opinion-shared";
 export {
   buildQuantOpinionLayout,
+  emptyQuantOpinionLayout,
   isQuantOpinionPayload,
+  quantScorePlainKo,
   templateQuantOpinionKo,
 } from "@/lib/quant-opinion-shared";
+
+// ── 시그널별 톤·관점 힌트 ──────────────────────────────────────────────
+const SIGNAL_TONE_MAP: Record<string, string> = {
+  AGGRESSIVE_CONTRARIAN:
+    "이 종목은 최근 많이 떨어졌다가 거래가 다시 생기기 시작한 구간이다. " +
+    "반등할 여지가 있다는 점은 짚되, 아직 떨어지는 흐름이 끝났다고 단정하면 안 된다.",
+  VOLATILITY_SQUEEZE:
+    "이 종목은 최근 가격 움직임이 아주 잠잠해진 상태다. " +
+    "잠잠했던 만큼 곧 위든 아래든 크게 움직일 수 있다는 점을 전달한다. " +
+    "어느 쪽으로 갈지 예단은 하지 않는다.",
+  OVERSOLD_REBOUND:
+    "이 종목은 너무 많이 빠져서 조금 되돌아올 여지가 있는 구간이다. " +
+    "크게 반등한다고 단정하지 말고, 조금 튀어오를 수 있다는 정도만 전달한다.",
+  MOMENTUM_WARNING:
+    "이 종목은 최근 너무 빨리 올랐다. " +
+    "지금 따라 사면 부담이 클 수 있다는 점을 전달하고, " +
+    "얼마나 올랐는지를 숫자로 짚어준다. 좀 내려올 때를 기다리는 관점을 보여준다.",
+  NEUTRAL:
+    "차트만 보면 뚜렷한 모양이 거의 없는 상태다. " +
+    "수치 요약에 퀀트스코어(0~99)가 있으면 그 점수를 먼저 쉬운 말로 짚고, 기사와 가격 기준을 이어서 쓴다.",
+};
+
+function signalToneHint(signalType: string): string {
+  return SIGNAL_TONE_MAP[signalType] ?? SIGNAL_TONE_MAP["NEUTRAL"];
+}
+
+// ── 수치 사전 요약 (모델이 JSON을 직접 파싱하지 않아도 핵심값을 볼 수 있게) ──
+function buildNumericDigest(p: QuantOpinionRequestPayload): string {
+  const lines: string[] = [];
+  const { indicators: ind } = p;
+  const push = (k: string, v: unknown, unit = "") => {
+    if (v !== null && v !== undefined) lines.push(`- ${k}: ${v}${unit}`);
+  };
+  push("등급", p.grade);
+  if (p.composite_score !== undefined && Number.isFinite(p.composite_score)) {
+    push("퀀트스코어(0~99)", p.composite_score, "점");
+    lines.push(`- 퀀트스코어 한 줄 풀이: ${quantScorePlainKo(p.composite_score)}`);
+  } else {
+    push("기술 점수(차트)", p.score.total, "점");
+  }
+  push("차트 패턴 이름", p.primary_signal.label);
+  // 이동평균 — ma20 없으면 ma5 대체 표기, 둘 다 없으면 언급 금지 명시
+  const indWithMa5 = ind as typeof ind & { ma5?: number | null };
+  if (ind.ma20 !== null) {
+    push("20일 평균가(ma20)", ind.ma20, "원");
+  } else if (indWithMa5.ma5 != null) {
+    push("최근 5일 평균가(ma5, ma20 없음)", indWithMa5.ma5, "원");
+    lines.push("- ※ MA20 계산 불가. '20일 평균가(데이터 없음)' 같은 표현 절대 금지. 위 5일 평균을 '최근 5일 평균'으로 대체 언급");
+  } else {
+    lines.push("- ※ 이동평균 없음 — 평균가 관련 언급 자체 금지. 모멘텀·RSI로만 설명");
+  }
+  push("볼린저 하단(bb_lower)", ind.bb_lower, "원");
+  push("손절 기준(stop_loss_pct)", p.entry?.stop_loss_pct, "%");
+  push("ATR 비율", ind.atr_ratio !== null ? (ind.atr_ratio as number).toFixed(1) : null, "%");
+  push("거래량 비율(20일)", ind.vol_ratio20 !== null ? (ind.vol_ratio20 as number).toFixed(2) : null, "x");
+  push("이격도(ma5-20)", ind.ma5_20_spread !== null ? (ind.ma5_20_spread as number).toFixed(2) : null, "%");
+  push("10일 모멘텀", ind.momentum10d !== null ? (ind.momentum10d as number).toFixed(1) : null, "%");
+  push("RSI(14)", ind.rsi14 !== null ? (ind.rsi14 as number).toFixed(1) : null);
+  push("BB %B", ind.bb_pct_b !== null ? (ind.bb_pct_b as number).toFixed(2) : null);
+  push("추세 방향", `MA20 ${p.trend_filter.above_ma20 ? "위" : "아래"}, 모멘텀 ${p.trend_filter.momentum_direction}`);
+  return lines.join("\n");
+}
 
 function buildUserMessage(p: QuantOpinionRequestPayload): string {
   const {
@@ -29,7 +94,6 @@ function buildUserMessage(p: QuantOpinionRequestPayload): string {
     ...quantCore
   } = p;
 
-  // null 값을 Gemini가 "null"로 출력하는 현상 방지 — null 필드를 아예 제거
   const cleanIndicators = Object.fromEntries(
     Object.entries(quantCore.indicators).filter(([, v]) => v !== null)
   );
@@ -44,31 +108,36 @@ function buildUserMessage(p: QuantOpinionRequestPayload): string {
   if (cleanEntry && cleanEntry.stop_loss_pct === null) {
     delete (cleanEntry as Record<string, unknown>).stop_loss_pct;
   }
-
+  // summary 필드는 프롬프트 수치 요약에서 이미 제공 → JSON에서 제외해 Gemini가 그대로 베끼는 것을 방지
+  const { summary: _omittedSummary, ...quantCoreWithoutSummary } = quantCore;
+  void _omittedSummary;
   const cleanCore = {
-    ...quantCore,
+    ...quantCoreWithoutSummary,
     indicators: cleanIndicators,
     ...(cleanEntry ? { entry: cleanEntry } : {}),
   };
 
-  const parts: string[] = [];
-  parts.push("[기사]");
-  if (article_title?.trim()) parts.push(`제목: ${article_title.trim()}`);
+  const data: string[] = [];
+
+  data.push("=== 기사 ===");
+  if (article_title?.trim()) data.push(`제목: ${article_title.trim()}`);
   if (article_excerpt?.trim()) {
-    parts.push(`본문 발췌:\n${article_excerpt.trim()}`);
+    data.push(`본문 발췌:\n${article_excerpt.trim()}`);
   } else {
-    parts.push(
-      "본문 발췌: (이 화면에 본문이 없음 — 제목·아래 퀀트·분류만으로 제한적으로 작성할 것)"
-    );
+    data.push("본문 발췌: (없음 -- 제목, 퀀트, 분류만으로 작성할 것)");
   }
   if (sentiment_label_ko?.trim() || article_primary_type_ko?.trim() || catalyst_label_ko?.trim()) {
-    parts.push("[기사 분류·메타(참고, 추측 금지)]");
-    if (sentiment_label_ko?.trim()) parts.push(`톤: ${sentiment_label_ko.trim()}`);
-    if (article_primary_type_ko?.trim()) parts.push(`유형: ${article_primary_type_ko.trim()}`);
-    if (catalyst_label_ko?.trim()) parts.push(`촉매 태그: ${catalyst_label_ko.trim()}`);
+    data.push("=== 기사 분류 메타(참고만, 추측 금지) ===");
+    if (sentiment_label_ko?.trim()) data.push(`톤: ${sentiment_label_ko.trim()}`);
+    if (article_primary_type_ko?.trim()) data.push(`유형: ${article_primary_type_ko.trim()}`);
+    if (catalyst_label_ko?.trim()) data.push(`촉매: ${catalyst_label_ko.trim()}`);
   }
-  parts.push("[퀀트 지표·엔진 요약 JSON]");
-  parts.push(JSON.stringify(cleanCore));
+
+  data.push("=== 퀀트 수치 요약 ===");
+  data.push(buildNumericDigest(p));
+
+  data.push("=== 퀀트 JSON (원본) ===");
+  data.push(JSON.stringify(cleanCore));
 
   const stmtN = fundamentals_snapshot?.statement_highlights?.length ?? 0;
   if (
@@ -78,10 +147,8 @@ function buildUserMessage(p: QuantOpinionRequestPayload): string {
       fundamentals_snapshot.company_name ||
       stmtN > 0)
   ) {
-    parts.push(
-      "[펀더멘탈 요약(Yahoo Finance 스냅샷, 참고·지연·누락 가능 — JSON에 없는 해석·수치 금지)]"
-    );
-    parts.push(
+    data.push("=== 펀더멘탈 요약 (Yahoo Finance, 지연/누락 가능) ===");
+    data.push(
       JSON.stringify({
         ticker_key: fundamentals_snapshot.ticker_key,
         yahoo_symbol: fundamentals_snapshot.yahoo_symbol,
@@ -97,39 +164,87 @@ function buildUserMessage(p: QuantOpinionRequestPayload): string {
     );
   }
 
+  const toneHint = signalToneHint(p.primary_signal.type);
+
+  const scorePhrase =
+    quantCore.composite_score !== undefined && Number.isFinite(quantCore.composite_score)
+      ? `퀀트스코어 ${quantCore.composite_score}점`
+      : `기술 점수 ${quantCore.score.total}점`;
+
+  // 수치 요약에서 실제 값을 뽑아 예시 문장에 직접 삽입
+  const ma20Val = p.indicators.ma20;
+  const stopVal = p.entry?.stop_loss_pct ?? null;
+  let exampleSentence = "";
+  if (ma20Val !== null && stopVal !== null) {
+    const ma20Fmt = new Intl.NumberFormat("ko-KR").format(Math.round(ma20Val));
+    exampleSentence =
+      `  - 좋은 예: '최근 20일 평균(${ma20Fmt}원)보다 아래에 있어서, 이 가격 위로 올라오는지가 중요하고, 약 ${stopVal}%쯤 더 빠지면 손해를 끊는 기준으로 생각해볼 수 있다'`;
+  } else if (ma20Val !== null) {
+    const ma20Fmt = new Intl.NumberFormat("ko-KR").format(Math.round(ma20Val));
+    exampleSentence =
+      `  - 좋은 예: '최근 20일 평균(${ma20Fmt}원) ${p.trend_filter.above_ma20 ? "위" : "아래"}에 있어서, 이 가격을 기준으로 흐름이 바뀌는지 지켜볼 만하다'`;
+  }
+
   const instruction = [
-    "위 [기사]·[퀀트 JSON]·(있으면)[펀더멘탈 JSON]을 함께 읽고, 초급 투자자용으로 정확히 2문장을 써 줘.",
+    "=== 작성 지시 ===",
     "",
-    "[1번 문장] 기사의 핵심 흐름·이슈를 퀀트 기술 지표(등급·방향·거래 흐름)와 연결해 설명한다.",
-    ...(quantCore.composite_score !== undefined
-      ? [`  * composite_score = ${quantCore.composite_score}점(퀀트 기술 60%+알고리즘 시그널 40% 합산). 이 값을 1번 문장 첫머리에 '종합 ${quantCore.composite_score}점' 형태로 짧게 언급하면 좋다.`]
-      : []),
-    "[2번 문장 — 한 줄 정리] 반드시 ① 기사 내용 핵심(호재/리스크/사건) → ② 퀀트 기술 지표 흐름 → ③ 펀더멘탈 체력(있을 때만) → ④ 지금 포지션 힌트 순서로 한 문장 안에 자연스럽게 이어 담는다.",
-    "④ 포지션 힌트 규칙(반드시 준수):",
-    "  - JSON의 indicators.ma20(20일 평균가), indicators.bb_lower(밴드 하단가), entry.stop_loss_pct(손절 기준%)를 직접 읽어 수치로 언급한다.",
-    "  - 예: '20일 평균(XX,XXX원) 위를 유지하면 분할 진입 고려, 이탈 시 손절 기준(X.X%) 참고', '밴드 하단(XX,XXX원) 부근에서 반등 여부가 관건이며 지금은 추격보다 눌림 대기', '손절 기준(X.X%) 감안 시 현 가격대 신규 진입은 부담, 관망이 나음'.",
-    "  - JSON에 해당 키가 없으면 그 항목은 문장에서 완전히 제외한다. '(null)', 'null', '데이터 없음', 'N/A' 같은 표현을 절대 출력하지 않는다.",
-    "  - 쓸 수 있는 수치가 아무것도 없으면 ATR 비율·모멘텀처럼 JSON에 있는 다른 수치로 대체해 구체적인 기준을 제시한다.",
-    "  - '지지선 확인이 필요하다', '추가 확인 필요', '다른 정보와 함께 보세요', '종합적으로 살펴보세요', '뉴스·재무', '재무를 함께', '다른 자료도 보' 같이 독자한테 판단을 떠넘기거나 메타 안내만 하는 표현은 절대 금지.",
-    "  - 확정 매수·매도 지시는 금지하되, 수치 기반의 구체적 행동 기준은 반드시 제시한다.",
+    `[톤 가이드] ${toneHint}`,
+    "",
+    "위 데이터를 읽고, 아래 형식 그대로 정확히 2줄만 출력하라.",
+    "",
+    "BULLET: (1번 문장)",
+    "TAKEAWAY: (2번 문장)",
+    "",
+    ">> BULLET 규칙:",
+    `  - 첫머리에 '${scorePhrase}'을 짧게 쓴다.`,
+    "  - 퀀트스코어(0~99)가 수치 요약에 있으면, 그 점수가 '모델이 당분간 주가를 어느 쪽으로 더 무겁게 보는지'를 한 번 쉬운 말로 풀어준 뒤, 기사 핵심과 차트 흐름을 이어 쓴다.",
+    "  - 퀀트스코어는 참고용 점수이며 수익을 보장하지 않는다는 뉘앙스로 쓴다(단정·확언 금지).",
+    "  - 숫자만 늘어놓으면 안 된다. '이런 뉴스가 나왔는데, 모델 점수와 차트를 같이 보면 이런 느낌이다' 식으로 엮는다.",
+    "",
+    ">> TAKEAWAY 규칙:",
+    "  - 독자가 '그래서 어떻게 하면 돼?'에 답하는 한 문장이다.",
+    "  - 퀀트스코어가 있으면 한 문장 안에 **점수 한 줄 요약 + 가격 기준 숫자**를 같이 넣는다.",
+    "  - 수치 요약에 평균가(20일 or 5일)가 있으면 반드시 넣는다. '최근 5일 평균'이라 적힌 경우 그대로 5일 평균이라 쓰면 된다.",
+    "  - 평균가가 수치 요약에 없으면 평균가를 언급하지 않는다. '(데이터 없음)', '정보 없음', 'N/A' 등 어떤 형태의 없음 표현도 절대 금지.",
+    "  - X나 XX 같은 빈칸/자리표시자는 절대 쓰지 않는다. 실제 숫자만 쓴다.",
+    ...(exampleSentence ? [exampleSentence] : []),
+    "  - 위 값이 모두 없으면, 수치 요약에 있는 다른 숫자(변동성 비율, 10일 흐름 % 등)로만 기준을 제시한다.",
+    "",
+    ">> 말투:",
+    "  - 각 문장 180자 이내. 짧게.",
+    "  - 투자 전문 용어 금지. '신규 진입'->'새로 사기', '이탈'->'아래로 빠지면', '분할 매수'->'나눠서 사기'.",
+    "  - 영어 약어(MA, RSI, ATR) 금지.",
+    "  - 데이터에 없는 숫자를 지어내지 않는다.",
+    "  - 사라/팔아 같은 확정 지시는 하지 않는다. '~로 볼 수 있다' 식으로 부드럽게.",
   ].join("\n");
 
-  return `${instruction}\n\n${parts.join("\n\n")}`;
+  return `${data.join("\n\n")}\n\n${instruction}`;
 }
 
 function parseOpinionLines(text: string): string[] {
   const cleaned = text
     .replace(/\r/g, "")
-    .replace(/\\n/g, "\n")   // Gemini가 리터럴 \n 두 글자로 출력한 경우 대비
+    .replace(/\\n/g, "\n")
     .replace(/\*\*/g, "")
-    .replace(/^[\s\-*•]+/gm, "")
     .trim();
-  const raw = cleaned.split(/\n+/).map((s) => s.trim()).filter(Boolean);
+
+  // 1) BULLET: / TAKEAWAY: 마커 기반 추출 (우선)
+  const bulletMatch = cleaned.match(/^BULLET:\s*(.+)/m);
+  const takeawayMatch = cleaned.match(/^TAKEAWAY:\s*(.+)/m);
+  if (bulletMatch?.[1]?.trim() && takeawayMatch?.[1]?.trim()) {
+    return [bulletMatch[1].trim(), takeawayMatch[1].trim()];
+  }
+
+  // 2) 마커 없이 줄 분리 (폴백)
+  const stripped = cleaned.replace(/^[\s\-*•]+/gm, "");
+  const raw = stripped.split(/\n+/).map((s) => s.trim()).filter(Boolean);
   if (raw.length >= 2) return raw.slice(0, 2);
+
+  // 3) 한 줄에 문장이 합쳐진 경우
   if (raw.length === 1) {
     const one = raw[0];
     const byPeriod = one
-      .split(/(?<=[.!?。])\s+/)
+      .split(/(?<=[.!?])\s+/)
       .map((s) => s.trim())
       .filter(Boolean);
     if (byPeriod.length >= 2) return byPeriod.slice(0, 2);
@@ -137,51 +252,81 @@ function parseOpinionLines(text: string): string[] {
   return raw.length ? [raw[0], raw[0]] : [];
 }
 
-const SYSTEM_HINT = `역할: 한국어 금융 퀀트 코멘트 작성자(초급·입문 독자용).
-도메인 전제(반드시 지킬 것):
-- 다루는 종목은 주로 국내 바이오·제약·바이오 연관 상장사다. 삼성전자·대형 지수주 같은 초대형 블루칩 전제의 비유·표현·기대수익 톤은 쓰지 않는다.
-- 시총·유동성이 상대적으로 작고, 뉴스·임상·규제 이벤트에 주가 반응이 큰 편이라는 점을 염두에 두되, 기사·JSON에 없는 구체 사실(임상 단계명·FDA 승인 여부 등)은 지어내지 않는다.
-- "대형주처럼 안정적이다" 같은 서술은 금지. 변동·거래량 이슈를 말할 때는 중소형 성장주 맥락으로 완곡하게만 짚는다.
-- "뉴스·재무를 같이 보라", "다른 정보도 챙겨 보라"처럼 구체적 가격·지표 대신 권장 행동만 늘어놓는 문장은 금지한다. 반드시 JSON에 있는 수치(평균가·밴드·손절·모멘텀·ATR 비율 등)로 이어 쓴다.
+const SYSTEM_HINT = [
+  "너는 주식 뉴스를 쉽게 풀어주는 해설자다.",
+  "독자는 주식을 처음 시작한 사람이다. 전문 용어를 모른다.",
+  "친구에게 말하듯 짧고 쉽게 쓴다.",
+  "",
+  "[퀀트스코어(ML 모델)]",
+  "- 수치 요약에 퀀트스코어(0~99)가 있으면, 차트 숫자와 **같이** 해석의 축으로 삼는다.",
+  "- 퀀트스코어는 과거 패턴으로 학습한 모델이 '며칠 안 주가가 오를 쪽·부담 쪽 중 어디에 더 무게를 두는지'를 숫자로 요약한 것이다.",
+  "- 점수가 높을수록 모델상 우호적, 낮을수록 모델상 보수적으로 **읽히는 쪽**이라고 풀어 쓴다. 확정 예언·수익 보장은 금지.",
+  "",
+  "[도메인]",
+  "- 종목은 주로 국내 작은 회사(바이오/제약 등)다.",
+  "- 뉴스 하나에 주가가 크게 흔들릴 수 있다.",
+  "- '안정적이다', '대형주와 비슷하다' 같은 표현은 쓰지 않는다.",
+  "",
+  "[출력 형식 -- 반드시 이 2줄만 출력]",
+  "BULLET: (1번 문장)",
+  "TAKEAWAY: (2번 문장)",
+  "",
+  "[1번 문장 -- BULLET]",
+  "- 기사에서 가장 중요한 뉴스가 뭔지, 퀀트스코어(있으면)와 차트가 어떤 상태인지를 한 문장으로 연결한다.",
+  "- 퀀트스코어 또는 기술 점수를 첫머리에 짧게 쓴다.",
+  "",
+  "[2번 문장 -- TAKEAWAY]",
+  "- '한 줄 정리'로 표시되는 문장이다. 독자가 '그래서 지금 어떻게 하면 돼?'에 답하는 느낌으로 쓴다.",
+  "- 퀀트스코어가 있으면 점수 요약과 가격 기준 숫자를 **한 문장 안에서** 같이 넣는다.",
+  "- 반드시 '퀀트 수치 요약'에 있는 실제 숫자(20일 평균가 원 금액, 손절 기준 % 등)를 그대로 넣는다. 없으면 다른 요약 숫자만 쓴다.",
+  "- 예: '지난 20일 평균(7,508원)보다 아래에 있어서, 이 가격을 다시 넘는지가 중요하다'",
+  "- 예: '최근 20일 평균(12,340원) 위에 있지만 너무 빨리 올라서, 약 8.2%쯤 빠지면 정리하는 기준을 잡아볼 수 있다'",
+  "",
+  "[말투 규칙]",
+  "- 초등학생도 알아듣게 쓴다. 짧은 문장, 쉬운 단어.",
+  "- '신규 진입', '분할 매수', '포지션', '이탈', '지지', '모멘텀' 같은 투자 전문 용어는 쓰지 않는다.",
+  "- 대신 이렇게 바꾼다:",
+  "  '신규 진입' -> '새로 사는 것'",
+  "  '분할 매수' -> '나눠서 사는 것'",
+  "  '이탈' -> '아래로 내려가면'",
+  "  '지지' -> '버텨주면'",
+  "  '포지션 힌트' -> 쓰지 않는다. 자연스러운 문장으로 풀어 쓴다.",
+  "  '추세' -> '흐름'",
+  "  '밴드 하단' -> '최근 가격 바닥 근처'",
+  "  '손절' -> '손해를 끊는 것'",
+  "- 각 문장 180자 이내.",
+  "- 영어 약어(MA, RSI, ATR, BB 등) 절대 금지.",
+  "- '~로 볼 수 있다', '~에 가깝다' 등 부드러운 표현을 쓴다.",
+  "- 사라고/팔라고 확정 지시는 하지 않는다.",
+  "",
+  "[절대 금지]",
+  "- X, XX 같은 자리표시자 출력 (반드시 수치 요약에 있는 실제 숫자를 넣는다)",
+  "- 'null', '(null)', '데이터 없음', 'N/A', '이 화면에 없다' 출력",
+  "- '확인이 필요하다', '다른 정보와 함께 보세요' 같은 떠넘기기",
+  "- 교과서 정의 ('RSI가 OO이면 중립이다')",
+  "- 데이터에 없는 숫자/등급 지어내기",
+  "- BULLET: / TAKEAWAY: 줄 외에 다른 텍스트 출력",
+].join("\n");
 
-반드시 할 것(기사+퀀트 결합):
-- 본문 발췌가 있으면: 그 안의 주제·갈등·호재/리스크 흐름을 최소 한 번 이상 짚고, 그와 동시에 퀀트 JSON의 등급·핵심 패턴·요약 문장과 연결해 설명한다. 지표 숫자만 읊는 답변은 실패다.
-- 본문 발췌가 없으면: 제목·분류 메타·퀀트만으로 할 수 있는 범위에서만 쓰고, 없는 내용은 상상하지 않는다.
-- 펀더멘탈 JSON이 붙어 있으면: 그 안의 metrics·회사명·섹터만 근거로, 퀀트(차트) 해석과 한 번만 짧게 연결한다(예: 밸류에이션·재무 체력이 차트와 같이/다르게 보일 수 있음). 펀더멘탈에 없는 재무 항목·정확한 공시 수치는 쓰지 않는다.
-
-절대 금지:
-- "상대강도지수·RSI가 OO이면 중립이다", "볼린저 밴드는 …"처럼 교과서·정의만 반복하는 문장.
-- 퀀트 JSON에 없는 수치·등급·시그널을 지어내기.
-- 펀더멘탈 JSON에 없는 재무 비율·시총·성장률을 지어내기.
-
-규칙:
-- 정확히 2문장만 출력한다. 각 문장은 별도 줄에 출력한다(두 줄 출력).
-- 2번 문장(한 줄 정리)은 반드시 ① 기사 내용 → ② 퀀트 기술 지표 → ③ 펀더멘탈(있을 때만) → ④ 포지션 힌트 순서를 한 문장 안에 자연스럽게 이어 담는다.
-- ④ 포지션 힌트는 JSON의 indicators.ma20(20일 평균가), indicators.bb_lower(밴드 하단가), entry.stop_loss_pct(손절 기준%)를 직접 읽어 수치로 언급한다. 예: '20일 평균(XX,XXX원) 위 유지 시 분할 진입, 손절 기준(X.X%) 참고', '밴드 하단(XX,XXX원)이 지지선 역할, 이탈 전까진 눌림 대기 유효'. '지지선 확인이 필요하다', '추가 확인 필요', '다른 정보와 함께 보세요', '종합적으로 살펴보세요', '뉴스·재무' 안내는 절대 금지. JSON에 해당 키가 없으면 그 항목을 문장에 포함하지 않는다. "null", "(null)", "데이터 없음" 같은 단어를 절대 출력하지 않는다. 쓸 수 있는 수치가 없으면 ATR 비율·모멘텀 등 JSON에 있는 다른 수치로 구체적 기준을 대체 제시한다. 확정 매수·매도 지시 절대 금지.
-- MA, RSI, Squeeze 같은 영어·전문 약어는 쓰지 않거나 반드시 쉬운 한국어로 풀어쓴다(다만 위 ‘교과서 정의’ 금지와 별개로, 필요하면 한 번만 짧게).
-- 초등~중학생도 이해할 수 있는 짧고 쉬운 말을 쓴다.
-- 개인 투자 권유·확정 매수/매도 지시 금지. "~로 해석할 수 있다", "~에 가깝다" 등 완곡 표현을 쓴다.
-- 각 문장은 대략 180자 이내.
-- 답변에 ‘바이오’·‘제약’ 같은 업종 단어를 굳이 쓰지 않아도 된다.`;
+export type QuantOpinionSource = "gemini" | "unavailable";
 
 export async function generateQuantOpinionKo(
   p: QuantOpinionRequestPayload
 ): Promise<{
   lines: string[];
-  source: "gemini" | "template";
+  source: QuantOpinionSource;
   layout: QuantOpinionLayout;
 }> {
-  const pack = (
-    lines: string[],
-    source: "gemini" | "template"
-  ): {
-    lines: string[];
-    source: "gemini" | "template";
-    layout: QuantOpinionLayout;
-  } => ({
+  const packGemini = (lines: string[]) => ({
     lines,
-    source,
-    layout: buildQuantOpinionLayout(p, lines, source),
+    source: "gemini" as const,
+    layout: buildQuantOpinionLayout(p, lines, "gemini"),
+  });
+
+  const packUnavailable = () => ({
+    lines: [] as string[],
+    source: "unavailable" as const,
+    layout: emptyQuantOpinionLayout(),
   });
 
   const apiKey =
@@ -189,7 +334,12 @@ export async function generateQuantOpinionKo(
     process.env.GOOGLE_GENERATIVE_AI_API_KEY ??
     process.env.GOOGLE_API_KEY;
   if (!apiKey) {
-    return pack(templateQuantOpinionKo(p), "template");
+    if (process.env.NODE_ENV === "development") {
+      console.warn(
+        "[quant/ai-opinion] No GEMINI_API_KEY / GOOGLE_GENERATIVE_AI_API_KEY / GOOGLE_API_KEY -- AI comment skipped"
+      );
+    }
+    return packUnavailable();
   }
 
   const genAI = new GoogleGenerativeAI(apiKey);
@@ -211,13 +361,22 @@ export async function generateQuantOpinionKo(
       const text = result.response.text()?.trim() ?? "";
       const lines = parseOpinionLines(text).filter(Boolean);
       if (lines.length < 2) {
-        return pack(templateQuantOpinionKo(p), "template");
+        continue;
       }
-      return pack(lines.slice(0, 2), "gemini");
+      return packGemini(lines.slice(0, 2));
     } catch (e) {
       if (isGeminiModelNotFoundError(e)) continue;
-      return pack(templateQuantOpinionKo(p), "template");
+      if (process.env.NODE_ENV === "development") {
+        const msg = e instanceof Error ? e.message : String(e);
+        console.warn(`[quant/ai-opinion] Gemini failed model=${modelId}:`, msg);
+      }
+      return packUnavailable();
     }
   }
-  return pack(templateQuantOpinionKo(p), "template");
+  if (process.env.NODE_ENV === "development") {
+    console.warn(
+      "[quant/ai-opinion] All Gemini models skipped or returned fewer than 2 lines (check API key, model IDs, region/VPN)."
+    );
+  }
+  return packUnavailable();
 }

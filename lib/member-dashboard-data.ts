@@ -4,11 +4,11 @@
  */
 
 import { getArticleSentiment } from "@/lib/article-sentiment";
+import { cumRetForwardTradingDaysFromPublish } from "@/lib/article-forward-cum-ret";
 import {
   computeQuantInsight,
   getBarsForQuantInsight,
   getTickersForArticle,
-  loadEodBars,
 } from "@/lib/quant-engine";
 import { getSomedayNewsList } from "@/lib/somedaynews-articles";
 import { getTickerName } from "@/lib/ticker-names";
@@ -59,25 +59,12 @@ export function sortMemberRankingsByCumRetDesc(rows: MemberRankingRow[]): Member
 
 const TRADING_DAYS_FORWARD = 5;
 
-/**
- * 종목·기사 창의 EOD 일봉: `t0_kst`(발행 기준일) 첫 봉 종가 대비
- * 그로부터 TRADING_DAYS_FORWARD 거래일 뒤 봉 종가 수익률(%).
- */
-export async function cumRet5TradingDaysFromPublish(
+/** 발행 기준일 종가 → 5거래일 후 종가 누적 % */
+export function cumRet5TradingDaysFromPublish(
   articleId: string,
   ticker: string
 ): Promise<number | null> {
-  const loaded = await loadEodBars(articleId, ticker);
-  if (!loaded?.t0_kst || !loaded.bars.length) return null;
-  const bars = [...loaded.bars].sort((a, b) => a.date.localeCompare(b.date));
-  const i0 = bars.findIndex((b) => b.date >= loaded.t0_kst!);
-  if (i0 < 0) return null;
-  const iEnd = i0 + TRADING_DAYS_FORWARD;
-  if (iEnd >= bars.length) return null;
-  const c0 = bars[i0]!.close;
-  const cEnd = bars[iEnd]!.close;
-  if (!Number.isFinite(c0) || c0 <= 0 || !Number.isFinite(cEnd) || cEnd <= 0) return null;
-  return ((cEnd / c0) - 1) * 100;
+  return cumRetForwardTradingDaysFromPublish(articleId, ticker, TRADING_DAYS_FORWARD);
 }
 
 async function buildOneArticleRow(item: {

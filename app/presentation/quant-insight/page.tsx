@@ -40,17 +40,6 @@ function Card({ children, style }: { children: ReactNode; style?: React.CSSPrope
   );
 }
 
-function Tag({ label, color = T.accent }: { label: string; color?: string }) {
-  return (
-    <span style={{ display: "inline-block", fontSize: "clamp(0.7rem,1.15vw,1.0rem)", fontWeight: 700,
-      letterSpacing: "0.12em", textTransform: "uppercase" as const,
-      color, background: `color-mix(in srgb, ${color} 10%, transparent)`,
-      padding: "0.25rem 0.6rem", borderRadius: 3, marginBottom: "0.55rem" }}>
-      {label}
-    </span>
-  );
-}
-
 function Bullet({ children }: { children: ReactNode }) {
   return (
     <div style={{ display: "flex", gap: "0.55rem", alignItems: "flex-start", marginBottom: "0.5rem" }}>
@@ -128,18 +117,18 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
     content: (
       <div style={{ display: "flex", flexDirection: "column", gap: "clamp(1.5rem,4vw,2.5rem)" }}>
         <p style={{ fontSize: "clamp(1.15rem,2.7vw,1.5rem)", color: T.inkSec, lineHeight: 1.65, maxWidth: "50rem", margin: 0 }}>
-          종목 뉴스 기사 한 페이지에서 <strong>종합 점수(퀀트+알고리즘) · 핵심 지표 · 펀더멘탈 · 누적 수익률 곡선 · AI 해석 · 추세 필터</strong>까지,
+          종목 뉴스 기사 한 페이지에서 <strong>종합 점수(퀀트+알고리즘) · 핵심 지표 · 펀더멘탈 · 누적 수익률 곡선 · AI 해석</strong>까지,
           투자 판단에 필요한 맥락을 즉시 확인합니다.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: "1rem" }}>
           {[
             { n: "①", k: "종합 점수", d: "퀀트 기술(80%) + 알고리즘(20%) 합산 · A~D 등급" },
-            { n: "②", k: "알고리즘 시그널", d: "공개 시각·이평·갭·체결 6피처 → 종합의 20%" },
-            { n: "③", k: "핵심 지표", d: "ATR · 거래량 · MA · RSI" },
-            { n: "④", k: "펀더멘탈", d: "4축 재무 건전성 등급" },
-            { n: "⑤", k: "수익률 곡선", d: "발행 전후 5분봉 누적" },
-            { n: "⑥", k: "AI 해석 카드", d: "패턴 + 가격·손절 기반 한 줄 정리" },
-            { n: "⑦", k: "추세 필터", d: "MA20 위치 + 방향 + 4가지 국면 감지" },
+            { n: "②", k: "알고리즘 시그널", d: "공개 시각·이평·갭·체결 6피처 규칙 → 종합의 20%" },
+            { n: "③", k: "학습 · 퀀트스코어 검증", d: "과거 사건 기준 검증 요약" },
+            { n: "④", k: "핵심 지표", d: "ATR · 거래량 · 스파이크 · 갭 · MA · 모멘텀" },
+            { n: "⑤", k: "펀더멘탈", d: "5축 바이오 재무 건전성 등급 (캐시 런웨이 포함)" },
+            { n: "⑥", k: "수익률 곡선", d: "발행 전후 5분봉 누적" },
+            { n: "⑦", k: "AI 해석 카드", d: "퀀트스코어(ML) + 차트·가격 기반 한 줄 정리" },
           ].map((it) => (
             <Card key={it.n} style={{ borderLeft: `3px solid ${T.accent}` }}>
               <div style={{ fontSize: "1.75rem", fontWeight: 700, color: T.accent, lineHeight: 1, marginBottom: "0.5rem" }}>{it.n}</div>
@@ -164,8 +153,9 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
             <p style={{ fontSize: "clamp(0.82rem,1.35vw,1.15rem)", fontWeight: 700, color: T.ink, margin: "0 0 0.55rem", letterSpacing: "0.04em" }}>
               퀀트 인사이트
             </p>
-            <span style={{ fontSize: "clamp(0.68rem,1.05vw,0.9rem)", color: T.inkTer, marginBottom: "0.5rem", display: "block" }}>
-              분석 종목 · 068270
+            <span style={{ fontSize: "clamp(1.35rem,3.2vw,2.35rem)", fontWeight: 800, color: T.ink, display: "block",
+              letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "clamp(0.45rem,0.9vw,0.65rem)" }}>
+              셀트리온
             </span>
             {/* 종합 점수 섹션 */}
             <div style={{ background: T.canvas, borderRadius: 3, padding: "clamp(0.6rem,1.1vw,1.1rem)", marginBottom: "0.5rem" }}>
@@ -206,7 +196,7 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
                   퀀트 기술 점수 (80%)
                 </div>
                 <div style={{ fontSize: "clamp(0.84rem,1.45vw,1.1rem)", color: T.inkSec, lineHeight: 1.55 }}>
-                  ATR·거래량·MA이격·모멘텀·BB·RSI 6개 지표의 AUC 가중합. 변동성·눌림·과매도를 종합합니다.
+                  ATR·거래량·스파이크·MA이격·모멘텀·갭·BB 7개 바이오 소형주 특화 지표 가중합. RSI는 노이즈로 제거.
                 </div>
               </Card>
               <Card style={{ borderLeft: `3px solid #2563eb` }}>
@@ -220,10 +210,10 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.35rem,0.6vw,0.65rem)" }}>
               {[
-                { g: "A", l: "강한 매수 (80점 이상)", c: T.up },
-                { g: "B", l: "매수 우세 (65~79점)", c: T.up },
-                { g: "C", l: "중립 (51~64점)", c: T.warn },
-                { g: "D", l: "매도 우세 (50점 이하)", c: T.down },
+                { g: "A", l: "강한 매수 (78점 이상)", c: T.up },
+                { g: "B", l: "매수 우세 (62~77점)", c: T.up },
+                { g: "C", l: "중립 (45~61점)", c: T.warn },
+                { g: "D", l: "매도 우세 (44점 이하)", c: T.down },
               ].map((r) => (
                 <div key={r.g} style={{ display: "flex", alignItems: "center", gap: "0.65rem",
                   padding: "clamp(0.3rem,0.5vw,0.6rem) clamp(0.6rem,1.1vw,1rem)",
@@ -243,7 +233,7 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
   {
     label: "② 알고리즘 시그널",
     title: "알고리즘 시그널 — 종합 점수의 20%",
-    subtitle: "기사 공개 시점·전일 데이터만으로 계산한 진입 조건 점수",
+    subtitle: "기사 공개 시점·전일 데이터만으로 계산한 6피처 규칙 채점",
     content: (
       <TwoCol
         mock={
@@ -296,47 +286,128 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
               ))}
             </div>
             <Bullet><strong>S2+S4+S5 복합</strong> 조건은 1,550건 백테스트 승률 ≥ 60%입니다.</Bullet>
-            <Bullet>알고리즘 데이터가 없으면 퀀트 점수만으로 종합 점수를 구성합니다.</Bullet>
           </div>
         }
       />
     ),
   },
 
-  /* 3. 핵심 지표 */
+  /* 3. 학습 · 퀀트스코어 검증 */
   {
-    label: "③ 핵심 지표",
-    title: "핵심 지표 — 6개 팩터 수치",
-    subtitle: "상세 분석 패널을 펼치면 나오는 첫 번째 섹션 — 컬러 코딩으로 즉시 판독",
+    label: "③ 학습 · 퀀트스코어 검증",
+    title: "학습 · 퀀트스코어 검증",
+    subtitle: "뉴스–종목 사건을 기준으로 한 과거 검증 요약",
+    content: (
+      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(1rem,2.2vw,1.75rem)", maxWidth: "56rem" }}>
+        <p style={{ margin: 0, fontSize: "clamp(1rem,2vw,1.35rem)", color: T.inkSec, lineHeight: 1.7 }}>
+          한 뉴스에 붙은 종목이 <strong>이후 짧은 구간에서 상승 쪽으로 이어졌는지</strong>를 과거 데이터로 점검한 <strong>요약 표</strong>입니다.
+          화면에 표시되는 알고리즘 점수(6가지 규칙)와는 <strong>목적이 다릅니다</strong> — 점수가 아니라, 같은 사건 단위로
+          “방법이 데이터 위에서 의미 있게 동작했는지”를 투명히 보여 드리기 위한 자료입니다. 투자 판단은 <strong>참고용</strong>이며
+          미래 수익을 약속하지 않습니다.
+        </p>
+
+        <Card style={{ padding: "clamp(1rem,2vw,1.35rem)" }}>
+          <div style={{ fontSize: "clamp(0.72rem,1.1vw,0.85rem)", fontWeight: 600, letterSpacing: "0.14em", color: T.inkTer,
+            textTransform: "uppercase" as const, marginBottom: "0.65rem" }}>검증 범위</div>
+          <ul style={{ margin: 0, paddingLeft: "1.15rem", fontSize: "clamp(0.88rem,1.5vw,1.05rem)", color: T.inkSec, lineHeight: 1.65 }}>
+            <li style={{ marginBottom: "0.4rem" }}>뉴스–종목 조합 <strong>861건</strong>을 사용했습니다. 이 중 약 7할은 과거 구간, 약 3할은 그보다 <strong>뒤의 기간</strong>만으로 성능을 확인해, “이미 본 미래”가 섞이지 않게 했습니다.</li>
+            <li style={{ marginBottom: "0.4rem" }}>각 사건마다 “그 뒤 짧은 구간이 플러스였는지”를 기준으로 정리했습니다. 시기에 따라 긍정 비율은 달라질 수 있습니다.</li>
+            <li>위 기준은 화면의 6가지 항목과 <strong>같은 이름·같은 점수가 아닙니다</strong>. 검증용 지표입니다.</li>
+          </ul>
+        </Card>
+
+        <Card style={{ padding: "clamp(1rem,2vw,1.35rem)" }}>
+          <div style={{ fontSize: "clamp(0.72rem,1.1vw,0.85rem)", fontWeight: 600, letterSpacing: "0.14em", color: T.inkTer,
+            textTransform: "uppercase" as const, marginBottom: "0.65rem" }}>함께 본 정보(13가지 요약)</div>
+          <p style={{ margin: 0, fontSize: "clamp(0.88rem,1.5vw,1.05rem)", color: T.inkSec, lineHeight: 1.65 }}>
+            가격 위치(진입·전일 대비, 갭, 전일 등락), 이동평균 이격, RSI·모멘텀, 거래량 규모·급증 여부,
+            <strong> 공개 시각·요일</strong>, 뉴스에서 읽히는 <strong>촉매 방향</strong> 등을 한꺼번에 반영한 조합입니다.
+            통계적으로 의미 있게 보인 항목만 남긴 <strong>13가지</strong>로 압축했습니다.
+          </p>
+        </Card>
+
+        <Card style={{ padding: "clamp(1rem,2vw,1.35rem)" }}>
+          <div style={{ fontSize: "clamp(0.72rem,1.1vw,0.85rem)", fontWeight: 600, letterSpacing: "0.14em", color: T.inkTer,
+            textTransform: "uppercase" as const, marginBottom: "0.65rem" }}>퀀트스코어 성능 요약(뒤쪽 기간만)</div>
+          <p style={{ margin: "0 0 0.75rem", fontSize: "clamp(0.88rem,1.5vw,1.05rem)", color: T.inkSec, lineHeight: 1.65 }}>
+            해석이 쉬운 선형 모형과, 패턴을 더 잡는 트리형 모형 두 가지로 비교했습니다. 맞추기만 하는 것이 아니라
+            <strong> 확률이 얼마나 그럴듯한지</strong>(Brier)도 함께 적어 두었습니다.
+          </p>
+          <div style={{ overflowX: "auto" as const }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "clamp(0.82rem,1.4vw,0.98rem)", color: T.inkSec }}>
+              <thead>
+                <tr style={{ borderBottom: `1px solid ${T.ruleStrong}`, textAlign: "left" as const }}>
+                  <th style={{ padding: "0.45rem 0.5rem 0.5rem 0", fontWeight: 600, color: T.ink }}>모델</th>
+                  <th style={{ padding: "0.45rem 0.5rem", fontWeight: 600, color: T.ink }}>Train AUC</th>
+                  <th style={{ padding: "0.45rem 0.5rem", fontWeight: 600, color: T.ink }}>Test AUC</th>
+                  <th style={{ padding: "0.45rem 0.5rem", fontWeight: 600, color: T.ink }}>Test 정확도</th>
+                  <th style={{ padding: "0.45rem 0 0.5rem 0.5rem", fontWeight: 600, color: T.ink }}>Brier</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["로지스틱 회귀", "0.710", "0.685", "61.4%", "0.220"],
+                  ["LightGBM", "0.996", "0.719", "63.3%", "0.219"],
+                  ["무작위 (균등 확률·1만 회 평균)", "0.500", "0.500", "50.0%", "0.334"],
+                ].map((row) => (
+                  <tr key={row[0]} style={{ borderBottom: `1px solid ${T.rule}` }}>
+                    <td style={{ padding: "0.4rem 0.5rem 0.4rem 0", color: T.ink }}>{row[0]}</td>
+                    {row.slice(1).map((cell, j) => (
+                      <td key={j} style={{ padding: "0.4rem 0.5rem", fontVariantNumeric: "tabular-nums" as const }}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ margin: "0.65rem 0 0", fontSize: "clamp(0.78rem,1.3vw,0.95rem)", color: T.inkTer, lineHeight: 1.55 }}>
+            맨 아래 행은 테스트 각 행에 <strong>[0, 1] 균등분포 무작위 확률</strong>을 부여해 AUC·정확도·Brier를 구한 뒤,
+            그 과정을 <strong>10,000회</strong> 반복한 산술평균입니다(seed 고정). Brier는 행마다 확률이 달라 <strong>약 0.33</strong> 근처(항상 0.5만 쓸 때의 0.25와 다름)입니다.
+          </p>
+          <p style={{ margin: "0.5rem 0 0", fontSize: "clamp(0.82rem,1.35vw,0.98rem)", color: T.inkTer, lineHeight: 1.55 }}>
+            트리형 모형은 과거 구간에 더 강하게 맞춰질 수 있어, 숫자 해석이 중요하면 선형 모형 쪽을 함께 보시는 것이 좋습니다.
+          </p>
+        </Card>
+      </div>
+    ),
+  },
+
+  /* 4. 핵심 지표 */
+  {
+    label: "④ 핵심 지표",
+    title: "핵심 지표 — 7개 바이오 소형주 특화 팩터",
+    subtitle: "상세 분석 패널을 펼치면 나오는 첫 번째 섹션 — 바이오 소형주에 맞춘 임계값·컬러 코딩",
     content: (
       <TwoCol
         mock={
           <SbWrap>
             <div style={{ background: T.canvas, borderRadius: 3, padding: "clamp(0.6rem,1.1vw,1.1rem)" }}>
-              <SbLabel>핵심 지표 (5분봉→일봉, 발행 시각)</SbLabel>
-              <SbRow label="ATR 비율 (w30)" value="5.8%" color={T.up} />
-              <SbRow label="거래량 비율 (w25)" value="0.78×" color={T.up} />
-              <SbRow label="MA5-20 이격 (w20)" value="−1.2%" color={T.up} />
-              <SbRow label="10일 모멘텀 (w10)" value="−3.1%" color={T.up} />
-              <SbRow label="BB %B (w10)" value="0.35" color={T.up} />
-              <SbRow label="RSI 14 (w5)" value="44.2" />
+              <SbLabel>핵심 지표 (5분봉→일봉, 바이오 소형주 특화)</SbLabel>
+              <SbRow label="ATR 비율 (w20)" value="7.2%" color={T.up} />
+              <SbRow label="거래량 비율 (w18)" value="1.45×" color={T.up} />
+              <SbRow label="거래량 스파이크 (w15)" value="2.8×" color={T.up} />
+              <SbRow label="MA5-20 이격 (w15)" value="−2.5%" color={T.up} />
+              <SbRow label="10일 모멘텀 (w15)" value="−5.1%" color={T.up} />
+              <SbRow label="갭 오픈 (w10)" value="−1.3%" color={T.up} />
+              <SbRow label="BB %B (w7)" value="0.28" color={T.up} />
             </div>
           </SbWrap>
         }
         desc={
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.75rem,1.4vw,1.25rem)" }}>
             <p style={{ margin: 0, fontSize: "clamp(1rem,2.1vw,1.45rem)", color: T.inkSec, lineHeight: 1.65 }}>
-              퀀트 기술 점수를 구성하는 6개 지표의 <strong>실제 수치</strong>를 보여줍니다.
-              임계값을 넘으면 초록(유리) / 빨강(주의) 색으로 즉시 구분됩니다.
+              퀀트 기술 점수를 구성하는 <strong>바이오 소형주 특화 7개 지표</strong>의 실제 수치입니다.
+              RSI(AUC 0.507)는 노이즈로 판단하여 제거하고, 거래량 스파이크·갭 오픈을 추가했습니다.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.3rem,0.5vw,0.5rem)" }}>
               {[
-                ["ATR 비율", "w30", "변동성 크기. 낮을수록(≤6.5%) 응축 → 초록"],
-                ["거래량 비율", "w25", "20일 평균 대비. 낮을수록(<1.0×) 고요한 응축"],
-                ["MA5-20 이격", "w20", "단기·중기 이격. 낮을수록(≤1.5%) 눌림 구간"],
-                ["10일 모멘텀", "w10", "역발상. 음수 구간이 반등 씨앗 (< 0% → 초록)"],
-                ["BB %B", "w10", "볼린저 밴드 내 위치. 하단(≤0.40) → 초록"],
-                ["RSI 14", "w5", "과매도(<30) → 초록, 과매수(>70) → 빨강"],
+                ["ATR 비율", "w20", "변동성 크기. 바이오 기준 ≤8%면 응축 → 초록"],
+                ["거래량 비율", "w18", "20일 평균 대비. 바이오는 2×까지 정상, 5× 이상 경고"],
+                ["거래량 스파이크", "w15", "5일 평균 대비. 카탈리스트 거래량 급증 포착"],
+                ["MA5-20 이격", "w15", "단기·중기 이격. 바이오 기준 ≤6%면 정상"],
+                ["10일 모멘텀", "w15", "역발상. 음수 구간이 반등 씨앗 (< -3% → 초록)"],
+                ["갭 오픈", "w10", "장전 뉴스·공시 반영. 갭다운은 눌림 기회, 갭업은 추격 주의"],
+                ["BB %B", "w7", "볼린저 밴드 내 위치. 극하단(≤0.10) → 초록"],
               ].map(([name, weight, desc]) => (
                 <div key={name} style={{ display: "flex", gap: "0.6rem", padding: "clamp(0.28rem,0.5vw,0.55rem) 0",
                   borderBottom: `1px solid ${T.rule}`, alignItems: "baseline" }}>
@@ -352,11 +423,11 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
     ),
   },
 
-  /* 4. 펀더멘탈 */
+  /* 5. 펀더멘탈 */
   {
-    label: "④ 펀더멘탈",
+    label: "⑤ 펀더멘탈",
     title: "재무 건전성 스코어 + 세부 지표",
-    subtitle: "4축 재무 팩터 → 0~100점 + 우량~위험 등급 / 손익계산서 요약 포함",
+    subtitle: "5축 바이오 재무 팩터 → 0~100점 + 우량~위험 등급 / 캐시 런웨이 포함",
     content: (
       <TwoCol
         mockWidth="330px"
@@ -389,8 +460,11 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
             </div>
             {/* 기업 정보 */}
             <div style={{ padding: "0 0 0.2rem" }}>
-              <p style={{ margin: "0.3rem 0 0.1rem", fontSize: "0.78rem", fontWeight: 700, color: T.ink }}>셀트리온</p>
-              <p style={{ margin: 0, fontSize: "0.68rem", color: T.inkTer }}>코드 068270 · 바이오테크</p>
+              <p style={{ margin: "0.3rem 0 0.15rem", fontSize: "clamp(1.15rem,2.4vw,1.65rem)", fontWeight: 800, color: T.ink,
+                letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+                셀트리온
+              </p>
+              <p style={{ margin: 0, fontSize: "clamp(0.78rem,1.35vw,0.95rem)", color: T.inkTer }}>바이오테크</p>
               <SbRow label="시가총액(참고)" value="약 24조 원" />
               <SbRow label="PER (TTM)" value="38.2" />
               <SbRow label="ROE(참고)" value="12.4%" />
@@ -425,9 +499,9 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
     ),
   },
 
-  /* 5. 수익률 곡선 */
+  /* 6. 수익률 곡선 */
   {
-    label: "⑤ 수익률 곡선",
+    label: "⑥ 수익률 곡선",
     title: "발행 전후 누적 수익률 곡선",
     subtitle: "기사 공개 시점(T0) 기준 전후 ±거래일 · 5분봉 기반 누적 수익률 시각화",
     content: (
@@ -456,9 +530,11 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
                   <text x="265" y="76" fontSize="7" fill={T.inkTer}>+4일</text>
                 </svg>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.35rem" }}>
-                <span style={{ fontSize: "0.68rem", color: T.inkTer }}>068270 · 셀트리온</span>
-                <span style={{ fontSize: "0.72rem", fontWeight: 700, color: T.up }}>+4.2%</span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: "0.35rem", gap: "0.5rem" }}>
+                <span style={{ fontSize: "clamp(0.95rem,1.85vw,1.35rem)", fontWeight: 800, color: T.ink, letterSpacing: "-0.02em" }}>
+                  셀트리온
+                </span>
+                <span style={{ fontSize: "clamp(0.8rem,1.4vw,1.05rem)", fontWeight: 700, color: T.up }}>+4.2%</span>
               </div>
             </div>
             <p style={{ margin: 0, fontSize: "0.65rem", color: T.inkTer, lineHeight: 1.45 }}>
@@ -493,11 +569,11 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
     ),
   },
 
-  /* 6. AI 해석 카드 */
+  /* 7. AI 해석 카드 */
   {
-    label: "⑥ AI 해석 카드",
-    title: "핵심 패턴 + AI 한 줄 정리",
-    subtitle: "숫자를 자연어로 번역 — 패턴 레이블 · 요점 불릿 · 실전 한 줄 정리",
+    label: "⑦ AI 해석 카드",
+    title: "퀀트스코어 + AI 한 줄 정리",
+    subtitle: "ML 점수와 차트 숫자를 자연어로 — 요점 불릿 · 실전 한 줄 정리",
     content: (
       <TwoCol
         mock={
@@ -508,7 +584,7 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
                 {/* 헤더 */}
                 <div style={{ marginBottom: "0.45rem" }}>
                   <span style={{ fontSize: "clamp(0.65rem,1.0vw,0.9rem)", fontWeight: 700, letterSpacing: "0.12em",
-                    color: T.accent, textTransform: "uppercase" as const }}>핵심 패턴</span>
+                    color: T.accent, textTransform: "uppercase" as const }}>퀀트 해석</span>
                   <p style={{ margin: "0.2rem 0 0", fontSize: "clamp(0.9rem,1.6vw,1.35rem)", fontWeight: 700, color: T.ink, lineHeight: 1.3 }}>
                     변동성 응축 후 눌림 구간
                   </p>
@@ -541,9 +617,9 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.55rem,1vw,0.9rem)" }}>
               {[
-                { t: "핵심 패턴 레이블", d: "백테스팅에서 검증된 4가지 신호(변동성 응축·역발상·과매도반등·모멘텀경고) 중 해당하는 이름을 자동 부여합니다." },
+                { t: "차트 패턴 이름", d: "백테스팅에서 검증된 4가지 신호(변동성 응축·역발상·과매도반등·모멘텀경고) 중 해당하는 이름을 자동 부여합니다." },
                 { t: "요점 불릿 2~3줄", d: "지표 현황을 투자자가 이해하기 쉬운 문장으로 풀어씁니다. 숫자 없이 상황만 요약합니다." },
-                { t: "한 줄 정리 (Takeaway)", d: "MA20 가격·볼린저 하단가·손절 기준 %를 수치로 직접 언급하는 실전 한 줄 문장을 생성합니다. '뉴스를 함께 보세요' 같은 메타 안내는 출력하지 않습니다." },
+                { t: "한 줄 정리 (Takeaway)", d: "퀀트스코어(0~99) 요약과 MA20·손절 % 등 수치를 한 문장에 담습니다. '뉴스를 함께 보세요' 같은 메타 안내는 출력하지 않습니다." },
               ].map((r) => (
                 <Card key={r.t} style={{ padding: "clamp(0.7rem,1.2vw,1.2rem) clamp(0.85rem,1.5vw,1.5rem)" }}>
                   <div style={{ fontWeight: 700, color: T.ink, marginBottom: "0.35rem", fontSize: "clamp(0.95rem,1.8vw,1.25rem)" }}>{r.t}</div>
@@ -559,85 +635,23 @@ const SLIDES: Array<{ label: string; title: string; subtitle: string; content: R
     ),
   },
 
-  /* 7. 추세 필터 */
-  {
-    label: "⑦ 추세 필터",
-    title: "가격 위치 + 눌림 반등 조합 감지",
-    subtitle: "MA20 기준 위치와 10일 흐름 방향으로 '눌림 뒤 반등' 조건을 실시간 감지",
-    content: (
-      <TwoCol
-        mock={
-          <SbWrap>
-            <div style={{ background: T.canvas, borderRadius: 3, padding: "clamp(0.6rem,1.1vw,1.1rem)", marginBottom: "0.4rem" }}>
-              <SbLabel>가격 위치 (20일 평균 기준)</SbLabel>
-              <SbRow label="평균보다" value="아래 ↓" color={T.up} />
-              <SbRow label="최근 10일 흐름" value="하락 ↓" color={T.up} />
-              {/* 눌림 반등 배너 */}
-              <div style={{ marginTop: "0.55rem", fontSize: "clamp(0.7rem,1.1vw,0.95rem)", color: T.up, fontWeight: 600,
-                padding: "clamp(0.28rem,0.5vw,0.55rem) clamp(0.45rem,0.8vw,0.8rem)",
-                background: `color-mix(in srgb,${T.up} 8%,transparent)`,
-                borderRadius: 3, lineHeight: 1.5 }}>
-                눌림 뒤 반등을 노리기 좋은 조합으로 자주 쓰입니다 (과거 통계 참고)
-              </div>
-            </div>
-          </SbWrap>
-        }
-        desc={
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.75rem,1.4vw,1.25rem)" }}>
-            <p style={{ margin: 0, fontSize: "clamp(1rem,2.1vw,1.45rem)", color: T.inkSec, lineHeight: 1.65 }}>
-              두 가지 조건으로 <strong>지금 종목이 어느 국면인지</strong>를 한눈에 표시합니다.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.55rem,1vw,0.9rem)" }}>
-              <Card style={{ borderLeft: `3px solid ${T.up}` }}>
-                <div style={{ fontWeight: 700, color: T.up, marginBottom: "0.35rem", fontSize: "clamp(0.92rem,1.65vw,1.2rem)" }}>MA20 아래 + 10일 하락 동시 (역발상 최적)</div>
-                <div style={{ fontSize: "clamp(0.88rem,1.55vw,1.1rem)", color: T.inkSec, lineHeight: 1.6 }}>
-                  '눌림 뒤 반등' 배너가 초록으로 뜹니다. 역추세 진입 조건이 갖춰졌다는 신호입니다.
-                </div>
-              </Card>
-              <Card style={{ borderLeft: `3px solid ${T.accent}` }}>
-                <div style={{ fontWeight: 700, color: T.accent, marginBottom: "0.35rem", fontSize: "clamp(0.92rem,1.65vw,1.2rem)" }}>MA20 아래 + 10일 상승</div>
-                <div style={{ fontSize: "clamp(0.88rem,1.55vw,1.1rem)", color: T.inkSec, lineHeight: 1.6 }}>
-                  평균선 아래에서 반등 흐름. 평균선 위·아래를 오가는지가 다음 구간의 기준이 됩니다.
-                </div>
-              </Card>
-              <Card style={{ borderLeft: `3px solid ${T.warn}` }}>
-                <div style={{ fontWeight: 700, color: T.warn, marginBottom: "0.35rem", fontSize: "clamp(0.92rem,1.65vw,1.2rem)" }}>MA20 아래 + 횡보</div>
-                <div style={{ fontSize: "clamp(0.88rem,1.55vw,1.1rem)", color: T.inkSec, lineHeight: 1.6 }}>
-                  방향 미결. 평균가 대비 종가 위치가 갈림의 시작점입니다.
-                </div>
-              </Card>
-              <Card style={{ borderLeft: `3px solid ${T.down}` }}>
-                <div style={{ fontWeight: 700, color: T.down, marginBottom: "0.35rem", fontSize: "clamp(0.92rem,1.65vw,1.2rem)" }}>MA20 위 + 10일 상승</div>
-                <div style={{ fontSize: "clamp(0.88rem,1.55vw,1.1rem)", color: T.inkSec, lineHeight: 1.6 }}>
-                  추세 추종 구간. 퀀트 점수는 낮아지나 모멘텀 전략에서는 유효할 수 있습니다.
-                </div>
-              </Card>
-            </div>
-            <Bullet>배너 문구는 <strong>과거 통계 참고</strong>이며 투자 권유가 아닙니다.</Bullet>
-            <Bullet>알고리즘 시그널 점수의 MA20 축과 직접 연계됩니다.</Bullet>
-          </div>
-        }
-      />
-    ),
-  },
-
-  /* 8. SUMMARY */
+  /* 7. SUMMARY */
   {
     label: "SUMMARY",
     title: "7가지 인사이트, 기사 한 페이지에",
-    subtitle: "데이터 파이프라인 → 점수화 → AI 해석 → 시각화까지 원클릭",
+    subtitle: "데이터 파이프라인 → 점수화 → 학습 검증 → AI 해석 → 시각화까지 원클릭",
     content: (
       <div style={{ display: "flex", flexDirection: "column", gap: "clamp(1.5rem,3.5vw,2.25rem)" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "1px",
           background: T.rule, border: `1px solid ${T.rule}`, borderRadius: 2, overflow: "hidden" }}>
           {[
-            { n: "①", k: "종합 점수", d: "퀀트 기술 6지표(80%) + 알고리즘 시그널 6피처(20%) → 0~100점 합산 + A/B/C/D 등급" },
-            { n: "②", k: "알고리즘 시그널", d: "공개 시각·이평 이격·갭·기준 체결가 6축 → 0~100. 종합 점수의 20%를 담당" },
-            { n: "③", k: "핵심 지표", d: "6개 팩터 수치 + 임계값 컬러 코딩 (실시간 조건 판독)" },
-            { n: "④", k: "펀더멘탈", d: "4축 재무 건전성 0~100 + 우량~위험 등급" },
-            { n: "⑤", k: "수익률 곡선", d: "기사 공개 전후 5분봉 누적 수익률 · 종목별 오버레이 차트" },
-            { n: "⑥", k: "AI 해석 카드", d: "패턴 레이블 + 2~3줄 불릿 + MA20·밴드하단·손절 % 수치 포함 한 줄 정리" },
-            { n: "⑦", k: "추세 필터", d: "MA20 위·아래 + 4가지 국면(하락·상승·횡보·추세추종) 감지" },
+            { n: "①", k: "종합 점수", d: "바이오 특화 7지표(80%) + 알고리즘 시그널 6피처(20%) → 30~100점 합산 + A/B/C/D 등급" },
+            { n: "②", k: "알고리즘 시그널", d: "6축 규칙 0~100 · 종합 점수의 20% 담당" },
+            { n: "③", k: "학습 · 퀀트스코어 검증", d: "뉴스–종목 861건 과거 요약 · 참고용 검증 지표" },
+            { n: "④", k: "핵심 지표", d: "바이오 소형주 특화 7개 팩터 + 임계값 컬러 코딩" },
+            { n: "⑤", k: "펀더멘탈", d: "5축 바이오 재무 건전성 0~100 (캐시 런웨이 포함) + 우량~위험 등급" },
+            { n: "⑥", k: "수익률 곡선", d: "기사 공개 전후 5분봉 누적 수익률 · 종목별 오버레이 차트" },
+            { n: "⑦", k: "AI 해석 카드", d: "퀀트스코어 + 차트 패턴 + 2~3줄 불릿 + MA20·손절 % 수치 포함 한 줄 정리" },
           ].map((it) => (
             <div key={it.n} style={{ background: T.surface, padding: "clamp(1.1rem,2.5vw,1.5rem)" }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.45rem" }}>
