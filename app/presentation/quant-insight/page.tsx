@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useState, useCallback, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { isAnchorSpaceTarget, isEditableKeyTarget } from "@/lib/presentation-keynav";
 
 const T = {
   shell: "#0a0a0b",
@@ -704,6 +706,12 @@ export default function QuantInsightPresentationPage() {
   const [cur, setCur] = useState(0);
   const [fs, setFs] = useState(false);
   const shellRef = useRef<HTMLDivElement>(null);
+  /** 레이아웃(사이드바·메인 래퍼) 안에 두면 fixed·클릭이 꼬일 수 있어 body로 포털 */
+  const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setPortalEl(document.body);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -733,13 +741,24 @@ export default function QuantInsightPresentationPage() {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "PageDown") next();
-      if (e.key === " ") { e.preventDefault(); next(); }
-      if (e.key === "ArrowLeft" || e.key === "PageUp") prev();
-      if ((e.key === "f" || e.key === "F") && !(e.target instanceof HTMLInputElement)) { e.preventDefault(); toggleFS(); }
+      if (isEditableKeyTarget(e.target)) return;
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        e.preventDefault();
+        next();
+      } else if (e.key === " ") {
+        if (isAnchorSpaceTarget(e.target)) return;
+        e.preventDefault();
+        next();
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault();
+        prev();
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        void toggleFS();
+      }
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    document.addEventListener("keydown", handler, { capture: true });
+    return () => document.removeEventListener("keydown", handler, { capture: true });
   }, [next, prev, toggleFS]);
 
   const slide = SLIDES[cur]!;
@@ -756,9 +775,10 @@ export default function QuantInsightPresentationPage() {
     opacity: dis ? 0.45 : 1,
   });
 
-  return (
+  const shell = (
     <div ref={shellRef} style={{
-      position: "fixed", inset: 0, zIndex: 9999,
+      position: "fixed", inset: 0, zIndex: 10001,
+      height: "100dvh", minHeight: 0, overflow: "hidden",
       display: "flex", flexDirection: "column",
       backgroundColor: T.shell, boxSizing: "border-box",
     }}>
@@ -821,7 +841,8 @@ export default function QuantInsightPresentationPage() {
         </div>
 
         <footer style={{
-          flexShrink: 0, display: "flex", justifyContent: "space-between", alignItems: "center",
+          flexShrink: 0, position: "relative", zIndex: 10,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
           gap: "1rem", padding: "1rem clamp(1.35rem,4vw,2.25rem)",
           borderTop: `1px solid ${T.rule}`, backgroundColor: T.surface,
         }}>
@@ -854,4 +875,7 @@ export default function QuantInsightPresentationPage() {
       </p>
     </div>
   );
+
+  if (portalEl) return createPortal(shell, portalEl);
+  return shell;
 }

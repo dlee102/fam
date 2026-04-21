@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "node scripts/copy-pretendard-fonts.mjs",
     "clean": "rm -rf .next",
-    "dev": "npm run clean && next dev",
+    "dev": "next dev",
     "build": "npm run clean && next build",
     "start": "next start",
     "lint": "next lint",
@@ -21,6 +21,7 @@
     "quant-v2-dataset": "python3 scripts/build_quant_v2_dataset.py",
     "quant-v2-train": "python3 scripts/train_quant_v2.py",
     "quant-v2-scores": "npm run quant-v2-dataset && npm run quant-v2-train",
+    "quant-v2-backtest-md": "python3 scripts/generate_backtesting_results_md.py",
     "classify-bio-gemini": "npx tsx scripts/classify-bio-business-type-gemini.ts",
     "vercel:push-firebase-env": "node scripts/push-vercel-firebase-env.mjs",
     "print-firebase-vercel-env": "node scripts/print-firebase-service-account-for-vercel.mjs"

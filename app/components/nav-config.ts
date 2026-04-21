@@ -19,6 +19,13 @@ export const navItems: NavItem[] = [
     variant: "default",
     icon: "home",
   },
+  {
+    type: "link",
+    href: "/kiwoom-robo-market",
+    label: "키움 로보마켓",
+    variant: "default",
+    icon: "chart",
+  },
   { type: "divider" },
   {
     type: "link",

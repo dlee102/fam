@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useState, useCallback, useEffect, useRef } from "react";
+import { isAnchorSpaceTarget, isEditableKeyTarget } from "@/lib/presentation-keynav";
 
 const T = {
   shell: "#0a0a0b",
@@ -258,16 +259,24 @@ export default function QuantIndicatorPmPresentationPage() {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "PageDown") next();
-      if (e.key === " ") { e.preventDefault(); next(); }
-      if (e.key === "ArrowLeft" || e.key === "PageUp") prev();
-      if ((e.key === "f" || e.key === "F") && !(e.target instanceof HTMLInputElement)) {
+      if (isEditableKeyTarget(e.target)) return;
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        e.preventDefault();
+        next();
+      } else if (e.key === " ") {
+        if (isAnchorSpaceTarget(e.target)) return;
+        e.preventDefault();
+        next();
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault();
+        prev();
+      } else if (e.key === "f" || e.key === "F") {
         e.preventDefault();
         void toggleFS();
       }
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    document.addEventListener("keydown", handler, { capture: true });
+    return () => document.removeEventListener("keydown", handler, { capture: true });
   }, [next, prev, toggleFS]);
 
   const slide = SLIDES[cur]!;

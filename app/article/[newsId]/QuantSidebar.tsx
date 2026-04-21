@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
 import type { QuantInsight } from "@/lib/quant-engine";
 import { sanitizeYahooDisplayName } from "@/lib/quant-fundamentals/extract-metrics";
@@ -11,6 +12,7 @@ import type {
 import { clampQuantV2ScorePoints } from "@/lib/quant-v2-score-cap";
 import { compositeScoreGradient } from "./AiScoreOrb";
 import { PostPublishCumReturnChart } from "./PostPublishCumReturnChart";
+import { RoboMarketInsightCard } from "./RoboMarketInsightCard";
 
 function asideClass(base: string, extra?: string) {
   return [base, extra].filter(Boolean).join(" ");
@@ -30,6 +32,50 @@ function Row({ label, value, color }: { label: string; value: React.ReactNode; c
 
 function Divider() {
   return <div className="article-quant-sidebar__divider" />;
+}
+
+function SidebarInsightTabs({
+  active,
+  onChange,
+}: {
+  active: "quant" | "kiwoom";
+  onChange: (t: "quant" | "kiwoom") => void;
+}) {
+  return (
+    <div className="article-quant-sidebar__tabs" role="tablist" aria-label="인사이트 보기">
+      <button
+        type="button"
+        role="tab"
+        aria-selected={active === "quant"}
+        className="article-quant-sidebar__tab"
+        data-active={active === "quant"}
+        onClick={() => onChange("quant")}
+      >
+        퀀트 인사이트
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={active === "kiwoom"}
+        className="article-quant-sidebar__tab"
+        data-active={active === "kiwoom"}
+        onClick={() => onChange("kiwoom")}
+      >
+        키움 로보마켓
+      </button>
+    </div>
+  );
+}
+
+function KiwoomTabPanel() {
+  return (
+    <div className="article-quant-sidebar__kiwoom-panel">
+      <RoboMarketInsightCard />
+      <Link href="/kiwoom-robo-market" className="article-quant-sidebar__kiwoom-full-link">
+        전체 차트 · ATR 밴드 보기 →
+      </Link>
+    </div>
+  );
 }
 
 function MiniBar({
@@ -56,7 +102,6 @@ function MiniBar({
 function QuantSkeletonBody() {
   return (
     <>
-      <p className="article-quant-sidebar__heading">퀀트 인사이트</p>
       {[80, 60, 50, 70, 55].map((w, i) => (
         <div
           key={i}
@@ -421,6 +466,7 @@ export function QuantSidebar({
   const [data, setData] = useState<QuantInsightApi | null>(null);
   const [status, setStatus] = useState<"loading" | "ok" | "empty">("loading");
   const [detailOpen, setDetailOpen] = useState(false);
+  const [sidebarTab, setSidebarTab] = useState<"quant" | "kiwoom">("quant");
   const detailPanelId = useId();
   const [aiOpinion, setAiOpinion] = useState<{
     layout: QuantOpinionLayout;
@@ -512,7 +558,8 @@ export function QuantSidebar({
   if (status === "loading") {
     return (
       <aside className={asideClass("article-quant-sidebar", className)} aria-label="퀀트 인사이트 로딩 중">
-        <QuantSkeletonBody />
+        <SidebarInsightTabs active={sidebarTab} onChange={setSidebarTab} />
+        {sidebarTab === "quant" ? <QuantSkeletonBody /> : <KiwoomTabPanel />}
         {chartBlock}
       </aside>
     );
@@ -521,10 +568,14 @@ export function QuantSidebar({
   if (status === "empty" || !data) {
     return (
       <aside className={asideClass("article-quant-sidebar", className)} aria-label="퀀트 인사이트">
-        <p className="article-quant-sidebar__heading">퀀트 인사이트</p>
-        <p style={{ fontSize: "0.75rem", color: "var(--quant-muted)", lineHeight: 1.55, margin: 0 }}>
-          이 기사의 EOD 데이터가 없어 지표를 계산할 수 없습니다.
-        </p>
+        <SidebarInsightTabs active={sidebarTab} onChange={setSidebarTab} />
+        {sidebarTab === "quant" ? (
+          <p style={{ fontSize: "0.75rem", color: "var(--quant-muted)", lineHeight: 1.55, margin: 0 }}>
+            이 기사의 EOD 데이터가 없어 지표를 계산할 수 없습니다.
+          </p>
+        ) : (
+          <KiwoomTabPanel />
+        )}
         {chartBlock}
       </aside>
     );
@@ -537,7 +588,14 @@ export function QuantSidebar({
 
   return (
     <aside className={asideClass("article-quant-sidebar", className)} aria-label="퀀트 인사이트">
-      <p className="article-quant-sidebar__heading">퀀트 인사이트</p>
+      <SidebarInsightTabs active={sidebarTab} onChange={setSidebarTab} />
+      {sidebarTab === "kiwoom" ? (
+        <>
+          <KiwoomTabPanel />
+          {chartBlock}
+        </>
+      ) : (
+        <>
       {data.ticker && /^\d{6}$/.test(data.ticker) ? (
         <p
           className="article-quant-sidebar__analysis-ticker"
@@ -818,6 +876,8 @@ export function QuantSidebar({
       ) : null}
 
       {chartBlock}
+        </>
+      )}
     </aside>
   );
 }

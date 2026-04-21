@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useState, useCallback, useEffect, useRef } from "react";
+import { isAnchorSpaceTarget, isEditableKeyTarget } from "@/lib/presentation-keynav";
 
 /** 미니멀 · 전문 발표 톤 (단일 악센트 + 뉴트럴) */
 const theme = {
@@ -891,22 +892,24 @@ export default function PresentationPage() {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
-        if (e.key === " ") e.preventDefault();
+      if (isEditableKeyTarget(e.target)) return;
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        e.preventDefault();
         nextSlide();
-      }
-      if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      } else if (e.key === " ") {
+        if (isAnchorSpaceTarget(e.target)) return;
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault();
         prevSlide();
-      }
-      if (e.key === "f" || e.key === "F") {
-        if (!(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)) {
-          e.preventDefault();
-          toggleBrowserFullscreen();
-        }
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        void toggleBrowserFullscreen();
       }
     };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    document.addEventListener("keydown", handleKey, { capture: true });
+    return () => document.removeEventListener("keydown", handleKey, { capture: true });
   }, [nextSlide, prevSlide, toggleBrowserFullscreen]);
 
   const slide = SLIDES[currentSlide];
