@@ -4,7 +4,7 @@ import { AppSidebar } from "./components/PrimaryNav";
 import { FirebaseAnalyticsInit } from "./components/FirebaseAnalyticsInit";
 
 export const metadata: Metadata = {
-  title: "FAM 뉴스",
+  title: "PHARM 뉴스",
   description: "뉴스 기사 사이트",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

@@ -46,7 +46,7 @@ export const navItems: NavItem[] = [
 /** 사이드바 상단 프로필 영역 (레퍼런스의 workspace 블록) */
 export const sidebarWorkspace = {
   title: "Qraft AI",
-  subtitle: "FAM 뉴스",
+  subtitle: "PHARM 뉴스",
 } as const;
 
 export { pathMatches } from "@/lib/path-match";

@@ -172,7 +172,7 @@ export default async function Home() {
   return (
     <main className="news-container">
       <header className="page-heading">
-        <h1 className="page-heading__title">FAM 뉴스</h1>
+        <h1 className="page-heading__title">PHARM 뉴스</h1>
       </header>
 
       <section className="feed" aria-labelledby="feed-heading">

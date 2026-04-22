@@ -3,7 +3,7 @@ import { getTickerNamesMap } from "@/lib/ticker-names";
 import { MemberPortfolioClient } from "./MemberPortfolioClient";
 
 export const metadata: Metadata = {
-  title: "유료회원 포트폴리오 | FAM 뉴스",
+  title: "유료회원 포트폴리오 | PHARM 뉴스",
   description: "유료회원 전용 포트폴리오",
 };
 

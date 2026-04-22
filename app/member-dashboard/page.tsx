@@ -4,7 +4,7 @@ import { getMemberDashboardStatic } from "@/lib/member-dashboard-static";
 import { MemberDashboardClient } from "./MemberDashboardClient";
 
 export const metadata: Metadata = {
-  title: "유료회원 전용 대시보드 | FAM 뉴스",
+  title: "유료회원 전용 대시보드 | PHARM 뉴스",
   description: "기사 종목 발행 후 누적 순위·AI 퀀트 점수, 관심종목(로컬 저장)",
 };
 
